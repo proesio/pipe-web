@@ -1,0 +1,35 @@
+<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
+<style type="text/css">
+	.descripcion{
+		width:50%;
+		margin-top:100px;
+	}
+	.btn-descargar{
+		padding:20px;
+		background-color:#5BC800;
+		color:white; border:0px;
+		border-radius:5px;
+		cursor:pointer;
+		font-size:110%;
+		font-weight:bold;
+	}
+	.btn-descargar:hover{
+		box-shadow:0px 1px 5px gray;
+	}
+	.numero-descargas{
+		font-weight:bold;
+		font-size:200%;
+		padding:20px;
+		margin-bottom:200px;
+	}
+	@media screen and (max-width:600px){
+		.descripcion{
+			margin-top:350px;
+		}
+	}
+</style>
+<center>
+	<p class="letra-pequena descripcion"><em>PIPE es un ORM - Mapeador Objeto Relacionar desarrollado en PHP que permite interactuar con el modelo de las tablas en la base de datos accediendo a métodos escritos en español.</em></p>
+	<button onclick="document.location.href='procesos/PROES_PROCESOS.php?descargarPIPE'; mostrarDescargas();" class="btn-descargar"><i class="fa fa-download"></i> Descargar PIPE v1.0</button>
+	<div class="numero-descargas">#<i class="fa fa-download"></i> <span id="numero_descargas">0</span></div>
+</center>

@@ -1,0 +1,114 @@
+<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
+<style type="text/css">
+	.con-info{
+		width:auto;
+		max-width:900px;
+	}
+	.enc-info{ 
+		width:auto;
+		text-align:center;
+	}
+	.info{
+		width:auto;
+		height:auto;
+		text-align:justify;
+	}
+	.perfil{
+		border-radius:50%;
+		border:5px solid #5BC800;
+		cursor:pointer;
+		width:200px;
+		height:200px;
+	}
+	.redes{
+		color:black;
+		margin-right:20px;
+		font-size:200%;
+	}
+	.redes:hover{
+		color:#5BC800;
+		font-size:200%;
+	}
+	@media screen and (max-width:500px){
+		.imagen-modal{
+			max-width:300px;
+		}
+	}
+</style>
+<div class="letra-grande"><i class="far fa-user"></i> Desarrollador</div>
+<div class="contenedor" style="display:block;">
+	<center>
+	<div class="con-info">
+		<div class="enc-info">
+			<center><img src="imagenes/perfil.jpg" onclick="abrirModal('foto_perfil')" class="perfil"/></center>
+		</div>
+		<div class="info">
+			</p>Hola, mi nombre es Juan Felipe Valencia Murillo, nací en la ciudad de Santiago de Cali (Colombia) el 13 de enero de 1998.</p>
+			<p>
+			Soy apacionado por el desarrollo de software, a lo largo de mi carrera, he sentido la necesidad de escribir código en español ya que la mayoría de lenguajes de programación estan escritos en inglés.
+			De ahí nació la idea de desarrollar un ORM el cual me permitiera interactuar con los datos de la base de datos accediendo a métodos escritos en español.
+			</p>
+			<p>
+			El 13 de septiembre de 2018 inicie el desarrollo del ORM <em>PIPE</em> y posteriormente el de la plataforma <em>PROES - Programación en Español</em> siendo esta la puerta de presentación del ORM <em>PIPE</em> y de los futuros desarrollos.
+			</p>
+			<p>
+			Espero que esta plataforma sea útil para ti y te permita escribir código de forma rápida y en español.
+			</p>
+		</div>
+	</div>
+	<div class="con-info">
+		<div class="enc-info">
+		Estudios
+		</div>
+		<div class="info">
+			<b>Tecnólogías</b>
+			<ul>
+			  <li>Tecnólogo en Análisis y Desarrollo de Sistemas de Información (SENA - SERVICIO NACIONAL DE APRENDIZAJE)</li>
+			</ul> 
+			<b>Técnicos</b>
+			<ul>
+			  <li>Técnico en Programación de Software (SENA - SERVICIO NACIONAL DE APRENDIZAJE)</li>
+			  <li>Técnico en Sistemas (Corporación Nacional de Estudios)</li>
+			</ul>
+		</div>
+	</div>
+	<div class="con-info">
+		<div class="enc-info">
+		Habilidades
+		</div>
+		<div class="info">
+			<b>Lenguajes de Programación</b>
+			<br><br>
+			<i class="fab fa-php" style="font-size:300%"></i>&nbsp;&nbsp;&nbsp;
+			<i class="fab fa-java" style="font-size:300%"></i>&nbsp;&nbsp;&nbsp;
+			<i class="fas fa-database" style="font-size:300%"></i>&nbsp;&nbsp;&nbsp;
+			<i class="fab fa-html5" style="font-size:300%"></i>&nbsp;&nbsp;&nbsp;
+			<i class="fab fa-js-square" style="font-size:300%"></i>&nbsp;&nbsp;&nbsp;
+			<i class="fab fa-css3-alt" style="font-size:300%"></i>&nbsp;&nbsp;&nbsp;
+			<i class="fab fa-angular" style="font-size:300%"></i>&nbsp;&nbsp;&nbsp;
+			<i class="fab fa-android" style="font-size:300%"></i>&nbsp;&nbsp;&nbsp;
+		</div>
+	</div>
+	<div class="con-info">
+		<div class="enc-info">
+			Mis Redes Sociales
+		</div>
+		<div class="info" style="text-align:center;">
+			<a href="https://www.facebook.com/juanfelipe.valencia.503/" class="redes" target="_blank"><i class="fab fa-facebook-f"></i></a>
+			<a href="https://www.instagram.com/juanfe0245/" target="_blank" class="redes" ><i class="fab fa-instagram"></i></a>
+		</div>
+	</div>
+	</center>
+</div>
+<div id="foto_perfil" class="modal-imagen">
+	<div onclick="cerrarModal('foto_perfil')" class="cerrar-modal-imagen">&times;</div>
+	<center><img src="imagenes/perfil.jpg" onclick="abrirModal('foto_perfil')" class="imagen-modal"/></center>
+</div>
+<!--Uso del modal-->
+<!--<button onclick="abrirModal('miModal')">Abrir Modal</button>
+<div id="miModal" class="modal">
+	<div class="contenido-modal">
+		<span onclick="cerrarModal('miModal')" class="cerrar-modal">&times;</span>
+		<p>Algún texto en el modal...</p>
+	</div>
+</div>-->

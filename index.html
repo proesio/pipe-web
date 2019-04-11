@@ -1,0 +1,29 @@
+<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="author" content="Juan Felipe Valencia Murillo">
+	<meta name="copyright" content="Juan Felipe Valencia Murillo">
+	<meta name="description" content="PIPE - ORM en Español">
+	<meta name="keywords" content="proes,programación,español,pipe,orm,software,framework">
+	<meta name="robots" content="Index,Follow">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	<title>PIPE - ORM en Español</title>
+	<link rel="icon" type="image/png" href="imagenes/logo_pipe.png"/>
+	<!--<link rel="stylesheet" href="css/all.css"/>-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/principal.css"/>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+</head>
+<body ng-app="pipe">
+	<div ng-include="'paginas/encabezado.html'"></div>
+	<div id="menu_documentacion" ng-include="'paginas/menu_documentacion.html'" class="menu-doc"></div>
+	<div ng-view class="contenido"></div>
+	<div ng-include="'paginas/pie_pagina.html'"></div>
+	<script type="text/javascript" src="js/rutas.js"></script>
+	<script type="text/javascript" src="js/principal.js"></script>
+</body>
+</html>

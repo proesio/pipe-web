@@ -1,0 +1,36 @@
+<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
+<style type="text/css">
+@media screen and (max-width:930px){
+	.contenido{
+		margin-top:0px;
+	}
+}
+</style>
+<div class="regilla-contenedora">
+	<div class="documentacion">
+		<div style="font-size:300%;">Modelos y Constructor de Consultas</div>
+		<div class="hr"></div>
+		<p>Para interactuar con los datos de la base de datos, PIPE proporciona dos métodos para acceder a ellos, el primero es por medio de Modelos referenciados a las tablas de la base de datos, y el segundo es por medio del Constructor de Consultas PIPE.</p>
+		<p>Veamos algunos ejemplos.</p>
+		<p>Creación de un Modelo.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
+	<span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> PIPE <span class="signo">{</span>
+		<span class="comentario">// Todo tu código aquí.</span>
+	<span class="signo">}</span>
+</code></pre>
+		<p>Vamos a obtener todos los datos de la tabla <em>usuarios</em> por medio del modelo.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
+	<span class="palabra-clave">include</span> <span class="cadena">"Usuario.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Usuario.php</em> que contiene la clase <em>Usuario</em></span>
+		<span class="variable">$usuarios</span> <span class="signo">=</span> Usuario::todo<span class="signo">()</span><span class="signo">;</span>
+</code></pre>
+		<p>Ahora, vamos a obtener todos los datos de la tabla <em>usuarios</em> por medio del Constructor de Consultas PIPE.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
+	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
+		<span class="variable">$usuarios</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>->todo<span class="signo">()</span><span class="signo">;</span>
+</code></pre>
+		<p>Si utilizas el Modelo para interactuar con los datos de la base de datos, tendras la ventaja de poder omitir las <a href="http://localhost/pipe/#!/documentacion/1.0/convenciones" class="vinculo">convenciones</a> que tiene el ORM PIPE y adaptarse a la estructura que tenga tu tabla en la base de datos, ya que el Constructor de Consultas se adapta por defecto a las <a href="http://localhost/pipe/#!/documentacion/1.0/convenciones" class="vinculo">convenciones</a>.</p>
+	</div>
+</div>

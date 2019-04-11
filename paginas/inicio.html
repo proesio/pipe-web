@@ -1,0 +1,76 @@
+<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
+<style type="text/css">
+	.contenedor{
+		display:block;
+	}
+	.con-info{
+		width:auto;
+		max-width:900px;
+	}
+	.enc-info{ 
+		width:auto;
+	}
+	.info{
+		width:auto;
+		height:auto;
+		text-align:justify;
+	}
+</style>
+<div class="letra-grande">¡Hola!</div>
+<div class="letra-mediana">Bienvenido al ORM PIPE</div>
+<div class="contenedor">
+	<center><div class="con-info">
+		<div class="enc-info">
+			Fácil de Instalar
+		</div>
+		<div class="info">
+			Debido a que el ORM PIPE esta pensado para utilizarse en proyectos que no siguen la estructura de un framework, tienes toda la libertad de pegar el directorio <em>PROES</em> que contiene la clase <em>PIPE.php</em> y el archivo de configuración de la base de datos MySQL <em>PIPE_CONEXION_BD.php</em> en cualquier parte de tu proyecto.	
+		</div>
+	</div>
+	<div class="con-info">
+		<div class="enc-info">
+			Fácil de Configurar
+		</div>
+		<div class="info">
+			Para configurar la conexión a nuestra base de datos MySQL, abrimos y editamos el archivo <em>PIPE_CONEXION_BD.php</em> que se encuentra en el directorio <em>PROES</em>.
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">const</span> BD_HOST <span class="signo">=</span> <span class="cadena">'host'</span><span class="signo">;</span>
+	<span class="palabra-clave">const</span> BD_USUARIO <span class="signo">=</span> <span class="cadena">'usuario'</span><span class="signo">;</span>
+	<span class="palabra-clave">const</span> BD_CONTRASENA <span class="signo">=</span> <span class="cadena">'contraseña'</span><span class="signo">;</span>
+	<span class="palabra-clave">const</span> BD_BASEDATOS <span class="signo">=</span> <span class="cadena">'basedatos'</span><span class="signo">;</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE.php"</span><span class="signo">;</span>
+</code></pre>
+		<p>Para utilizar PIPE en nuestro código de programación incluimos el archivo <em>PIPE_CONEXION_BD.php</em> y usamos el namespace <em>PROES\PIPE</em>.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
+	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
+</code></pre>
+		</div>
+	</div>
+	<div class="con-info">
+		<div class="enc-info">
+			Fácil de Usar
+		</div>
+		<div class="info">
+			<p>Creación de un Modelo.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
+	<span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> PIPE <span class="signo">{</span>
+		<span class="comentario">// Todo tu código aquí.</span>
+	<span class="signo">}</span>
+</code></pre>
+		<p>Vamos a obtener todos los datos de la tabla <em>usuarios</em> por medio del modelo.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
+	<span class="palabra-clave">include</span> <span class="cadena">"Usuario.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Usuario.php</em> que contiene la clase <em>Usuario</em></span>
+		<span class="variable">$usuarios</span> <span class="signo">=</span> Usuario::todo<span class="signo">()</span><span class="signo">;</span>
+</code></pre>
+		<p>Ahora, vamos a obtener todos los datos de la tabla <em>usuarios</em> por medio del Constructor de Consultas PIPE.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
+	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
+		<span class="variable">$usuarios</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>->todo<span class="signo">()</span><span class="signo">;</span>
+</code></pre>	
+		</div>
+	</div></center>
+</div>
