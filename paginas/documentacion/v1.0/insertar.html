@@ -45,7 +45,7 @@
 	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
 	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
 		<span class="comentario">// Si nuestra llave primaria es autoincrementable le asignamos una cadena con el valor por defecto en nuestra base de datos.</span>
-		<span class="variable">$usuario</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>->insertar<span class="signo">([</span><span class="cadena">'id'</span><span class="signo">=></span><span class="palabra-clave">null</span><span class="signo">,</span><span class="cadena">'nombres'</span><span class="signo">=></span><span class="cadena">'John'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">=></span><span class="cadena">'Doe'</span><span class="signo">,</span><span class="cadena">'correo'</span><span class="signo">=></span><span class="cadena">'johndoe@correo.com'</span><span class="signo">])</span><span class="signo">;</span>
+		<span class="variable">$usuario</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>->insertar<span class="signo">([</span><span class="cadena">'id'</span><span class="signo">=></span><span class="cadena">'null'</span><span class="signo">,</span><span class="cadena">'nombres'</span><span class="signo">=></span><span class="cadena">'John'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">=></span><span class="cadena">'Doe'</span><span class="signo">,</span><span class="cadena">'correo'</span><span class="signo">=></span><span class="cadena">'johndoe@correo.com'</span><span class="signo">])</span><span class="signo">;</span>
 </code></pre>
 		<p>Inserción de datos por medio del método <em>consulta()</em>.</p>
 <pre><code><span class="php">&lt;?php</span>
@@ -53,6 +53,8 @@
 	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
 		<span class="comentario">// Este método devuelve 1 cuando la inserción se ha realizado correctamente.</span>
 		<span class="variable">$usuario</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">"insertar dentro usuarios (id,nombres,apellidos,correo) valores (null,'John','Doe','johndoe@correo.com')"</span><span class="signo">);</span>
+		<span class="comentario">// El método <em>consulta()</em> permite enviar los datos de forma segura.</span>
+		<span class="variable">$usuario</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'insertar dentro usuarios (id,nombres,apellidos,correo) valores (null,?,?,?)'</span><span class="signo">,[</span><span class="cadena">'John'</span><span class="signo">,</span><span class="cadena">'Doe'</span><span class="signo">,</span><span class="cadena">'johndoe@correo.com'</span><span class="signo">]);</span>
 </code></pre>
 		<p>Inserción de datos por medio del método <em>consultNativa()</em>.</p>
 <pre><code><span class="php">&lt;?php</span>
@@ -60,6 +62,8 @@
 	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
 		<span class="comentario">// Este método devuelve 1 cuando la inserción se ha realizado correctamente.</span>
 		<span class="variable">$usuario</span> <span class="signo">=</span> PIPE::consultaNativa<span class="signo">(</span><span class="cadena">"insert into usuarios (id,nombres,apellidos,correo) values (null,'John','Doe','johndoe@correo.com')"</span><span class="signo">);</span>
+		<span class="comentario">// El método <em>consultaNativa()</em> permite enviar los datos de forma segura.</span>
+		<span class="variable">$usuario</span> <span class="signo">=</span> PIPE::consultaNativa<span class="signo">(</span><span class="cadena">'insert into usuarios (id,nombres,apellidos,correo) values (null,?,?,?)'</span><span class="signo">,[</span><span class="cadena">'John'</span><span class="signo">,</span><span class="cadena">'Doe'</span><span class="signo">,</span><span class="cadena">'johndoe@correo.com'</span><span class="signo">]);</span>
 </code></pre>
 		<p>Si utilizas el Modelo para interactuar con los datos de la base de datos, tendras la ventaja de poder omitir las <a href="http://localhost/pipe/#!/documentacion/1.0/convenciones" class="vinculo">convenciones</a> que tiene el ORM PIPE y adaptarse a la estructura que tenga tu tabla en la base de datos, ya que el Constructor de Consultas se adapta por defecto a las <a href="http://localhost/pipe/#!/documentacion/1.0/convenciones" class="vinculo">convenciones</a>.</p>
 	</div>
