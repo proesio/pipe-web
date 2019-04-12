@@ -26,6 +26,8 @@
 	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
 	<span class="palabra-clave">include</span> <span class="cadena">"Usuario.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Usuario.php</em> que contiene la clase <em>Usuario</em>.</span>
 		<span class="variable">$usuario</span> <span class="signo">=</span> Usuario::donde<span class="signo">(</span><span class="cadena">'id=? o id=?'</span><span class="signo">,[</span><span class="numero">1</span><span class="signo">,</span><span class="numero">2</span><span class="signo">])</span>->actualizar<span class="signo">([</span><span class="cadena">'nombres'</span><span class="signo">=></span><span class="cadena">'John'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">=></span><span class="cadena">'Doe'</span><span class="signo">]);</span>
+		<span class="comentario">// Si deseamos realizar una actualización masiva lo hacemos de la siguiente manera.</span>
+		<span class="variable">$usuario</span> <span class="signo">=</span> Usuario::instanciar<span class="signo">()</span>->actualizar<span class="signo">([</span><span class="cadena">'nombres'</span><span class="signo">=></span><span class="cadena">'John'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">=></span><span class="cadena">'Doe'</span><span class="signo">]);</span>
 </code></pre>
 		<p>Forma #1 de actualización de datos por medio del constructor de consultas PIPE.</p>
 <pre><code><span class="php">&lt;?php</span>
@@ -42,6 +44,8 @@
 	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
 	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
 		<span class="variable">$usuario</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>->donde<span class="signo">(</span><span class="cadena">'id=? o id=?'</span><span class="signo">,[</span><span class="numero">1</span><span class="signo">,</span><span class="numero">2</span><span class="signo">])</span>->actualizar<span class="signo">([</span><span class="cadena">'nombres'</span><span class="signo">=></span><span class="cadena">'John'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">=></span><span class="cadena">'Doe'</span><span class="signo">]);</span>
+		<span class="comentario">// Si deseamos realizar una actualización masiva lo hacemos de la siguiente manera.</span>
+		<span class="variable">$usuario</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>->actualizar<span class="signo">([</span><span class="cadena">'nombres'</span><span class="signo">=></span><span class="cadena">'John'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">=></span><span class="cadena">'Doe'</span><span class="signo">]);</span>
 </code></pre>
 		<p>Actualización de datos por medio del método <em>consulta()</em>.</p>
 <pre><code><span class="php">&lt;?php</span>

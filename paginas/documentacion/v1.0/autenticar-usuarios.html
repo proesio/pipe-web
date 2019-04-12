@@ -11,7 +11,7 @@
 		<div style="font-size:300%;">Autenticar Usuarios</div>
 		<div class="hr"></div>
 		<p>Para realizar un inicio de sesión en nuestro proyecto, PIPE proporciona un método que permite autenticar al usuario.</p>
-		<p>PIPE escapa la cadena de los credenciales de acceso para impedir el inicio de sesión por medio de <em>Inyección SQL</em>.</p>
+		<p>PIPE escapa la cadena de los credenciales de acceso por medio de consultas preparadas para impedir el inicio de sesión por medio de <em>Inyección SQL</em>.</p>
 		<p>El método <em>autenticar()</em> nos retorna los datos del usuario autenticado.
 		<p>Autenticación de usuario por medio del modelo.</p>
 <pre><code><span class="php">&lt;?php</span>
@@ -25,8 +25,9 @@
 				<span class="comentario">// Caso inicio de sesión incorrecto.</span>
 			<span class="signo">}</span>
 			
-		<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
-		<span class="variable">$usuario</span> <span class="signo">=</span> Usuario::autenticar<span class="signo">([</span><span class="cadena">'correo'</span><span class="signo">=></span><span class="cadena">'johndoe@correo.com'</span><span class="signo">,</span><span class="cadena">'contrasena'</span><span class="signo">=></span><span class="cadena">'12345'</span><span class="signo">]<span class="signo">,</span><span class="cadena">'arreglo'</span>);</span>
+		<span class="comentario">// Si deseamos obtener los datos en forma de arreglo enviamos como parámetro la constante <em>PIPE::ARREGLO</em>.</span>
+		<span class="comentario">// Si deseamos obtener los datos en forma de json enviamos como parámetro la constante <em>PIPE::JSON</em>.</span>
+		<span class="variable">$usuario</span> <span class="signo">=</span> Usuario::autenticar<span class="signo">([</span><span class="cadena">'correo'</span><span class="signo">=></span><span class="cadena">'johndoe@correo.com'</span><span class="signo">,</span><span class="cadena">'contrasena'</span><span class="signo">=></span><span class="cadena">'12345'</span><span class="signo">]</span><span class="signo">,</span>PIPE::ARREGLO<span class="signo">);</span>
 			<span class="palabra-clave">if</span> <span class="signo">(</span><span class="variable">$usuario</span><span class="signo">) {</span>
 				<span class="comentario">// Caso inicio de sesión correcto.</span>
 			<span class="signo">}</span>
@@ -46,8 +47,9 @@
 				<span class="comentario">// Caso inicio de sesión incorrecto.</span>
 			<span class="signo">}</span>
 			
-		<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
-		<span class="variable">$usuario</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>->autenticar<span class="signo">([</span><span class="cadena">'correo'</span><span class="signo">=></span><span class="cadena">'johndoe@correo.com'</span><span class="signo">,</span><span class="cadena">'contrasena'</span><span class="signo">=></span><span class="cadena">'12345'</span><span class="signo">]<span class="signo">,</span><span class="cadena">'arreglo'</span>);</span>
+		<span class="comentario">// Si deseamos obtener los datos en forma de arreglo enviamos como parámetro la constante <em>PIPE::ARREGLO</em>.</span>
+		<span class="comentario">// Si deseamos obtener los datos en forma de json enviamos como parámetro la constante <em>PIPE::JSON</em>.</span>
+		<span class="variable">$usuario</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>->autenticar<span class="signo">([</span><span class="cadena">'correo'</span><span class="signo">=></span><span class="cadena">'johndoe@correo.com'</span><span class="signo">,</span><span class="cadena">'contrasena'</span><span class="signo">=></span><span class="cadena">'12345'</span><span class="signo">]</span><span class="signo">,</span>PIPE::ARREGLO<span class="signo">);</span>
 			<span class="palabra-clave">if</span> <span class="signo">(</span><span class="variable">$usuario</span><span class="signo">) {</span>
 				<span class="comentario">// Caso inicio de sesión correcto.</span>
 			<span class="signo">}</span>
