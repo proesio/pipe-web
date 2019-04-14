@@ -12,24 +12,20 @@
 		cursor:pointer;
 		font-size:110%;
 		font-weight:bold;
+		text-decoration:none;
 	}
 	.btn-descargar:hover{
 		box-shadow:0px 1px 5px gray;
 	}
-	.numero-descargas{
-		font-weight:bold;
-		font-size:200%;
-		padding:20px;
-		margin-bottom:200px;
-	}
 	@media screen and (max-width:600px){
 		.descripcion{
 			margin-top:350px;
+			margin-bottom:30px;
 		}
 	}
 </style>
 <center>
 	<p class="letra-pequena descripcion"><em>PIPE es un ORM - Mapeador Objeto Relacionar desarrollado en PHP que permite interactuar con el modelo de las tablas en la base de datos accediendo a métodos escritos en español.</em></p>
-	<button onclick="document.location.href='procesos/PROES_PROCESOS.php?descargarPIPE'; mostrarDescargas();" class="btn-descargar"><i class="fa fa-download"></i> Descargar PIPE v1.0</button>
-	<div class="numero-descargas">#<i class="fa fa-download"></i> <span id="numero_descargas">0</span></div>
+	<a href="https://github.com/juanfe0245/PROES-PIPE" class="btn-descargar" target="_blank"><i class="fab fa-github"></i> Descargar PIPE v1.0</a>
+	<div style="margin-bottom:150px;"></div>
 </center>
