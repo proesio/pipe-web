@@ -8,6 +8,9 @@ app.config(function($routeProvider) {
 	.when("/descargar", {
         templateUrl:'paginas/descargar.html'
     })
+	.when("/descargar/versiones-anteriores", {
+        templateUrl:'paginas/descargar_versiones_anteriores.html'
+    })
 	.when("/desarrollador", {
         templateUrl:'paginas/desarrollador.html'
     })

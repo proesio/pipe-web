@@ -1,0 +1,76 @@
+<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
+<style type="text/css">
+	table{
+		-webkit-width:50%;
+		width:50%;
+		border-collapse: collapse;
+	}
+	thead > tr{
+		background-color:#5BC800;
+		color:white;
+	}
+	thead > tr > th{
+		padding:5px;
+	}
+	tr:nth-child(even) {
+		background-color:#f0f2f1;
+	}
+	a{
+		color:gray;
+	}
+	a:hover{
+		color:black;
+	}
+	.version-pipe{
+		font-size:90%;
+	}
+	.implementaciones{
+		font-size:80%;
+	}
+	.implementaciones:hover{
+		cursor:context-menu;
+		text-decoration:underline;
+	}
+</style>
+<center>
+<p class="letra-pequena descripcion">Versiones anteriores</p>
+<table border="1">
+	<thead>
+		<tr>
+			<th>Versión</th>
+			<th>Implementaciones</th>
+			<th>Descarga</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="version-pipe"><center>1.0.0</center></td>
+			<td><center><span title="Version estable con soporte para mysql, pgsql, sqlite, oci.
+Migracion al metodo de conexion PDO para permitir la conexion a diferentes bases de datos.
+Modificacion del metodo todo() permitiendo enviar por parametros en un arreglo los campos que se desea listar.
+Implementacion del metodo contar().
+Implementacion del metodo ultimo().
+Implementacion de tipo de retorno de datos json en el metodo obtenerDatosConsultaSQL().
+Optimizacion del metodo primero().
+Modificacion del metodo conexion() incluyendo try catch, anexando la configuracion del controlador, host, puerto, usuario, contrasena y basedatos e implementando mensajes en caso de error.
+Modificacion del metodo insertar() implementando null, default y nextval (Caso Oracle) en la llave primaria con autoincrement.
+Modificacion del metodo vaciar() implementacion de  para la restriccion de la llave foranea y la inclusion del truncate para sqlite.
+Implementacion del metodo obtenerCamposConsultaSQL() en remplazo del metodo PDO getColumnMeta() para obtener los campos listados en la consulta SQL del usuario.
+Implementacion del metodo obtenerCamposTabla() en remplazo del metodo PDO getColumnMeta() debido a que este ultimo no esta disponible para todas las BD.
+Modificacion de los metodos insertar() y actualizar(), implementando las variables  y  en mayuscula para oracle, obtencion de los campos por medio del metodo obtenerCamposTabla().
+Implementacion de condicional en el metodo obtenerDatosConsultaSQL() comparando count() con columnCount() para verificar la ambiguedad de los campos en la consulta SQL.
+Modificacion del metodo eliminar() incluyendo la eliminacion sin condicional.
+Modificacion de nombre del metodo prepararInsercion() a instanciar() debido a que es utilizado por los metodos insertar(), actualizar() y eliminar().
+Modificacion del metodo registroTiempo() incluyendo el formato de fecha para timestamp en oracle.
+Traduccion de errores SQL para sqlite y oracle." class="implementaciones">Ver implementaciones</span></center></td>
+			<td><center><a href="https://github.com/juanfe0245/PROES-PIPE/tree/e080b98c02b9d662931aec82e71ae121d73834a6" target="_black"><i class="fab fa-github"></i></a></center></td>
+		</tr>
+		<tr>
+			<td class="version-pipe"><center>--</center></td>
+			<td><center><span title="Version estable con soporte para mysql." class="implementaciones">Ver implementaciones</span></center></td>
+			<td><center><a href="https://github.com/juanfe0245/PROES-PIPE/tree/a1cc2d99b03d7c41e4629a4bed1501e403bfc287" target="_black"><i class="fab fa-github"></i></a></center></td>
+		</tr>
+	</tbody>
+</table>
+<div style="margin-bottom:250px;"></div>
+</center>

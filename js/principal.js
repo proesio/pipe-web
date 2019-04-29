@@ -11,7 +11,7 @@ $(document).ready(function(){
 		boton.style.borderTop="5px solid white";
 		boton.style.borderBottom="5px solid #5BC800";
 	}
-	else if(url==http+document.domain+'/pipe/#!/documentacion' || url.indexOf('documentacion')>-1){
+	else if(url==http+document.domain+'/pipe/#!/documentacion' || url.indexOf('#!/documentacion')>-1){
 		boton=document.getElementById("boton2");
 		boton.style.color="#5BC800";
 		boton.style.borderTop="5px solid white";
@@ -23,9 +23,8 @@ $(document).ready(function(){
 		linkMenuCargado=linkMenu;
 		}
 		menuDocumentacion('mostrar');
-		
 	}
-	else if(url==http+document.domain+'/pipe/#!/descargar'){
+	else if(url==http+document.domain+'/pipe/#!/descargar' || url.indexOf('#!/descargar')>-1){
 		boton=document.getElementById("boton3");
 		boton.style.color="#5BC800";
 		boton.style.borderTop="5px solid white";
