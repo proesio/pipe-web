@@ -24,7 +24,7 @@
 			Fácil de Instalar
 		</div>
 		<div class="info">
-			Debido a que el ORM PIPE esta pensado para utilizarse en proyectos que no siguen la estructura de un framework, tienes toda la libertad de pegar el directorio <em>PROES</em> que contiene la clase <em>PIPE.php</em> y el archivo de configuración de la base de datos <em>PIPE_CONEXION_BD.php</em> en cualquier parte de tu proyecto.	
+			<p>Debido a que el ORM PIPE esta pensado para utilizarse en proyectos que no siguen la estructura de un framework, tienes toda la libertad de pegar el directorio <em>PROES</em> que contiene la clase <em>PIPE.php</em> y el archivo de configuración de la base de datos <em>PIPE_CONEXION_BD.php</em> en cualquier parte de tu proyecto.</p>	
 		</div>
 	</div>
 	<div class="con-info">
@@ -32,7 +32,8 @@
 			Fácil de Configurar
 		</div>
 		<div class="info">
-			Para configurar la conexión a nuestra base de datos, abrimos y editamos el archivo <em>PIPE_CONEXION_BD.php</em> que se encuentra en el directorio <em>PROES</em>.
+			<p>PIPE soporta 5 controladores de bases de datos. <em>mysql, pgsql, sqlite, oci y sqlsrv</em>.</p>
+			<p>Para configurar la conexión a nuestra base de datos, abrimos y editamos el archivo <em>PIPE_CONEXION_BD.php</em> que se encuentra en el directorio <em>PROES</em>.</p>
 <pre><code><span class="php">&lt;?php</span>
 	<span class="palabra-clave">const</span> BD_CONTROLADOR <span class="signo">=</span> <span class="cadena">'controlador'</span><span class="signo">;</span>
 	<span class="palabra-clave">const</span> BD_HOST <span class="signo">=</span> <span class="cadena">'host'</span><span class="signo">;</span>
@@ -65,7 +66,7 @@
 		<p>Vamos a obtener todos los datos de la tabla <em>usuarios</em> por medio del modelo.</p>
 <pre><code><span class="php">&lt;?php</span>
 	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">include</span> <span class="cadena">"Usuario.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Usuario.php</em> que contiene la clase <em>Usuario</em></span>
+	<span class="palabra-clave">include</span> <span class="cadena">"Usuario.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Usuario.php</em> que contiene la clase <em>Usuario</em>.</span>
 		<span class="variable">$usuarios</span> <span class="signo">=</span> Usuario::todo<span class="signo">()</span><span class="signo">;</span>
 </code></pre>
 		<p>Ahora, vamos a obtener todos los datos de la tabla <em>usuarios</em> por medio del Constructor de Consultas PIPE.</p>

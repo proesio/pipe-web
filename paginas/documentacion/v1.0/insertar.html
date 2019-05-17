@@ -11,6 +11,8 @@
 		<div style="font-size:300%;">Insertar</div>
 		<div class="hr"></div>
 		<p>PIPE tiene dos formas de insertar datos en las tablas de la base de datos.</p>
+		<p>En la forma 1 debemos indicar todos los campos de nuestra tabla por medio de atributos en el objeto a excepción de los campos <em>creado_en</em> y <em>actualizado_en</em> (en caso que esten presentes) debido a que el ORM PIPE se encarga de llenarlos automáticamente.</p>
+		<p>En la forma 2 podemos decidir que campos tendrán información que será insertada en la tabla.</p>
 		<p>Forma #1 de inserción de datos por medio del modelo.</p>
 <pre><code><span class="php">&lt;?php</span>
 	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>

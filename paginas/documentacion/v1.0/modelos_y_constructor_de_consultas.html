@@ -22,7 +22,7 @@
 		<p>Vamos a obtener todos los datos de la tabla <em>usuarios</em> por medio del modelo.</p>
 <pre><code><span class="php">&lt;?php</span>
 	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">include</span> <span class="cadena">"Usuario.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Usuario.php</em> que contiene la clase <em>Usuario</em></span>
+	<span class="palabra-clave">include</span> <span class="cadena">"Usuario.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Usuario.php</em> que contiene la clase <em>Usuario</em>.</span>
 		<span class="variable">$usuarios</span> <span class="signo">=</span> Usuario::todo<span class="signo">()</span><span class="signo">;</span>
 </code></pre>
 		<p>Ahora, vamos a obtener todos los datos de la tabla <em>usuarios</em> por medio del Constructor de Consultas PIPE.</p>
