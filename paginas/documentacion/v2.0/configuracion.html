@@ -1,0 +1,32 @@
+<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
+<style type="text/css">
+@media screen and (max-width:930px){
+	.contenido{
+		margin-top:0px;
+	}
+}
+</style>
+<div class="regilla-contenedora">
+	<div class="documentacion">
+		<div style="font-size:300%;">Configuración</div>
+		<div class="hr"></div>
+		<p>PIPE es muy sencillo de configurar.</p>
+		<p>PIPE soporta 5 controladores de bases de datos. <em>mysql, pgsql, sqlite, oci y sqlsrv</em>.</p>
+		<p>Para configurar la conexión a nuestra base de datos, abrimos y editamos el archivo <em>PIPE_CONEXION_BD.php</em> que se encuentra en el directorio <em>PROES</em>.</p>		
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">const</span> BD_CONTROLADOR <span class="signo">=</span> <span class="cadena">'controlador'</span><span class="signo">;</span>
+	<span class="palabra-clave">const</span> BD_HOST <span class="signo">=</span> <span class="cadena">'host'</span><span class="signo">;</span>
+	<span class="palabra-clave">const</span> BD_PUERTO <span class="signo">=</span> <span class="cadena">'puerto'</span><span class="signo">;</span>
+	<span class="palabra-clave">const</span> BD_USUARIO <span class="signo">=</span> <span class="cadena">'usuario'</span><span class="signo">;</span>
+	<span class="palabra-clave">const</span> BD_CONTRASENA <span class="signo">=</span> <span class="cadena">'contraseña'</span><span class="signo">;</span>
+	<span class="palabra-clave">const</span> BD_BASEDATOS <span class="signo">=</span> <span class="cadena">'basedatos'</span><span class="signo">;</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"Conexion.php"</span><span class="signo">;</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE.php"</span><span class="signo">;</span>
+</code></pre>
+		<p>Para utilizar PIPE en nuestro código de programación incluimos el archivo <em>PIPE_CONEXION_BD.php</em> y usamos el namespace <em>PROES\PIPE</em>.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
+	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
+</code></pre>
+	</div>
+</div>

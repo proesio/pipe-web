@@ -1,5 +1,4 @@
 //Desarrollado Por Juan Felipe Valencia Murillo.
-menuDocumentacion('ocultar');
 var http="http://";
 var linkMenuCargado=null;
 $(document).ready(function(){
@@ -16,13 +15,14 @@ $(document).ready(function(){
 		boton.style.color="#5BC800";
 		boton.style.borderTop="5px solid white";
 		boton.style.borderBottom="5px solid #5BC800";
+		version=typeof(url.split("/")[6])!=='undefined' ? url.split("/")[6] : '2.0';
 		if(url.split("/").length>6){
-		linkMenu=document.getElementById(url.split("/")[7]);
+		linkMenu=document.getElementById(url.split("/")[7]+version);
 		linkMenu.style.color="#5BC800";
 		linkMenu.style.fontWeight="bold";
 		linkMenuCargado=linkMenu;
 		}
-		menuDocumentacion('mostrar');
+		menuDocumentacion(version);
 	}
 	else if(url==http+document.domain+'/pipe/#!/descargar' || url.indexOf('#!/descargar')>-1){
 		boton=document.getElementById("boton3");
@@ -86,15 +86,11 @@ function cerrarModal(id_modal){
 	modal=document.getElementById(id_modal);
 	modal.style.display="none";
 }
-function menuDocumentacion(accion){
-	switch(accion){
-		case "mostrar":
-			document.getElementById('menu_documentacion').style.display="block";
-		break;
-		case "ocultar":
-			document.getElementById('menu_documentacion').style.display="none";
-		break;
-	}
+function menuDocumentacion(version){
+	document.getElementById('menu_documentacion'+version).style.display="block";
+}
+function ocultarMenuDocumentacion(){
+	for(i=1; i<=2; i++) document.getElementById('menu_documentacion'+(i+'.0')).style.display="none";
 }
 function eliminarLinkMenu(){
 	if(vinculoVisitado){
