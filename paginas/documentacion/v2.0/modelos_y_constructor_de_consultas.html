@@ -1,10 +1,26 @@
 <!--Desarrollado Por Juan Felipe Valencia Murillo.-->
 <style type="text/css">
-@media screen and (max-width:930px){
-	.contenido{
-		margin-top:0px;
+	table{
+		-webkit-width:100%;
+		border-collapse: collapse;
+		margin:10px;
 	}
-}
+	thead > tr{
+		background-color:#5BC800; color:white;
+	}
+	tr:nth-child(even) {
+		background-color: #f0f2f1;
+	}
+	@media screen and (max-width:930px){
+		.contenido{
+			margin-top:0px;
+		}
+	}
+	@media screen and (max-width:455px){
+		.con-palabras-reservadas{
+			display:block;
+		}
+	}
 </style>
 <div class="regilla-contenedora">
 	<div class="documentacion">
@@ -13,24 +29,336 @@
 		<p>Para interactuar con los datos de la base de datos, PIPE proporciona dos métodos para acceder a ellos, el primero es por medio de Modelos referenciados a las tablas de la base de datos, y el segundo es por medio del Constructor de Consultas PIPE.</p>
 		<p>Veamos algunos ejemplos.</p>
 		<p>Creación de un Modelo.</p>
+		<p>PIPE por defecto tiene un directorio específico para guardar los modelos que serán importados en nuestro código automáticamente. Creamos el archivo Usuario.php y lo guardamos en el directorio <em>PIPE/Modelos/Usuario.php</em>.</p>
 <pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-	<span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> PIPE <span class="signo">{</span>
+	<span class="palabra-clave">use</span> PIPE\Clases\Modelo<span class="signo">;</span>
+	<span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> Modelo <span class="signo">{</span>
 		<span class="comentario">// Todo tu código aquí.</span>
 	<span class="signo">}</span>
 </code></pre>
-		<p>Vamos a obtener todos los datos de la tabla <em>usuarios</em> por medio del modelo.</p>
+		<p>PIPE soporta 3 tipos de relaciones. <em>Uno a Uno, Uno a Muchos y Muchos a Muchos</em>.</p>
+		<p>#1 Relación <em>Uno a Uno</em>.</p>
+		<p>Vamos a relacionar el modelo <em>Usuario</em> con el modelo <em>Documento</em> asumiendo que un usuario tiene un documento.</p>
 <pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">include</span> <span class="cadena">"Usuario.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Usuario.php</em> que contiene la clase <em>Usuario</em>.</span>
-		<span class="variable">$usuarios</span> <span class="signo">=</span> Usuario::todo<span class="signo">()</span><span class="signo">;</span>
+	<span class="palabra-clave">use</span> PIPE\Clases\Modelo<span class="signo">;</span>
+	<span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> Modelo <span class="signo">{</span>
+		<span class="palabra-clave">protected</span> <span class="variable">$tieneUno</span> <span class="signo">=</span> <span class="cadena">'Documento'</span><span class="signo">;</span>
+	<span class="signo">}</span>
 </code></pre>
-		<p>Ahora, vamos a obtener todos los datos de la tabla <em>usuarios</em> por medio del Constructor de Consultas PIPE.</p>
+		<p>Para obtener los datos de esta relación <em>Uno a Uno</em> lo hacemos de la siguiente manera.</p>
 <pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-		<span class="variable">$usuarios</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>->todo<span class="signo">()</span><span class="signo">;</span>
+	<span class="variable">$documeto</span> <span class="signo">=</span> Usuario::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relaciones<span class="signo">()</span>->documento<span class="signo">;</span>
 </code></pre>
+		<p>PIPE por defecto determina la llave foránea en función del nombre del modelo a relacionar, debido a esto, se asume que la llave foránea del modelo <em>Documento</em> es <em>usuario_id</em>. Si desamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">protected</span> <span class="variable">$tieneUno</span> <span class="signo">=</span> <span class="signo">[</span>
+		<span class="cadena">'Documento'</span> <span class="signo">=></span> <span class="signo">[</span>
+			<span class="cadena">'llaveForanea'</span> <span class="signo">=></span> <span class="cadena">'id_usuario'</span>
+		<span class="signo">]</span>
+		...
+	<span class="signo">];</span>
+</code></pre>
+		<p>PIPE por defecto determina que el valor de la llave foránea en el modelo <em>Documento</em> coincida con el valor de la llave primaria en el modelo <em>Usuario</em>, sin embargo, podemos definir una llave personalizada en el modelo <em>Usuario</em> de la siguiente manera.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">protected</span> <span class="variable">$tieneUno</span> <span class="signo">=</span> <span class="signo">[</span>
+		<span class="cadena">'Documento'</span> <span class="signo">=></span> <span class="signo">[</span>
+			<span class="cadena">'llavePrincipal'</span> <span class="signo">=></span> <span class="cadena">'idusuario'</span>
+		<span class="signo">]</span>
+		...
+	<span class="signo">];</span>
+</code></pre>
+		<p>#2 Relación <em>Uno a Muchos</em>.</p>
+		<p>Vamos a relacionar el modelo <em>Usuario</em> con el modelo <em>Tema</em> asumiendo que un usuario tiene muchos temas.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">use</span> PIPE\Clases\Modelo<span class="signo">;</span>
+	<span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> Modelo <span class="signo">{</span>
+		<span class="palabra-clave">protected</span> <span class="variable">$tieneMuchos</span> <span class="signo">=</span> <span class="cadena">'Tema'</span><span class="signo">;</span>
+	<span class="signo">}</span>
+</code></pre>
+		<p>Para obtener los datos de esta relación <em>Uno a Muchos</em> lo hacemos de la siguiente manera.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="variable">$temas</span> <span class="signo">=</span> Usuario::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relaciones<span class="signo">()</span>->temas<span class="signo">;</span>
+</code></pre>
+		<p>Como vimos anteriormente, PIPE por defecto determina la llave foránea en función del nombre del modelo a relacionar, debido a esto, se asume que la llave foránea del modelo <em>Tema</em> es <em>usuario_id</em>. Si desamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">protected</span> <span class="variable">$tieneMuchos</span> <span class="signo">=</span> <span class="signo">[</span>
+		<span class="cadena">'Tema'</span> <span class="signo">=></span> <span class="signo">[</span>
+			<span class="cadena">'llaveForanea'</span> <span class="signo">=></span> <span class="cadena">'id_usuario'</span>
+		<span class="signo">]</span>
+		...
+	<span class="signo">];</span>
+</code></pre>
+		<p>Como vimos anteriormente, PIPE por defecto determina que el valor de la llave foránea en el modelo <em>Tema</em> coincida con el valor de la llave primaria en el modelo <em>Usuario</em>, sin embargo, podemos definir una llave personalizada en el modelo <em>Usuario</em> de la siguiente manera.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">protected</span> <span class="variable">$tieneMuchos</span> <span class="signo">=</span> <span class="signo">[</span>
+		<span class="cadena">'Tema'</span> <span class="signo">=></span> <span class="signo">[</span>
+			<span class="cadena">'llavePrincipal'</span> <span class="signo">=></span> <span class="cadena">'idusuario'</span>
+		<span class="signo">]</span>
+		...
+	<span class="signo">];</span>
+</code></pre>
+		<p>Relación inversa de <em>Uno a Uno y Uno a Muchos</em>.</p>
+		<p>Podemos acceder a los datos relacionados en los modelos <em>Documento y Tema</em> usando el atributo <em>perteneceAUno</em>.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">protected</span> <span class="variable">$perteneceAUno</span> <span class="signo">=</span> <span class="cadena">'Usuario'</span><span class="signo">;</span>
+</code></pre>
+		<p>Para obtener los datos de esta relación inversa de <em>Uno a Uno y Uno a Muchos</em> lo hacemos de la siguiente manera.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="variable">$usuario</span> <span class="signo">=</span> Documento::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relaciones<span class="signo">()</span>->usuario<span class="signo">;</span>
+	<span class="variable">$usuario</span> <span class="signo">=</span> Tema::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relaciones<span class="signo">()</span>->usuario<span class="signo">;</span>
+</code></pre>
+		<p>PIPE por defecto determina la llave foránea en función del nombre del modelo a relacionar, debido a esto, se asume que la llave foránea de los modelos <em>Documento y Tema</em> son <em>usuario_id</em>. Si desamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">protected</span> <span class="variable">$perteneceAUno</span> <span class="signo">=</span> <span class="signo">[</span>
+		<span class="cadena">'Usuario'</span> <span class="signo">=></span> <span class="signo">[</span>
+			<span class="cadena">'llaveForanea'</span> <span class="signo">=></span> <span class="cadena">'id_usuario'</span>
+		<span class="signo">]</span>
+		...
+	<span class="signo">];</span>
+</code></pre>		
+		<p>PIPE por defecto determina que el valor de la llave foránea en los modelos <em>Documento y Tema</em> coincida con el valor de la llave primaria en el modelo <em>Usuario</em>, sin embargo, podemos definir una llave personalizada en el modelo <em>Usuario</em> de la siguiente manera.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">protected</span> <span class="variable">$perteneceAUno</span> <span class="signo">=</span> <span class="signo">[</span>
+		<span class="cadena">'Usuario'</span> <span class="signo">=></span> <span class="signo">[</span>
+			<span class="cadena">'llavePrincipal'</span> <span class="signo">=></span> <span class="cadena">'idusuario'</span>
+		<span class="signo">]</span>
+		...
+	<span class="signo">];</span>
+</code></pre>
+		<p>#3 Relación <em>Muchos a Muchos</em>.</p>
+		<p>Para definir la relación de <em>Muchos a Muchos</em> se necesitan tres tablas. Para nuestro ejemplo vamos a utilizar la tabla usuarios, roles y role_usuario.</p>
+		<p>Vamos a relacionar el modelo <em>Usuario</em> con el modelo <em>Role</em> en una relación de <em>Muchos a Muchos</em> asumiendo que un usuario tiene muchos roles y un Role pertenece a muchos usuarios.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">use</span> PIPE\Clases\Modelo<span class="signo">;</span>
+	<span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> Modelo <span class="signo">{</span>
+		<span class="palabra-clave">protected</span> <span class="variable">$perteneceAMuchos</span> <span class="signo">=</span> <span class="cadena">'Role'</span><span class="signo">;</span>
+	<span class="signo">}</span>
+</code></pre>
+		<p>Para obtener los datos de esta relación <em>Muchos a Muchos</em> lo hacemos de la siguiente manera.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="variable">$roles</span> <span class="signo">=</span> Usuario::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relaciones<span class="signo">()</span>->roles<span class="signo">;</span>
+</code></pre>
+		<p>También podemos obtener los datos de la relación en la tabla <em>role_usuario</em> de la siguiente manera.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="variable">$roles</span> <span class="signo">=</span> Usuario::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relaciones<span class="signo">()</span>->roles<span class="signo">;</span>
+	<span class="palabra-clave">foreach</span> <span class="signo">(</span><span class="variable">$roles</span> <span class="palabra-clave">as</span> <span class="variable">$rol</span><span class="signo">)</span> <span class="signo">{</span>
+		<span class="palabra-clave">echo</span> <span class="variable">$rol</span>->role_usuario->creado_en<span class="signo">;</span>
+	<span class="signo">}</span>
+</code></pre>
+		<p>PIPE por defecto determina que el nombre de la tercera tabla (tabla de unión) este compuesto por los nombres en orden alfabético de los modelos relacionados, debido a esto, se asume que el nombre de la tercera tabla sea <em>role_usuario</em>. Si desamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">protected</span> <span class="variable">$perteneceAMuchos</span> <span class="signo">=</span> <span class="signo">[</span>
+		<span class="cadena">'Role'</span> <span class="signo">=></span> <span class="signo">[</span>
+			<span class="cadena">'tablaUnion'</span> <span class="signo">=></span> <span class="cadena">'rolesusuarios'</span>
+		<span class="signo">]</span>
+		...
+	<span class="signo">];</span>
+</code></pre>
+		<p>PIPE por defecto determina que los nombres de las llaves foráneas en la tabla <em>role_usuario</em> (tabla de unión) sean <em>role_id y usuario_id</em>. Si desamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">protected</span> <span class="variable">$perteneceAMuchos</span> <span class="signo">=</span> <span class="signo">[</span>
+		<span class="cadena">'Role'</span> <span class="signo">=></span> <span class="signo">[</span>
+			<span class="cadena">'llaveForaneaLocal'</span> <span class="signo">=></span> <span class="cadena">'id_usuario'</span><span class="signo">,</span>
+			<span class="cadena">'llaveForaneaUnion'</span> <span class="signo">=></span> <span class="cadena">'id_role'</span>
+		<span class="signo">]</span>
+		...
+	<span class="signo">];</span>
+</code></pre>
+		<p>De la misma manera podemos omitir estas convenciones para la relación inversa de <em>Muchos a Muchos</em> en el modelo <em>Role</em>.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">protected</span> <span class="variable">$perteneceAMuchos</span> <span class="signo">=</span> <span class="signo">[</span>
+		<span class="cadena">'Usuario'</span> <span class="signo">=></span> <span class="signo">[</span>
+			<span class="cadena">'tablaUnion'</span> <span class="signo">=></span> <span class="cadena">'rolesusuarios'</span><span class="signo">,</span>
+			<span class="cadena">'llaveForaneaLocal'</span> <span class="signo">=></span> <span class="cadena">'id_role'</span><span class="signo">,</span>
+			<span class="cadena">'llaveForaneaUnion'</span> <span class="signo">=></span> <span class="cadena">'id_usuario'</span>
+		<span class="signo">]</span>
+		...
+	<span class="signo">];</span>
+</code></pre>
+		<p>El Contructor de Consultas PIPE nos permite estructurar sentencias SQL por medio de métodos heredados en la clase <em>PIPE</em>.</p>
+		<p>A continuación, se muestra un listado de los 35 métodos disponibles en el Constructor de Consultas PIPE para estructurar sentencias SQL.</p>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>Método</th>
+					<th>Descripción</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><em>actualizar()</em></td>
+					<td>Actualiza un registro en la base de datos.</td>
+				</tr>
+				<tr>
+					<td><em>actualizarOInsertar()</em></td>
+					<td>Actualiza o inserta un nuevo registro en la base de datos.</td>
+				</tr>
+				<tr>
+					<td><em>agruparPor()</em></td>
+					<td>Agrupa registros que tienen los mismos valores.</td>
+				</tr>
+				<tr>
+					<td><em>alias()</em></td>
+					<td>Establece un alias al nombre de la tabla.</td>
+				</tr>
+				<tr>
+					<td><em>autenticar()</em></td>
+					<td>Autentica un registro en la base de datos.</td>
+				</tr>
+				<tr>
+					<td><em>consulta()</em></td>
+					<td>Realiza una consulta SQL en español.</td>
+				</tr>
+				<tr>
+					<td><em>consultaNativa()</em></td>
+					<td>Realiza una consulta SQL nativa.</td>
+				</tr>
+				<tr>
+					<td><em>contar()</em></td>
+					<td>Obtiene la cantidad general o especifica de registros retornados.</td>
+				</tr>
+				<tr>
+					<td><em>decrementar()</em></td>
+					<td>Decrementa el valor del campo especificado.</td>
+				</tr>
+				<tr>
+					<td><em>distinto()</em></td>
+					<td>Elimina duplicados del conjunto de resultados.</td>
+				</tr>
+				<tr>
+					<td><em>donde()</em></td>
+					<td>Establece una condición en la consulta SQL.</td>
+				</tr>
+				<tr>
+					<td><em>eliminar()</em></td>
+					<td>Elimina un registro en la base de datos.</td>
+				</tr>
+				<tr>
+					<td><em>encontrar()</em></td>
+					<td>Obtiene una instancia del Constructor de Consultas con los datos asociados a la llave primaria.</td>
+				</tr>
+				<tr>
+					<td><em>existe()</em></td>
+					<td>Verifica que la consulta SQL ha retornado un resultado.</td>
+				</tr>
+				<tr>
+					<td><em>incrementar()</em></td>
+					<td>Incrementa el valor del campo especificado.</td>
+				</tr>
+				<tr>
+					<td><em>insertar()</em></td>
+					<td>Inserta un nuevo registro en la base de datos.</td>
+				</tr>
+				<tr>
+					<td><em>insertarObtenerId()</em></td>
+					<td>Inserta un nuevo registro en la base de datos y obtiene el último id generado.</td>
+				</tr>
+				<tr>
+					<td><em>limite()</em></td>
+					<td>Limita el número de registros retornados en la consulta SQL.</td>
+				</tr>
+				<tr>
+					<td><em>maximo()</em></td>
+					<td>Obtiene el valor máximo del campo especificado.</td>
+				</tr>
+				<tr>
+					<td><em>minimo()</em></td>
+					<td>Obtiene el valor mímino del campo especificado.</td>
+				</tr>
+				<tr>
+					<td><em>noExiste()</em></td>
+					<td>Verifica que la consulta SQL no ha retornado un resultado.</td>
+				</tr>
+				<tr>
+					<td><em>obtener()</em></td>
+					<td>Obtiene el resultado de una consulta SQL.</td>
+				</tr>
+				<tr>
+					<td><em>ordenarPor()</em></td>
+					<td>Ordena el resultado de la consulta SQL.</td>
+				</tr>
+				<tr>
+					<td><em>primero()</em></td>
+					<td>Obtiene los primeros registros retornados en la consulta SQL.</td>
+				</tr>
+				<tr>
+					<td><em>promedio()</em></td>
+					<td>Obtiene el valor promedio del campo especificado.</td>
+				</tr>
+				<tr>
+					<td><em>seleccionar()</em></td>
+					<td>Establece los campos que serán seleccionados.</td>
+				</tr>
+				<tr>
+					<td><em>suma()</em></td>
+					<td>Obtiene la suma del campo especificado.</td>
+				</tr>
+				<tr>
+					<td><em>tabla()</em></td>
+					<td>Establece el nombre de la tabla en el Constructor de Consultas.</td>
+				</tr>
+				<tr>
+					<td><em>teniendo()</em></td>
+					<td>Establece una condición a una función de agregación.</td>
+				</tr>
+				<tr>
+					<td><em>todo()</em></td>
+					<td>Obtiene todos los datos de la tabla seleccionada.</td>
+				</tr>
+				<tr>
+					<td><em>ultimo()</em></td>
+					<td>Obtiene los últimos registros retornados en la consulta SQL.</td>
+				</tr>
+				<tr>
+					<td><em>unir()</em></td>
+					<td>Combina registros de una o más tablas relacionadas.</td>
+				</tr>
+				<tr>
+					<td><em>unirDerecha()</em></td>
+					<td>Combina registros de una o más tablas relacionadas obteniendo todos los registros de la tabla de la derecha.</td>
+				</tr>
+				<tr>
+					<td><em>unirIzquierda()</em></td>
+					<td>Combina registros de una o más tablas relacionadas obteniendo todos los registros de la tabla de la izquierda.</td>
+				</tr>
+				<tr>
+					<td><em>vaciar()</em></td>
+					<td>Elimina todos los registros en la tabla y reinicia el contador autoincrementable.</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>La clase <em>PIPE</em> proporciona constantes que permiten obtener información del ORM PIPE.</p>
+		<p>A continuación, se muestra un listado de las 5 constantes disponibles en la clase <em>PIPE</em>.</p>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>Constante</th>
+					<th>Descripción</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><em>PIPE::ARREGLO</em></td>
+					<td>Indica el retorno de resultados de una consulta SQL como un arreglo.</td>
+				</tr>
+				<tr>
+					<td><em>PIPE::AUTOR</em></td>
+					<td>Autor del ORM PIPE.</td>
+				</tr>
+				<tr>
+					<td><em>PIPE::JSON</em></td>
+					<td>Indica el retorno de resultados de una consulta SQL como una cadena de json.</td>
+				</tr>
+				<tr>
+					<td><em>PIPE::OBJETO</em></td>
+					<td>Indica el retorno de resultados de una consulta SQL como un objeto.</td>
+				</tr>
+				<tr>
+					<td><em>PIPE::VERSION</em></td>
+					<td>Versión actual del ORM PIPE.</td>
+				</tr>
+			</tbody>
+		</table>
 		<p>Si utilizas el Modelo para interactuar con los datos de la base de datos, tendras la ventaja de poder omitir las <a href="http://localhost/pipe/#!/documentacion/1.0/convenciones" class="vinculo">convenciones</a> que tiene el ORM PIPE y adaptarse a la estructura que tenga tu tabla en la base de datos, ya que el Constructor de Consultas se adapta por defecto a las <a href="http://localhost/pipe/#!/documentacion/1.0/convenciones" class="vinculo">convenciones</a>.</p>
 	</div>
 </div>

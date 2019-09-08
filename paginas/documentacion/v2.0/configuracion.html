@@ -12,21 +12,24 @@
 		<div class="hr"></div>
 		<p>PIPE es muy sencillo de configurar.</p>
 		<p>PIPE soporta 5 controladores de bases de datos. <em>mysql, pgsql, sqlite, oci y sqlsrv</em>.</p>
-		<p>Para configurar la conexión a nuestra base de datos, abrimos y editamos el archivo <em>PIPE_CONEXION_BD.php</em> que se encuentra en el directorio <em>PROES</em>.</p>		
+		<p>PIPE soporta 2 idiomas para mostrar errores SQL y mensajes del ORM PIPE. <em>es, en</em>.</p>
+		<p>Para configurar la conexión a nuestra base de datos, abrimos y editamos el archivo <em>basedatos.php</em> que se encuentra en la siguiente ruta <em>PIPE/Config/basedatos.php</em>.</p>		
 <pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">const</span> BD_CONTROLADOR <span class="signo">=</span> <span class="cadena">'controlador'</span><span class="signo">;</span>
+	<span class="palabra-clave">const</span> BD_CONTROLADOR <span class="signo">=</span> <span class="cadena">'controlador'</span><span class="signo">;</span> <span class="comentario">// Soporta mysql, pgsql, sqlite, oci y sqlsrv.</span>
 	<span class="palabra-clave">const</span> BD_HOST <span class="signo">=</span> <span class="cadena">'host'</span><span class="signo">;</span>
 	<span class="palabra-clave">const</span> BD_PUERTO <span class="signo">=</span> <span class="cadena">'puerto'</span><span class="signo">;</span>
 	<span class="palabra-clave">const</span> BD_USUARIO <span class="signo">=</span> <span class="cadena">'usuario'</span><span class="signo">;</span>
 	<span class="palabra-clave">const</span> BD_CONTRASENA <span class="signo">=</span> <span class="cadena">'contraseña'</span><span class="signo">;</span>
 	<span class="palabra-clave">const</span> BD_BASEDATOS <span class="signo">=</span> <span class="cadena">'basedatos'</span><span class="signo">;</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"Conexion.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE.php"</span><span class="signo">;</span>
 </code></pre>
-		<p>Para utilizar PIPE en nuestro código de programación incluimos el archivo <em>PIPE_CONEXION_BD.php</em> y usamos el namespace <em>PROES\PIPE</em>.</p>
+		<p>Para configurar el idioma en el cual se muestran los errores SQL y mesajes del ORM PIPE, abrimos y editamos el archivo <em>idioma.php</em> que se encuentra en la siguiente ruta <em>PIPE/Config/idioma.php</em>.</p>
 <pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
+	<span class="palabra-clave">const</span> IDIOMA <span class="signo">=</span> <span class="cadena">'idioma'</span><span class="signo">;</span> <span class="comentario">// Soporta es, en.</span>
+</code></pre>
+		<p>Para utilizar PIPE en nuestro código de programación incluimos el archivo <em>PIPE.php</em> que se encuentra en la siguiente ruta <em>PIPE/PIPE.php</em>.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="comentario">// Todo tu código aquí.</span>
 </code></pre>
 	</div>
 </div>
