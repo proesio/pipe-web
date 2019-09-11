@@ -29,7 +29,6 @@ $(document).ready(function(){
 		boton.style.color="#5BC800";
 		boton.style.borderTop="5px solid white";
 		boton.style.borderBottom="5px solid #5BC800";
-		mostrarDescargas();
 	}
 	else if(url==http+document.domain+'/pipe/#!/desarrollador'){
 		boton=document.getElementById("boton4");
@@ -63,15 +62,6 @@ function estiloLink(vinculo){
 	vinculo.style.color="#5BC800";
 	vinculo.style.fontWeight="bold";
 	vinculoVisitado=vinculo;
-}
-function mostrarDescargas(){
-	$.ajax({
-		method:'POST',
-		url:'procesos/PROES_PROCESOS.php?mostrarDescargas',
-		success:function(respuesta){
-			$("#numero_descargas").html(new Intl.NumberFormat('es-CO').format(respuesta));
-		}
-	});
 }
 function abrirModal(id_modal){
 	modal=document.getElementById(id_modal);
