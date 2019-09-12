@@ -11,14 +11,14 @@
 		<div style="font-size:300%;">Insertar</div>
 		<div class="hr"></div>
 		<p>PIPE tiene dos formas de insertar datos en las tablas de la base de datos.</p>
-		<p>En la forma 1 debemos indicar todos los campos de nuestra tabla por medio de atributos en el objeto a excepción de los campos <em>creado_en</em> y <em>actualizado_en</em> (en caso que esten presentes) debido a que el ORM PIPE se encarga de llenarlos automáticamente.</p>
-		<p>En la forma 2 podemos decidir que campos tendrán información que será insertada en la tabla.</p>
+		<p>En la forma 1 debemos indicar todos los campos de nuestra tabla por medio de atributos en el objeto a excepción de los campos <em>creado_en</em> y <em>actualizado_en</em> (en caso que estén presentes) debido a que el ORM PIPE se encarga de llenarlos automáticamente.</p>
+		<p>En la forma 2 podemos decidir qué campos tendrán información que será insertada en la tabla.</p>
 		<p>Forma #1 de inserción de datos por medio del modelo.</p>
 <pre><code><span class="php">&lt;?php</span>
 	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
 	<span class="palabra-clave">include</span> <span class="cadena">"Usuario.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Usuario.php</em> que contiene la clase <em>Usuario</em>.</span>
 		<span class="variable">$usuario</span> <span class="signo">=</span> Usuario::instanciar<span class="signo">()</span><span class="signo">;</span>
-		<span class="variable">$usuario</span>->id <span class="signo">=</span> <span class="cadena">'null'</span><span class="signo">;</span> <span class="comentario">// Si nuestra llave primaria es autoincrementable le asignamos una cadena con el valor por defecto en nuestra base de datos.</span>
+		<span class="variable">$usuario</span>->id <span class="signo">=</span> <span class="cadena">'null'</span><span class="signo">;</span> <span class="comentario">// Si nuestra llave primaria es auto incrementable le asignamos una cadena con el valor por defecto en nuestra base de datos.</span>
 		<span class="variable">$usuario</span>->nombres <span class="signo">=</span> <span class="cadena">'John'</span><span class="signo">;</span>
 		<span class="variable">$usuario</span>->apellidos <span class="signo">=</span> <span class="cadena">'Doe'</span><span class="signo">;</span>
 		<span class="variable">$usuario</span>->correo <span class="signo">=</span> <span class="cadena">'johndoe@correo.com'</span><span class="signo">;</span>
@@ -28,7 +28,7 @@
 <pre><code><span class="php">&lt;?php</span>
 	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
 	<span class="palabra-clave">include</span> <span class="cadena">"Usuario.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Usuario.php</em> que contiene la clase <em>Usuario</em>.</span>
-		<span class="comentario">// Si nuestra llave primaria es autoincrementable le asignamos una cadena con el valor por defecto en nuestra base de datos.</span>
+		<span class="comentario">// Si nuestra llave primaria es auto incrementable le asignamos una cadena con el valor por defecto en nuestra base de datos.</span>
 		<span class="variable">$usuario</span> <span class="signo">=</span> Usuario::instanciar<span class="signo">()</span>->insertar<span class="signo">([</span><span class="cadena">'id'</span><span class="signo">=></span><span class="cadena">'null'</span><span class="signo">,</span><span class="cadena">'nombres'</span><span class="signo">=></span><span class="cadena">'John'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">=></span><span class="cadena">'Doe'</span><span class="signo">,</span><span class="cadena">'correo'</span><span class="signo">=></span><span class="cadena">'johndoe@correo.com'</span><span class="signo">])</span><span class="signo">;</span>
 </code></pre>
 		<p>Forma #1 de inserción de datos por medio del constructor de consultas PIPE.</p>
@@ -36,7 +36,7 @@
 	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
 	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
 		<span class="variable">$usuario</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span><span class="signo">;</span>
-		<span class="variable">$usuario</span>->id <span class="signo">=</span> <span class="cadena">'null'</span><span class="signo">;</span> <span class="comentario">// Si nuestra llave primaria es autoincrementable le asignamos una cadena con el valor por defecto en nuestra base de datos.</span>
+		<span class="variable">$usuario</span>->id <span class="signo">=</span> <span class="cadena">'null'</span><span class="signo">;</span> <span class="comentario">// Si nuestra llave primaria es auto incrementable le asignamos una cadena con el valor por defecto en nuestra base de datos.</span>
 		<span class="variable">$usuario</span>->nombres <span class="signo">=</span> <span class="cadena">'John'</span><span class="signo">;</span>
 		<span class="variable">$usuario</span>->apellidos <span class="signo">=</span> <span class="cadena">'Doe'</span><span class="signo">;</span>
 		<span class="variable">$usuario</span>->correo <span class="signo">=</span> <span class="cadena">'johndoe@correo.com'</span><span class="signo">;</span>
@@ -46,7 +46,7 @@
 <pre><code><span class="php">&lt;?php</span>
 	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
 	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-		<span class="comentario">// Si nuestra llave primaria es autoincrementable le asignamos una cadena con el valor por defecto en nuestra base de datos.</span>
+		<span class="comentario">// Si nuestra llave primaria es auto incrementable le asignamos una cadena con el valor por defecto en nuestra base de datos.</span>
 		<span class="variable">$usuario</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>->insertar<span class="signo">([</span><span class="cadena">'id'</span><span class="signo">=></span><span class="cadena">'null'</span><span class="signo">,</span><span class="cadena">'nombres'</span><span class="signo">=></span><span class="cadena">'John'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">=></span><span class="cadena">'Doe'</span><span class="signo">,</span><span class="cadena">'correo'</span><span class="signo">=></span><span class="cadena">'johndoe@correo.com'</span><span class="signo">])</span><span class="signo">;</span>
 </code></pre>
 		<p>Inserción de datos por medio del método <em>consulta()</em>.</p>
@@ -67,6 +67,6 @@
 		<span class="comentario">// El método <em>consultaNativa()</em> permite enviar los datos de forma segura.</span>
 		<span class="variable">$usuario</span> <span class="signo">=</span> PIPE::consultaNativa<span class="signo">(</span><span class="cadena">'insert into usuarios (id,nombres,apellidos,correo) values (null,?,?,?)'</span><span class="signo">,[</span><span class="cadena">'John'</span><span class="signo">,</span><span class="cadena">'Doe'</span><span class="signo">,</span><span class="cadena">'johndoe@correo.com'</span><span class="signo">]);</span>
 </code></pre>
-		<p>Si utilizas el Modelo para interactuar con los datos de la base de datos, tendras la ventaja de poder omitir las <a href="http://localhost/pipe/#!/documentacion/1.0/convenciones" class="vinculo">convenciones</a> que tiene el ORM PIPE y adaptarse a la estructura que tenga tu tabla en la base de datos, ya que el Constructor de Consultas se adapta por defecto a las <a href="http://localhost/pipe/#!/documentacion/1.0/convenciones" class="vinculo">convenciones</a>.</p>
+		<p>Si utilizas el Modelo para interactuar con los datos de la base de datos, tendrás la ventaja de poder omitir las <a href="http://localhost/pipe/#!/documentacion/1.0/convenciones" class="vinculo">convenciones</a> que tiene el ORM PIPE y adaptarse a la estructura que tenga tu tabla en la base de datos, ya que el Constructor de Consultas se adapta por defecto a las <a href="http://localhost/pipe/#!/documentacion/1.0/convenciones" class="vinculo">convenciones</a>.</p>
 	</div>
 </div>

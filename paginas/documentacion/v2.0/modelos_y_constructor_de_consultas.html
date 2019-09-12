@@ -49,7 +49,7 @@
 <pre><code><span class="php">&lt;?php</span>
 	<span class="variable">$documeto</span> <span class="signo">=</span> Usuario::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relaciones<span class="signo">()</span>->documento<span class="signo">;</span>
 </code></pre>
-		<p>PIPE por defecto determina la llave foránea en función del nombre del modelo a relacionar, debido a esto, se asume que la llave foránea del modelo <em>Documento</em> es <em>usuario_id</em>. Si desamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
+		<p>PIPE por defecto determina la llave foránea en función del nombre del modelo a relacionar, debido a esto, se asume que la llave foránea del modelo <em>Documento</em> es <em>usuario_id</em>. Si deseamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
 <pre><code><span class="php">&lt;?php</span>
 	<span class="palabra-clave">protected</span> <span class="variable">$tieneUno</span> <span class="signo">=</span> <span class="signo">[</span>
 		<span class="cadena">'Documento'</span> <span class="signo">=></span> <span class="signo">[</span>
@@ -79,7 +79,7 @@
 <pre><code><span class="php">&lt;?php</span>
 	<span class="variable">$temas</span> <span class="signo">=</span> Usuario::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relaciones<span class="signo">()</span>->temas<span class="signo">;</span>
 </code></pre>
-		<p>Como vimos anteriormente, PIPE por defecto determina la llave foránea en función del nombre del modelo a relacionar, debido a esto, se asume que la llave foránea del modelo <em>Tema</em> es <em>usuario_id</em>. Si desamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
+		<p>Como vimos anteriormente, PIPE por defecto determina la llave foránea en función del nombre del modelo a relacionar, debido a esto, se asume que la llave foránea del modelo <em>Tema</em> es <em>usuario_id</em>. Si deseamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
 <pre><code><span class="php">&lt;?php</span>
 	<span class="palabra-clave">protected</span> <span class="variable">$tieneMuchos</span> <span class="signo">=</span> <span class="signo">[</span>
 		<span class="cadena">'Tema'</span> <span class="signo">=></span> <span class="signo">[</span>
@@ -107,7 +107,7 @@
 	<span class="variable">$usuario</span> <span class="signo">=</span> Documento::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relaciones<span class="signo">()</span>->usuario<span class="signo">;</span>
 	<span class="variable">$usuario</span> <span class="signo">=</span> Tema::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relaciones<span class="signo">()</span>->usuario<span class="signo">;</span>
 </code></pre>
-		<p>PIPE por defecto determina la llave foránea en función del nombre del modelo a relacionar, debido a esto, se asume que la llave foránea de los modelos <em>Documento y Tema</em> son <em>usuario_id</em>. Si desamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
+		<p>PIPE por defecto determina la llave foránea en función del nombre del modelo a relacionar, debido a esto, se asume que la llave foránea de los modelos <em>Documento y Tema</em> son <em>usuario_id</em>. Si deseamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
 <pre><code><span class="php">&lt;?php</span>
 	<span class="palabra-clave">protected</span> <span class="variable">$perteneceAUno</span> <span class="signo">=</span> <span class="signo">[</span>
 		<span class="cadena">'Usuario'</span> <span class="signo">=></span> <span class="signo">[</span>
@@ -145,7 +145,7 @@
 		<span class="palabra-clave">echo</span> <span class="variable">$rol</span>->role_usuario->creado_en<span class="signo">;</span>
 	<span class="signo">}</span>
 </code></pre>
-		<p>PIPE por defecto determina que el nombre de la tercera tabla (tabla de unión) este compuesto por los nombres en orden alfabético de los modelos relacionados, debido a esto, se asume que el nombre de la tercera tabla sea <em>role_usuario</em>. Si desamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
+		<p>PIPE por defecto determina que el nombre de la tercera tabla (tabla de unión) este compuesto por los nombres en orden alfabético de los modelos relacionados, debido a esto, se asume que el nombre de la tercera tabla sea <em>role_usuario</em>. Si deseamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
 <pre><code><span class="php">&lt;?php</span>
 	<span class="palabra-clave">protected</span> <span class="variable">$perteneceAMuchos</span> <span class="signo">=</span> <span class="signo">[</span>
 		<span class="cadena">'Role'</span> <span class="signo">=></span> <span class="signo">[</span>
@@ -154,7 +154,7 @@
 		...
 	<span class="signo">];</span>
 </code></pre>
-		<p>PIPE por defecto determina que los nombres de las llaves foráneas en la tabla <em>role_usuario</em> (tabla de unión) sean <em>role_id y usuario_id</em>. Si desamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
+		<p>PIPE por defecto determina que los nombres de las llaves foráneas en la tabla <em>role_usuario</em> (tabla de unión) sean <em>role_id y usuario_id</em>. Si deseamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
 <pre><code><span class="php">&lt;?php</span>
 	<span class="palabra-clave">protected</span> <span class="variable">$perteneceAMuchos</span> <span class="signo">=</span> <span class="signo">[</span>
 		<span class="cadena">'Role'</span> <span class="signo">=></span> <span class="signo">[</span>
@@ -175,7 +175,7 @@
 		...
 	<span class="signo">];</span>
 </code></pre>
-		<p>El Contructor de Consultas PIPE nos permite estructurar sentencias SQL por medio de métodos heredados en la clase <em>PIPE</em>.</p>
+		<p>El Constructor de Consultas PIPE nos permite estructurar sentencias SQL por medio de métodos heredados en la clase <em>PIPE</em>.</p>
 		<p>A continuación, se muestra un listado de los 35 métodos disponibles en el Constructor de Consultas PIPE para estructurar sentencias SQL.</p>
 		<table border="1">
 			<thead>
@@ -323,7 +323,7 @@
 				</tr>
 				<tr>
 					<td><em>vaciar()</em></td>
-					<td>Elimina todos los registros en la tabla y reinicia el contador autoincrementable.</td>
+					<td>Elimina todos los registros en la tabla y reinicia el contador auto incrementable.</td>
 				</tr>
 			</tbody>
 		</table>
@@ -359,6 +359,6 @@
 				</tr>
 			</tbody>
 		</table>
-		<p>Si utilizas el Modelo para interactuar con los datos de la base de datos, tendras la ventaja de poder omitir las <a href="http://localhost/pipe/#!/documentacion/1.0/convenciones" class="vinculo">convenciones</a> que tiene el ORM PIPE y adaptarse a la estructura que tenga tu tabla en la base de datos, ya que el Constructor de Consultas se adapta por defecto a las <a href="http://localhost/pipe/#!/documentacion/1.0/convenciones" class="vinculo">convenciones</a>.</p>
+		<p>Si utilizas el Modelo para interactuar con los datos de la base de datos, tendrás la ventaja de poder omitir las <a href="http://localhost/pipe/#!/documentacion/1.0/convenciones" class="vinculo">convenciones</a> que tiene el ORM PIPE y adaptarse a la estructura que tenga tu tabla en la base de datos, ya que el Constructor de Consultas se adapta por defecto a las <a href="http://localhost/pipe/#!/documentacion/1.0/convenciones" class="vinculo">convenciones</a>.</p>
 	</div>
 </div>

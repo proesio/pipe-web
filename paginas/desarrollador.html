@@ -29,9 +29,35 @@
 		color:#5BC800;
 		font-size:200%;
 	}
+	.icono{
+		font-size:300%;
+		margin-right:10px;
+	}
+	.icono:hover{
+		color:#5BC800;
+		transition: 1s;
+	}
+	@media screen and (max-width:850px){
+		.icono{
+			font-size:200%;
+		}
+	}
+	@media screen and (max-width:682px){
+		.icono{
+			font-size:150%;
+		}
+	}
+	@media screen and (max-width:560px){
+		.icono{
+			font-size:100%;
+		}
+	}
 	@media screen and (max-width:500px){
 		.imagen-modal{
 			max-width:300px;
+		}
+		.texto{
+			font-size:80%;
 		}
 	}
 </style>
@@ -42,10 +68,10 @@
 		<div class="enc-info">
 			<center><img src="imagenes/perfil.jpg" onclick="abrirModal('foto_perfil')" class="perfil"/></center>
 		</div>
-		<div class="info">
-			</p>Hola, mi nombre es Juan Felipe Valencia Murillo, nací en la ciudad de Santiago de Cali (Colombia) el 13 de enero de 1998.</p>
+		<div class="info texto">
+			<p>Hola, mi nombre es Juan Felipe Valencia Murillo, nací en la ciudad de Santiago de Cali (Colombia) el 13 de enero de 1998.</p>
 			<p>
-			Soy apacionado por el desarrollo de software, a lo largo de mi carrera, he sentido la necesidad de escribir código en español ya que la mayoría de lenguajes de programación estan escritos en inglés.
+			Soy apasionado por el desarrollo de software, a lo largo de mi carrera, he sentido la necesidad de escribir código en español ya que la mayoría de lenguajes de programación están escritos en inglés.
 			De ahí nació la idea de desarrollar un ORM el cual me permitiera interactuar con los datos de la base de datos accediendo a métodos escritos en español.
 			</p>
 			<p>
@@ -60,12 +86,12 @@
 		<div class="enc-info">
 		Estudios
 		</div>
-		<div class="info">
-			<b>Tecnólogías</b>
+		<div class="info texto">
+			<h3>Tecnologías</h3>
 			<ul>
 			  <li>Tecnólogo en Análisis y Desarrollo de Sistemas de Información (SENA - SERVICIO NACIONAL DE APRENDIZAJE)</li>
 			</ul> 
-			<b>Técnicos</b>
+			<h3>Técnicos</h3>
 			<ul>
 			  <li>Técnico en Programación de Software (SENA - SERVICIO NACIONAL DE APRENDIZAJE)</li>
 			  <li>Técnico en Sistemas (Corporación Nacional de Estudios)</li>
@@ -74,19 +100,24 @@
 	</div>
 	<div class="con-info">
 		<div class="enc-info">
-		Habilidades
+			Habilidades
 		</div>
-		<div class="info">
-			<b>Lenguajes de Programación</b>
-			<br><br>
-			<i class="fab fa-php" style="font-size:300%"></i>&nbsp;&nbsp;&nbsp;
-			<i class="fab fa-java" style="font-size:300%"></i>&nbsp;&nbsp;&nbsp;
-			<i class="fas fa-database" style="font-size:300%"></i>&nbsp;&nbsp;&nbsp;
-			<i class="fab fa-html5" style="font-size:300%"></i>&nbsp;&nbsp;&nbsp;
-			<i class="fab fa-js-square" style="font-size:300%"></i>&nbsp;&nbsp;&nbsp;
-			<i class="fab fa-css3-alt" style="font-size:300%"></i>&nbsp;&nbsp;&nbsp;
-			<i class="fab fa-angular" style="font-size:300%"></i>&nbsp;&nbsp;&nbsp;
-			<i class="fab fa-android" style="font-size:300%"></i>&nbsp;&nbsp;&nbsp;
+		<div class="info" style="padding:20px;">
+			<h3 class="texto">Frontend, Backend entre otros</h3>
+			<!--Frontend-->
+			<i class="fab fa-html5 icono"></i>		
+			<i class="fab fa-css3-alt icono"></i>
+			<i class="fab fa-js-square icono"></i>
+			<i class="fab fa-vuejs icono"></i>
+			<!--Backend-->
+			<i class="fab fa-php icono"></i>
+			<i class="fab fa-java icono"></i>
+			<i class="fas fa-database icono"></i>
+			<i class="fab fa-laravel icono"></i>
+			<!--Otros-->
+			<i class="fab fa-android icono"></i>
+			<i class="fab fa-git-square icono"></i>
+			<i class="fas fa-terminal icono"></i>
 		</div>
 	</div>
 	<div class="con-info">

@@ -10,7 +10,7 @@
 	<div class="documentacion">
 		<div style="font-size:300%;">Vaciar Tabla</div>
 		<div class="hr"></div>
-		<p>PIPE proporciona el método <em>vaciar()</em> para vaciar una tabla y reiniciar el contador autoincrementable.</p>
+		<p>PIPE proporciona el método <em>vaciar()</em> para vaciar una tabla y reiniciar el contador auto incrementable.</p>
 		<p>Vaciar la tabla usuarios por medio del modelo.</p>
 <pre><code><span class="php">&lt;?php</span>
 	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
@@ -25,6 +25,6 @@
 	<span class="comentario">// Si deseamos implementar un SQL que omita la verificación de la llave foránea lo hacemos de la siguiente manera.</span>
 	<span class="variable">$usuario</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>->vaciar<span class="signo">(</span><span class="cadena">'SET FOREIGN_KEY_CHECKS=0'</span><span class="signo">);</span> <span class="comentario">// Ejemplo para la base de datos MySQL.</span>
 </code></pre>
-		<p>Si utilizas el Modelo para interactuar con los datos de la base de datos, tendras la ventaja de poder omitir las <a href="http://localhost/pipe/#!/documentacion/1.0/convenciones" class="vinculo">convenciones</a> que tiene el ORM PIPE y adaptarse a la estructura que tenga tu tabla en la base de datos, ya que el Constructor de Consultas se adapta por defecto a las <a href="http://localhost/pipe/#!/documentacion/1.0/convenciones" class="vinculo">convenciones</a>.</p>
+		<p>Si utilizas el Modelo para interactuar con los datos de la base de datos, tendrás la ventaja de poder omitir las <a href="http://localhost/pipe/#!/documentacion/1.0/convenciones" class="vinculo">convenciones</a> que tiene el ORM PIPE y adaptarse a la estructura que tenga tu tabla en la base de datos, ya que el Constructor de Consultas se adapta por defecto a las <a href="http://localhost/pipe/#!/documentacion/1.0/convenciones" class="vinculo">convenciones</a>.</p>
 	</div>
 </div>

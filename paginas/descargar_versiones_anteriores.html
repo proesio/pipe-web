@@ -70,7 +70,7 @@
 		<p>Optimización para mejora del rendimiento.</p>
 		<p><b>1.</b> Modificación del método para obtener la conexión de la base de datos implementando la clase Conexion.php.</p>
 		<p><b>2.</b> Modificación del método <em>obtenerCamposConsultaSQL()</em> implementando la función de php <em>array_keys()</em>.</p>
-		<p><b>3.</b> Asignacion de variables al conteo de los elementos utilizados para las iteraciones en los bucles for.</p>
+		<p><b>3.</b> Asignación de variables al conteo de los elementos utilizados para las iteraciones en los bucles for.</p>
 		<p><b>4.</b> Remplazo de comillas dobles por comillas simples.</p>
 		<p><b>5.</b> Remplazo del alias <em>die()</em> por el método <em>exit()</em>.</p>
 	</div>
@@ -80,24 +80,24 @@
 		<span onclick="cerrarModal('1.0.0')" class="cerrar-modal">&times;</span>
 		<h2 style="color:#5BC800">Implementaciones versión 1.0.0</h2>
 		<div class="hr"></div>
-		<p>Version estable con soporte para mysql, pgsql, sqlite, oci.</p>
+		<p>Versión estable con soporte para mysql, pgsql, sqlite, oci.</p>
 		<p><b>1.</b> Migración al método de conexión PDO para permitir la conexión a diferentes bases de datos.</p>
-		<p><b>2.</b> Modificación del método <em>todo()</em> permitiendo enviar por parametros en un arreglo los campos que se desea listar.</p>
+		<p><b>2.</b> Modificación del método <em>todo()</em> permitiendo enviar por parámetros en un arreglo los campos que se desea listar.</p>
 		<p><b>3.</b> Implementación del método <em>contar()</em>.</p>
 		<p><b>4.</b> Implementación del método <em>ultimo()</em>.</p>
 		<p><b>5.</b> Implementación de tipo de retorno de datos json en el método <em>obtenerDatosConsultaSQL()</em>.</p>
 		<p><b>6.</b> Optimización del método <em>primero()</em>.</p>
-		<p><b>7.</b> Modificación del método <em>conexión()</em> incluyendo try catch, anexando la configuracion del controlador, host, puerto, usuario, contraseña y basedatos e implementando mensajes en caso de error.</p>
+		<p><b>7.</b> Modificación del método <em>conexión()</em> incluyendo try catch, anexando la configuración del controlador, host, puerto, usuario, contraseña y basedatos e implementando mensajes en caso de error.</p>
 		<p><b>8.</b> Modificación del método <em>insertar()</em> implementando null, default y nextval (Caso Oracle) en la llave primaria con autoincrement.</p>
 		<p><b>9.</b> Modificación del método <em>vaciar()</em> Implementación de  para la restricción de la llave foránea y la inclusión del truncate para sqlite.</p>
 		<p><b>10.</b> Implementación del método <em>obtenerCamposConsultaSQL()</em> en remplazo del método PDO <em>getColumnMeta()</em> para obtener los campos listados en la consulta SQL del usuario.</p>
 		<p><b>11.</b> Implementación del método obtenerCamposTabla() en remplazo del método PDO <em>getColumnMeta()</em> debido a que este último no esta disponible para todas las BD.</p>
 		<p><b>12.</b> Modificación de los métodos <em>insertar()</em> y <em>actualizar()</em>, implementando las variables  y  en mayúscula para oracle, obtención de los campos por medio del método <em>obtenerCamposTabla()</em>.</p>
-		<p><b>13.</b> Implementación de condicional en el método <em>obtenerDatosConsultaSQL()</em> comparando <em>count()</em> con <em>columnCount()</em> para verificar la ambiguedad de los campos en la consulta SQL.</p>
+		<p><b>13.</b> Implementación de condicional en el método <em>obtenerDatosConsultaSQL()</em> comparando <em>count()</em> con <em>columnCount()</em> para verificar la ambigüedad de los campos en la consulta SQL.</p>
 		<p><b>14.</b> Modificación del método <em>eliminar()</em> incluyendo la eliminación sin condicional.</p>
 		<p><b>15.</b> Modificación de nombre del método <em>prepararInsercion()</em> a <em>instanciar()</em> debido a que es utilizado por los métodos <em>insertar()</em>, <em>actualizar()</em> y <em>eliminar()</em>.</p>
 		<p><b>16.</b> Modificación del método <em>registroTiempo()</em> incluyendo el formato de fecha para timestamp en oracle.</p>
-		<p><b>17.</b> Traduccion de errores SQL para sqlite y oracle.</p>
+		<p><b>17.</b> Traducción de errores SQL para sqlite y oracle.</p>
 	</div>
 </div>
 <div id="version_inicial" class="modal">
