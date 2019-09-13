@@ -44,6 +44,11 @@
 	</thead>
 	<tbody>
 		<tr>
+			<td class="version-pipe"><center>1.1.0</center></td>
+			<td><center><span onclick="abrirModal('1.1.0')" class="Implementaciónes">Ver Implementaciones</span></center></td>
+			<td><center><a href="https://github.com/juanfe0245/PROES-PIPE/tree/51ea8b24d084f344b52c92edaf8d99326e0032a0" target="_black"><i class="fab fa-github"></i></a></center></td>
+		</tr>
+		<tr>
 			<td class="version-pipe"><center>1.0.1</center></td>
 			<td><center><span onclick="abrirModal('1.0.1')" class="Implementaciónes">Ver Implementaciones</span></center></td>
 			<td><center><a href="https://github.com/juanfe0245/PROES-PIPE/tree/680e8d391dfdd4a8bcb094ee545129f9f3abcfad" target="_black"><i class="fab fa-github"></i></a></center></td>
@@ -62,6 +67,19 @@
 </table>
 <div style="margin-bottom:250px;"></div>
 </center>
+<div id="1.1.0" class="modal">
+	<div class="contenido-modal">
+		<span onclick="cerrarModal('1.1.0')" class="cerrar-modal">&times;</span>
+		<h2 style="color:#5BC800">Implementaciones versión 1.1.0</h2>
+		<div class="hr"></div>
+		<p><b>1.</b> Implementación del soporte para bases de datos sqlsrv.</p>
+		<p><b>2.</b> Modificación del proceso de registro del tiempo en los métodos <em>insertar()</em> y <em>actualizar()</em>.</p>
+		<p><b>3.</b> Implementación de mensaje al no existir registro con un valor de llave primaria dato en el método <em>encontrar()</em>.</p>
+		<p><b>4.</b> Traducción de errores SQL.</p>
+		<p><b>5.</b> Solución de error al llamar el método indefinido <em>mostrarErrorSQL()</em> desde el método <em>conexion()</em> en la clase Conexion.</p>
+		<p><b>6.</b> Solución de error en el método <em>alias()</em>.</p>
+	</div>
+</div>
 <div id="1.0.1" class="modal">
 	<div class="contenido-modal">
 		<span onclick="cerrarModal('1.0.1')" class="cerrar-modal">&times;</span>
