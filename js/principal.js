@@ -1,36 +1,36 @@
 //Desarrollado Por Juan Felipe Valencia Murillo.
-var http="http://";
+var host=location.origin+'/pipe/#!/';
 var linkMenuCargado=null;
 $(document).ready(function(){
 	setTimeout(function(){
-	url=window.location+"";
-	if(url==http+document.domain+'/pipe/#!/'){
+	if(location.href==host){
 		boton=document.getElementById("boton1");
 		boton.style.color="#5BC800";
 		boton.style.borderTop="5px solid white";
 		boton.style.borderBottom="5px solid #5BC800";
 	}
-	else if(url==http+document.domain+'/pipe/#!/documentacion' || url.indexOf('#!/documentacion')>-1){
+	else if(location.href==host+'documentacion' || location.href.indexOf('documentacion')>-1){
 		boton=document.getElementById("boton2");
 		boton.style.color="#5BC800";
 		boton.style.borderTop="5px solid white";
 		boton.style.borderBottom="5px solid #5BC800";
-		version=typeof(url.split("/")[6])!=='undefined' ? url.split("/")[6] : '2.0';
-		if(url.split("/").length>6){
-		linkMenu=document.getElementById(url.split("/")[7]+version);
-		linkMenu.style.color="#5BC800";
-		linkMenu.style.fontWeight="bold";
-		linkMenuCargado=linkMenu;
+		let version=location.hash.split('/').length>2 ? location.hash.split('/')[2] : '2.0';
+		if(location.hash.split('/').length>2){
+			let arregloHash=location.hash.split('/');
+			linkMenu=document.getElementById(arregloHash[3]+version);
+			linkMenu.style.color="#5BC800";
+			linkMenu.style.fontWeight="bold";
+			linkMenuCargado=linkMenu;
 		}
 		menuDocumentacion(version);
 	}
-	else if(url==http+document.domain+'/pipe/#!/descargar' || url.indexOf('#!/descargar')>-1){
+	else if(location.href==host+'descargar'){
 		boton=document.getElementById("boton3");
 		boton.style.color="#5BC800";
 		boton.style.borderTop="5px solid white";
 		boton.style.borderBottom="5px solid #5BC800";
 	}
-	else if(url==http+document.domain+'/pipe/#!/desarrollador'){
+	else if(location.href==host+'desarrollador'){
 		boton=document.getElementById("boton4");
 		boton.style.color="#5BC800";
 		boton.style.borderTop="5px solid white";
