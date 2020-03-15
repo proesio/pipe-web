@@ -92,3 +92,6 @@ function eliminarLinkMenu(){
 		linkMenuCargado.style.fontWeight=null;
 	}
 }
+function posicionarScrollY(x=0,y=0){
+	if(window.scrollY) window.scroll(x,y);
+}
