@@ -44,6 +44,11 @@
 	</thead>
 	<tbody>
 		<tr>
+			<td class="version-pipe"><center>2.7.15</center></td>
+			<td><center><span onclick="abrirModal('2.7.15')" class="Implementaciónes">Ver Implementaciones</span></center></td>
+			<td><center><a href="https://github.com/juanfe0245/PROES-PIPE/tree/670e368e7b4d1ebaf89a8af3dcc98bb65a97cac6" target="_black"><i class="fab fa-github"></i></a></center></td>
+		</tr>
+		<tr>
 			<td class="version-pipe"><center>1.1.0</center></td>
 			<td><center><span onclick="abrirModal('1.1.0')" class="Implementaciónes">Ver Implementaciones</span></center></td>
 			<td><center><a href="https://github.com/juanfe0245/PROES-PIPE/tree/51ea8b24d084f344b52c92edaf8d99326e0032a0" target="_black"><i class="fab fa-github"></i></a></center></td>
@@ -67,6 +72,46 @@
 </table>
 <div style="margin-bottom:250px;"></div>
 </center>
+<div id="2.7.15" class="modal">
+	<div class="contenido-modal">
+		<span onclick="cerrarModal('2.7.15')" class="cerrar-modal">&times;</span>
+		<h2 style="color:#5BC800">Implementaciones versión 2.7.15</h2>
+		<div class="hr"></div>
+		<p><b>1.</b>Implementación del método maximo().</p>
+		<p><b>2.</b>Implementación del método minimo().</p>
+		<p><b>3.</b>Implementación del método promedio().</p>
+		<p><b>4.</b>Implementación del método suma().</p>
+		<p><b>5.</b>Implementación del conteo por campo en el método contar().</p>
+		<p><b>6.</b>Implementación del método existe().</p>
+		<p><b>7.</b>Implementación del método noExiste().</p>
+		<p><b>8.</b>Implementación de ingreso de varios registros en el método insertar().</p>
+		<p><b>9.</b>Implementación del método insertarObtenerId().</p>
+		<p><b>10.</b>Implementación del método actualizarOinsertar().</p>
+		<p><b>11.</b>Implementación del método incrementar().</p>
+		<p><b>12.</b>Implementación del método decrementar().</p>
+		<p><b>13.</b>Implementación de validación de autenticado soportando condiciones con or.</p>
+		<p><b>14.</b>Implementación de envió de varias llaves primarias por medio de arreglo en el método encontrar().</p>
+		<p><b>15.</b>Implementación de los idiomas español e inglés en los mensajes.</p>
+		<p><b>16.</b>Implementación relaciones Uno a Uno, Uno a Muchos, Pertenece a Uno y Pertenece a Muchos en los modelos.</p>
+		<p><b>17.</b>Implementación de varias agrupaciones por medio de array en el método agruparPor().</p>
+		<p><b>18.</b>Implementación de varias ordenaciones por medio de array en el método ordenarPor().</p>
+		<p><b>19.</b>Implementación de consulta preparada en los métodos insertar(), encontrar(), actualizar() y eliminar().</p>
+		<p><b>20.</b>Traducción de errores SQL.</p>
+		<p><b>21.</b>Modificación del retorno de datos tipo JSON.</p>
+		<p><b>22.</b>Retorno de null en lugar de texto informativo en caso de que el valor de la llave primaria no exista en el método encontrar().</p>
+		<p><b>23.</b>Asignación de tipo de dato esperado en los parámetros de los métodos.</p>
+		<p><b>24.</b>Verificación de las asignaciones a variables nulas.</p>
+		<p><b>25.</b>Implementación del método privado obtenerClaseLlamada() para optimizar la obtención del nombre de la clase instanciadora.</p>
+		<p><b>26.</b>Implementación del método privado obtenerMetodoLlamado() para la validación de definición de la tabla en el constructor de consultas PIPE.</p>
+		<p><b>27.</b>Muestra de errores en español o ingles dependiendo el idioma seleccionado.</p>
+		<p><b>28.</b>Validación de los métodos consulta() y consultaNativa() permitiendo su uso solo en el constructor de consultas PIPE.</p>
+		<p><b>29.</b>Implementación del método privado obtenerAtributosClase() para optimizar la obtención de los atributos de la clase (Modelo).</p>
+		<p><b>30.</b>Validación de tipo de dato de retorno válido en el método obtenerDatosConsultaSQL().</p>
+		<p><b>31.</b>Implementación del método convertirValorNumerico() para convertir el tipo de dato string a int o float en el método obtenerDatosConsultaSQL() y encontrar().</p>
+		<p><b>32.</b>Documentación de atributos y métodos.</p>
+		<p><b>33.</b>Traducción de la función avg alias promedio, max alias maximo, min alias minimo y sum alias suma para el método consulta().</p>
+	</div>
+</div>
 <div id="1.1.0" class="modal">
 	<div class="contenido-modal">
 		<span onclick="cerrarModal('1.1.0')" class="cerrar-modal">&times;</span>
@@ -109,7 +154,7 @@
 		<p><b>8.</b> Modificación del método <em>insertar()</em> implementando null, default y nextval (Caso Oracle) en la llave primaria con autoincrement.</p>
 		<p><b>9.</b> Modificación del método <em>vaciar()</em> Implementación de  para la restricción de la llave foránea y la inclusión del truncate para sqlite.</p>
 		<p><b>10.</b> Implementación del método <em>obtenerCamposConsultaSQL()</em> en remplazo del método PDO <em>getColumnMeta()</em> para obtener los campos listados en la consulta SQL del usuario.</p>
-		<p><b>11.</b> Implementación del método obtenerCamposTabla() en remplazo del método PDO <em>getColumnMeta()</em> debido a que este último no esta disponible para todas las BD.</p>
+		<p><b>11.</b> Implementación del método obtenerCamposTabla() en remplazo del método PDO <em>getColumnMeta()</em> debido a que este último no está disponible para todas las BD.</p>
 		<p><b>12.</b> Modificación de los métodos <em>insertar()</em> y <em>actualizar()</em>, implementando las variables  y  en mayúscula para oracle, obtención de los campos por medio del método <em>obtenerCamposTabla()</em>.</p>
 		<p><b>13.</b> Implementación de condicional en el método <em>obtenerDatosConsultaSQL()</em> comparando <em>count()</em> con <em>columnCount()</em> para verificar la ambigüedad de los campos en la consulta SQL.</p>
 		<p><b>14.</b> Modificación del método <em>eliminar()</em> incluyendo la eliminación sin condicional.</p>
