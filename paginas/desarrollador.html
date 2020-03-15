@@ -37,7 +37,28 @@
 		color:#5BC800;
 		transition: 1s;
 	}
-	@media screen and (max-width:850px){
+	.tooltip {
+		position: relative;
+		display: inline-block;
+	}
+	.tooltip .tooltiptext {
+		visibility: hidden;
+		width: auto;
+		background-color: black;
+		color: #fff;
+		text-align: center;
+		border-radius: 5px;
+		padding: 7px;
+		position: absolute;
+		z-index: 1;
+		font-size:30%;
+		top: 50px;
+		left: -10px;
+	}
+	.tooltip:hover .tooltiptext {
+		visibility: visible;
+	}
+	@media screen and (max-width:880px){
 		.icono{
 			font-size:200%;
 		}
@@ -101,19 +122,41 @@
 		<div class="info" style="padding:20px;">
 			<h3 class="texto">Frontend, Backend entre otros</h3>
 			<!--Frontend-->
-			<i class="fab fa-html5 icono"></i>		
-			<i class="fab fa-css3-alt icono"></i>
-			<i class="fab fa-js-square icono"></i>
-			<i class="fab fa-vuejs icono"></i>
+			<i class="fab fa-html5 icono tooltip">
+				<span class="tooltiptext">HTML5</span>
+			</i>
+			<i class="fab fa-css3-alt icono tooltip">
+				<span class="tooltiptext">CSS3</span>
+			</i>
+			<i class="fab fa-js-square icono tooltip">
+				<span class="tooltiptext">JavaScript</span>
+			</i>
+			<i class="fab fa-vuejs icono tooltip">
+				<span class="tooltiptext">Vuejs</span>
+			</i>
 			<!--Backend-->
-			<i class="fab fa-php icono"></i>
-			<i class="fab fa-java icono"></i>
-			<i class="fas fa-database icono"></i>
-			<i class="fab fa-laravel icono"></i>
+			<i class="fab fa-php icono tooltip">
+				<span class="tooltiptext">PHP</span>
+			</i>
+			<i class="fas fa-database icono tooltip">
+				<span class="tooltiptext">Base de datos</span>
+			</i>
+			<i class="fab fa-laravel icono tooltip">
+				<span class="tooltiptext">Laravel</span>
+			</i>
 			<!--Otros-->
-			<i class="fab fa-android icono"></i>
-			<i class="fab fa-git-square icono"></i>
-			<i class="fas fa-terminal icono"></i>
+			<i class="fab fa-jenkins icono tooltip">
+				<span class="tooltiptext">Jenkins</span>
+			</i>
+			<i class="fab fa-docker icono tooltip">
+				<span class="tooltiptext">Docker</span>
+			</i>
+			<i class="fab fa-git-square icono tooltip">
+				<span class="tooltiptext">GIT</span>
+			</i>
+			<i class="fas fa-terminal icono tooltip">
+				<span class="tooltiptext">Terminal</span>
+			</i>
 		</div>
 	</div>
 	<div class="con-info">
