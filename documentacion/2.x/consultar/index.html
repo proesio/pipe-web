@@ -1,0 +1,759 @@
+<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="author" content="Juan Felipe Valencia Murillo">
+	<meta name="copyright" content="Juan Felipe Valencia Murillo">
+	<meta name="description" content="PIPE - ORM en Español">
+	<meta name="keywords" content="consultar,orm,pipe">
+	<meta name="robots" content="Index,Follow">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	<title>Consultar - PIPE - ORM en Español</title>
+	<link rel="icon" type="image/png" href="../../../imagenes/logo_pipe.png"/>
+	<link rel="stylesheet" href="../../../css/fontawesome-5.4.1.min.css"/>
+	<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
+	<link rel="stylesheet" href="../../../css/principal.css"/>
+</head>
+<body>
+<div id="pipe">
+<encabezado></encabezado>
+<menu-documentacion></menu-documentacion>
+<div class="contenido">
+<div class="regilla-contenedora">
+	<div class="documentacion">
+		<div style="font-size:300%;">Consultar</div>
+		<div class="hr"></div>
+		<p>PIPE proporciona métodos en español para acceder a los datos de las tablas interpretando las cláusulas y palabras reservadas de la base de datos.</p>
+		<p>PIPE tiene tres formas de retornar los datos en las consultas, como un <em>objeto</em>, como un <em>arreglo</em> y como un <em>json</em> por medio de las constantes <em>PIPE::OBJETO</em>, <em>PIPE::ARREGLO</em> y <em>PIPE::JSON</em>. La forma por defecto del retorno de datos es como un <em>objeto</em>.</p>
+		<p>A continuación, se muestra un listado de las 36 palabras reservadas del ORM PIPE y su equivalente en el lenguaje SQL de la base de datos para realizar consultas en español con el método <em>consulta()</em>.</p>
+		<div class="con-palabras-reservadas">
+		<table border="1">
+			<thead>
+				<tr>
+					<th>Palabra Reservada en el ORM PIPE</th>
+					<th>Equivalente en el Lenguaje SQL</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><em>actualizar</em></td>
+					<td><em>update</em></td>
+				</tr>
+				<tr>
+					<td><em>agrupar</em></td>
+					<td><em>group</em></td>
+				</tr>
+				<tr>
+					<td><em>alias</em></td>
+					<td><em>as</em></td>
+				</tr>
+				<tr>
+					<td><em>asignar</em></td>
+					<td><em>set</em></td>
+				</tr>
+				<tr>
+					<td><em>como</em></td>
+					<td><em>like</em></td>
+				</tr>
+				<tr>
+					<td><em>concatenar()</em></td>
+					<td><em>concat()</em></td>
+				</tr>
+				<tr>
+					<td><em>contar()</em></td>
+					<td><em>count()</em></td>
+				</tr>
+				<tr>
+					<td><em>de</em></td>
+					<td><em>from</em></td>
+				</tr>
+				<tr>
+					<td><em>dentro</em></td>
+					<td><em>into</em></td>
+				</tr>
+				<tr>
+					<td><em>derecha</em></td>
+					<td><em>right</em></td>
+				</tr>
+				<tr>
+					<td><em>distinto</em></td>
+					<td><em>distinct</em></td>
+				</tr>
+				<tr>
+					<td><em>donde</em></td>
+					<td><em>where</em></td>
+				</tr>
+				<tr>
+					<td><em>eliminar</em></td>
+					<td><em>delete</em></td>
+				</tr>
+				<tr>
+					<td><em>en</em></td>
+					<td><em>on</em></td>
+				</tr>
+				<tr>
+					<td><em>entre</em></td>
+					<td><em>between</em></td>
+				</tr>
+				<tr>
+					<td><em>es</em></td>
+					<td><em>is</em></td>
+				</tr>
+				<tr>
+					<td><em>existe</em></td>
+					<td><em>exists</em></td>
+				</tr>
+				<tr>
+					<td><em>insertar</em></td>
+					<td><em>insert</em></td>
+				</tr>
+			</tbody>
+		</table>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>Palabra Reservada en el ORM PIPE</th>
+					<th>Equivalente en el Lenguaje SQL</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><em>izquierda</em></td>
+					<td><em>left</em></td>
+				</tr>
+				<tr>
+					<td><em>limite</em></td>
+					<td><em>limit</em></td>
+				</tr>
+				<tr>
+					<td><em>maximo()</em></td>
+					<td><em>max()</em></td>
+				</tr>
+				<tr>
+					<td><em>minimo()</em></td>
+					<td><em>min()</em></td>
+				</tr>
+				<tr>
+					<td><em>no</em></td>
+					<td><em>not</em></td>
+				</tr>
+				<tr>
+					<td><em>nulo</em></td>
+					<td><em>null</em></td>
+				</tr>
+				<tr>
+					<td><em>o</em></td>
+					<td><em>or</em></td>
+				</tr>
+				<tr>
+					<td><em>ordenar</em></td>
+					<td><em>order</em></td>
+				</tr>
+				<tr>
+					<td><em>por</em></td>
+					<td><em>by</em></td>
+				</tr>
+				<tr>
+					<td><em>promedio()</em></td>
+					<td><em>avg()</em></td>
+				</tr>
+				<tr>
+					<td><em>seleccionar</em></td>
+					<td><em>select</em></td>
+				</tr>
+				<tr>
+					<td><em>suma()</em></td>
+					<td><em>sum()</em></td>
+				</tr>
+				<tr>
+					<td><em>teniendo</em></td>
+					<td><em>having</em></td>
+				</tr>
+				<tr>
+					<td><em>todo</em></td>
+					<td><em>*</em></td>
+				</tr>
+				<tr>
+					<td><em>unir</em></td>
+					<td><em>join</em></td>
+				</tr>
+				<tr>
+					<td><em>valores</em></td>
+					<td><em>values</em></td>
+				</tr>
+				<tr>
+					<td><em>xo</em></td>
+					<td><em>xor</em></td>
+				</tr>
+				<tr>
+					<td><em>y</em></td>
+					<td><em>and</em></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		<p>Veamos algunos ejemplos utilizando la base de datos <em>mundo</em>.</p>
+		<p>El método <em>encontrar()</em> nos permite obtener una instancia del constructor de consultas PIPE con los datos asociados a la llave primaria.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$pais</span> <span class="signo">=</span> Pais::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">);</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">);</span>
+	<span class="comentario">// Si nuestra <em>llave primaria</em> no sigue la convención del ORM PIPE podemos especificarla de la siguiente manera.</span>
+	<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">,</span><span class="cadena">'codigo'</span><span class="signo">);</span>
+</code></pre>
+		<p>Podemos obtener los datos de la siguiente manera.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">echo</span> <span class="variable">$pais</span>->codigo<span class="signo">;</span>
+	<span class="palabra-clave">echo</span> <span class="variable">$pais</span>->nombre<span class="signo">;</span>
+	<span class="palabra-clave">echo</span> <span class="variable">$pais</span>->continente<span class="signo">;</span>
+	<span class="palabra-clave">echo</span> <span class="variable">$pais</span>->region<span class="signo">;</span>
+</code></pre>
+		<p>El método <em>encontrar()</em> también permite enviar un arreglo de llaves primarias.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$pais</span> <span class="signo">=</span> Pais::encontrar<span class="signo">([</span><span class="numero">1</span><span class="signo">,</span><span class="numero">2</span><span class="signo">,</span><span class="numero">3</span><span class="signo">]);</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->encontrar<span class="signo">([</span><span class="numero">1</span><span class="signo">,</span><span class="numero">2</span><span class="signo">,</span><span class="numero">3</span><span class="signo">]);</span>
+</code></pre>
+		<p>#1 Obtener todos los datos - <em>*</em>.</p>
+		<p>Obtener todos los datos de la tabla <em>paises</em> por medio del modelo.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::todo<span class="signo">()</span><span class="signo">;</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::todo<span class="signo">(</span>PIPE::ARREGLO<span class="signo">);</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::todo<span class="signo">(</span>PIPE::JSON<span class="signo">);</span>
+	<span class="comentario">// El método <em>todo()</em> permite enviar un arreglo como parámetro indicando los campos que deseamos obtener.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::todo<span class="signo">([</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="cadena">'nombre'</span><span class="signo">]);</span>
+	<span class="comentario">// También podemos incluir un tipo de retorno.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::todo<span class="signo">([</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="cadena">'nombre'</span><span class="signo">],</span>PIPE::ARREGLO<span class="signo">);</span>
+</code></pre>
+		<p>Obtener todos los datos de la tabla <em>paises</em> por medio del constructor de consultas PIPE.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->todo<span class="signo">()</span><span class="signo">;</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->todo<span class="signo">(</span>PIPE::ARREGLO<span class="signo">);</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->todo<span class="signo">(</span>PIPE::JSON<span class="signo">);</span>
+	<span class="comentario">// El método <em>todo()</em> permite enviar un arreglo como parámetro indicando los campos que deseamos obtener.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->todo<span class="signo">([</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="cadena">'nombre'</span><span class="signo">]);</span>
+	<span class="comentario">// También podemos incluir un tipo de retorno.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->todo<span class="signo">([</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="cadena">'nombre'</span><span class="signo">],</span>PIPE::ARREGLO<span class="signo">);</span>
+</code></pre>
+		<p>Obtener todos los datos de la tabla <em>paises</em> por medio de consulta en español.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar todo de paises'</span><span class="signo">);</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar todo de paises'</span><span class="signo">,</span>PIPE::ARREGLO<span class="signo">);</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar todo de paises'</span><span class="signo">,</span>PIPE::JSON<span class="signo">);</span>
+</code></pre>
+		<p>Obtener todos los datos de la tabla <em>paises</em> por medio de consulta nativa.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consultaNativa<span class="signo">(</span><span class="cadena">'select * from paises'</span><span class="signo">)</span><span class="signo">;</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consultaNativa<span class="signo">(</span><span class="cadena">'select * from paises'</span><span class="signo">,</span>PIPE::ARREGLO<span class="signo">);</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consultaNativa<span class="signo">(</span><span class="cadena">'select * from paises'</span><span class="signo">,</span>PIPE::JSON<span class="signo">);</span>
+</code></pre>
+		<p>Mostrar los datos retornados como un <em>objeto</em>.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">foreach</span> <span class="signo">(</span><span class="variable">$paises</span> <span class="palabra-clave">as</span> <span class="variable">$pais</span><span class="signo">)</span> <span class="signo">{</span>
+		<span class="palabra-clave">echo</span> <span class="variable">$pais</span>->codigo<span class="signo">;</span>
+		<span class="palabra-clave">echo</span> <span class="variable">$pais</span>->nombre<span class="signo">;</span>
+		<span class="palabra-clave">echo</span> <span class="variable">$pais</span>->continente<span class="signo">;</span>
+		<span class="palabra-clave">echo</span> <span class="variable">$pais</span>->region<span class="signo">;</span>
+		<span class="palabra-clave">echo</span> <span class="cadena">"\n"</span><span class="signo">;</span>
+	<span class="signo">}</span>
+</code></pre>
+		<p>Mostrar los datos retornados como un <em>arreglo</em>.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">foreach</span> <span class="signo">(</span><span class="variable">$paises</span> <span class="palabra-clave">as</span> <span class="variable">$pais</span><span class="signo">)</span> <span class="signo">{</span>
+		<span class="palabra-clave">echo</span> <span class="variable">$pais</span><span class="signo">[</span><span class="cadena">'codigo'</span><span class="signo">]</span><span class="signo">;</span>
+		<span class="palabra-clave">echo</span> <span class="variable">$pais</span><span class="signo">[</span><span class="cadena">'nombre'</span><span class="signo">]</span><span class="signo">;</span>
+		<span class="palabra-clave">echo</span> <span class="variable">$pais</span><span class="signo">[</span><span class="cadena">'continente'</span><span class="signo">]</span><span class="signo">;</span>
+		<span class="palabra-clave">echo</span> <span class="variable">$pais</span><span class="signo">[</span><span class="cadena">'region'</span><span class="signo">]</span><span class="signo">;</span>
+		<span class="palabra-clave">echo</span> <span class="cadena">"\n"</span><span class="signo">;</span>
+	<span class="signo">}</span>
+</code></pre>
+		<p>Mostrar los datos retornados como un <em>json</em>.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">echo</span> <span class="variable">$paises</span><span class="signo">;</span> <span class="comentario">// Esta variable contiene una cadena de tipo <em>json</em> con los datos de la consulta SQL.</span>
+</code></pre>
+		<p>#2 Seleccionar campos - <em>select</em>.</p>
+		<p>Obtener codigo y nombre de la tabla <em>paises</em> por medio del modelo.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::seleccionar<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="cadena">'nombre'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::seleccionar<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="cadena">'nombre'</span><span class="signo">)</span>->obtener<span class="signo">(</span>PIPE::ARREGLO<span class="signo">);</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::seleccionar<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="cadena">'nombre'</span><span class="signo">)</span>->obtener<span class="signo">(</span>PIPE::JSON<span class="signo">);</span>
+</code></pre>
+		<p>Obtener codigo y nombre de la tabla <em>paises</em> por medio del constructor de consultas PIPE.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->seleccionar<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="cadena">'nombre'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->seleccionar<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="cadena">'nombre'</span><span class="signo">)</span>->obtener<span class="signo">(</span>PIPE::ARREGLO<span class="signo">);</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->seleccionar<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="cadena">'nombre'</span><span class="signo">)</span>->obtener<span class="signo">(</span>PIPE::JSON<span class="signo">);</span>
+</code></pre>
+		<p>Obtener codigo y nombre de la tabla <em>paises</em> por medio de consulta en español.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>	
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar codigo,nombre de paises'</span><span class="signo">)</span><span class="signo">;</span>
+</code></pre>
+		<p>Obtener codigo y nombre de la tabla <em>paises</em> por medio de consulta nativa.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consultaNativa<span class="signo">(</span><span class="cadena">'select codigo,nombre from paises'</span><span class="signo">)</span><span class="signo">;</span>
+</code></pre>
+		<p>#3 Condicionales - <em>where</em>.</p>
+		<p>PIPE permite dos formas de realizar condicionales con el método <em>donde()</em>, de forma tradicional y de forma segura. PIPE también permite escribir los comandos en español dentro de las condicionales.</p>
+		<p>Obtener todos los datos de la tabla <em>paises</em> donde la cantidad de población este entre 50.000.000 y 100.000.000 por medio del modelo.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="comentario">// Forma segura.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::donde<span class="signo">(</span><span class="cadena">'poblacion entre ? y ?'</span><span class="signo">,</span><span class="signo">[</span><span class="numero">50000000</span><span class="signo">,</span><span class="numero">100000000</span><span class="signo">]</span><span class="signo">)</span>->obtener<span class="signo">();</span>
+	<span class="comentario">// Forma tradicional.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::donde<span class="signo">(</span><span class="cadena">'poblacion entre 50000000 y 100000000'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
+</code></pre>
+		<p>Obtener todos los datos de la tabla <em>paises</em> donde la cantidad de población este entre 50.000.000 y 100.000.000 por medio del constructor de consultas PIPE.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="comentario">// Forma segura.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->donde<span class="signo">(</span><span class="cadena">'poblacion entre ? y ?'</span><span class="signo">,</span><span class="signo">[</span><span class="numero">50000000</span><span class="signo">,</span><span class="numero">100000000</span><span class="signo">]</span><span class="signo">)</span>->obtener<span class="signo">();</span>
+	<span class="comentario">// Forma tradicional.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->donde<span class="signo">(</span><span class="cadena">'poblacion entre 50000000 y 100000000'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
+</code></pre>
+		<p>Obtener todos los datos de la tabla <em>paises</em> donde la cantidad de población este entre 50.000.000 y 100.000.000 por medio de consulta en español.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar todo de paises donde poblacion entre 50000000 y 100000000'</span><span class="signo">);</span>
+	<span class="comentario">// Los métodos <em>consulta()</em> y <em>consultaNativa()</em> también permiten enviar los datos de forma segura.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar todo de paises donde poblacion entre ? y ?'</span><span class="signo">,</span><span class="signo">[</span><span class="numero">50000000</span><span class="signo">,</span><span class="numero">100000000</span><span class="signo">]</span><span class="signo">);</span>
+	<span class="comentario">// También podemos incluir un tipo de retorno.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar todo de paises donde poblacion entre ? y ?'</span><span class="signo">,</span><span class="signo">[</span><span class="numero">50000000</span><span class="signo">,</span><span class="numero">100000000</span><span class="signo">]</span><span class="signo">,</span>PIPE::ARREGLO<span class="signo">);</span>
+</code></pre>
+		<p>#4 Uniones - <em>inner join</em>, <em>right join</em>, <em>left join</em>.</p>
+		<p><em>inner join</em></p>
+		<p>Cuando el método <em>unir()</em> no detecta el operador de comparación este incluye por defecto el operador <em>=</em>.</p>
+		<p>Obtener nombre e idioma de la tabla <em>paises</em>.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::seleccionar<span class="signo">(</span><span class="cadena">'paises.nombre'</span><span class="signo">,</span><span class="cadena">'paises_idiomas.idioma'</span><span class="signo">)</span>
+		->unir<span class="signo">(</span><span class="cadena">'paises_idiomas'</span><span class="signo">,</span><span class="cadena">'paises.codigo'</span><span class="signo">,</span><span class="cadena">'paises_idiomas.pais_codigo'</span><span class="signo">)</span>
+		->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>
+		->seleccionar<span class="signo">(</span><span class="cadena">'paises.nombre'</span><span class="signo">,</span><span class="cadena">'paises_idiomas.idioma'</span><span class="signo">)</span>
+		->unir<span class="signo">(</span><span class="cadena">'paises_idiomas'</span><span class="signo">,</span><span class="cadena">'paises.codigo'</span><span class="signo">,</span><span class="cadena">'paises_idiomas.pais_codigo'</span><span class="signo">)</span>
+		->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio de consulta en español.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span>
+		<span class="cadena">'seleccionar paises.nombre,paises_idiomas.idioma de paises</span>
+		<span class="cadena">unir paises_idiomas en paises.codigo=paises_idiomas.pais_codigo'</span>
+	<span class="signo">);</span>
+</code></pre>
+		<p><em>right join</em></p>
+		<p>Cuando el método <em>unirDerecha()</em> no detecta el operador de comparación este incluye por defecto el operador <em>=</em>.</p>
+		<p>Obtener todos los datos de la tabla <em>paises</em> que no tengan idiomas asociados.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>		
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$paisesIdiomas</span> <span class="signo">=</span> PaisesIdioma::unirDerecha<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">,</span><span class="cadena">'paises_idiomas.pais_codigo'</span><span class="signo">,</span><span class="cadena">'paises.codigo'</span><span class="signo">)</span>
+		->donde<span class="signo">(</span><span class="cadena">'paises_idiomas.idioma es nulo'</span><span class="signo">)</span>
+		->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$paisesIdiomas</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises_idiomas'</span><span class="signo">)</span>
+		->unirDerecha<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">,</span><span class="cadena">'paises_idiomas.pais_codigo'</span><span class="signo">,</span><span class="cadena">'paises.codigo'</span><span class="signo">)</span>
+		->donde<span class="signo">(</span><span class="cadena">'paises_idiomas.idioma es nulo'</span></span><span class="signo">)</span>
+		->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio de consulta en español.</span>
+	<span class="variable">$paisesIdiomas</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span>
+		<span class="cadena">'seleccionar todo de paises_idiomas</span>
+		<span class="cadena">derecha unir paises en paises_idiomas.pais_codigo=paises.codigo</span>
+		<span class="cadena">donde paises_idiomas.idioma es nulo'</span>
+	<span class="signo">);</span>
+</code></pre>
+		<p><em>left join</em></p>
+		<p>Cuando el método <em>unirIzquierda()</em> no detecta el operador de comparación este incluye por defecto el operador <em>=</em>.</p>
+		<p>Obtener todos los datos de la tabla <em>paises</em> que no tengan idiomas asociados.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>	
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::unirIzquierda<span class="signo">(</span><span class="cadena">'paises_idiomas'</span><span class="signo">,</span><span class="cadena">'paises.codigo'</span><span class="signo">,</span><span class="cadena">'paises_idiomas.pais_codigo'</span><span class="signo">)</span>
+		->donde<span class="signo">(</span><span class="cadena">'paises_idiomas.idioma es nulo'</span><span class="signo">)</span>
+		->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>
+		->unirIzquierda<span class="signo">(</span><span class="cadena">'paises_idiomas'</span><span class="signo">,</span><span class="cadena">'paises.codigo'</span><span class="signo">,</span><span class="cadena">'paises_idiomas.pais_codigo'</span><span class="signo">)</span>
+		->donde<span class="signo">(</span><span class="cadena">'paises_idiomas.idioma es nulo'</span></span><span class="signo">)</span>
+		->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio de consulta en español.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span>
+		<span class="cadena">'seleccionar todo de paises</span>
+		<span class="cadena">izquierda unir paises_idiomas en paises.codigo=paises_idiomas.pais_codigo</span>
+		<span class="cadena">donde paises_idiomas.idioma es nulo'</span>
+	<span class="signo">);</span>
+</code></pre>
+		<p>#5 Agrupaciones - <em>group by</em>.</p>
+		<p>Obtener la cantidad de paises de cada continente.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>		
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::seleccionar<span class="signo">(</span><span class="cadena">'continente'</span><span class="signo">,</span><span class="cadena">'contar(*) alias cantidad_paises'</span><span class="signo">)</span>->agruparPor<span class="signo">(</span><span class="cadena">'continente'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->seleccionar<span class="signo">(</span><span class="cadena">'continente'</span><span class="signo">,</span><span class="cadena">'contar(*) alias cantidad_paises'</span><span class="signo">)</span>->agruparPor<span class="signo">(</span><span class="cadena">'continente'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio de consulta en español.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar continente,contar(*) alias cantidad_paises de paises agrupar por continente'</span><span class="signo">)</span><span class="signo">;</span>
+</code></pre>
+		<p>El método <em>agruparPor()</em> también permite enviar un arreglo definiendo varias agrupaciones.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>		
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::seleccionar<span class="signo">(</span><span class="cadena">'continente'</span><span class="signo">,</span><span class="cadena">'region'</span><span class="signo">,</span><span class="cadena">'contar(*) alias cantidad_paises'</span><span class="signo">)</span>->agruparPor<span class="signo">([</span><span class="cadena">'continente'</span><span class="signo">,</span><span class="cadena">'region'</span><span class="signo">])</span>->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->seleccionar<span class="signo">(</span><span class="cadena">'continente'</span><span class="signo">,</span><span class="cadena">'region'</span><span class="signo">,</span><span class="cadena">'contar(*) alias cantidad_paises'</span><span class="signo">)</span>->agruparPor<span class="signo">([</span><span class="cadena">'continente'</span><span class="signo">,</span><span class="cadena">'region'</span><span class="signo">])</span>->obtener<span class="signo">();</span>
+</code></pre>
+		<p>#6 Condicionales - <em>having</em>.</p>
+		<p>Obtener los continentes que tengan más de 40 paises.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>		
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::seleccionar<span class="signo">(</span><span class="cadena">'continente'</span><span class="signo">,</span><span class="cadena">'contar(*) alias cantidad_paises'</span><span class="signo">)</span>
+		->agruparPor<span class="signo">(</span><span class="cadena">'continente'</span><span class="signo">)</span>
+		->teniendo<span class="signo">(</span><span class="cadena">'cantidad_paises > 40'</span><span class="signo">)</span>
+		->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>
+		->seleccionar<span class="signo">(</span><span class="cadena">'continente'</span><span class="signo">,</span><span class="cadena">'contar(*) alias cantidad_paises'</span><span class="signo">)</span>
+		->agruparPor<span class="signo">(</span><span class="cadena">'continente'</span><span class="signo">)</span>
+		->teniendo<span class="signo">(</span><span class="cadena">'cantidad_paises > 40'</span><span class="signo">)</span>
+		->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio de consulta en español.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span>
+		<span class="cadena">'seleccionar continente,contar(*) alias cantidad_paises de paises</span>
+		<span class="cadena">agrupar por continente teniendo cantidad_paises > 40'</span>
+	<span class="signo">);</span>
+</code></pre>
+		<p>#7 Ordenar - <em>order by</em>.</p>
+		<p>Cuando el método <em>ordenarPor()</em> no detecta el tipo de orden este incluye por defecto el tipo <em>asc</em>.</p>
+		<p>Obtener todos los datos de la tabla <em>paises</em> ordenados por nombre ascendentemente.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::ordenarPor<span class="signo">(</span><span class="cadena">'nombre'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->ordenarPor<span class="signo">(</span><span class="cadena">'nombre'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio de consulta en español.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar todo de paises ordenar por nombre'</span><span class="signo">)</span><span class="signo">;</span>
+</code></pre>
+		<p>Obtener todos los datos de la tabla <em>paises</em> ordenados por nombre descendentemente.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::ordenarPor<span class="signo">(</span><span class="cadena">'nombre'</span><span class="signo">,</span><span class="cadena">'desc'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->ordenarPor<span class="signo">(</span><span class="cadena">'nombre'</span><span class="signo">,</span><span class="cadena">'desc'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio de consulta en español.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar todo de paises ordenar por nombre desc'</span><span class="signo">)</span><span class="signo">;</span>
+</code></pre>
+		<p>El método <em>ordenarPor()</em> también permite enviar un arreglo definiendo varias ordenaciones.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::ordenarPor<span class="signo">([</span><span class="cadena">'nombre'</span><span class="signo">,</span><span class="cadena">'continente'</span><span class="signo">])</span>->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->ordenarPor<span class="signo">([</span><span class="cadena">'nombre'</span><span class="signo">,</span><span class="cadena">'continente'</span><span class="signo">])</span>->obtener<span class="signo">();</span>
+</code></pre>
+		<p>#8 Límite - <em>limit</em>.</p>
+		<p>Cuando el método <em>limite()</em> no detecta el segundo parámetro este incluye por defecto un límite simple.</p>
+		<p>Obtener los dos primeros registros de la tabla <em>paises</em>.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>		
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::limite<span class="signo">(</span><span class="numero">2</span><span class="signo">)</span>->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->limite<span class="signo">(</span><span class="numero">2</span><span class="signo">)</span>->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio de consulta en español.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar todo de paises limite 2'</span><span class="signo">)</span><span class="signo">;</span>
+</code></pre>
+		<p>Obtener todos los datos de la tabla <em>paises</em> desde la posición 5 hasta la posición 10.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>	
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::limite<span class="signo">(</span><span class="numero">5</span><span class="signo">,</span><span class="numero">10</span><span class="signo">)</span>->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->limite<span class="signo">(</span><span class="numero">5</span><span class="signo">,</span><span class="numero">10</span><span class="signo">)</span>->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio de consulta en español.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar todo de paises limite 5,10'</span><span class="signo">)</span><span class="signo">;</span>
+</code></pre>
+		<p>#9 Distinto - <em>distinct.</em></p>
+		<p>Obtener todos los continentes de la tabla <em>paises</em>.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>	
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::distinto<span class="signo">()</span>->seleccionar<span class="signo">(</span><span class="cadena">'continente'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->distinto<span class="signo">()</span>->seleccionar<span class="signo">(</span><span class="cadena">'continente'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio de consulta en español.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar distinto continente de paises'</span><span class="signo">)</span><span class="signo">;</span>
+</code></pre>
+		<p>#10 Alias - <em>as.</em></p>
+		<p>Obtener todos los paises que tengan menos de 5 ciudades por medio de subconsulta.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>	
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::alias<span class="signo">(</span><span class="cadena">'p'</span><span class="signo">)</span>
+		->seleccionar<span class="signo">(</span><span class="cadena">'p.nombre'</span><span class="signo">)</span>
+		->donde<span class="signo">(</span><span class="cadena">'(seleccionar contar(*) de ciudades donde pais_codigo=p.codigo teniendo contar(*)<5)'</span><span class="signo">)</span>
+		->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>
+		->alias<span class="signo">(</span><span class="cadena">'p'</span><span class="signo">)</span>
+		->seleccionar<span class="signo">(</span><span class="cadena">'p.nombre'</span><span class="signo">)</span>
+		->donde<span class="signo">(</span><span class="cadena">'(seleccionar contar(*) de ciudades donde pais_codigo=p.codigo teniendo contar(*)<5)'</span><span class="signo">)</span>
+		->obtener<span class="signo">();</span>
+	<span class="comentario">// Por medio de consulta en español.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span>
+		<span class="cadena">'seleccionar p.nombre de paises alias p</span> 
+		<span class="cadena">donde (seleccionar contar(*) de ciudades donde pais_codigo=p.codigo teniendo contar(*)<5)'</span>
+	<span class="signo">);</span>
+</code></pre>
+		<p>Consultas básicas por medio de métodos.</p>
+		<p>#11 Obtener el primer registro - <em>primero().</em></p>
+		<p>Obtener el primer registro de la tabla <em>paises</em> por medio del modelo.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>	
+	<span class="variable">$pais</span> <span class="signo">=</span> Pais::primero<span class="signo">();</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
+	<span class="variable">$pais</span> <span class="signo">=</span> Pais::primero<span class="signo">(</span>PIPE::ARREGLO<span class="signo">);</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
+	<span class="variable">$pais</span> <span class="signo">=</span> Pais::primero<span class="signo">(</span>PIPE::JSON<span class="signo">);</span>
+</code></pre>
+		<p>Obtener el primer registro de la tabla <em>paises</em> por medio del constructor de consultas PIPE.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>		
+	<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->primero<span class="signo">();</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
+	<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->primero<span class="signo">(</span>PIPE::ARREGLO<span class="signo">);</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
+	<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->primero<span class="signo">(</span>PIPE::JSON<span class="signo">);</span>
+</code></pre>
+		<p>Obtener los diez primeros registros de la tabla <em>paises</em> por medio del modelo.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::primero<span class="signo">(</span><span class="numero">10</span><span class="signo">);</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::primero<span class="signo">(</span><span class="numero">10</span><span class="signo">,</span>PIPE::ARREGLO<span class="signo">);</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::primero<span class="signo">(</span><span class="numero">10</span><span class="signo">,</span>PIPE::JSON<span class="signo">);</span>
+</code></pre>
+		<p>Obtener los diez primeros registros de la tabla <em>paises</em> por medio del constructor de consultas PIPE.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>	
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->primero<span class="signo">(</span><span class="numero">10</span><span class="signo">);</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->primero<span class="signo">(</span><span class="numero">10</span><span class="signo">,</span>PIPE::ARREGLO<span class="signo">);</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->primero<span class="signo">(</span><span class="numero">10</span><span class="signo">,</span>PIPE::JSON<span class="signo">);</span>
+</code></pre>
+		<p>#12 Obtener el último registro - <em>ultimo().</em></p>
+		<p>Debido a que en el constructor de consultas PIPE no disponemos de un modelo que nos permita omitir las convenciones debemos indicarle al método <em>ultimo()</em> cual es la lleve primaria.</p>
+		<p>Obtener el último registro de la tabla <em>paises</em> por medio del modelo.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>	
+	<span class="variable">$pais</span> <span class="signo">=</span> Pais::ultimo<span class="signo">();</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
+	<span class="variable">$pais</span> <span class="signo">=</span> Pais::ultimo<span class="signo">(</span>PIPE::ARREGLO<span class="signo">);</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
+	<span class="variable">$pais</span> <span class="signo">=</span> Pais::ultimo<span class="signo">(</span>PIPE::JSON<span class="signo">);</span>
+</code></pre>
+		<p>Obtener el último registro de la tabla <em>paises</em> por medio del constructor de consultas PIPE.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->ultimo<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">);</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
+	<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->ultimo<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span>PIPE::ARREGLO<span class="signo">);</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
+	<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->ultimo<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span>PIPE::JSON<span class="signo">);</span>
+</code></pre>
+		<p>Obtener los diez últimos registros de la tabla <em>paises</em> por medio del modelo.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="variable">$pais</span> <span class="signo">=</span> Pais::ultimo<span class="signo">(</span><span class="numero">10</span><span class="signo">);</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
+	<span class="variable">$pais</span> <span class="signo">=</span> Pais::ultimo<span class="signo">(</span><span class="numero">10</span><span class="signo">,</span>PIPE::ARREGLO<span class="signo">);</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
+	<span class="variable">$pais</span> <span class="signo">=</span> Pais::ultimo<span class="signo">(</span><span class="numero">10</span><span class="signo">,</span>PIPE::JSON<span class="signo">);</span>
+</code></pre>
+		<p>Obtener los diez últimos registros de la tabla <em>paises</em> por medio del constructor de consultas PIPE.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->ultimo<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="numero">10</span><span class="signo">);</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
+	<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->ultimo<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="numero">10</span><span class="signo">,</span>PIPE::ARREGLO<span class="signo">);</span>
+	<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
+	<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->ultimo<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="numero">10</span><span class="signo">,</span>PIPE::JSON<span class="signo">);</span>
+</code></pre>
+		<p>#13 Contar resultados de consulta SQL - <em>contar().</em></p>
+		<p>Contar la cantidad de registros en la tabla paises.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$cantidadPaises</span> <span class="signo">=</span> Pais::contar<span class="signo">();</span>
+	<span class="comentario">// Podemos definir un campo específico.</span>
+	<span class="variable">$cantidadPaises</span> <span class="signo">=</span> Pais::contar<span class="signo">(</span><span class="cadena">'nombre'</span><span class="signo">);</span>
+	<span class="comentario">// Podemos obtener la cantidad por medio del resultado de un condicional.</span>
+	<span class="variable">$cantidadPaises</span> <span class="signo">=</span> Pais::donde<span class="signo">(</span><span class="cadena">"nombre como '%a'"</span><span class="signo">)</span>->contar<span class="signo">();</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$cantidadPaises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->contar<span class="signo">();</span>
+</code></pre>
+		<p>#14 Obtener el valor máximo del campo especificado - <em>maximo().</em></p>
+		<p>Obtener la población máxima en la tabla paises.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$poblacionMaxima</span> <span class="signo">=</span> Pais::maximo<span class="signo">(</span><span class="cadena">'poblacion'</span><span class="signo">);</span>
+	<span class="comentario">// Podemos obtener la población máxima por medio del resultado de un condicional.</span>
+	<span class="variable">$poblacionMaxima</span> <span class="signo">=</span> Pais::donde<span class="signo">(</span><span class="cadena">"nombre como '%a'"</span><span class="signo">)</span>->maximo<span class="signo">(</span><span class="cadena">'poblacion'</span><span class="signo">);</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$poblacionMaxima</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->maximo<span class="signo">(</span><span class="cadena">'poblacion'</span><span class="signo">);</span>
+</code></pre>
+		<p>#15 Obtener el valor mínimo del campo especificado - <em>minimo().</em></p>
+		<p>Obtener la población mínima en la tabla paises.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$poblacionMinima</span> <span class="signo">=</span> Pais::minimo<span class="signo">(</span><span class="cadena">'poblacion'</span><span class="signo">);</span>
+	<span class="comentario">// Podemos obtener la población mínima por medio del resultado de un condicional.</span>
+	<span class="variable">$poblacionMinima</span> <span class="signo">=</span> Pais::donde<span class="signo">(</span><span class="cadena">"nombre como '%a'"</span><span class="signo">)</span>->minimo<span class="signo">(</span><span class="cadena">'poblacion'</span><span class="signo">);</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$poblacionMinima</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->minimo<span class="signo">(</span><span class="cadena">'poblacion'</span><span class="signo">);</span>
+</code></pre>
+		<p>#16 Obtener el valor promedio del campo especificado - <em>promedio().</em></p>
+		<p>Obtener el promedio de población en la tabla paises.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$promedio</span> <span class="signo">=</span> Pais::promedio<span class="signo">(</span><span class="cadena">'poblacion'</span><span class="signo">);</span>
+	<span class="comentario">// Podemos promediar la población por medio del resultado de un condicional.</span>
+	<span class="variable">$promedio</span> <span class="signo">=</span> Pais::donde<span class="signo">(</span><span class="cadena">"nombre como '%a'"</span><span class="signo">)</span>->promedio<span class="signo">(</span><span class="cadena">'poblacion'</span><span class="signo">);</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$promedio</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->promedio<span class="signo">(</span><span class="cadena">'poblacion'</span><span class="signo">);</span>
+</code></pre>
+		<p>#17 Obtener la suma del campo especificado - <em>suma().</em></p>
+		<p>Obtener la suma de la población en la tabla paises.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$suma</span> <span class="signo">=</span> Pais::suma<span class="signo">(</span><span class="cadena">'poblacion'</span><span class="signo">);</span>
+	<span class="comentario">// Podemos sumar la población por medio del resultado de un condicional.</span>
+	<span class="variable">$suma</span> <span class="signo">=</span> Pais::donde<span class="signo">(</span><span class="cadena">"nombre como '%a'"</span><span class="signo">)</span>->suma<span class="signo">(</span><span class="cadena">'poblacion'</span><span class="signo">);</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$suma</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->suma<span class="signo">(</span><span class="cadena">'poblacion'</span><span class="signo">);</span>
+</code></pre>
+		<p>#18 Verificar que la consulta SQL ha retornado un resultado. - <em>existe().</em></p>
+		<p>El método <em>existe()</em> retorna <em>true</em> cuando encuentra resultados.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::existe<span class="signo">();</span>
+	<span class="comentario">// Podemos realizar la verificación por medio del resultado de un condicional.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::donde<span class="signo">(</span><span class="cadena">"nombre como '%a'"</span><span class="signo">)</span>->existe<span class="signo">();</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->existe<span class="signo">();</span>
+</code></pre>
+		<p>#19 Verificar que la consulta SQL no ha retornado un resultado. - <em>noExiste().</em></p>
+		<p>El método <em>noExiste()</em> retorna <em>true</em> cuando no encuentra resultados.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::noExiste<span class="signo">();</span>
+	<span class="comentario">// Podemos realizar la verificación por medio del resultado de un condicional.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::donde<span class="signo">(</span><span class="cadena">"nombre como '%a'"</span><span class="signo">)</span>->noExiste<span class="signo">();</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->noExiste<span class="signo">();</span>
+</code></pre>
+		<p>#20 Incrementar el valor del campo especificado. - <em>incrementar().</em></p>
+		<p>Incrementar la población en la tabla paises.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::incrementar<span class="signo">(</span><span class="cadena">'poblacion'</span><span class="signo">);</span>
+	<span class="comentario">// Podemos pasar por un segundo parámetro el valor del incremento. Por defecto es 1.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::incrementar<span class="signo">(</span><span class="cadena">'poblacion'</span><span class="signo">,</span><span class="numero">7</span><span class="signo">);</span>
+	<span class="comentario">// Podemos incrementar la población por medio del resultado de un condicional.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::donde<span class="signo">(</span><span class="cadena">"nombre como '%a'"</span><span class="signo">)</span>->incrementar<span class="signo">(</span><span class="cadena">'poblacion'</span><span class="signo">);</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->incrementar<span class="signo">(</span><span class="cadena">'poblacion'</span><span class="signo">);</span>
+</code></pre>
+		<p>#21 Decrementar el valor del campo especificado. - <em>decrementar().</em></p>
+		<p>Decrementar la población en la tabla paises.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="comentario">// Por medio del modelo.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::decrementar<span class="signo">(</span><span class="cadena">'poblacion'</span><span class="signo">);</span>
+	<span class="comentario">// Podemos pasar por un segundo parámetro el valor del decremento. Por defecto es 1.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::decrementar<span class="signo">(</span><span class="cadena">'poblacion'</span><span class="signo">,</span><span class="numero">7</span><span class="signo">);</span>
+	<span class="comentario">// Podemos decrementar la población por medio del resultado de un condicional.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> Pais::donde<span class="signo">(</span><span class="cadena">"nombre como '%a'"</span><span class="signo">)</span>->decrementar<span class="signo">(</span><span class="cadena">'poblacion'</span><span class="signo">);</span>
+	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+	<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->decrementar<span class="signo">(</span><span class="cadena">'poblacion'</span><span class="signo">);</span>
+</code></pre>
+		<p>Si utilizas el Modelo para interactuar con los datos de la base de datos, tendrás la ventaja de poder omitir las <a href="../convenciones" class="vinculo">convenciones</a> que tiene el ORM PIPE y adaptarse a la estructura que tenga tu tabla en la base de datos, ya que el Constructor de Consultas se adapta por defecto a las <a href="../convenciones" class="vinculo">convenciones</a>.</p>
+	</div>
+</div>
+</div>
+<pie-pagina></pie-pagina>
+</div>
+<script type="text/javascript" src="../../../js/vue-2.5.16.js"></script>
+<script type="text/javascript" src="../../../componentes/encabezado.js"></script>
+<script type="text/javascript" src="../../../componentes/menu-documentacion.js"></script>
+<script type="text/javascript" src="../../../componentes/pie-pagina.js"></script>
+
+<script type="text/javascript">
+new Vue({
+	el:'#pipe'
+});
+</script>
+
+<style type="text/css">
+	table{
+		-webkit-width:100%;
+		border-collapse: collapse;
+		margin:10px;
+	}
+	thead > tr{
+		background-color:#5BC800; color:white;
+	}
+	tr:nth-child(even) {
+		background-color: #f0f2f1;
+	}
+	.con-palabras-reservadas{
+		display: flex;
+	}
+	@media screen and (max-width:930px){
+		.contenido{
+			margin-top:0px;
+		}
+	}
+	@media screen and (max-width:455px){
+		.con-palabras-reservadas{
+			display:block;
+		}
+	}
+</style>
+</body>
+</html>

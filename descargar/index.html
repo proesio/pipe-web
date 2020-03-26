@@ -1,0 +1,92 @@
+<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="author" content="Juan Felipe Valencia Murillo">
+	<meta name="copyright" content="Juan Felipe Valencia Murillo">
+	<meta name="description" content="PIPE - ORM en Español">
+	<meta name="keywords" content="descargar,orm,pipe">
+	<meta name="robots" content="Index,Follow">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	<title>Descargar - PIPE - ORM en Español</title>
+	<link rel="icon" type="image/png" href="../imagenes/logo_pipe.png"/>
+	<link rel="stylesheet" href="../css/fontawesome-5.4.1.min.css"/>
+	<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
+	<link rel="stylesheet" href="../css/principal.css"/>
+</head>
+<body>
+<div id="pipe">
+<encabezado></encabezado>
+<div class="contenido">
+<center>
+	<div style="margin-bottom:100px; color:transparent;">.</div>
+	<p align="center">
+		<a href="https://packagist.org/packages/proesio/pipe" target="_blank"><img src="https://poser.pugx.org/proesio/pipe/downloads" alt="Total Descargas"></a>
+		<a href="https://packagist.org/packages/proesio/pipe" target="_blank"><img src="https://poser.pugx.org/proesio/pipe/v/stable" alt="Última Versión Estable"></a>
+		<a href="https://packagist.org/packages/proesio/pipe" target="_blank"><img src="https://poser.pugx.org/proesio/pipe/license" alt="Licencia"></a>
+	</p>
+	<div class="btn-descargar" align="center">
+		<a href="https://github.com/proesio/pipe/releases/tag/v3.0.0" target="_blank"><i class="fab fa-github"></i> Descargar PIPE v3.0.0</a>
+	</div>
+	<div class="versiones-anteriores"><a href="../descargar/versiones-anteriores" class="vinculo">Versiones anteriores</a></div>
+</center>
+</div>
+<pie-pagina></pie-pagina>
+</div>
+<script type="text/javascript" src="../js/vue-2.5.16.js"></script>
+<script type="text/javascript" src="../componentes/encabezado.js"></script>
+<script type="text/javascript" src="../componentes/pie-pagina.js"></script>
+
+<script type="text/javascript">
+new Vue({
+	el:'#pipe'
+});
+</script>
+
+<style type="text/css">
+	.descripcion{
+		width:50%;
+		margin-bottom:80px;
+	}
+	.btn-descargar{
+		display:flex;
+    justify-content:center;
+    align-content:center;
+		flex-direction:column;
+		background-color:#5BC800;
+		width:232px;
+		height:64px;
+		border-radius:5px;
+		cursor:pointer;
+		margin-bottom:10px;
+	}
+	.btn-descargar:hover{
+		box-shadow:0px 1px 5px gray;
+	}
+	.btn-descargar>a{
+		background-color:#5BC800;
+		color:white;
+		border:0px;
+		font-size:110%;
+		font-weight:bold;
+		text-decoration:none;
+	}
+	.versiones-anteriores{
+		font-size:80%;
+	}
+	.versiones-anteriores>a{
+		color:gray;
+	}
+	@media screen and (max-width:600px){
+		.descripcion{
+			margin-top:350px;
+			margin-bottom:30px;
+		}
+		.versiones-anteriores{
+			margin-bottom:250px;
+		}
+	}
+</style>
+</body>
+</html>

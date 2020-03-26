@@ -1,0 +1,95 @@
+<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="author" content="Juan Felipe Valencia Murillo">
+	<meta name="copyright" content="Juan Felipe Valencia Murillo">
+	<meta name="description" content="PIPE - ORM en Español">
+	<meta name="keywords" content="autenticar,orm,pipe">
+	<meta name="robots" content="Index,Follow">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	<title>Autenticar Usuarios - PIPE - ORM en Español</title>
+	<link rel="icon" type="image/png" href="../../../imagenes/logo_pipe.png"/>
+	<link rel="stylesheet" href="../../../css/fontawesome-5.4.1.min.css"/>
+	<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
+	<link rel="stylesheet" href="../../../css/principal.css"/>
+</head>
+<body>
+<div id="pipe">
+<encabezado></encabezado>
+<menu-documentacion></menu-documentacion>
+<div class="contenido">
+<div class="regilla-contenedora">
+	<div class="documentacion">
+		<div style="font-size:300%;">Autenticar Usuarios</div>
+		<div class="hr"></div>
+		<p>Para realizar un inicio de sesión en nuestro proyecto, PIPE proporciona un método que permite autenticar al usuario.</p>
+		<p>PIPE escapa la cadena de las credenciales de acceso por medio de consultas preparadas para impedir el inicio de sesión por medio de <em>Inyección SQL</em>.</p>
+		<p>El método <em>autenticar()</em> nos retorna los datos del usuario autenticado.
+		<p>Autenticación de usuario simple.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="variable">$usuario</span> <span class="signo">=</span> Usuario::autenticar<span class="signo">([</span><span class="cadena">'correo'</span><span class="signo">=></span><span class="cadena">'johndoe@correo.com'</span><span class="signo">,</span><span class="cadena">'contrasena'</span><span class="signo">=></span><span class="cadena">'12345'</span><span class="signo">]);</span>
+	<span class="comentario">// Podemos obtener los datos en forma de arreglo o json enviando como segundo parámetro la constante <em>PIPE::ARREGLO</em> o <em>PIPE::JSON</em>.</span>
+	<span class="variable">$usuario</span> <span class="signo">=</span> Usuario::autenticar<span class="signo">([</span><span class="cadena">'correo'</span><span class="signo">=></span><span class="cadena">'johndoe@correo.com'</span><span class="signo">,</span><span class="cadena">'contrasena'</span><span class="signo">=></span><span class="cadena">'12345'</span><span class="signo">]</span><span class="signo">,</span>PIPE::ARREGLO<span class="signo">);</span>
+	<span class="palabra-clave">if</span> <span class="signo">(</span><span class="variable">$usuario</span><span class="signo">) {</span>
+		<span class="comentario">// Caso inicio de sesión correcto.</span>
+	<span class="signo">}</span>
+	<span class="palabra-clave">else</span> <span class="signo">{</span>
+		<span class="comentario">// Caso inicio de sesión incorrecto.</span>
+	<span class="signo">}</span>
+</code></pre>
+		<p>Autenticación de usuario compleja.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE/PIPE.php"</span><span class="signo">;</span>
+	<span class="comentario">/*</span>
+		<span class="comentario">Podemos enviar un segundo parámetro para permitir la autenticación</span>
+		<span class="comentario">en caso de que el correo o el documento sean válidos.</span>
+	<span class="comentario">*/</span>
+	<span class="variable">$usuario</span> <span class="signo">=</span> Usuario::autenticar<span class="signo">([</span><span class="cadena">'contrasena'</span><span class="signo">=></span><span class="cadena">'12345'</span><span class="signo">],[</span><span class="cadena">'correo'</span><span class="signo">=></span><span class="cadena">'johndoe@correo.com'</span><span class="signo">,</span><span class="cadena">'documento'</span><span class="signo">=></span><span class="cadena">'7654321'</span><span class="signo">]);</span>
+	<span class="comentario">// Podemos obtener los datos en forma de arreglo o json enviando como tercer parámetro la constante <em>PIPE::ARREGLO</em> o <em>PIPE::JSON</em>.</span>
+	<span class="variable">$usuario</span> <span class="signo">=</span> Usuario::autenticar<span class="signo">([</span><span class="cadena">'contrasena'</span><span class="signo">=></span><span class="cadena">'12345'</span><span class="signo">],[</span><span class="cadena">'correo'</span><span class="signo">=></span><span class="cadena">'johndoe@correo.com'</span><span class="signo">,</span><span class="cadena">'documento'</span><span class="signo">=></span><span class="cadena">'7654321'</span><span class="signo">],</span>PIPE::JSON<span class="signo">);</span>
+	<span class="palabra-clave">if</span> <span class="signo">(</span><span class="variable">$usuario</span><span class="signo">) {</span>
+		<span class="comentario">// Caso inicio de sesión correcto.</span>
+	<span class="signo">}</span>
+	<span class="palabra-clave">else</span> <span class="signo">{</span>
+		<span class="comentario">// Caso inicio de sesión incorrecto.</span>
+	<span class="signo">}</span>
+</code></pre>
+		<p>El constructor de consultas PIPE también permite autenticar usuarios de forma simple o compleja.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="variable">$usuario</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>->autenticar<span class="signo">([</span><span class="cadena">'correo'</span><span class="signo">=></span><span class="cadena">'johndoe@correo.com'</span><span class="signo">,</span><span class="cadena">'contrasena'</span><span class="signo">=></span><span class="cadena">'12345'</span><span class="signo">]);</span>
+	<span class="palabra-clave">if</span> <span class="signo">(</span><span class="variable">$usuario</span><span class="signo">) {</span>
+		<span class="comentario">// Caso inicio de sesión correcto.</span>
+	<span class="signo">}</span>
+	<span class="palabra-clave">else</span> <span class="signo">{</span>
+		<span class="comentario">// Caso inicio de sesión incorrecto.</span>
+	<span class="signo">}</span>
+</code></pre>
+		<p>Si utilizas el Modelo para interactuar con los datos de la base de datos, tendrás la ventaja de poder omitir las <a href="../convenciones" class="vinculo">convenciones</a> que tiene el ORM PIPE y adaptarse a la estructura que tenga tu tabla en la base de datos, ya que el Constructor de Consultas se adapta por defecto a las <a href="../convenciones" class="vinculo">convenciones</a>.</p>
+	</div>
+</div>
+</div>
+<pie-pagina></pie-pagina>
+</div>
+<script type="text/javascript" src="../../../js/vue-2.5.16.js"></script>
+<script type="text/javascript" src="../../../componentes/encabezado.js"></script>
+<script type="text/javascript" src="../../../componentes/menu-documentacion.js"></script>
+<script type="text/javascript" src="../../../componentes/pie-pagina.js"></script>
+
+<script type="text/javascript">
+new Vue({
+	el:'#pipe'
+});
+</script>
+
+<style type="text/css">
+@media screen and (max-width:930px){
+	.contenido{
+		margin-top:0px;
+	}
+}
+</style>
+</body>
+</html>

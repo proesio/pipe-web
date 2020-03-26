@@ -1,0 +1,69 @@
+<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="author" content="Juan Felipe Valencia Murillo">
+	<meta name="copyright" content="Juan Felipe Valencia Murillo">
+	<meta name="description" content="PIPE - ORM en Español">
+	<meta name="keywords" content="configuracion,configurar,orm,pipe">
+	<meta name="robots" content="Index,Follow">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	<title>Configuración - PIPE - ORM en Español</title>
+	<link rel="icon" type="image/png" href="../../../imagenes/logo_pipe.png"/>
+	<link rel="stylesheet" href="../../../css/fontawesome-5.4.1.min.css"/>
+	<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
+	<link rel="stylesheet" href="../../../css/principal.css"/>
+</head>
+<body>
+<div id="pipe">
+<encabezado></encabezado>
+<menu-documentacion></menu-documentacion>
+<div class="contenido">
+<div class="regilla-contenedora">
+	<div class="documentacion">
+		<div style="font-size:300%;">Configuración</div>
+		<div class="hr"></div>
+		<p>PIPE es muy sencillo de configurar.</p>
+		<p>PIPE soporta 5 controladores de bases de datos. <em>mysql, pgsql, sqlite, oci y sqlsrv</em>.</p>
+		<p>Para configurar la conexión a nuestra base de datos, abrimos y editamos el archivo <em>PIPE_CONEXION_BD.php</em> que se encuentra en el directorio <em>PROES</em>.</p>		
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">const</span> BD_CONTROLADOR <span class="signo">=</span> <span class="cadena">'controlador'</span><span class="signo">;</span>
+	<span class="palabra-clave">const</span> BD_HOST <span class="signo">=</span> <span class="cadena">'host'</span><span class="signo">;</span>
+	<span class="palabra-clave">const</span> BD_PUERTO <span class="signo">=</span> <span class="cadena">'puerto'</span><span class="signo">;</span>
+	<span class="palabra-clave">const</span> BD_USUARIO <span class="signo">=</span> <span class="cadena">'usuario'</span><span class="signo">;</span>
+	<span class="palabra-clave">const</span> BD_CONTRASENA <span class="signo">=</span> <span class="cadena">'contraseña'</span><span class="signo">;</span>
+	<span class="palabra-clave">const</span> BD_BASEDATOS <span class="signo">=</span> <span class="cadena">'basedatos'</span><span class="signo">;</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"Conexion.php"</span><span class="signo">;</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PIPE.php"</span><span class="signo">;</span>
+</code></pre>
+		<p>Para utilizar PIPE en nuestro código de programación incluimos el archivo <em>PIPE_CONEXION_BD.php</em> y usamos el namespace <em>PROES\PIPE</em>.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
+	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
+</code></pre>
+	</div>
+</div>
+</div>
+<pie-pagina></pie-pagina>
+</div>
+<script type="text/javascript" src="../../../js/vue-2.5.16.js"></script>
+<script type="text/javascript" src="../../../componentes/encabezado.js"></script>
+<script type="text/javascript" src="../../../componentes/menu-documentacion.js"></script>
+<script type="text/javascript" src="../../../componentes/pie-pagina.js"></script>
+
+<script type="text/javascript">
+new Vue({
+	el:'#pipe'
+});
+</script>
+
+<style type="text/css">
+@media screen and (max-width:930px){
+	.contenido{
+		margin-top:0px;
+	}
+}
+</style>
+</body>
+</html>

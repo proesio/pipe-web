@@ -5,6 +5,9 @@
 *:focus{
 	outline:none;
 }
+html{
+	scroll-behavior:smooth;
+}
 body{
 	margin:0px;
 	height:100%;
@@ -94,7 +97,6 @@ footer>div>a:hover{
 	padding:50px;
 	border-right:1px solid #f0f2f1;
 	grid-area:menu;
-	display:none;
 }
 .documentacion{
 	padding-right:50px;
@@ -343,7 +345,7 @@ code,pre{
 		padding-right:0px;
 		padding-left:0px;
 		display:block;
-		height:335px; 
+		height:345px;
 	}
 	header>.logo{
 		margin-left:35%;
@@ -367,7 +369,7 @@ code,pre{
 		font-size:100%;
 	}
 	.menu-doc{
-		margin-top:335px;
+		margin-top:345px;
 	}
 }
 /*Inicio title tooltip*/
@@ -447,4 +449,25 @@ ul li ul li:hover a{
 }
 .menu_link:hover{
 	color:#5BC800;
+}
+.accion-subir{
+	position:fixed;
+	bottom:10px;
+	right:10px;
+	display:flex;
+    justify-content:center;
+    align-content:center;
+	flex-direction:column;
+	width:50px;
+	height:50px;
+	background-color:gray;
+	border-radius:5px;
+	cursor:pointer;
+	font-size:150%;
+	opacity:0.5;
+	transition:0.5s;
+	visibility:hidden;
+}
+.accion-subir:hover{
+	opacity:0.8;
 }
