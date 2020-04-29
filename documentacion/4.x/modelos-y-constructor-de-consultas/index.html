@@ -27,13 +27,23 @@
 		<p>Para interactuar con los datos de la base de datos, PIPE proporciona dos métodos para acceder a ellos, el primero es por medio de Modelos referenciados a las tablas de la base de datos, y el segundo es por medio del Constructor de Consultas PIPE.</p>
 		<p>Veamos algunos ejemplos.</p>
 		<p>Creación de un Modelo.</p>
-		<p>PIPE por defecto tiene un directorio específico para guardar los modelos que serán importados en nuestro código automáticamente. Creamos el archivo Usuario.php y lo guardamos en el directorio <em>PIPE/Modelos/Usuario.php</em>.</p>
+		<p>PIPE automáticamente importa los modelos que han sido almacenados en la ruta especificada por medio de la constante <em>RUTA_MODELOS</em> al inicializar la <a href="../configuracion" class="vinculo">configuración</a>.</p>
+		<p>Creamos el archivo Usuario.php y lo guardamos en la ruta que hemos especificado en la constante <em>RUTA_MODELOS</em>.</p>
 <pre><code><span class="php">&lt;?php</span>
 	<span class="palabra-clave">use</span> PIPE\Clases\Modelo<span class="signo">;</span>
 	<span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> Modelo <span class="signo">{</span>
 		<span class="comentario">// Todo tu código aquí.</span>
 	<span class="signo">}</span>
 </code></pre>
+		<p>En el Modelo podemos definir los campos que podrán ser <em>insertables, actualizables y ocultos</em> de la siguiente manera.</p>
+<pre><code><span class="php">&lt;?php</span>
+	<span class="palabra-clave">use</span> PIPE\Clases\Modelo<span class="signo">;</span>
+	<span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> Modelo <span class="signo">{</span>
+		<span class="palabra-clave">protected</span> <span class="variable">$insertables</span> <span class="signo">=</span> <span class="signo">[</span><span class="cadena">'nombres'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">,</span><span class="cadena">'contrasena'</span><span class="signo">];</span>
+		<span class="palabra-clave">protected</span> <span class="variable">$actualizables</span> <span class="signo">=</span> <span class="signo">[</span><span class="cadena">'nombres'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">,</span><span class="cadena">'contrasena'</span><span class="signo">];</span>
+		<span class="palabra-clave">protected</span> <span class="variable">$ocultos</span> <span class="signo">=</span> <span class="signo">[</span><span class="cadena">'contrasena'</span><span class="signo">];</span> <span class="comentario">// Este campo no se mostrará en la consulta SQL.</span>
+	<span class="signo">}</span>
+</code></pre>		
 		<p>PIPE soporta 3 tipos de relaciones. <em>Uno a Uno, Uno a Muchos y Muchos a Muchos</em>.</p>
 		<p>#1 Relación <em>Uno a Uno</em>.</p>
 		<p>Vamos a relacionar el modelo <em>Usuario</em> con el modelo <em>Documento</em> asumiendo que un usuario tiene un documento.</p>
@@ -173,8 +183,58 @@
 		...
 	<span class="signo">];</span>
 </code></pre>
-		<p>El Constructor de Consultas PIPE nos permite estructurar sentencias SQL por medio de métodos heredados en la clase <em>PIPE</em>.</p>
-		<p>A continuación, se muestra un listado de los 35 métodos disponibles en el Constructor de Consultas PIPE para estructurar sentencias SQL.</p>
+		<p>El Modelo y el Constructor de Consultas PIPE nos permiten estructurar sentencias SQL por medio de métodos.</p>
+		<p>A continuación, se muestra un listado de los 3 métodos disponibles únicamente en el Modelo para estructurar sentencias SQL.</p>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>Método</th>
+					<th>Descripción</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><em>crear()</em></td>
+					<td>Crea un nuevo registro en la base de datos.</td>
+				</tr>
+				<tr>
+					<td><em>destruir()</em></td>
+					<td>Destruye un registro en la base de datos.</td>
+				</tr>
+				<tr>
+					<td><em>editar()</em></td>
+					<td>Edita un registro en la base de datos.</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>A continuación, se muestra un listado de los 4 métodos disponibles únicamente en el Constructor de Consultas PIPE para estructurar sentencias SQL.</p>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>Método</th>
+					<th>Descripción</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><em>consulta()</em></td>
+					<td>Realiza una consulta SQL en español.</td>
+				</tr>
+				<tr>
+					<td><em>consultaNativa()</em></td>
+					<td>Realiza una consulta SQL nativa.</td>
+				</tr>
+				<tr>
+					<td><em>sentencia()</em></td>
+					<td>Realiza una sentencia SQL.</td>
+				</tr>
+				<tr>
+					<td><em>tabla()</em></td>
+					<td>Establece el nombre de la tabla en el Constructor de Consultas.</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>A continuación, se muestra un listado de los 32 métodos disponibles en el Modelo y el Constructor de Consultas PIPE para estructurar sentencias SQL.</p>
 		<table border="1">
 			<thead>
 				<tr>
@@ -198,18 +258,6 @@
 				<tr>
 					<td><em>alias()</em></td>
 					<td>Establece un alias al nombre de la tabla.</td>
-				</tr>
-				<tr>
-					<td><em>autenticar()</em></td>
-					<td>Autentica un registro en la base de datos.</td>
-				</tr>
-				<tr>
-					<td><em>consulta()</em></td>
-					<td>Realiza una consulta SQL en español.</td>
-				</tr>
-				<tr>
-					<td><em>consultaNativa()</em></td>
-					<td>Realiza una consulta SQL nativa.</td>
 				</tr>
 				<tr>
 					<td><em>contar()</em></td>
@@ -292,16 +340,16 @@
 					<td>Obtiene la suma del campo especificado.</td>
 				</tr>
 				<tr>
-					<td><em>tabla()</em></td>
-					<td>Establece el nombre de la tabla en el Constructor de Consultas.</td>
-				</tr>
-				<tr>
 					<td><em>teniendo()</em></td>
 					<td>Establece una condición a una función de agregación.</td>
 				</tr>
 				<tr>
 					<td><em>todo()</em></td>
 					<td>Obtiene todos los datos de la tabla seleccionada.</td>
+				</tr>
+				<tr>
+					<td><em>tomar()</em></td>
+					<td>Obtiene una cantidad específca de registros retornados.</td>
 				</tr>
 				<tr>
 					<td><em>ultimo()</em></td>
@@ -326,7 +374,7 @@
 			</tbody>
 		</table>
 		<p>La clase <em>PIPE</em> proporciona constantes que permiten obtener información del ORM PIPE.</p>
-		<p>A continuación, se muestra un listado de las 5 constantes disponibles en la clase <em>PIPE</em>.</p>
+		<p>A continuación, se muestra un listado de las 6 constantes disponibles en la clase <em>PIPE</em>.</p>
 		<table border="1">
 			<thead>
 				<tr>
@@ -350,6 +398,10 @@
 				<tr>
 					<td><em>PIPE::OBJETO</em></td>
 					<td>Indica el retorno de resultados de una consulta SQL como un objeto.</td>
+				</tr>
+				<tr>
+					<td><em>PIPE::SQL</em></td>
+					<td>Indica el retorno de la consulta SQL generada.</td>
 				</tr>
 				<tr>
 					<td><em>PIPE::VERSION</em></td>

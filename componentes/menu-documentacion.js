@@ -3,10 +3,11 @@ Vue.component('menu-documentacion',{
 	data(){
 		return {
 			href:location.href,
-			host:location.origin+'/pipe/',
+			host:location.origin+'/proesio/web-pipe/',
 			menu:[],
 			menuVersion:{},
 			versiones:[
+				'v4.x',
 				'v3.x',
 				'v2.x',
 				'v1.x'
@@ -14,8 +15,8 @@ Vue.component('menu-documentacion',{
 		}
 	},
 	mounted(){
-		this.asignarMenu('v3.x');
-		this.asignarMenuVersion('v3.x');
+		this.asignarMenu('v4.x');
+		this.asignarMenuVersion('v4.x');
 	},
 	methods:{
 		asignarMenu(version){
@@ -35,6 +36,7 @@ Vue.component('menu-documentacion',{
 			this.menu.forEach(function(item){
 				item.href=item.href.replace('_version_',version);
 			});
+			if(version.substr(0,1)>=4) this.eliminarItemMenu(version,'autenticar-usuarios');
 		},
 		asignarMenuVersion(version){
 			version=this.obtenerVersionURL(version);
@@ -53,6 +55,13 @@ Vue.component('menu-documentacion',{
 			let index=location.href.indexOf('.x');
 			if(index>-1) version='v'+location.href.substr(index-1,3);
 			return version;
+		},
+		eliminarItemMenu(version,itemMenu){
+			index=-1;
+			this.menu.forEach(function(item,i){
+				if(item.href.indexOf(itemMenu)>-1) index=i;
+			});
+			if(index>-1) this.menu.splice(index,1);
 		}
 	},
 	template:`

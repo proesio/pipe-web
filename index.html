@@ -43,7 +43,7 @@
 		<div class="info">
 		<p>PIPE es muy sencillo de instalar.</p>
 		<p># Instalación vía composer.</p>
-		<p>PIPE requiere una versión de PHP >= 5.6.0 para poder ser instalado.</p>
+		<p>PIPE requiere una versión de PHP >= 7.2.0 para poder ser instalado.</p>
 		<p>Para instalar PIPE abrimos nuestra terminal, nos ubicamos en el directorio de nuestro proyecto e introducimos el siguiente comando.</p>
 <pre><code>composer require proesio/pipe</code></pre>
 		<p>También podemos instalar PIPE por medio del archivo composer.json de la siguiente manera.</p>
@@ -51,7 +51,7 @@
 		<p>2. Creamos un archivo con el nombre de composer.json y lo editamos de la siguiente manera.</p>
 <pre><code><span class="signo">{</span>
 	<span class="cadena">"require"</span>: <span class="signo">{</span>
-		<span class="cadena">"proesio/pipe"</span>: <span class="cadena">"^3"</span>
+		<span class="cadena">"proesio/pipe"</span>: <span class="cadena">"^4"</span>
 	<span class="signo">}</span>
 <span class="signo">}</span></code></pre>
 		<p>3. Abrimos nuestra terminal dentro del directorio de nuestro proyecto y escribimos el siguiente comando.</p>
@@ -79,16 +79,16 @@
 	<span class="palabra-clave">use</span> PIPE\Clases\Configuracion<span class="signo">;</span>
 	
 	Configuracion::inicializar<span class="signo">([</span>
-		<span class="cadena">'BD_CONTROLADOR'</span> <span class="signo">=></span></span> <span class="cadena">'controlador'</span><span class="signo">,</span> <span class="comentario">// (Requerido) Soporta mysql, pgsql, sqlite, oci y sqlsrv.</span>
-		<span class="cadena">'BD_HOST'</span> <span class="signo">=></span></span> <span class="cadena">'host'</span><span class="signo">,</span> <span class="comentario">// (Requerido) IP o DNS del servidor.</span>
-		<span class="cadena">'BD_PUERTO'</span> <span class="signo">=></span></span> <span class="cadena">'puerto'</span><span class="signo">,</span> <span class="comentario">// (Requerido) Puerto donde se ejecuta el servicio.</span>
-		<span class="cadena">'BD_USUARIO'</span> <span class="signo">=></span></span> <span class="cadena">'usuario'</span><span class="signo">,</span> <span class="comentario">// (Requerido) Usuario de la base de datos.</span>
-		<span class="cadena">'BD_CONTRASENA'</span> <span class="signo">=></span></span> <span class="cadena">'contrasena'</span><span class="signo">,</span> <span class="comentario">// (Opcional) Contraseña de la base de datos.</span>
-		<span class="cadena">'BD_BASEDATOS'</span> <span class="signo">=></span></span> <span class="cadena">'basedatos'</span><span class="signo">,</span> <span class="comentario">// (Requerido) Nombre de la base de datos.</span>
-		<span class="cadena">'BD_CODIFICACION'</span> <span class="signo">=></span></span> <span class="cadena">'codificación'</span><span class="signo">,</span> <span class="comentario">// (Requerido) Juego de caracteres. Ej: utf8.</span>
-		<span class="cadena">'IDIOMA'</span> <span class="signo">=></span></span> <span class="cadena">'idioma'</span><span class="signo">,</span> <span class="comentario">// (Requerido) Idioma para mostrar errores SQL y mensajes del <em>ORM PIPE.</em> Soporta es, en.</span>
-		<span class="cadena">'RUTA_MODELOS'</span> <span class="signo">=></span></span> <span class="cadena">'ruta/completa/a/mis/modelos'</span><span class="signo">,</span> <span class="comentario">// (Opcional) Ej: C:\xampp\htdocs\mi-proyecto\modelos.</span>
-		<span class="cadena">'ZONA_HORARIA'</span> <span class="signo">=></span></span> <span class="cadena">'Zona/Horaria'</span> <span class="comentario">// (Opcional) [Valor UTC por defecto] Ej: America/Bogota.</span>
+		<span class="cadena">'BD_CONTROLADOR'</span> <span class="signo">=></span></span> <span class="cadena">'controlador'</span><span class="signo">,</span> <span class="comentario">// Soporta mysql, pgsql, sqlite y sqlsrv.</span>
+		<span class="cadena">'BD_HOST'</span> <span class="signo">=></span></span> <span class="cadena">'host'</span><span class="signo">,</span> <span class="comentario">// IP o DNS del servidor.</span>
+		<span class="cadena">'BD_PUERTO'</span> <span class="signo">=></span></span> <span class="cadena">'puerto'</span><span class="signo">,</span> <span class="comentario">// Puerto donde se ejecuta el servicio.</span>
+		<span class="cadena">'BD_USUARIO'</span> <span class="signo">=></span></span> <span class="cadena">'usuario'</span><span class="signo">,</span> <span class="comentario">// Usuario de la base de datos.</span>
+		<span class="cadena">'BD_CONTRASENA'</span> <span class="signo">=></span></span> <span class="cadena">'contrasena'</span><span class="signo">,</span> <span class="comentario">// Contraseña de la base de datos.</span>
+		<span class="cadena">'BD_BASEDATOS'</span> <span class="signo">=></span></span> <span class="cadena">'basedatos'</span><span class="signo">,</span> <span class="comentario">// Nombre de la base de datos.</span>
+		<span class="cadena">'BD_CODIFICACION'</span> <span class="signo">=></span></span> <span class="cadena">'codificación'</span><span class="signo">,</span> <span class="comentario">// Juego de caracteres. Ej: utf8.</span>
+		<span class="cadena">'IDIOMA'</span> <span class="signo">=></span></span> <span class="cadena">'idioma'</span><span class="signo">,</span> <span class="comentario">// Idioma para mostrar errores SQL y mensajes del <em>ORM PIPE.</em> Soporta es, en.</span>
+		<span class="cadena">'RUTA_MODELOS'</span> <span class="signo">=></span></span> <span class="cadena">'ruta/completa/a/mis/modelos'</span><span class="signo">,</span> <span class="comentario">// Ej: C:\xampp\htdocs\mi-proyecto\modelos.</span>
+		<span class="cadena">'ZONA_HORARIA'</span> <span class="signo">=></span></span> <span class="cadena">'Zona/Horaria'</span> <span class="comentario">// [Valor UTC por defecto] Ej: America/Bogota.</span>
 	<span class="signo">]);</span>
 	<span class="comentario">
 		/*
@@ -107,7 +107,7 @@
 		<div class="info">
 		<p>Creación de un Modelo.</p>
 		<p>PIPE automáticamente importa los modelos que han sido almacenados en la ruta especificada por medio de la constante <em>RUTA_MODELOS</em> al inicializar la <a href="documentacion/3.x/configuracion" class="vinculo">configuración</a>.</p>
-		<p>Creamos el archivo Usuario.php y lo guardamos en ruta que hemos especificado en la constante <em>RUTA_MODELOS</em>.</p>
+		<p>Creamos el archivo Usuario.php y lo guardamos en la ruta que hemos especificado en la constante <em>RUTA_MODELOS</em>.</p>
 <pre><code><span class="php">&lt;?php</span>
 	<span class="palabra-clave">use</span> PIPE\Clases\Modelo<span class="signo">;</span>
 	<span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> Modelo <span class="signo">{</span>

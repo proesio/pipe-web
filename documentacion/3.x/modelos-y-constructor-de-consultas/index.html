@@ -28,7 +28,7 @@
 		<p>Veamos algunos ejemplos.</p>
 		<p>Creación de un Modelo.</p>
 		<p>PIPE automáticamente importa los modelos que han sido almacenados en la ruta especificada por medio de la constante <em>RUTA_MODELOS</em> al inicializar la <a href="../configuracion" class="vinculo">configuración</a>.</p>
-		<p>Creamos el archivo Usuario.php y lo guardamos en ruta que hemos especificado en la constante <em>RUTA_MODELOS</em>.</p>
+		<p>Creamos el archivo Usuario.php y lo guardamos en la ruta que hemos especificado en la constante <em>RUTA_MODELOS</em>.</p>
 <pre><code><span class="php">&lt;?php</span>
 	<span class="palabra-clave">use</span> PIPE\Clases\Modelo<span class="signo">;</span>
 	<span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> Modelo <span class="signo">{</span>
@@ -126,7 +126,7 @@
 </code></pre>
 		<p>#3 Relación <em>Muchos a Muchos</em>.</p>
 		<p>Para definir la relación de <em>Muchos a Muchos</em> se necesitan tres tablas. Para nuestro ejemplo vamos a utilizar la tabla usuarios, roles y role_usuario.</p>
-		<p>Vamos a relacionar el modelo <em>Usuario</em> con el modelo <em>Role</em> en una relación de <em>Muchos a Muchos</em> asumiendo que un usuario tiene muchos roles y un Role pertenece a muchos usuarios.</p>
+		<p>Vamos a relacionar el modelo <em>Usuario</em> con el modelo <em>Role</em> en una relación de <em>Muchos a Muchos</em> asumiendo que un usuario tiene muchos roles y un rol pertenece a muchos usuarios.</p>
 <pre><code><span class="php">&lt;?php</span>
 	<span class="palabra-clave">use</span> PIPE\Clases\Modelo<span class="signo">;</span>
 	<span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> Modelo <span class="signo">{</span>
