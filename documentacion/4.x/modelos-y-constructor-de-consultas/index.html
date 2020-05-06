@@ -35,12 +35,13 @@
 		<span class="comentario">// Todo tu código aquí.</span>
 	<span class="signo">}</span>
 </code></pre>
-		<p>En el Modelo podemos definir los campos que podrán ser <em>insertables, actualizables y ocultos</em> de la siguiente manera.</p>
+		<p>En el Modelo podemos definir los campos que podrán ser <em>insertables, actualizables, visibles y ocultos</em> de la siguiente manera.</p>
 <pre><code><span class="php">&lt;?php</span>
 	<span class="palabra-clave">use</span> PIPE\Clases\Modelo<span class="signo">;</span>
 	<span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> Modelo <span class="signo">{</span>
 		<span class="palabra-clave">protected</span> <span class="variable">$insertables</span> <span class="signo">=</span> <span class="signo">[</span><span class="cadena">'nombres'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">,</span><span class="cadena">'contrasena'</span><span class="signo">];</span>
 		<span class="palabra-clave">protected</span> <span class="variable">$actualizables</span> <span class="signo">=</span> <span class="signo">[</span><span class="cadena">'nombres'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">,</span><span class="cadena">'contrasena'</span><span class="signo">];</span>
+		<span class="palabra-clave">protected</span> <span class="variable">$visibles</span> <span class="signo">=</span> <span class="signo">[</span><span class="cadena">'nombres'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">];</span> <span class="comentario">// Estos campos se mostrarán en la consulta SQL.</span>
 		<span class="palabra-clave">protected</span> <span class="variable">$ocultos</span> <span class="signo">=</span> <span class="signo">[</span><span class="cadena">'contrasena'</span><span class="signo">];</span> <span class="comentario">// Este campo no se mostrará en la consulta SQL.</span>
 	<span class="signo">}</span>
 </code></pre>		
