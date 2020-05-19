@@ -24,7 +24,7 @@ Vue.component('encabezado',{
 	template:`
 		<header>
 			<div class="logo">
-				<a :href="host"><img :src="host+'imagenes/eslogan_pipe.png'" alt="ESLOGAN PIPE" style="width:auto; height:50px; margin-top:10px;"/></a>
+				<a :href="host"><img :src="host+'imagenes/pipe-eslogan-transparente.png'" alt="ESLOGAN PIPE" style="width:auto; height:50px; margin-top:10px;"/></a>
 				<!--<div class="titulo">PIPE</div>-->
 				<!--<div class="slogan">ORM en Español</div>-->
 			</div>

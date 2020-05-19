@@ -10,7 +10,7 @@
 	<meta name="robots" content="Index,Follow">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 	<title>Descargar - PIPE - ORM en Español</title>
-	<link rel="icon" type="image/png" href="../imagenes/logo_pipe.png"/>
+	<link rel="icon" type="image/png" href="../imagenes/pipe-logo-transparente.png"/>
 	<link rel="stylesheet" href="../css/fontawesome-5.4.1.min.css"/>
 	<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
 	<link rel="stylesheet" href="../css/principal.css"/>
@@ -25,9 +25,13 @@
 		<a href="https://packagist.org/packages/proesio/pipe" target="_blank"><img src="https://poser.pugx.org/proesio/pipe/downloads" alt="Total Descargas"></a>
 		<a href="https://packagist.org/packages/proesio/pipe" target="_blank"><img src="https://poser.pugx.org/proesio/pipe/v/stable" alt="Última Versión Estable"></a>
 		<a href="https://packagist.org/packages/proesio/pipe" target="_blank"><img src="https://poser.pugx.org/proesio/pipe/license" alt="Licencia"></a>
+		<div class="insignia">
+			<span class="titulo">descargas manuales</span>
+			<span class="dato">{{totalDescargasManuales}}</span>
+		</div>
 	</p>
-	<div class="btn-descargar" align="center">
-		<a href="https://github.com/proesio/pipe/releases/tag/v4.2.0" target="_blank"><i class="fab fa-github"></i> Descargar PIPE v4.2.0</a>
+	<div align="center">
+		<a href="https://github.com/proesio/pipe/releases/tag/v4.2.0" @click="crearDescarga()" class="btn-descargar" target="_blank"><span><i class="fab fa-github"></i> Descargar PIPE v4.2.0</span></a>
 	</div>
 	<div class="versiones-anteriores"><a href="../descargar/versiones-anteriores" class="vinculo">Versiones anteriores</a></div>
 </center>
@@ -40,7 +44,44 @@
 
 <script type="text/javascript">
 new Vue({
-	el:'#pipe'
+	el:'#pipe',
+	data:function(){
+		return {
+			totalDescargasManuales:'null'
+		}	
+	},
+	mounted(){
+		this.obtenerTotalDescargas();
+	},
+	methods:{
+		crearDescarga(){
+			datos=this.convertirJsonAUrl({
+				api:'descarga-crear'
+			});
+			xhr=new XMLHttpRequest();
+			xhr.open('POST','../backend/controladores/peticion.php',true);
+			xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+			xhr.send(datos);
+		},
+		obtenerTotalDescargas(){
+			xhr=new XMLHttpRequest();
+			xhr.open('GET','../backend/controladores/peticion.php?api=descarga-obtener',true);
+			xhr.send();
+			xhr.onreadystatechange=()=>{
+				if(xhr.readyState==4){
+					respuesta=JSON.parse(xhr.responseText);
+					if(respuesta.estado=='exito') this.totalDescargasManuales=respuesta.datos;
+				}
+			}
+		},
+		convertirJsonAUrl(json){
+			url='';
+			for(dato in json){
+				url=url+dato+'='+json[dato]+'&'
+			}
+			return url.slice(0,-1);
+		}
+	}
 });
 </script>
 
@@ -64,7 +105,7 @@ new Vue({
 	.btn-descargar:hover{
 		box-shadow:0px 1px 5px gray;
 	}
-	.btn-descargar>a{
+	.btn-descargar{
 		background-color:#5BC800;
 		color:white;
 		border:0px;
@@ -86,6 +127,27 @@ new Vue({
 		.versiones-anteriores{
 			margin-bottom:250px;
 		}
+	}
+	.insignia{
+		display:inline-block;
+		background-color:#5F5F5F;
+		width:auto;
+		border-radius:4px;
+		padding-left:5px;
+		font-size:70%;
+		text-shadow: 0px 1px black;
+	}
+	.insignia > .titulo{
+		color:white;
+	}
+	.insignia > .dato{
+		background-color:#147BCF;
+		padding:3px;
+		padding-right:5px;
+		border-top-right-radius:4px;
+		border-bottom-right-radius:4px;
+		color:white;
+		display:inline-block;
 	}
 </style>
 </body>

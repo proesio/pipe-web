@@ -10,7 +10,7 @@
 	<meta name="robots" content="Index,Follow">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 	<title>Inicio - PIPE - ORM en Español</title>
-	<link rel="icon" type="image/png" href="imagenes/logo_pipe.png"/>
+	<link rel="icon" type="image/png" href="imagenes/pipe-logo-transparente.png"/>
 	<link rel="stylesheet" href="css/fontawesome-5.4.1.min.css"/>
 	<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
 	<link rel="stylesheet" href="css/principal.css"/>
@@ -20,11 +20,17 @@
 <encabezado></encabezado>
 <div class="contenido">
 <div class="estadistica">
+<center>
 <p align="center">
 	<a href="https://packagist.org/packages/proesio/pipe" target="_blank"><img src="https://poser.pugx.org/proesio/pipe/downloads" alt="Total Descargas"></a>
 	<a href="https://packagist.org/packages/proesio/pipe" target="_blank"><img src="https://poser.pugx.org/proesio/pipe/v/stable" alt="Última Versión Estable"></a>
 	<a href="https://packagist.org/packages/proesio/pipe" target="_blank"><img src="https://poser.pugx.org/proesio/pipe/license" alt="Licencia"></a>
+	<div class="insignia">
+		<span class="titulo">descargas manuales</span>
+		<span class="dato">{{totalDescargasManuales}}</span>
+	</div>
 </p>
+</center>
 </div>
 <div class="contenedor">
 <center>
@@ -137,7 +143,28 @@
 
 <script type="text/javascript">
 new Vue({
-	el:'#proes'
+	el:'#proes',
+	data:function(){
+		return {
+			totalDescargasManuales:'null'
+		}	
+	},
+	mounted(){
+		this.obtenerTotalDescargas();
+	},
+	methods:{
+		obtenerTotalDescargas(){
+			xhr=new XMLHttpRequest();
+			xhr.open('GET','backend/controladores/peticion.php?api=descarga-obtener',true);
+			xhr.send();
+			xhr.onreadystatechange=()=>{
+				if(xhr.readyState==4){
+					respuesta=JSON.parse(xhr.responseText);
+					if(respuesta.estado=='exito') this.totalDescargasManuales=respuesta.datos;
+				}
+			}
+		},
+	}
 });
 </script>
 
@@ -165,6 +192,27 @@ new Vue({
 		.estadistica{
 			margin-top:375px;
 		}
+	}
+	.insignia{
+		display:inline-block;
+		background-color:#5F5F5F;
+		width:auto;
+		border-radius:4px;
+		padding-left:5px;
+		font-size:70%;
+		text-shadow: 0px 1px black;
+	}
+	.insignia > .titulo{
+		color:white;
+	}
+	.insignia > .dato{
+		background-color:#147BCF;
+		padding:3px;
+		padding-right:5px;
+		border-top-right-radius:4px;
+		border-bottom-right-radius:4px;
+		color:white;
+		display:inline-block;
 	}
 </style>
 </body>
