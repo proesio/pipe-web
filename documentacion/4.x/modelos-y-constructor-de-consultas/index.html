@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="../../../css/fontawesome-5.4.1.min.css"/>
 	<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
 	<link rel="stylesheet" href="../../../css/principal.css"/>
+	<script type="text/javascript" src="../../../js/config.js"></script>
 </head>
 <body>
 <div id="pipe">
@@ -56,7 +57,7 @@
 </code></pre>
 		<p>Para obtener los datos de esta relación <em>Uno a Uno</em> lo hacemos de la siguiente manera.</p>
 <pre><code><span class="php">&lt;?php</span>
-	<span class="variable">$documeto</span> <span class="signo">=</span> Usuario::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relaciones<span class="signo">()</span>->documento<span class="signo">;</span>
+	<span class="variable">$documeto</span> <span class="signo">=</span> Usuario::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relaciones<span class="signo">()</span>->documentos<span class="signo">;</span>
 </code></pre>
 		<p>PIPE por defecto determina la llave foránea en función del nombre del modelo a relacionar, debido a esto, se asume que la llave foránea del modelo <em>Documento</em> es <em>usuario_id</em>. Si deseamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
 <pre><code><span class="php">&lt;?php</span>
@@ -113,8 +114,8 @@
 </code></pre>
 		<p>Para obtener los datos de esta relación inversa de <em>Uno a Uno y Uno a Muchos</em> lo hacemos de la siguiente manera.</p>
 <pre><code><span class="php">&lt;?php</span>
-	<span class="variable">$usuario</span> <span class="signo">=</span> Documento::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relaciones<span class="signo">()</span>->usuario<span class="signo">;</span>
-	<span class="variable">$usuario</span> <span class="signo">=</span> Tema::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relaciones<span class="signo">()</span>->usuario<span class="signo">;</span>
+	<span class="variable">$usuario</span> <span class="signo">=</span> Documento::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relaciones<span class="signo">()</span>->usuarios<span class="signo">;</span>
+	<span class="variable">$usuario</span> <span class="signo">=</span> Tema::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relaciones<span class="signo">()</span>->usuarios<span class="signo">;</span>
 </code></pre>
 		<p>PIPE por defecto determina la llave foránea en función del nombre del modelo a relacionar, debido a esto, se asume que la llave foránea de los modelos <em>Documento y Tema</em> son <em>usuario_id</em>. Si deseamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
 <pre><code><span class="php">&lt;?php</span>
@@ -186,7 +187,7 @@
 </code></pre>
 		<p>El Modelo y el Constructor de Consultas PIPE nos permiten estructurar sentencias SQL por medio de métodos.</p>
 		<p>A continuación, se muestra un listado de los 3 métodos disponibles únicamente en el Modelo para estructurar sentencias SQL.</p>
-		<table border="1">
+		<table class="tabla" border="1">
 			<thead>
 				<tr>
 					<th>Método</th>
@@ -209,7 +210,7 @@
 			</tbody>
 		</table>
 		<p>A continuación, se muestra un listado de los 5 métodos disponibles únicamente en el Constructor de Consultas PIPE para estructurar sentencias SQL.</p>
-		<table border="1">
+		<table class="tabla" border="1">
 			<thead>
 				<tr>
 					<th>Método</th>
@@ -240,7 +241,7 @@
 			</tbody>
 		</table>
 		<p>A continuación, se muestra un listado de los 32 métodos disponibles en el Modelo y el Constructor de Consultas PIPE para estructurar sentencias SQL.</p>
-		<table border="1">
+		<table class="tabla" border="1">
 			<thead>
 				<tr>
 					<th>Método</th>
@@ -380,7 +381,7 @@
 		</table>
 		<p>La clase <em>PIPE</em> proporciona constantes que permiten obtener información del ORM PIPE.</p>
 		<p>A continuación, se muestra un listado de las 6 constantes disponibles en la clase <em>PIPE</em>.</p>
-		<table border="1">
+		<table class="tabla" border="1">
 			<thead>
 				<tr>
 					<th>Constante</th>
@@ -420,7 +421,7 @@
 </div>
 <pie-pagina></pie-pagina>
 </div>
-<script type="text/javascript" src="../../../js/vue-2.5.16.js"></script>
+<script type="text/javascript" src="../../../js/vue-2.5.16.min.js"></script>
 <script type="text/javascript" src="../../../componentes/encabezado.js"></script>
 <script type="text/javascript" src="../../../componentes/menu-documentacion.js"></script>
 <script type="text/javascript" src="../../../componentes/pie-pagina.js"></script>
@@ -432,17 +433,6 @@ new Vue({
 </script>
 
 <style type="text/css">
-	table{
-		-webkit-width:100%;
-		border-collapse: collapse;
-		margin:10px;
-	}
-	thead > tr{
-		background-color:#5BC800; color:white;
-	}
-	tr:nth-child(even) {
-		background-color: #f0f2f1;
-	}
 	@media screen and (max-width:930px){
 		.contenido{
 			margin-top:0px;

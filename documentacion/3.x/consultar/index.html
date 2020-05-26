@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="../../../css/fontawesome-5.4.1.min.css"/>
 	<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
 	<link rel="stylesheet" href="../../../css/principal.css"/>
+	<script type="text/javascript" src="../../../js/config.js"></script>
 </head>
 <body>
 <div id="pipe">
@@ -28,7 +29,7 @@
 		<p>PIPE tiene tres formas de retornar los datos en las consultas, como un <em>objeto</em>, como un <em>arreglo</em> y como un <em>json</em> por medio de las constantes <em>PIPE::OBJETO</em>, <em>PIPE::ARREGLO</em> y <em>PIPE::JSON</em>. La forma por defecto del retorno de datos es como un <em>objeto</em>.</p>
 		<p>A continuación, se muestra un listado de las 36 palabras reservadas del ORM PIPE y su equivalente en el lenguaje SQL de la base de datos para realizar consultas en español con el método <em>consulta()</em>.</p>
 		<div class="con-palabras-reservadas">
-		<table border="1">
+		<table class="tabla" style="margin:10px;" border="1">
 			<thead>
 				<tr>
 					<th>Palabra Reservada en el ORM PIPE</th>
@@ -110,7 +111,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<table border="1">
+		<table class="tabla" style="margin:10px;" border="1">
 			<thead>
 				<tr>
 					<th>Palabra Reservada en el ORM PIPE</th>
@@ -675,7 +676,7 @@
 </div>
 <pie-pagina></pie-pagina>
 </div>
-<script type="text/javascript" src="../../../js/vue-2.5.16.js"></script>
+<script type="text/javascript" src="../../../js/vue-2.5.16.min.js"></script>
 <script type="text/javascript" src="../../../componentes/encabezado.js"></script>
 <script type="text/javascript" src="../../../componentes/menu-documentacion.js"></script>
 <script type="text/javascript" src="../../../componentes/pie-pagina.js"></script>
@@ -687,17 +688,6 @@ new Vue({
 </script>
 
 <style type="text/css">
-	table{
-		-webkit-width:100%;
-		border-collapse: collapse;
-		margin:10px;
-	}
-	thead > tr{
-		background-color:#5BC800; color:white;
-	}
-	tr:nth-child(even) {
-		background-color: #f0f2f1;
-	}
 	.con-palabras-reservadas{
 		display: flex;
 	}

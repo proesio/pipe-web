@@ -2,7 +2,7 @@
 Vue.component('encabezado',{
 	data(){
 		return {
-			host:location.origin+'/proesio/web-pipe/'
+			host:DOMINIO
 		}
 	},
 	mounted(){

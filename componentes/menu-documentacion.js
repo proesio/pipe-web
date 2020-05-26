@@ -3,7 +3,7 @@ Vue.component('menu-documentacion',{
 	data(){
 		return {
 			href:location.href,
-			host:location.origin+'/proesio/web-pipe/',
+			host:DOMINIO,
 			menu:[],
 			menuVersion:{},
 			versiones:[
