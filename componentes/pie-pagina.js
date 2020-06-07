@@ -30,7 +30,7 @@ Vue.component('pie-pagina',{
 		<div class="accion-subir" @click="posicionarScrollY()"><i class="fas fa-chevron-up"></i></div>
 		<div>
 			<a href="https://www.facebook.com/proesio/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-			<!--<a href="https://www.facebook.com/juanfelipe.valencia.503" target="_blank"><i class="fab fa-instagram"></i></a>-->
+			<a href="https://www.youtube.com/channel/UCk5pHq8tVsn0RdGoGB56QQg" target="_blank"><i class="fab fa-youtube"></i></a>
 		</div>
 		<span>© Derechos de Autor 2018 - {{new Date().getFullYear()}} Juan Felipe Valencia Murillo</span>
 	</footer>
