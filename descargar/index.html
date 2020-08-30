@@ -35,7 +35,8 @@
 		</div>
 	</p>
 	<div align="center">
-		<a href="http://github.com/proesio/pipe/archive/v4.2.6.zip" @click="crearDescarga('4.2.6')" class="btn-descargar"><span><i class="fab fa-github"></i> Descargar PIPE v4.2.6</span></a>
+    <div class="versiones-anteriores" style="margin-bottom: 10px;"><a href="https://github.com/proesio/pipe/releases/tag/v4.3.2" class="vinculo" target="_black">Ver Implementaciones</a></div>
+		<a href="http://github.com/proesio/pipe/archive/v4.3.2.zip" @click="crearDescarga('4.3.2')" class="btn-descargar"><span><i class="fab fa-github"></i> Descargar PIPE v4.3.2</span></a>
 	</div>
 	<div class="versiones-anteriores"><a href="../descargar/versiones-anteriores" class="vinculo">Versiones anteriores</a></div>
 </center>
@@ -124,6 +125,10 @@ new Vue({
 	}
 	.versiones-anteriores>a{
 		color:gray;
+	}
+  .implementaciones{
+		font-size:80%;
+		cursor:pointer;
 	}
 	@media screen and (max-width:600px){
 		.descripcion{

@@ -52,11 +52,11 @@
 	
 	<span class="comentario">// Insertando varios registros simultáneamente.</span>
 	<span class="variable">$usuario</span> <span class="signo">=</span> <span class="palabra-clave">new</span> Usuario<span class="signo">();</span>
-	<span class="variable">$usuario</span>->insertar<span class="signo">(</span>
+	<span class="variable">$usuario</span>->insertar<span class="signo">([</span>
 		<span class="signo">[</span><span class="cadena">'nombres'</span><span class="signo">=></span><span class="cadena">'John'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">=></span><span class="cadena">'Doe'</span><span class="signo">,</span><span class="cadena">'correo'</span><span class="signo">=></span><span class="cadena">'johndoe@correo.com'</span><span class="signo">],</span>
 		<span class="signo">[</span><span class="cadena">'nombres'</span><span class="signo">=></span><span class="cadena">'Juan'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">=></span><span class="cadena">'Valencia'</span><span class="signo">,</span><span class="cadena">'correo'</span><span class="signo">=></span><span class="cadena">'juanvalencia@correo.com'</span><span class="signo">]</span>
 		...
-	<span class="signo">);</span>
+	<span class="signo">]);</span>
 	
 	<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
 	<span class="variable">$usuario</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">);</span>
@@ -64,11 +64,11 @@
 	
 	<span class="comentario">// Insertando varios registros simultáneamente.</span>
 	<span class="variable">$usuario</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">);</span>
-	<span class="variable">$usuario</span>->insertar<span class="signo">(</span>
+	<span class="variable">$usuario</span>->insertar<span class="signo">([</span>
 		<span class="signo">[</span><span class="cadena">'nombres'</span><span class="signo">=></span><span class="cadena">'John'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">=></span><span class="cadena">'Doe'</span><span class="signo">,</span><span class="cadena">'correo'</span><span class="signo">=></span><span class="cadena">'johndoe@correo.com'</span><span class="signo">],</span>
 		<span class="signo">[</span><span class="cadena">'nombres'</span><span class="signo">=></span><span class="cadena">'Juan'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">=></span><span class="cadena">'Valencia'</span><span class="signo">,</span><span class="cadena">'correo'</span><span class="signo">=></span><span class="cadena">'juanvalencia@correo.com'</span><span class="signo">]</span>
 		...
-	<span class="signo">);</span>
+	<span class="signo">]);</span>
 </code></pre>
 		<p>Inserción de datos por medio del método <em>crear()</em> proporcionado por el modelo el cual realiza la inserción y nos retorna un objeto con los datos creados.</p>
 <pre><code><span class="php">&lt;?php</span>
@@ -76,11 +76,11 @@
 </code></pre>
 		<p>El método <em>crear()</em> permite enviar varios registros simultáneamente el cual devuelve un arreglo de objetos con los datos creados.</p>
 <pre><code><span class="php">&lt;?php</span>
-	<span class="variable">$usuarios</span> <span class="signo">=</span> Usuario::crear<span class="signo">(</span>
+	<span class="variable">$usuarios</span> <span class="signo">=</span> Usuario::crear<span class="signo">([</span>
 		<span class="signo">[</span><span class="cadena">'nombres'</span><span class="signo">=></span><span class="cadena">'John'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">=></span><span class="cadena">'Doe'</span><span class="signo">,</span><span class="cadena">'correo'</span><span class="signo">=></span><span class="cadena">'johndoe@correo.com'</span><span class="signo">],</span>
 		<span class="signo">[</span><span class="cadena">'nombres'</span><span class="signo">=></span><span class="cadena">'Juan'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">=></span><span class="cadena">'Valencia'</span><span class="signo">,</span><span class="cadena">'correo'</span><span class="signo">=></span><span class="cadena">'juanvalencia@correo.com'</span><span class="signo">]</span>
 		...
-	<span class="signo">);</span>
+	<span class="signo">]);</span>
 </code></pre>	
 		<p>El método <em>insertarObtenerId()</em> nos permite insertar un nuevo registro en la base de datos y obtener el último id generado.</p>
 <pre><code><span class="php">&lt;?php</span>
