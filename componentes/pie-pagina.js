@@ -1,28 +1,38 @@
-//Desarrollado Por Juan Felipe Valencia Murillo.
-Vue.component('pie-pagina',{
-	mounted(){	
+/**
+ * Pie de página.
+ * 
+ * @author    Juan Felipe Valencia Murillo  <juanfe0245@gmail.com>
+ * @copyright 2018 - presente  Juan Felipe Valencia Murillo
+ */
+
+Vue.component('pie-pagina', {
+	mounted() {	
 		this.posicionarFooter();
 	},
-	methods:{
-		posicionarFooter(){
-			setTimeout(function(){
-				if(document.body.clientHeight<window.innerHeight){
-					let footer=document.getElementsByTagName('footer')[0];
-					let header=document.getElementsByTagName('header')[0];
-					let contenido=document.getElementsByClassName('contenido')[0];
-					footer.style.marginTop=(window.innerHeight-header.clientHeight-contenido.clientHeight-footer.clientHeight)+'px';
-				}
-				else{
-					window.onscroll=(event)=>{
-						let subir=document.getElementsByClassName('accion-subir')[0];
-						let estado=window.scrollY>100 ? 'visible' : 'hidden';
-						subir.style.visibility=estado;
+	methods: {
+		posicionarFooter() {
+			setTimeout(() => {
+				if (document.body.clientHeight < window.innerHeight) {
+					let footer = document.getElementsByTagName('footer')[0];
+					let header = document.getElementsByTagName('header')[0];
+					let contenido = document.getElementsByClassName('contenido')[0];
+
+					footer.style.marginTop = (
+            window.innerHeight - header.clientHeight - contenido.clientHeight - footer.clientHeight
+          )+'px';
+				} else {
+					window.onscroll = (event) => {
+						let subir = document.getElementsByClassName('accion-subir')[0];
+						let estado = window.scrollY > 100 ? 'visible' : 'hidden';
+						subir.style.visibility = estado;
 					}
 				}
-			},100);
+			}, 100);
 		},
-		posicionarScrollY(x=0,y=0){
-			if(window.scrollY) window.scroll(x,y);
+		posicionarScrollY(x = 0,y = 0) {
+			if (window.scrollY) {
+        window.scroll(x, y);
+      }
 		}
 	},
 	template:`

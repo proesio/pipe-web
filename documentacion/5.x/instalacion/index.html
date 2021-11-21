@@ -1,0 +1,80 @@
+<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="author" content="Juan Felipe Valencia Murillo">
+  <meta name="copyright" content="Juan Felipe Valencia Murillo">
+  <meta name="description" content="PIPE - ORM en Español">
+  <meta name="keywords" content="instalacion,instalar,orm,pipe">
+  <meta name="robots" content="Index,Follow">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Instalación - PIPE - ORM en Español</title>
+  <link rel="icon" type="image/png" href="../../../imagenes/pipe-logo-transparente.png" />
+  <link rel="stylesheet" href="../../../css/fontawesome-5.4.1.min.css" />
+  <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="../../../css/principal.css" />
+  <script type="text/javascript" src="../../../js/config.js"></script>
+</head>
+
+<body>
+  <div id="pipe">
+    <encabezado></encabezado>
+    <menu-documentacion></menu-documentacion>
+    <div class="contenido">
+      <div class="regilla-contenedora">
+        <div class="documentacion">
+          <div style="font-size:300%;">Instalación</div>
+          <div class="hr"></div>
+          <p>PIPE es muy sencillo de instalar.</p>
+          <p># Instalación vía composer.</p>
+          <p>PIPE requiere una versión de PHP >= 7.3.0 para poder ser instalado.</p>
+          <p>Para instalar PIPE abrimos nuestra terminal, nos ubicamos en el directorio de nuestro proyecto y ejecutamos
+            el siguiente comando.</p>
+          <pre><code>$ composer require proesio/pipe</code></pre>
+          <p>También podemos instalar PIPE por medio del archivo composer.json de la siguiente manera.</p>
+          <p>1. Nos ubicamos en el directorio de nuestro proyecto.</p>
+          <p>2. Creamos un archivo con el nombre de composer.json y lo editamos de la siguiente manera.</p>
+<pre><code><span class="signo">{</span>
+    <span class="cadena">"require"</span>: <span class="signo">{</span>
+        <span class="cadena">"proesio/pipe"</span>: <span class="cadena">"^5"</span>
+    <span class="signo">}</span>
+<span class="signo">}</span></code></pre>
+          <p>3. Abrimos nuestra terminal dentro del directorio de nuestro proyecto y escribimos el siguiente comando.
+          </p>
+<pre><code>$ composer install</code></pre>
+          <p>Una vez terminado el proceso, composer creará un directorio llamado vendor en la raíz de nuestro proyecto
+            donde quedará instalado el <em>ORM PIPE</em>.</p>
+          <p># Instalación manual.</p>
+          <p>Para instalar PIPE de forma manual, descargamos la <a href="../../../descargar" class="vinculo"
+              target="_blank">última versión estable</a> desde el repositorio de GitHub.</p>
+          <p>Una vez descargado tienes toda la libertad de pegar el código fuente del <em>ORM PIPE</em> en cualquier
+            parte de tu proyecto.</p>
+          <p>Serás tú el que decide el flujo y la estructura de tu aplicación web.</p>
+        </div>
+      </div>
+    </div>
+    <pie-pagina></pie-pagina>
+  </div>
+  <script type="text/javascript" src="../../../js/vue-2.5.16.min.js"></script>
+  <script type="text/javascript" src="../../../componentes/encabezado.js"></script>
+  <script type="text/javascript" src="../../../componentes/menu-documentacion.js"></script>
+  <script type="text/javascript" src="../../../componentes/pie-pagina.js"></script>
+
+  <script type="text/javascript">
+    new Vue({
+      el: '#pipe'
+    });
+  </script>
+
+  <style type="text/css">
+    @media screen and (max-width:930px) {
+      .contenido {
+        margin-top: 0px;
+      }
+    }
+  </style>
+</body>
+
+</html>

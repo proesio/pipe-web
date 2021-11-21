@@ -1,144 +1,168 @@
 <!--Desarrollado Por Juan Felipe Valencia Murillo.-->
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-	<meta charset="UTF-8"/>
-	<meta name="author" content="Juan Felipe Valencia Murillo">
-	<meta name="copyright" content="Juan Felipe Valencia Murillo">
-	<meta name="description" content="PIPE - ORM en Español">
-	<meta name="keywords" content="descargar,orm,pipe">
-	<meta name="robots" content="Index,Follow">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-	<title>Descargar - PIPE - ORM en Español</title>
-	<link rel="icon" type="image/png" href="../imagenes/pipe-logo-transparente.png"/>
-	<link rel="stylesheet" href="../css/fontawesome-5.4.1.min.css"/>
-	<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
-	<link rel="stylesheet" href="../css/principal.css"/>
-	<script type="text/javascript" src="../js/config.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="author" content="Juan Felipe Valencia Murillo">
+  <meta name="copyright" content="Juan Felipe Valencia Murillo">
+  <meta name="description" content="PIPE - ORM en Español">
+  <meta name="keywords" content="descargar,orm,pipe">
+  <meta name="robots" content="Index,Follow">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Descargar - PIPE - ORM en Español</title>
+  <link rel="icon" type="image/png" href="../imagenes/pipe-logo-transparente.png" />
+  <link rel="stylesheet" href="../css/fontawesome-5.4.1.min.css" />
+  <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="../css/principal.css" />
+  <script type="text/javascript" src="../js/config.js"></script>
 </head>
+
 <body>
-<div id="pipe">
-<encabezado></encabezado>
-<div class="contenido">
-<center>
-	<div style="margin-bottom:100px; color:transparent;">.</div>
-	<p align="center">
-		<a href="https://packagist.org/packages/proesio/pipe" target="_blank"><img src="https://poser.pugx.org/proesio/pipe/downloads" alt="Total Descargas"></a>
-		<a href="https://packagist.org/packages/proesio/pipe" target="_blank"><img src="https://poser.pugx.org/proesio/pipe/v/stable" alt="Última Versión Estable"></a>
-		<a href="https://packagist.org/packages/proesio/pipe" target="_blank"><img src="https://poser.pugx.org/proesio/pipe/license" alt="Licencia"></a>
-		<div v-if="totalDescargas==null">
-			<img src="../imagenes/cargando.gif" width="20"/>
-		</div>
-		<div class="insignia" v-else>
-			<span class="titulo">descargas manuales</span>
-			<span class="dato">{{totalDescargas}}</span>
-		</div>
-	</p>
-	<div align="center">
-    <div class="versiones-anteriores" style="margin-bottom: 10px;"><a href="https://github.com/proesio/pipe/releases/tag/v4.3.2" class="vinculo" target="_black">Ver Implementaciones</a></div>
-		<a href="http://github.com/proesio/pipe/archive/v4.3.2.zip" @click="crearDescarga('4.3.2')" class="btn-descargar"><span><i class="fab fa-github"></i> Descargar PIPE v4.3.2</span></a>
-	</div>
-	<div class="versiones-anteriores"><a href="../descargar/versiones-anteriores" class="vinculo">Versiones anteriores</a></div>
-</center>
-</div>
-<pie-pagina></pie-pagina>
-</div>
-<script type="text/javascript" src="../js/vue-2.5.16.min.js"></script>
-<script type="text/javascript" src="../componentes/encabezado.js"></script>
-<script type="text/javascript" src="../componentes/pie-pagina.js"></script>
-<script type="text/javascript" src="../js/apis.js"></script>
+  <div id="pipe">
+    <encabezado></encabezado>
+    <div class="contenido">
+      <center>
+        <div style="margin-bottom:100px; color:transparent;">.</div>
+        <p align="center">
+          <a href="https://packagist.org/packages/proesio/pipe" target="_blank"><img
+              src="https://poser.pugx.org/proesio/pipe/downloads" alt="Total Descargas"></a>
+          <a href="https://packagist.org/packages/proesio/pipe" target="_blank"><img
+              src="https://poser.pugx.org/proesio/pipe/v/stable" alt="Última Versión Estable"></a>
+          <a href="https://packagist.org/packages/proesio/pipe" target="_blank"><img
+              src="https://poser.pugx.org/proesio/pipe/license" alt="Licencia"></a>
+        <!--<div v-if="totalDescargas==null">
+          <img src="../imagenes/cargando.gif" width="20" />
+        </div>
+        <div class="insignia" v-else>
+          <span class="titulo">descargas manuales</span>
+          <span class="dato">{{totalDescargas}}</span>
+        </div>-->
+        </p>
+        <div align="center">
+          <div class="versiones-anteriores" style="margin-bottom: 10px;"><a
+              href="https://github.com/proesio/pipe/releases/tag/v5.0.0" class="vinculo" target="_black">Ver
+              Implementaciones</a></div>
+          <a href="http://github.com/proesio/pipe/archive/v5.0.0.zip" @click="crearDescarga('5.0.0')"
+            class="btn-descargar"><span><i class="fab fa-github"></i> Descargar PIPE v5.0.0</span></a>
+        </div>
+        <div class="versiones-anteriores"><a href="../descargar/versiones-anteriores" class="vinculo">Versiones
+            anteriores</a></div>
+      </center>
+    </div>
+    <pie-pagina></pie-pagina>
+  </div>
+  <script type="text/javascript" src="../js/vue-2.5.16.min.js"></script>
+  <script type="text/javascript" src="../componentes/encabezado.js"></script>
+  <script type="text/javascript" src="../componentes/pie-pagina.js"></script>
+  <script type="text/javascript" src="../js/apis.js"></script>
 
-<script type="text/javascript">
-new Vue({
-	el:'#pipe',
-	data:function(){
-		return {
-			totalDescargas:null
-		}	
-	},
-	mounted(){
-		this.obtenerTotalDescargas();
-	},
-	methods:{
-		crearDescarga(version){
-			datos=this.convertirJsonAUrl({
-				api:'descarga-crear',
-				version:version
-			});
-			xhr=new XMLHttpRequest();
-			xhr.open('POST',API_URL,true);
-			xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
-			xhr.send(datos);
-		},
-		obtenerTotalDescargas(){
-			xhr=new XMLHttpRequest();
-			xhr.open('GET',API_DESCARGAS_TOTAL,true);
-			xhr.send();
-			xhr.onreadystatechange=()=>{
-				if(xhr.readyState==4){
-					respuesta=JSON.parse(xhr.responseText);
-					if(respuesta.estado=='exito') this.totalDescargas=respuesta.datos;
-				}
-			}
-		},
-		convertirJsonAUrl(json){
-			url='';
-			for(dato in json){
-				url=url+dato+'='+json[dato]+'&'
-			}
-			return url.slice(0,-1);
-		}
-	}
-});
-</script>
+  <script type="text/javascript">
+    new Vue({
+      el: '#pipe',
+      data: function () {
+        return {
+          totalDescargas: null
+        }
+      },
+      mounted() {
+        // this.obtenerTotalDescargas();
+      },
+      methods: {
+        crearDescarga(version) {
+          /*datos = this.convertirJsonAUrl({
+            api: 'descarga-crear',
+            version: version
+          });
 
-<style type="text/css">
-	.descripcion{
-		width:50%;
-		margin-bottom:80px;
-	}
-	.btn-descargar{
-		display:flex;
-    justify-content:center;
-    align-content:center;
-		flex-direction:column;
-		background-color:#5BC800;
-		width:232px;
-		height:64px;
-		border-radius:5px;
-		cursor:pointer;
-		margin-bottom:10px;
-	}
-	.btn-descargar:hover{
-		box-shadow:0px 1px 5px gray;
-	}
-	.btn-descargar{
-		background-color:#5BC800;
-		color:white;
-		border:0px;
-		font-size:110%;
-		font-weight:bold;
-		text-decoration:none;
-	}
-	.versiones-anteriores{
-		font-size:80%;
-	}
-	.versiones-anteriores>a{
-		color:gray;
-	}
-  .implementaciones{
-		font-size:80%;
-		cursor:pointer;
-	}
-	@media screen and (max-width:600px){
-		.descripcion{
-			margin-top:350px;
-			margin-bottom:30px;
-		}
-		.versiones-anteriores{
-			margin-bottom:250px;
-		}
-	}
-</style>
+          xhr = new XMLHttpRequest();
+          xhr.open('POST', API_URL, true);
+          xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+          xhr.send(datos);*/
+        },
+        obtenerTotalDescargas() {
+          xhr = new XMLHttpRequest();
+          xhr.open('GET', API_DESCARGAS_TOTAL, true);
+          xhr.send();
+          xhr.onreadystatechange = () => {
+            if (xhr.readyState == 4) {
+              respuesta = JSON.parse(xhr.responseText);
+
+              if (respuesta.estado == 'exito') {
+                this.totalDescargas = respuesta.datos;
+              }
+            }
+          }
+        },
+        convertirJsonAUrl(json) {
+          let url = '';
+
+          for (const dato in json) {
+            url = url + dato + '=' + json[dato] + '&'
+          }
+
+          return url.slice(0, -1);
+        }
+      }
+    });
+  </script>
+
+  <style type="text/css">
+    .descripcion {
+      width: 50%;
+      margin-bottom: 80px;
+    }
+
+    .btn-descargar {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-direction: column;
+      background-color: #5BC800;
+      width: 232px;
+      height: 64px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .btn-descargar:hover {
+      box-shadow: 0px 1px 5px gray;
+    }
+
+    .btn-descargar {
+      background-color: #5BC800;
+      color: white;
+      border: 0px;
+      font-size: 110%;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .versiones-anteriores {
+      font-size: 80%;
+    }
+
+    .versiones-anteriores>a {
+      color: gray;
+    }
+
+    .implementaciones {
+      font-size: 80%;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width:600px) {
+      .descripcion {
+        margin-top: 350px;
+        margin-bottom: 30px;
+      }
+
+      .versiones-anteriores {
+        margin-bottom: 250px;
+      }
+    }
+  </style>
 </body>
+
 </html>

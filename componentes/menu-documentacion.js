@@ -1,12 +1,19 @@
-//Desarrollado Por Juan Felipe Valencia Murillo.
-Vue.component('menu-documentacion',{
-	data(){
+/**
+ * Menú de documentación.
+ * 
+ * @author    Juan Felipe Valencia Murillo  <juanfe0245@gmail.com>
+ * @copyright 2018 - presente  Juan Felipe Valencia Murillo
+ */
+
+Vue.component('menu-documentacion', {
+	data() {
 		return {
 			href:location.href,
 			host:DOMINIO,
 			menu:[],
 			menuVersion:{},
 			versiones:[
+				'v5.x',
 				'v4.x',
 				'v3.x',
 				'v2.x',
@@ -14,54 +21,72 @@ Vue.component('menu-documentacion',{
 			]
 		}
 	},
-	mounted(){
-		this.asignarMenu('v4.x');
-		this.asignarMenuVersion('v4.x');
+	mounted() {
+		this.asignarMenu('v5.x');
+		this.asignarMenuVersion('v5.x');
 	},
-	methods:{
-		asignarMenu(version){
-			this.menu=[
-				{href:this.host+'documentacion/_version_/instalacion/',texto:'Instalación'},
-				{href:this.host+'documentacion/_version_/configuracion/',texto:'Configuración'},
-				{href:this.host+'documentacion/_version_/convenciones/',texto:'Convenciones'},
-				{href:this.host+'documentacion/_version_/modelos-y-constructor-de-consultas/',texto:'Modelos y Constructor de Consultas'},
-				{href:this.host+'documentacion/_version_/insertar/',texto:'Insertar'},
-				{href:this.host+'documentacion/_version_/consultar/',texto:'Consultar'},
-				{href:this.host+'documentacion/_version_/actualizar/',texto:'Actualizar'},
-				{href:this.host+'documentacion/_version_/eliminar/',texto:'Eliminar'},
-				{href:this.host+'documentacion/_version_/vaciar-tabla/',texto:'Vaciar Tabla'},
-				{href:this.host+'documentacion/_version_/autenticar-usuarios/',texto:'Autenticar Usuarios'}
+	methods: {
+		asignarMenu(version) {
+			this.menu = [
+				{ href: `${this.host}documentacion/_version_/instalacion/`, texto: 'Instalación' },
+				{ href: `${this.host}documentacion/_version_/configuracion/`, texto: 'Configuración' },
+				{ href: `${this.host}documentacion/_version_/convenciones/`, texto: 'Convenciones' },
+				{ href: `${this.host}documentacion/_version_/modelos-y-constructor-de-consultas/`, texto: 'Modelos y Constructor de Consultas' },
+				{ href: `${this.host}documentacion/_version_/insertar/`, texto: 'Insertar' },
+				{ href: `${this.host}documentacion/_version_/consultar/`, texto: 'Consultar' },
+				{ href: `${this.host}documentacion/_version_/actualizar/`, texto: 'Actualizar' },
+				{ href: `${this.host}documentacion/_version_/eliminar/`, texto: 'Eliminar' },
+				{ href: `${this.host}documentacion/_version_/vaciar-tabla/`, texto: 'Vaciar Tabla' },
+				{ href: `${this.host}documentacion/_version_/autenticar-usuarios/`, texto: 'Autenticar Usuarios' }
 			];
-			version=this.obtenerVersionURL(version).substr(1,3);
-			this.menu.forEach(function(item){
-				item.href=item.href.replace('_version_',version);
+
+			version = this.obtenerVersionURL(version).substr(1, 3);
+
+			this.menu.forEach((item) => {
+				item.href = item.href.replace('_version_', version);
 			});
-			if(version.substr(0,1)>=4) this.eliminarItemMenu(version,'autenticar-usuarios');
+
+			if(version.substr(0, 1) >= 4) {
+        this.eliminarItemMenu('autenticar-usuarios');
+      }
 		},
-		asignarMenuVersion(version){
-			version=this.obtenerVersionURL(version);
+		asignarMenuVersion(version) {
+			version = this.obtenerVersionURL(version);
 			this.eliminarVersion(version);
-			this.menuVersion={
-				actual:version,
-				versiones:this.versiones
+			this.menuVersion = {
+				actual: version,
+				versiones: this.versiones
 			}
 		},
-		eliminarVersion(version){
-			let index=this.versiones.indexOf(version);
-			if(index>-1) this.versiones.splice(index,1);
+		eliminarVersion(version) {
+			let index = this.versiones.indexOf(version);
+
+			if (index > -1) {
+        this.versiones.splice(index, 1);
+      }
 		},
-		obtenerVersionURL(defecto=null){
-			let version=defecto;
-			let index=location.href.indexOf('.x');
-			if(index>-1) version='v'+location.href.substr(index-1,3);
+		obtenerVersionURL(predeterminado = null) {
+			let version = predeterminado;
+			let index = location.href.indexOf('.x');
+
+			if(index>-1) {
+        version = 'v'+location.href.substr(index - 1, 3);
+      }
+
 			return version;
 		},
-		eliminarItemMenu(version,itemMenu){
-			index=-1;
-			this.menu.forEach(function(item,i){
-				if(item.href.indexOf(itemMenu)>-1) index=i;
+		eliminarItemMenu(itemMenu) {
+			index = -1;
+
+			this.menu.forEach((item, i) => {
+				if(item.href.indexOf(itemMenu) > -1) {
+          index = i;
+        }
 			});
-			if(index>-1) this.menu.splice(index,1);
+
+			if(index > -1) {
+        this.menu.splice(index, 1);
+      }
 		}
 	},
 	template:`
@@ -70,7 +95,7 @@ Vue.component('menu-documentacion',{
 		<li><a style="cursor:pointer;">{{menuVersion.actual}} <i class="fa fa-angle-down"></i></a>
 			<ul>
 				<li v-for="(item, index) in menuVersion.versiones">
-					<a :href="host+'documentacion/'+item.substr(1,3)">{{item}}</a>
+					<a :href="host+'documentacion/'+item.substr(1, 3)">{{item}}</a>
 				</li>
 			</ul>
 		</li>

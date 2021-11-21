@@ -1,4 +1,10 @@
-//Desarrollado Por Juan Felipe Valencia Murillo.
+/**
+ * Configuación.
+ * 
+ * @author    Juan Felipe Valencia Murillo  <juanfe0245@gmail.com>
+ * @copyright 2018 - presente  Juan Felipe Valencia Murillo
+ */
+
 const DOMINIO = `${location.origin}/`;
-const API_URL = 'https://proesio.000webhostapp.com/api/';
-const AUTOR_WEB = 'https://jfvalenciam.proes.tk';
+const API_URL = `${location.origin}/api/`;
+const AUTOR_WEB = 'https://jfvalenciam.proes.io';

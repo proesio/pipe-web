@@ -1,0 +1,101 @@
+<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="author" content="Juan Felipe Valencia Murillo">
+  <meta name="copyright" content="Juan Felipe Valencia Murillo">
+  <meta name="description" content="PIPE - ORM en Español">
+  <meta name="keywords" content="convenciones,convencion,orm,pipe">
+  <meta name="robots" content="Index,Follow">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Convenciones - PIPE - ORM en Español</title>
+  <link rel="icon" type="image/png" href="../../../imagenes/pipe-logo-transparente.png" />
+  <link rel="stylesheet" href="../../../css/fontawesome-5.4.1.min.css" />
+  <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="../../../css/principal.css" />
+  <script type="text/javascript" src="../../../js/config.js"></script>
+</head>
+
+<body>
+  <div id="pipe">
+    <encabezado></encabezado>
+    <menu-documentacion></menu-documentacion>
+    <div class="contenido">
+      <div class="regilla-contenedora">
+        <div class="documentacion">
+          <div style="font-size:300%;">Convenciones</div>
+          <div class="hr"></div>
+          <p>PIPE tiene cuatro convenciones que se recomiendan utilizar para aprovechar al máximo el ORM PIPE.</p>
+          <p>Convención #1: Las tablas en la base de datos deben llamarse en plural, ejemplo: <em>usuarios</em>,
+            <em>tareas_programadas</em>. Las clases que representan los modelos de las tablas deben empezar con la
+            primera letra en mayúscula y llamarse en singular siguiendo el estilo de escritura CamelCase, ejemplo:
+            <em>Usuario</em>, <em>TareasProgramada</em>. Las tablas que representan relaciones de muchos a muchos deben
+            crearse con los nombres en orden alfabético de los modelos relacionados, ejemplo: <em>compra_usuario</em>.
+          </p>
+          <p>Convención #2: La llave primaria de la tabla debe llamarse <em>id</em> y tener el atributo auto
+            incrementable.</p>
+          <p>Convención #3: El nombre de la llave foránea debe estar compuesto por el nombre en minúscula del modelo que
+            representa a la <em>tabla principal</em> seguido de un <em>_id</em>, ejemplo: <em>usuario_id</em>,
+            <em>tareas_programada_id</em>.</p>
+          <p>Convención #4: Las tablas en la base de datos deben contar con dos campos que puedan ser nulos y de tipo
+            <em>timestamp</em> llamados <em>creado_en</em> y <em>actualizado_en</em> los cuales nos permiten llevar el
+            registro del tiempo.</p>
+          <p>Si no deseamos utilizar estas convenciones podemos omitirlas por medio del modelo de la siguiente manera.
+          </p>
+<pre><code><span class="php">&lt;?php</span>
+
+<span class="palabra-clave">namespace</span> Modelos<span class="signo">;</span>
+
+<span class="palabra-clave">use</span> Modelos\Oceano<span class="signo">;</span>
+<span class="palabra-clave">use</span> PIPE\Clases\Modelo<span class="signo">;</span>
+
+<span class="palabra-clave">class</span> Pais <span class="palabra-clave">extends</span> Modelo 
+<span class="signo">{</span>
+    <span class="palabra-clave">protected</span> <span class="variable">$tabla</span> <span class="signo">=</span> <span class="cadena">'paises'</span><span class="signo">;</span>
+
+    <span class="palabra-clave">protected</span> <span class="variable">$llavePrimaria</span> <span class="signo">=</span> <span class="cadena">'codigo'</span><span class="signo">;</span>
+
+    <span class="palabra-clave">protected</span> <span class="variable">$registroTiempo</span> <span class="signo">=</span> <span class="palabra-clave">false</span><span class="signo">;</span>
+
+    <span class="palabra-clave">protected</span> <span class="variable">$creadoEn</span> <span class="signo">=</span> <span class="cadena">'created_at'</span><span class="signo">;</span>
+
+    <span class="palabra-clave">protected</span> <span class="variable">$actualizadoEn</span> <span class="signo">=</span> <span class="cadena">'updated_at'</span><span class="signo">;</span>
+
+    <span class="palabra-clave">protected</span> <span class="variable">$perteneceAMuchos</span> <span class="signo">=</span> <span class="signo">[</span>
+        Oceano::<span class="palabra-clave">class</span> <span class="signo">=></span> <span class="signo">[</span>
+            <span class="cadena">'tablaUnion'</span> <span class="signo">=></span> <span class="cadena">'oceanospaises'</span><span class="signo">,</span>
+            <span class="cadena">'llaveForaneaLocal'</span> <span class="signo">=></span> <span class="cadena">'id_pais'</span><span class="signo">,</span>
+            <span class="cadena">'llaveForaneaUnion'</span> <span class="signo">=></span> <span class="cadena">'id_oceano'</span><span class="signo">,</span>
+            <span class="cadena">'nombre'</span> <span class="signo">=></span> <span class="cadena">'oceano_pais'</span>
+        <span class="signo">]</span>
+    <span class="signo">];</span>
+<span class="signo">}</span>
+</code></pre>
+        </div>
+      </div>
+    </div>
+    <pie-pagina></pie-pagina>
+  </div>
+  <script type="text/javascript" src="../../../js/vue-2.5.16.min.js"></script>
+  <script type="text/javascript" src="../../../componentes/encabezado.js"></script>
+  <script type="text/javascript" src="../../../componentes/menu-documentacion.js"></script>
+  <script type="text/javascript" src="../../../componentes/pie-pagina.js"></script>
+
+  <script type="text/javascript">
+    new Vue({
+      el: '#pipe'
+    });
+  </script>
+
+  <style type="text/css">
+    @media screen and (max-width:930px) {
+      .contenido {
+        margin-top: 0px;
+      }
+    }
+  </style>
+</body>
+
+</html>

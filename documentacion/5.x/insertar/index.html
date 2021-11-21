@@ -1,0 +1,173 @@
+<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="author" content="Juan Felipe Valencia Murillo">
+  <meta name="copyright" content="Juan Felipe Valencia Murillo">
+  <meta name="description" content="PIPE - ORM en Español">
+  <meta name="keywords" content="insertar,crear,orm,pipe">
+  <meta name="robots" content="Index,Follow">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Insertar - PIPE - ORM en Español</title>
+  <link rel="icon" type="image/png" href="../../../imagenes/pipe-logo-transparente.png" />
+  <link rel="stylesheet" href="../../../css/fontawesome-5.4.1.min.css" />
+  <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="../../../css/principal.css" />
+  <script type="text/javascript" src="../../../js/config.js"></script>
+</head>
+
+<body>
+  <div id="pipe">
+    <encabezado></encabezado>
+    <menu-documentacion></menu-documentacion>
+    <div class="contenido">
+      <div class="regilla-contenedora">
+        <div class="documentacion">
+          <div style="font-size:300%;">Insertar</div>
+          <div class="hr"></div>
+          <p>PIPE tiene dos formas de insertar datos en las tablas de la base de datos.</p>
+          <p>En la primera forma, debemos indicar todos los campos de nuestra tabla por medio de atributos en el objeto
+            a excepción de los campos <em>creado_en</em> y <em>actualizado_en</em> (en caso que estén presentes en
+            nuestra tabla) debido a que el ORM PIPE se encarga de llenarlos automáticamente.</p>
+          <p>En la segunda forma, podemos decidir qué campos tendrán información que será insertada en la tabla.</p>
+          <p>Forma #1 de inserción de datos.</p>
+<pre><code><span class="php">&lt;?php</span>
+
+<span class="variable">$usuario</span> <span class="signo">=</span> <span class="palabra-clave">new</span> Usuario<span class="signo">();</span>
+<span class="variable">$usuario</span>->id <span class="signo">=</span> <span class="palabra-clave">null</span><span class="signo">;</span> <span class="comentario">// Si nuestra llave primaria es auto incrementable le asignamos el valor por defecto en nuestra base de datos.</span>
+<span class="variable">$usuario</span>->nombres <span class="signo">=</span> <span class="cadena">'John'</span><span class="signo">;</span>
+<span class="variable">$usuario</span>->apellidos <span class="signo">=</span> <span class="cadena">'Doe'</span><span class="signo">;</span>
+<span class="variable">$usuario</span>->correo <span class="signo">=</span> <span class="cadena">'johndoe@correo.com'</span><span class="signo">;</span>
+<span class="variable">$usuario</span>->insertar<span class="signo">();</span> <span class="comentario">// Este método devuelve el número de registros insertados.</span>
+
+<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+<span class="variable">$usuario</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">);</span>
+<span class="variable">$usuario</span>->id <span class="signo">=</span> <span class="palabra-clave">null</span><span class="signo">;</span>
+<span class="variable">$usuario</span>->nombres <span class="signo">=</span> <span class="cadena">'John'</span><span class="signo">;</span>
+<span class="variable">$usuario</span>->apellidos <span class="signo">=</span> <span class="cadena">'Doe'</span><span class="signo">;</span>
+<span class="variable">$usuario</span>->correo <span class="signo">=</span> <span class="cadena">'johndoe@correo.com'</span><span class="signo">;</span>
+<span class="variable">$usuario</span>->insertar<span class="signo">();</span>
+</code></pre>
+          <p>Forma #2 de inserción de datos.</p>
+<pre><code><span class="php">&lt;?php</span>
+
+<span class="variable">$usuario</span> <span class="signo">=</span> <span class="palabra-clave">new</span> Usuario<span class="signo">();</span>
+<span class="variable">$usuario</span>->insertar<span class="signo">(</span>
+    <span class="signo">[</span><span class="cadena">'nombres'</span> <span class="signo">=></span> <span class="cadena">'John'</span><span class="signo">,</span> <span class="cadena">'apellidos'</span> <span class="signo">=></span> <span class="cadena">'Doe'</span><span class="signo">,</span> <span class="cadena">'correo'</span> <span class="signo">=></span> <span class="cadena">'johndoe@correo.com'</span><span class="signo">]</span>
+<span class="signo">);</span>
+
+<span class="comentario">// Insertando varios registros simultáneamente.</span>
+<span class="variable">$usuario</span> <span class="signo">=</span> <span class="palabra-clave">new</span> Usuario<span class="signo">();</span>
+<span class="variable">$usuario</span>->insertar<span class="signo">(</span>
+    <span class="signo">[</span>
+        <span class="signo">[</span><span class="cadena">'nombres'</span> <span class="signo">=></span> <span class="cadena">'John'</span><span class="signo">,</span> <span class="cadena">'apellidos'</span> <span class="signo">=></span> <span class="cadena">'Doe'</span><span class="signo">,</span> <span class="cadena">'correo'</span> <span class="signo">=></span> <span class="cadena">'johndoe@correo.com'</span><span class="signo">],</span>
+        <span class="signo">[</span><span class="cadena">'nombres'</span> <span class="signo">=></span> <span class="cadena">'Juan'</span><span class="signo">,</span> <span class="cadena">'apellidos'</span> <span class="signo">=></span> <span class="cadena">'Valencia'</span><span class="signo">,</span> <span class="cadena">'correo'</span> <span class="signo">=></span> <span class="cadena">'juanvalencia@correo.com'</span><span class="signo">]</span>
+    <span class="signo">]</span>
+<span class="signo">);</span>
+
+<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+<span class="variable">$usuario</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">);</span>
+<span class="variable">$usuario</span>->insertar<span class="signo">(</span>
+    <span class="signo">[</span><span class="cadena">'nombres'</span> <span class="signo">=></span> <span class="cadena">'John'</span><span class="signo">,</span> <span class="cadena">'apellidos'</span> <span class="signo">=></span> <span class="cadena">'Doe'</span><span class="signo">,</span> <span class="cadena">'correo'</span> <span class="signo">=></span> <span class="cadena">'johndoe@correo.com'</span><span class="signo">]</span>
+<span class="signo">);</span>
+
+<span class="comentario">// Insertando varios registros simultáneamente.</span>
+<span class="variable">$usuario</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">);</span>
+<span class="variable">$usuario</span>->insertar<span class="signo">(</span>
+    <span class="signo">[</span>
+        <span class="signo">[</span><span class="cadena">'nombres'</span> <span class="signo">=></span> <span class="cadena">'John'</span><span class="signo">,</span> <span class="cadena">'apellidos'</span> <span class="signo">=></span> <span class="cadena">'Doe'</span><span class="signo">,</span> <span class="cadena">'correo'</span> <span class="signo">=></span> <span class="cadena">'johndoe@correo.com'</span><span class="signo">],</span>
+        <span class="signo">[</span><span class="cadena">'nombres'</span> <span class="signo">=></span> <span class="cadena">'Juan'</span><span class="signo">,</span> <span class="cadena">'apellidos'</span> <span class="signo">=></span> <span class="cadena">'Valencia'</span><span class="signo">,</span> <span class="cadena">'correo'</span> <span class="signo">=></span> <span class="cadena">'juanvalencia@correo.com'</span><span class="signo">]</span>
+    <span class="signo">]</span>
+<span class="signo">);</span>
+</code></pre>
+          <p>Inserción de datos por medio del método <em>crear()</em> proporcionado por el modelo el cual realiza la
+            inserción y nos retorna un objeto con los datos creados.</p>
+<pre><code><span class="php">&lt;?php</span>
+
+<span class="variable">$usuario</span> <span class="signo">=</span> Usuario::crear<span class="signo">(</span>
+    <span class="signo">[</span><span class="cadena">'nombres'</span> <span class="signo">=></span> <span class="cadena">'John'</span><span class="signo">,</span> <span class="cadena">'apellidos'</span> <span class="signo">=></span> <span class="cadena">'Doe'</span><span class="signo">,</span> <span class="cadena">'correo'</span> <span class="signo">=></span> <span class="cadena">'johndoe@correo.com'</span><span class="signo">]</span>
+<span class="signo">);</span>
+</code></pre>
+          <p>El método <em>crear()</em> permite enviar varios registros simultáneamente el cual devuelve un arreglo de
+            objetos con los datos creados.</p>
+<pre><code><span class="php">&lt;?php</span>
+
+<span class="variable">$usuarios</span> <span class="signo">=</span> Usuario::crear<span class="signo">(</span>
+    <span class="signo">[</span>
+        <span class="signo">[</span><span class="cadena">'nombres'</span> <span class="signo">=></span> <span class="cadena">'John'</span><span class="signo">,</span> <span class="cadena">'apellidos'</span> <span class="signo">=></span> <span class="cadena">'Doe'</span><span class="signo">,</span> <span class="cadena">'correo'</span> <span class="signo">=></span> <span class="cadena">'johndoe@correo.com'</span><span class="signo">],</span>
+        <span class="signo">[</span><span class="cadena">'nombres'</span> <span class="signo">=></span> <span class="cadena">'Juan'</span><span class="signo">,</span> <span class="cadena">'apellidos'</span> <span class="signo">=></span> <span class="cadena">'Valencia'</span><span class="signo">,</span> <span class="cadena">'correo'</span> <span class="signo">=></span> <span class="cadena">'juanvalencia@correo.com'</span><span class="signo">]</span>
+    <span class="signo">]</span>
+<span class="signo">);</span>
+</code></pre>
+          <p>El método <em>insertarObtenerId()</em> nos permite insertar un nuevo registro en la base de datos y obtener
+            el último id generado.</p>
+<pre><code><span class="php">&lt;?php</span>
+
+<span class="comentario">// Por medio del modelo.</span>
+<span class="variable">$usuarioId</span> <span class="signo">=</span> Usuario::insertarObtenerId<span class="signo">(</span>
+    <span class="signo">[</span><span class="cadena">'nombres'</span> <span class="signo">=></span> <span class="cadena">'John'</span><span class="signo">,</span> <span class="cadena">'apellidos'</span> <span class="signo">=></span> <span class="cadena">'Doe'</span><span class="signo">,</span> <span class="cadena">'correo'</span> <span class="signo">=></span> <span class="cadena">'johndoe@correo.com'</span><span class="signo">]</span>
+<span class="signo">);</span>
+
+<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+<span class="variable">$usuarioId</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>->insertarObtenerId<span class="signo">(</span>
+    <span class="signo">[</span><span class="cadena">'nombres'</span> <span class="signo">=></span> <span class="cadena">'John'</span><span class="signo">,</span> <span class="cadena">'apellidos'</span> <span class="signo">=></span> <span class="cadena">'Doe'</span><span class="signo">,</span> <span class="cadena">'correo'</span> <span class="signo">=></span> <span class="cadena">'johndoe@correo.com'</span><span class="signo">]</span>
+<span class="signo">);</span>
+</code></pre>
+          <p>Inserción de datos por medio del método <em>consulta()</em>.</p>
+<pre><code><span class="php">&lt;?php</span>
+
+<span class="comentario">// Este método devuelve 1 cuando la inserción se ha realizado correctamente.</span>
+<span class="variable">$resultado</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span>
+    <span class="cadena">"insertar dentro usuarios (id, nombres, apellidos, correo) valores (null, 'John', 'Doe', 'johndoe@correo.com')"</span>
+<span class="signo">);</span>
+
+<span class="comentario">// El método <em>consulta()</em> permite enviar los datos de forma segura.</span>
+<span class="variable">$resultado</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span>
+    <span class="cadena">'insertar dentro usuarios (id, nombres, apellidos, correo) valores (null, ?, ?, ?)'</span><span class="signo">, [</span><span class="cadena">'John'</span><span class="signo">,</span> <span class="cadena">'Doe'</span><span class="signo">,</span> <span class="cadena">'johndoe@correo.com'</span><span class="signo">]</span>
+<span class="signo">);</span>
+</code></pre>
+          <p>Inserción de datos por medio del método <em>consultaNativa()</em>.</p>
+<pre><code><span class="php">&lt;?php</span>
+
+<span class="comentario">// Este método devuelve 1 cuando la inserción se ha realizado correctamente.</span>
+<span class="variable">$resultado</span> <span class="signo">=</span> PIPE::consultaNativa<span class="signo">(</span>
+    <span class="cadena">"insert into usuarios (id, nombres, apellidos, correo) values (null, 'John', 'Doe', 'johndoe@correo.com')"</span>
+<span class="signo">);</span>
+
+<span class="comentario">// El método <em>consultaNativa()</em> permite enviar los datos de forma segura.</span>
+<span class="variable">$resultado</span> <span class="signo">=</span> PIPE::consultaNativa<span class="signo">(</span>
+    <span class="cadena">'insert into usuarios (id, nombres, apellidos, correo) values (null, ?, ?, ?)'</span><span class="signo">, [</span><span class="cadena">'John'</span><span class="signo">,</span> <span class="cadena">'Doe'</span><span class="signo">,</span> <span class="cadena">'johndoe@correo.com'</span><span class="signo">]</span>
+<span class="signo">);</span>
+</code></pre>
+          <p>Si utilizas el Modelo para interactuar con los datos de la base de datos, tendrás la ventaja de poder
+            omitir las <a href="../convenciones" class="vinculo">convenciones</a> que tiene el ORM PIPE y adaptarse a la
+            estructura que tenga tu tabla en la base de datos, ya que el Constructor de Consultas se adapta por defecto
+            a las <a href="../convenciones" class="vinculo">convenciones</a>.</p>
+        </div>
+      </div>
+    </div>
+    <pie-pagina></pie-pagina>
+  </div>
+  <script type="text/javascript" src="../../../js/vue-2.5.16.min.js"></script>
+  <script type="text/javascript" src="../../../componentes/encabezado.js"></script>
+  <script type="text/javascript" src="../../../componentes/menu-documentacion.js"></script>
+  <script type="text/javascript" src="../../../componentes/pie-pagina.js"></script>
+
+  <script type="text/javascript">
+    new Vue({
+      el: '#pipe'
+    });
+  </script>
+
+  <style type="text/css">
+    @media screen and (max-width:930px) {
+      .contenido {
+        margin-top: 0px;
+      }
+    }
+  </style>
+</body>
+
+</html>

@@ -2,19 +2,19 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8"/>
-	<meta name="author" content="Juan Felipe Valencia Murillo">
-	<meta name="copyright" content="Juan Felipe Valencia Murillo">
-	<meta name="description" content="PIPE - ORM en Español">
-	<meta name="keywords" content="inicio,orm,pipe">
-	<meta name="robots" content="Index,Follow">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-	<title>Inicio - PIPE - ORM en Español</title>
-	<link rel="icon" type="image/png" href="imagenes/pipe-logo-transparente.png"/>
-	<link rel="stylesheet" href="css/fontawesome-5.4.1.min.css"/>
-	<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
-	<link rel="stylesheet" href="css/principal.css"/>
-	<script type="text/javascript" src="js/config.js"></script>
+  <meta charset="UTF-8"/>
+  <meta name="author" content="Juan Felipe Valencia Murillo">
+  <meta name="copyright" content="Juan Felipe Valencia Murillo">
+  <meta name="description" content="PIPE - ORM en Español">
+  <meta name="keywords" content="inicio,orm,pipe">
+  <meta name="robots" content="Index,Follow">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Inicio - PIPE - ORM en Español</title>
+  <link rel="icon" type="image/png" href="imagenes/pipe-logo-transparente.png"/>
+  <link rel="stylesheet" href="css/fontawesome-5.4.1.min.css"/>
+  <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="css/principal.css"/>
+  <script type="text/javascript" src="js/config.js"></script>
 </head>
 <body>
 <div id="pipe">
@@ -23,118 +23,177 @@
 <div class="estadistica">
 <center>
 <p align="center">
-	<a href="https://packagist.org/packages/proesio/pipe" target="_blank"><img src="https://poser.pugx.org/proesio/pipe/downloads" alt="Total Descargas"></a>
-	<a href="https://packagist.org/packages/proesio/pipe" target="_blank"><img src="https://poser.pugx.org/proesio/pipe/v/stable" alt="Última Versión Estable"></a>
-	<a href="https://packagist.org/packages/proesio/pipe" target="_blank"><img src="https://poser.pugx.org/proesio/pipe/license" alt="Licencia"></a>
-	<div v-if="totalDescargas==null">
-		<img src="imagenes/cargando.gif" width="20"/>
-	</div>
-	<div class="insignia" v-else>
-		<span class="titulo">descargas manuales</span>
-		<span class="dato">{{totalDescargas}}</span>
-	</div>
+  <a href="https://packagist.org/packages/proesio/pipe" target="_blank"><img src="https://poser.pugx.org/proesio/pipe/downloads" alt="Total Descargas"></a>
+  <a href="https://packagist.org/packages/proesio/pipe" target="_blank"><img src="https://poser.pugx.org/proesio/pipe/v/stable" alt="Última Versión Estable"></a>
+  <a href="https://packagist.org/packages/proesio/pipe" target="_blank"><img src="https://poser.pugx.org/proesio/pipe/license" alt="Licencia"></a>
+  <!--<div v-if="totalDescargas==null">
+    <img src="imagenes/cargando.gif" width="20"/>
+  </div>
+  <div class="insignia" v-else>
+    <span class="titulo">descargas manuales</span>
+    <span class="dato">{{totalDescargas}}</span>
+  </div>-->
 </p>
 </center>
 </div>
 <div class="contenedor">
 <center>
-	<div class="con-info">
-		<div class="enc-info">
-			ORM PIPE
-		</div>
-		<div class="info">
-			<p>PIPE es un ORM - Mapeador Objeto Relacional desarrollado en PHP que permite interactuar con el modelo de las tablas en la base de datos accediendo a métodos escritos en español.</p>	
-		</div>
-	</div>
-	<div class="con-info">
-		<div class="enc-info">
-			Fácil de Instalar
-		</div>
-		<div class="info">
-		<p>PIPE es muy sencillo de instalar.</p>
-		<p># Instalación vía composer.</p>
-		<p>PIPE requiere una versión de PHP >= 7.2.0 para poder ser instalado.</p>
-		<p>Para instalar PIPE abrimos nuestra terminal, nos ubicamos en el directorio de nuestro proyecto e introducimos el siguiente comando.</p>
-<pre><code>composer require proesio/pipe</code></pre>
-		<p>También podemos instalar PIPE por medio del archivo composer.json de la siguiente manera.</p>
-		<p>1. Nos ubicamos en el directorio de nuestro proyecto.</p>
-		<p>2. Creamos un archivo con el nombre de composer.json y lo editamos de la siguiente manera.</p>
+  <div class="con-info">
+    <div class="enc-info">
+      ORM PIPE
+    </div>
+    <div class="info">
+      <p>PIPE es un ORM - Mapeador Objeto Relacional desarrollado en PHP que permite interactuar con el modelo de las tablas en la base de datos accediendo a métodos escritos en español.</p>	
+    </div>
+  </div>
+  <div class="con-info">
+    <div class="enc-info">
+      Fácil de Instalar
+    </div>
+    <div class="info">
+    <p>PIPE es muy sencillo de instalar.</p>
+    <p># Instalación vía composer.</p>
+    <p>PIPE requiere una versión de PHP >= 7.3.0 para poder ser instalado.</p>
+    <p>Para instalar PIPE abrimos nuestra terminal, nos ubicamos en el directorio de nuestro proyecto y ejecutamos el siguiente comando.</p>
+<pre><code>$ composer require proesio/pipe</code></pre>
+    <p>También podemos instalar PIPE por medio del archivo composer.json de la siguiente manera.</p>
+    <p>1. Nos ubicamos en el directorio de nuestro proyecto.</p>
+    <p>2. Creamos un archivo con el nombre de composer.json y lo editamos de la siguiente manera.</p>
 <pre><code><span class="signo">{</span>
-	<span class="cadena">"require"</span>: <span class="signo">{</span>
-		<span class="cadena">"proesio/pipe"</span>: <span class="cadena">"^4"</span>
-	<span class="signo">}</span>
+  <span class="cadena">"require"</span>: <span class="signo">{</span>
+    <span class="cadena">"proesio/pipe"</span>: <span class="cadena">"^5"</span>
+    <span class="signo">}</span>
 <span class="signo">}</span></code></pre>
-		<p>3. Abrimos nuestra terminal dentro del directorio de nuestro proyecto y escribimos el siguiente comando.</p>
-<pre><code>composer install</code></pre>
-		<p>Una vez terminado el proceso, composer creará un directorio llamado vendor en la raíz de nuestro proyecto donde quedará instalado el <em>ORM PIPE</em>.</p>
-		<p># Instalación manual.</p>
-		<p>Para instalar PIPE de forma manual descargamos la <a href="descargar" class="vinculo" target="_blank">última versión estable</a> desde el repositorio de GitHub.</p>
-		<p>Una vez descargado tienes toda la libertad de pegar el código fuente del <em>ORM PIPE</em> en cualquier parte de tu proyecto.</p>
-		<p>Serás tú el que decide el flujo y la estructura de tu aplicación web.</p>	
-		</div>
-	</div>
-	<div class="con-info">
-		<div class="enc-info">
-			Fácil de Configurar
-		</div>
-		<div class="info">
-		<p>PIPE es muy sencillo de configurar.</p>
-		<p>Si hemos instalado PIPE por medio de composer debemos incluir el archivo <em>vendor/autoload.php</em> en nuestro código de programación para poder utilizar el <em>ORM PIPE</em>.</p>
-		<p>Si por el contrario hemos instalado PIPE manualmente debemos incluir el archivo <em>PIPE.php</em> que se encuentra en la raíz del código fuente descargado.</p>
-		<p>Para configurar el <em>ORM PIPE</em> inicializamos la configuración de la siguiente manera.</p>		
+    <p>3. Abrimos nuestra terminal dentro del directorio de nuestro proyecto y escribimos el siguiente comando.</p>
+<pre><code>$ composer install</code></pre>
+    <p>Una vez terminado el proceso, composer creará un directorio llamado vendor en la raíz de nuestro proyecto donde quedará instalado el <em>ORM PIPE</em>.</p>
+    <p># Instalación manual.</p>
+    <p>Para instalar PIPE de forma manual, descargamos la <a href="descargar" class="vinculo" target="_blank">última versión estable</a> desde el repositorio de GitHub.</p>
+    <p>Una vez descargado tienes toda la libertad de pegar el código fuente del <em>ORM PIPE</em> en cualquier parte de tu proyecto.</p>
+    <p>Serás tú el que decide el flujo y la estructura de tu aplicación web.</p>	
+    </div>
+  </div>
+  <div class="con-info">
+    <div class="enc-info">
+      Fácil de Configurar
+    </div>
+    <div class="info">
+      <p>PIPE es muy sencillo de configurar.</p>
+      <p>Si hemos instalado PIPE por medio de composer, debemos incluir el archivo <em>vendor/autoload.php</em> en nuestro código de programación para poder utilizar el <em>ORM PIPE</em>.</p>
+      <p>Si por el contrario, hemos instalado PIPE manualmente, debemos incluir el archivo <em>src/PIPE/inicializador.php</em> que se encuentra en la raíz del código fuente descargado.</p>
+      <p>Para configurar el <em>ORM PIPE</em>, inicializamos la configuración de la siguiente manera.</p>		
 <pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require</span> <span class="cadena">"vendor/autoload.php"</span><span class="signo">;</span>
-	
-	<span class="palabra-clave">use</span> PIPE\Clases\PIPE<span class="signo">;</span>
-	<span class="palabra-clave">use</span> PIPE\Clases\Configuracion<span class="signo">;</span>
-	
-	Configuracion::inicializar<span class="signo">([</span>
-		<span class="cadena">'BD_CONTROLADOR'</span> <span class="signo">=></span></span> <span class="cadena">'controlador'</span><span class="signo">,</span> <span class="comentario">// Soporta mysql, pgsql, sqlite y sqlsrv.</span>
-		<span class="cadena">'BD_HOST'</span> <span class="signo">=></span></span> <span class="cadena">'host'</span><span class="signo">,</span> <span class="comentario">// IP o DNS del servidor.</span>
-		<span class="cadena">'BD_PUERTO'</span> <span class="signo">=></span></span> <span class="cadena">'puerto'</span><span class="signo">,</span> <span class="comentario">// Puerto donde se ejecuta el servicio.</span>
-		<span class="cadena">'BD_USUARIO'</span> <span class="signo">=></span></span> <span class="cadena">'usuario'</span><span class="signo">,</span> <span class="comentario">// Usuario de la base de datos.</span>
-		<span class="cadena">'BD_CONTRASENA'</span> <span class="signo">=></span></span> <span class="cadena">'contrasena'</span><span class="signo">,</span> <span class="comentario">// Contraseña de la base de datos.</span>
-		<span class="cadena">'BD_BASEDATOS'</span> <span class="signo">=></span></span> <span class="cadena">'basedatos'</span><span class="signo">,</span> <span class="comentario">// Nombre de la base de datos.</span>
-		<span class="cadena">'BD_CODIFICACION'</span> <span class="signo">=></span></span> <span class="cadena">'codificación'</span><span class="signo">,</span> <span class="comentario">// Juego de caracteres. Ej: utf8.</span>
-		<span class="cadena">'IDIOMA'</span> <span class="signo">=></span></span> <span class="cadena">'idioma'</span><span class="signo">,</span> <span class="comentario">// Idioma para mostrar errores SQL y mensajes del <em>ORM PIPE.</em> Soporta es, en.</span>
-		<span class="cadena">'RUTA_MODELOS'</span> <span class="signo">=></span></span> <span class="cadena">'ruta/completa/a/mis/modelos'</span><span class="signo">,</span> <span class="comentario">// Ej: C:\xampp\htdocs\mi-proyecto\modelos.</span>
-		<span class="cadena">'ZONA_HORARIA'</span> <span class="signo">=></span></span> <span class="cadena">'Zona/Horaria'</span> <span class="comentario">// [Valor UTC por defecto] Ej: America/Bogota.</span>
-	<span class="signo">]);</span>
-	<span class="comentario">
-		/*
-			Finalmente verificamos que hemos inicializado la configuración correctamente
-			imprimiendo la versión del <em>ORM PIPE</em>.
-		*/
-	</span>
-	<span class="palabra-clave">echo</span> PIPE::VERSION<span class="palabra-clave">;</span>
+  
+<span class="palabra-clave">require_once</span> <span class="palabra-clave">__DIR__</span><span class="signo">.</span><span class="cadena">'/vendor/autoload.php'</span><span class="signo">;</span>
+
+<span class="palabra-clave">use</span> PIPE\Clases\PIPE<span class="signo">;</span>
+<span class="palabra-clave">use</span> PIPE\Clases\Configuracion<span class="signo">;</span>
+
+Configuracion::inicializar<span class="signo">(</span>
+    <span class="signo">[</span>
+        <span class="cadena">'BD_CONTROLADOR'</span> <span class="signo">=></span> <span class="cadena">'mysql'</span><span class="signo">,</span>
+        <span class="cadena">'BD_HOST'</span> <span class="signo">=></span> <span class="cadena">'localhost'</span><span class="signo">,</span>
+        <span class="cadena">'BD_PUERTO'</span> <span class="signo">=></span> <span class="cadena">'3306'</span><span class="signo">,</span>
+        <span class="cadena">'BD_USUARIO'</span> <span class="signo">=></span> <span class="cadena">'root'</span><span class="signo">,</span>
+        <span class="cadena">'BD_CONTRASENA'</span> <span class="signo">=></span> <span class="cadena">'contrasena'</span><span class="signo">,</span>
+        <span class="cadena">'BD_BASEDATOS'</span> <span class="signo">=></span> <span class="cadena">'pipe'</span><span class="signo">,</span>
+        <span class="cadena">'IDIOMA'</span> <span class="signo">=></span> <span class="cadena">'es'</span><span class="signo">,</span>
+        <span class="cadena">'RUTA_MODELOS'</span> <span class="signo">=></span> <span class="cadena">'ruta/completa/a/mis/modelos'</span><span class="signo">,</span>
+        <span class="cadena">'ZONA_HORARIA'</span> <span class="signo">=></span> <span class="cadena">'America/Bogota'</span><span class="signo">,</span>
+        <span class="cadena">'COMANDO_INICIAL'</span> <span class="signo">=></span> <span class="cadena">'set names utf8mb4 collate utf8mb4_unicode_ci'</span><span class="signo">,</span>
+        <span class="cadena">'TIPO_RETORNO'</span> <span class="signo">=></span> Configuracion::CLASE<span class="signo">,</span>
+        <span class="cadena">'OPCIONES'</span> <span class="signo">=></span> <span class="signo">[</span>PDO::MYSQL_ATTR_LOCAL_INFILE <span class="signo">=></span> <span class="numero">1</span><span class="signo">]</span>
+    <span class="signo">]</span>
+<span class="signo">);</span>
+<span class="comentario">
+/**
+ * Finalmente, verificamos que hemos inicializado la configuración correctamente
+ * imprimiendo la versión del <em>ORM PIPE</em>.
+ */
+</span>
+<span class="palabra-clave">echo</span> PIPE::VERSION<span class="palabra-clave">;</span>
 </code></pre>
-		</div>
-	</div>
-	<div class="con-info">
-		<div class="enc-info">
-			Fácil de Usar
-		</div>
-		<div class="info">
-		<p>Creación de un Modelo.</p>
-		<p>PIPE automáticamente importa los modelos que han sido almacenados en la ruta especificada por medio de la constante <em>RUTA_MODELOS</em> al inicializar la <a href="documentacion/3.x/configuracion" class="vinculo">configuración</a>.</p>
-		<p>Creamos el archivo Usuario.php y lo guardamos en la ruta que hemos especificado en la constante <em>RUTA_MODELOS</em>.</p>
+      <p>PIPE permite configurar múltiples conexiones de la siguiente manera.</p>
 <pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">use</span> PIPE\Clases\Modelo<span class="signo">;</span>
-	<span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> Modelo <span class="signo">{</span>
-		<span class="comentario">// Todo tu código aquí.</span>
-	<span class="signo">}</span>
+  
+<span class="palabra-clave">require_once</span> <span class="palabra-clave">__DIR__</span><span class="signo">.</span><span class="cadena">'/vendor/autoload.php'</span><span class="signo">;</span>
+
+<span class="palabra-clave">use</span> PIPE\Clases\PIPE<span class="signo">;</span>
+<span class="palabra-clave">use</span> PIPE\Clases\Configuracion<span class="signo">;</span>
+
+<span class="variable">$conexiones</span> <span class="signo">= [</span>
+    <span class="cadena">'mysql'</span> <span class="signo">=> [</span> 
+        <span class="cadena">'BD_CONTROLADOR'</span> <span class="signo">=></span> <span class="cadena">'mysql'</span><span class="signo">,</span>
+        <span class="cadena">'BD_HOST'</span> <span class="signo">=></span> <span class="cadena">'localhost'</span><span class="signo">,</span>
+        <span class="cadena">'BD_PUERTO'</span> <span class="signo">=></span> <span class="cadena">'3306'</span><span class="signo">,</span>
+        <span class="cadena">'BD_USUARIO'</span> <span class="signo">=></span> <span class="cadena">'root'</span><span class="signo">,</span>
+        <span class="cadena">'BD_CONTRASENA'</span> <span class="signo">=></span> <span class="cadena">'contrasena'</span><span class="signo">,</span>
+        <span class="cadena">'BD_BASEDATOS'</span> <span class="signo">=></span> <span class="cadena">'pipe'</span><span class="signo">,</span>
+        <span class="cadena">'IDIOMA'</span> <span class="signo">=></span> <span class="cadena">'es'</span><span class="signo">,</span>
+        <span class="cadena">'RUTA_MODELOS'</span> <span class="signo">=></span> <span class="cadena">'ruta/completa/a/mis/modelos'</span><span class="signo">,</span>
+        <span class="cadena">'ZONA_HORARIA'</span> <span class="signo">=></span> <span class="cadena">'America/Bogota'</span><span class="signo">,</span>
+        <span class="cadena">'COMANDO_INICIAL'</span> <span class="signo">=></span> <span class="cadena">'set names utf8mb4 collate utf8mb4_unicode_ci'</span><span class="signo">,</span>
+        <span class="cadena">'TIPO_RETORNO'</span> <span class="signo">=></span> Configuracion::CLASE<span class="signo">,</span>
+        <span class="cadena">'OPCIONES'</span> <span class="signo">=></span> <span class="signo">[</span>PDO::MYSQL_ATTR_LOCAL_INFILE <span class="signo">=></span> <span class="numero">1</span><span class="signo">]</span>
+    <span class="signo">],</span>
+    <span class="cadena">'pgsql'</span> <span class="signo">=> [</span> 
+        <span class="cadena">'BD_CONTROLADOR'</span> <span class="signo">=></span> <span class="cadena">'pgsql'</span><span class="signo">,</span>
+        <span class="cadena">'BD_HOST'</span> <span class="signo">=></span> <span class="cadena">'localhost'</span><span class="signo">,</span>
+        <span class="cadena">'BD_PUERTO'</span> <span class="signo">=></span> <span class="cadena">'5432'</span><span class="signo">,</span>
+        <span class="cadena">'BD_USUARIO'</span> <span class="signo">=></span> <span class="cadena">'root'</span><span class="signo">,</span>
+        <span class="cadena">'BD_CONTRASENA'</span> <span class="signo">=></span> <span class="cadena">'contrasena'</span><span class="signo">,</span>
+        <span class="cadena">'BD_BASEDATOS'</span> <span class="signo">=></span> <span class="cadena">'pipe'</span><span class="signo">,</span>
+        <span class="cadena">'IDIOMA'</span> <span class="signo">=></span> <span class="cadena">'es'</span><span class="signo">,</span>
+        <span class="cadena">'RUTA_MODELOS'</span> <span class="signo">=></span> <span class="cadena">'ruta/completa/a/mis/modelos'</span><span class="signo">,</span>
+        <span class="cadena">'ZONA_HORARIA'</span> <span class="signo">=></span> <span class="cadena">'America/Bogota'</span><span class="signo">,</span>
+        <span class="cadena">'TIPO_RETORNO'</span> <span class="signo">=></span> Configuracion::CLASE
+    <span class="signo">]</span>
+<span class="signo">];</span>
+
+<span class="comentario">// El segundo parámetro indica la conexión por defecto que será utilizada.</span>
+Configuracion::inicializar<span class="signo">(</span><span class="variable">$conexiones</span><span class="signo">,</span> <span class="cadena">'mysql'</span><span class="signo">);</span>
+<span class="comentario">
+/**
+ * Finalmente, verificamos que hemos inicializado la configuración correctamente
+ * imprimiendo la versión del <em>ORM PIPE</em>.
+ */
+</span>
+<span class="palabra-clave">echo</span> PIPE::VERSION<span class="palabra-clave">;</span>
 </code></pre>
-		<p>Vamos a obtener todos los datos de la tabla <em>usuarios</em> por medio del modelo.</p>
+    </div>
+  </div>
+  <div class="con-info">
+    <div class="enc-info">
+      Fácil de Usar
+    </div>
+    <div class="info">
+      <p>Creación de un Modelo.</p>
+      <p>PIPE automáticamente importa los modelos que han sido ubicados en la ruta especificada por medio de la constante <em>RUTA_MODELOS</em> al inicializar la <a href="documentacion/5.x/configuracion" class="vinculo" target="_blank">configuración</a>.</p>
+      <p>Creamos el archivo Usuario.php y lo guardamos en la ruta que hemos especificado en la constante <em>RUTA_MODELOS</em>.</p>
 <pre><code><span class="php">&lt;?php</span>
-	<span class="variable">$usuarios</span> <span class="signo">=</span> Usuario::todo<span class="signo">()</span><span class="signo">;</span>
+  
+<span class="palabra-clave">namespace</span> Modelos<span class="signo">;</span>
+
+<span class="palabra-clave">use</span> PIPE\Clases\Modelo<span class="signo">;</span>
+
+<span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> Modelo 
+<span class="signo">{</span>
+    <span class="comentario">// Todo tu código aquí.</span>
+<span class="signo">}</span>
 </code></pre>
-		<p>Ahora, vamos a obtener todos los datos de la tabla <em>usuarios</em> por medio del constructor de consultas PIPE.</p>
+      <p>Vamos a obtener todos los datos de la tabla <em>usuarios</em> por medio del modelo.</p>
 <pre><code><span class="php">&lt;?php</span>
-	<span class="variable">$usuarios</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>->todo<span class="signo">()</span><span class="signo">;</span>
+
+<span class="variable">$usuarios</span> <span class="signo">=</span> Usuario::todo<span class="signo">()</span><span class="signo">;</span>
 </code></pre>
-		<p>Así de simple.</p>
-		</div>
-	</div>
+    <p>Ahora, vamos a obtener todos los datos de la tabla <em>usuarios</em> por medio del constructor de consultas PIPE.</p>
+<pre><code><span class="php">&lt;?php</span>
+
+<span class="variable">$usuarios</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>->todo<span class="signo">()</span><span class="signo">;</span>
+</code></pre>
+    <p>Así de simple.</p>
+    </div>
+  </div>
 </center>
 </div>
 </div>
@@ -148,56 +207,56 @@
 
 <script type="text/javascript">
 new Vue({
-	el:'#pipe',
-	data:function(){
-		return {
-			totalDescargas:null
-		}	
-	},
-	mounted(){
-		this.obtenerTotalDescargas();
-	},
-	methods:{
-		obtenerTotalDescargas(){
-			xhr=new XMLHttpRequest();
-			xhr.open('GET',API_DESCARGAS_TOTAL,true);
-			xhr.send();
-			xhr.onreadystatechange=()=>{
-				if(xhr.readyState==4){
-					respuesta=JSON.parse(xhr.responseText);
-					if(respuesta.estado=='exito') this.totalDescargas=respuesta.datos;
-				}
-			}
-		},
-	}
+  el:'#pipe',
+  data:function(){
+    return {
+      totalDescargas:null
+    }	
+  },
+  mounted(){
+    // this.obtenerTotalDescargas();
+  },
+  methods:{
+    obtenerTotalDescargas(){
+      xhr=new XMLHttpRequest();
+      xhr.open('GET',API_DESCARGAS_TOTAL,true);
+      xhr.send();
+      xhr.onreadystatechange=()=>{
+        if(xhr.readyState==4){
+          respuesta=JSON.parse(xhr.responseText);
+          if(respuesta.estado=='exito') this.totalDescargas=respuesta.datos;
+        }
+      }
+    },
+  }
 });
 </script>
 
 <style type="text/css">
-	.contenedor{
-		display:block;
-	}
-	.con-info{
-		width:auto;
-		max-width:900px;
-	}
-	.enc-info{ 
-		width:auto;
-	}
-	.info{
-		width:auto;
-		height:auto;
-		text-align:justify;
-	}
-	.estadistica{
-		margin-top:100px;
-		margin-bottom:25px;
-	}
-	@media screen and (max-width:600px){
-		.estadistica{
-			margin-top:375px;
-		}
-	}
+  .contenedor{
+    display:block;
+  }
+  .con-info{
+    width:auto;
+    max-width:900px;
+  }
+  .enc-info{ 
+    width:auto;
+  }
+  .info{
+    width:auto;
+    height:auto;
+    text-align:justify;
+  }
+  .estadistica{
+    margin-top:100px;
+    margin-bottom:25px;
+  }
+  @media screen and (max-width:600px){
+    .estadistica{
+      margin-top:375px;
+    }
+  }
 </style>
 </body>
 </html>
