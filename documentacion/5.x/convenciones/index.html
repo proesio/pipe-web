@@ -53,17 +53,17 @@
 
 <span class="palabra-clave">class</span> Pais <span class="palabra-clave">extends</span> Modelo 
 <span class="signo">{</span>
-    <span class="palabra-clave">protected</span> <span class="variable">$tabla</span> <span class="signo">=</span> <span class="cadena">'paises'</span><span class="signo">;</span>
+    <span class="palabra-clave">public</span> <span class="variable">$tabla</span> <span class="signo">=</span> <span class="cadena">'paises'</span><span class="signo">;</span>
 
-    <span class="palabra-clave">protected</span> <span class="variable">$llavePrimaria</span> <span class="signo">=</span> <span class="cadena">'codigo'</span><span class="signo">;</span>
+    <span class="palabra-clave">public</span> <span class="variable">$llavePrimaria</span> <span class="signo">=</span> <span class="cadena">'codigo'</span><span class="signo">;</span>
 
-    <span class="palabra-clave">protected</span> <span class="variable">$registroTiempo</span> <span class="signo">=</span> <span class="palabra-clave">false</span><span class="signo">;</span>
+    <span class="palabra-clave">public</span> <span class="variable">$registroTiempo</span> <span class="signo">=</span> <span class="palabra-clave">false</span><span class="signo">;</span>
 
-    <span class="palabra-clave">protected</span> <span class="variable">$creadoEn</span> <span class="signo">=</span> <span class="cadena">'created_at'</span><span class="signo">;</span>
+    <span class="palabra-clave">public</span> <span class="variable">$creadoEn</span> <span class="signo">=</span> <span class="cadena">'created_at'</span><span class="signo">;</span>
 
-    <span class="palabra-clave">protected</span> <span class="variable">$actualizadoEn</span> <span class="signo">=</span> <span class="cadena">'updated_at'</span><span class="signo">;</span>
+    <span class="palabra-clave">public</span> <span class="variable">$actualizadoEn</span> <span class="signo">=</span> <span class="cadena">'updated_at'</span><span class="signo">;</span>
 
-    <span class="palabra-clave">protected</span> <span class="variable">$perteneceAMuchos</span> <span class="signo">=</span> <span class="signo">[</span>
+    <span class="palabra-clave">public</span> <span class="variable">$perteneceAMuchos</span> <span class="signo">=</span> <span class="signo">[</span>
         Oceano::<span class="palabra-clave">class</span> <span class="signo">=></span> <span class="signo">[</span>
             <span class="cadena">'tablaUnion'</span> <span class="signo">=></span> <span class="cadena">'oceanospaises'</span><span class="signo">,</span>
             <span class="cadena">'llaveForaneaLocal'</span> <span class="signo">=></span> <span class="cadena">'id_pais'</span><span class="signo">,</span>
