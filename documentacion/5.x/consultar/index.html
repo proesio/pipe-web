@@ -518,7 +518,7 @@
 <pre><code><span class="php">&lt;?php</span>
 
 <span class="comentario">// Por medio del modelo.</span>
-<span class="variable">$paises</span> <span class="signo">=</span> Pais::ordenarPor<span class="signo">(</span><span class="cadena">'nombre'</span><span class="signo">,</span><span class="cadena">'desc'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
+<span class="variable">$paises</span> <span class="signo">=</span> Pais::ordenarPor<span class="signo">(</span><span class="cadena">'nombre'</span><span class="signo">,</span> <span class="cadena">'desc'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
 
 <span class="comentario">// Por medio del constructor de consultas PIPE.</span>
 <span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->ordenarPor<span class="signo">(</span><span class="cadena">'nombre'</span><span class="signo">,</span> <span class="cadena">'desc'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
@@ -663,10 +663,10 @@
           </p>
 <pre><code><span class="php">&lt;?php</span>
 
-<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->ultimo<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="numero">10</span><span class="signo">);</span>
+<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->ultimo<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span> <span class="numero">10</span><span class="signo">);</span>
 
 <span class="comentario">// Si deseamos obtener los datos con un tipo de retorno específico lo hacemos de la siguiente manera.</span>
-<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->ultimo<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="numero">10</span><span class="signo">,</span> PIPE::ARREGLO<span class="signo">);</span>
+<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->ultimo<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span> <span class="numero">10</span><span class="signo">,</span> PIPE::ARREGLO<span class="signo">);</span>
 </code></pre>
           <p>#13 Contar resultados de consulta SQL - <em>contar().</em></p>
           <p>Contar la cantidad de registros en la tabla paises.</p>
