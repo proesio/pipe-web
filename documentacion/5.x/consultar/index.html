@@ -794,8 +794,7 @@
 <span class="comentario">// Por medio del constructor de consultas PIPE.</span>
 <span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->decrementar<span class="signo">(</span><span class="cadena">'poblacion'</span><span class="signo">);</span>
 </code></pre>
-          <p>PIPE lanza tres tipos de excepciones, ORM, SQL y Exception, las cuales podemos manejar de la siguiente
-            manera.</em></p>
+          <p>PIPE lanza tres tipos de excepciones, ORM, SQL y Exception, las cuales podemos manejar de la siguiente manera.</p>
 <pre><code><span class="php">&lt;?php</span>
 
 <span class="palabra-clave">use</span> Exception<span class="signo">;</span>
@@ -803,13 +802,13 @@
 <span class="palabra-clave">use</span> PIPE\Clases\Excepciones\SQL<span class="signo">;</span>
 
 <span class="palabra-clave">try</span> <span class="signo">{</span>
-    <span class="comanterio">// Todo tu código aquí.</span>
+    <span class="comentario">// Todo tu código aquí.</span>
 <span class="signo">}</span> <span class="palabra-clave">catch</span> <span class="signo">(</span>ORM <span class="variable">$excepcion</span><span class="signo">) {</span>
-    <span class="comanterio">// Todo tu código aquí.</span>
+    <span class="comentario">// Todo tu código aquí.</span>
 <span class="signo">}</span> <span class="palabra-clave">catch</span> <span class="signo">(</span>SQL <span class="variable">$excepcion</span><span class="signo">) {</span>
-    <span class="comanterio">// Todo tu código aquí.</span>
+    <span class="comentario">// Todo tu código aquí.</span>
 <span class="signo">}</span> <span class="palabra-clave">catch</span> <span class="signo">(</span>Exception <span class="variable">$excepcion</span><span class="signo">) {</span>
-    <span class="comanterio">// Todo tu código aquí.</span>
+    <span class="comentario">// Todo tu código aquí.</span>
 <span class="signo">}</span>
 </code></pre>
           <p>Si utilizas el Modelo para interactuar con los datos de la base de datos, tendrás la ventaja de poder

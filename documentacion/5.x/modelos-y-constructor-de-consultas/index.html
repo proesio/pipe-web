@@ -36,8 +36,9 @@
             constante <em>RUTA_MODELOS</em> al inicializar la <a href="../configuracion"
               class="vinculo">configuración</a>.</p>
           <p>Creamos el archivo Usuario.php y lo guardamos en la ruta que hemos especificado en la constante
-            <em>RUTA_MODELOS</em>.</p>
-<pre><code><span class="php">&lt;?php</span>
+            <em>RUTA_MODELOS</em>.
+          </p>
+          <pre><code><span class="php">&lt;?php</span>
 
 <span class="palabra-clave">namespace</span> Modelos<span class="signo">;</span>
 
@@ -50,7 +51,7 @@
 </code></pre>
           <p>En el Modelo podemos definir los campos que podrán ser <em>insertables, actualizables, visibles y
               ocultos</em> de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
+          <pre><code><span class="php">&lt;?php</span>
 
 <span class="palabra-clave">namespace</span> Modelos<span class="signo">;</span>
 
@@ -58,11 +59,11 @@
 
 <span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> Modelo 
 <span class="signo">{</span>
-    <span class="palabra-clave">public</span> <span class="variable">$insertables</span> <span class="signo">=</span> <span class="signo">[</span><span class="cadena">'nombres'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">,</span><span class="cadena">'contrasena'</span><span class="signo">];</span>
+    <span class="palabra-clave">public</span> <span class="variable">$insertables</span> <span class="signo">=</span> <span class="signo">[</span><span class="cadena">'nombres'</span><span class="signo">, </span><span class="cadena">'apellidos'</span><span class="signo">, </span><span class="cadena">'contrasena'</span><span class="signo">];</span>
 
-    <span class="palabra-clave">public</span> <span class="variable">$actualizables</span> <span class="signo">=</span> <span class="signo">[</span><span class="cadena">'nombres'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">,</span><span class="cadena">'contrasena'</span><span class="signo">];</span>
+    <span class="palabra-clave">public</span> <span class="variable">$actualizables</span> <span class="signo">=</span> <span class="signo">[</span><span class="cadena">'nombres'</span><span class="signo">, </span><span class="cadena">'apellidos'</span><span class="signo">, </span><span class="cadena">'contrasena'</span><span class="signo">];</span>
 
-    <span class="palabra-clave">public</span> <span class="variable">$visibles</span> <span class="signo">=</span> <span class="signo">[</span><span class="cadena">'nombres'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">];</span> <span class="comentario">// Estos campos se mostrarán en la consulta SQL.</span>
+    <span class="palabra-clave">public</span> <span class="variable">$visibles</span> <span class="signo">=</span> <span class="signo">[</span><span class="cadena">'nombres'</span><span class="signo">, </span><span class="cadena">'apellidos'</span><span class="signo">];</span> <span class="comentario">// Estos campos se mostrarán en la consulta SQL.</span>
 
     <span class="palabra-clave">public</span> <span class="variable">$ocultos</span> <span class="signo">=</span> <span class="signo">[</span><span class="cadena">'contrasena'</span><span class="signo">];</span> <span class="comentario">// Este campo no se mostrará en la consulta SQL.</span>
 <span class="signo">}</span>
@@ -71,7 +72,7 @@
           <p>#1 Relación <em>Uno a Uno</em>.</p>
           <p>Vamos a relacionar el modelo <em>Usuario</em> con el modelo <em>Documento</em>, asumiendo que un usuario
             tiene un documento.</p>
-<pre><code><span class="php">&lt;?php</span>
+          <pre><code><span class="php">&lt;?php</span>
 
 <span class="palabra-clave">namespace</span> Modelos<span class="signo">;</span>
 
@@ -86,7 +87,7 @@
           <p>Para obtener los datos de esta relación <em>Uno a Uno</em>, lo hacemos de la siguiente manera.</p>
           <p><em>Nota</em>: El método <em>relacionar()</em>, permite recibir múltiples parámetros correspondientes a los
             nombres de relaciones que tengamos definidas en el modelo.</p>
-<pre><code><span class="php">&lt;?php</span>
+          <pre><code><span class="php">&lt;?php</span>
 
 <span class="variable">$documento</span> <span class="signo">=</span> Usuario::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>
     ->relacionar<span class="signo">(<span class="cadena">'documentos'</span>)</span>
@@ -94,7 +95,7 @@
 </code></pre>
           <p>PIPE por defecto determina el nombre de la relación en función del nombre de la tabla del modelo a
             relacionar. Podemos definir un nombre personalizado para nuestra relación de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
+          <pre><code><span class="php">&lt;?php</span>
 
 <span class="palabra-clave">public</span> <span class="variable">$tieneUno</span> <span class="signo">=</span> <span class="signo">[</span>
     Documento::<span class="palabra-clave">class</span> <span class="signo">=></span> <span class="signo">[</span>
@@ -112,7 +113,7 @@
           <p>PIPE por defecto determina la llave foránea en función del nombre del modelo a relacionar, debido a esto,
             se asume que la llave foránea del modelo <em>Documento</em> es <em>usuario_id</em>. Si deseamos omitir esta
             convención, podemos hacerlo de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
+          <pre><code><span class="php">&lt;?php</span>
 
 <span class="palabra-clave">public</span> <span class="variable">$tieneUno</span> <span class="signo">=</span> <span class="signo">[</span>
     Documento::<span class="palabra-clave">class</span> <span class="signo">=></span> <span class="signo">[</span>
@@ -124,7 +125,7 @@
           <p>PIPE por defecto determina que el valor de la llave foránea en el modelo <em>Documento</em> coincida con el
             valor de la llave primaria en el modelo <em>Usuario</em>, sin embargo, podemos definir una llave
             personalizada en el modelo <em>Usuario</em> de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
+          <pre><code><span class="php">&lt;?php</span>
 
 <span class="palabra-clave">public</span> <span class="variable">$tieneUno</span> <span class="signo">=</span> <span class="signo">[</span>
     Documento::<span class="palabra-clave">class</span> <span class="signo">=></span> <span class="signo">[</span>
@@ -136,7 +137,7 @@
           <p>#2 Relación <em>Uno a Muchos</em>.</p>
           <p>Vamos a relacionar el modelo <em>Usuario</em> con el modelo <em>Tema</em>, asumiendo que un usuario tiene
             muchos temas.</p>
-<pre><code><span class="php">&lt;?php</span>
+          <pre><code><span class="php">&lt;?php</span>
 
 <span class="palabra-clave">namespace</span> Modelos<span class="signo">;</span>
 
@@ -149,7 +150,7 @@
 <span class="signo">}</span>
 </code></pre>
           <p>Para obtener los datos de esta relación <em>Uno a Muchos</em>, lo hacemos de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
+          <pre><code><span class="php">&lt;?php</span>
 
 <span class="variable">$temas</span> <span class="signo">=</span> Usuario::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>
     ->relacionar<span class="signo">(<span class="cadena">'temas'</span>)</span>
@@ -158,7 +159,7 @@
           <p>Como vimos anteriormente, PIPE por defecto determina el nombre de la relación en función del nombre de la
             tabla del modelo a relacionar. Podemos definir un nombre personalizado para nuestra relación de la siguiente
             manera.</p>
-<pre><code><span class="php">&lt;?php</span>
+          <pre><code><span class="php">&lt;?php</span>
 
 <span class="palabra-clave">public</span> <span class="variable">$tieneMuchos</span> <span class="signo">=</span> <span class="signo">[</span>
     Tema::<span class="palabra-clave">class</span> <span class="signo">=></span> <span class="signo">[</span>
@@ -176,7 +177,7 @@
           <p>Como vimos anteriormente, PIPE por defecto determina la llave foránea en función del nombre del modelo a
             relacionar, debido a esto, se asume que la llave foránea del modelo <em>Tema</em> es <em>usuario_id</em>. Si
             deseamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
+          <pre><code><span class="php">&lt;?php</span>
 
 <span class="palabra-clave">public</span> <span class="variable">$tieneMuchos</span> <span class="signo">=</span> <span class="signo">[</span>
     Tema::<span class="palabra-clave">class</span> <span class="signo">=></span> <span class="signo">[</span>
@@ -187,8 +188,9 @@
 </code></pre>
           <p>Como vimos anteriormente, PIPE por defecto determina que el valor de la llave foránea en el modelo
             <em>Tema</em> coincida con el valor de la llave primaria en el modelo <em>Usuario</em>, sin embargo, podemos
-            definir una llave personalizada en el modelo <em>Usuario</em> de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
+            definir una llave personalizada en el modelo <em>Usuario</em> de la siguiente manera.
+          </p>
+          <pre><code><span class="php">&lt;?php</span>
 
 <span class="palabra-clave">public</span> <span class="variable">$tieneMuchos</span> <span class="signo">=</span> <span class="signo">[</span>
     Tema::<span class="palabra-clave">class</span> <span class="signo">=></span> <span class="signo">[</span>
@@ -199,14 +201,15 @@
 </code></pre>
           <p>Relación inversa de <em>Uno a Uno y Uno a Muchos</em>.</p>
           <p>Podemos acceder a los datos relacionados en los modelos <em>Documento y Tema</em> usando el atributo
-            <em>perteneceAUno</em>.</p>
-<pre><code><span class="php">&lt;?php</span>
+            <em>perteneceAUno</em>.
+          </p>
+          <pre><code><span class="php">&lt;?php</span>
 
 <span class="palabra-clave">public</span> <span class="variable">$perteneceAUno</span> <span class="signo">=</span> Usuario::<span class="palabra-clave">class</span><span class="signo">;</span>
 </code></pre>
           <p>Para obtener los datos de esta relación inversa de <em>Uno a Uno y Uno a Muchos</em> lo hacemos de la
             siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
+          <pre><code><span class="php">&lt;?php</span>
 
 <span class="variable">$usuario</span> <span class="signo">=</span> Documento::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relacionar<span class="signo">(<span class="cadena">'usuarios'</span>)</span>->usuarios<span class="signo">;</span>
 <span class="variable">$usuario</span> <span class="signo">=</span> Tema::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relacionar<span class="signo">(<span class="cadena">'usuarios'</span>)</span>->usuarios<span class="signo">;</span>
@@ -216,7 +219,7 @@
           <p>PIPE por defecto determina la llave foránea en función del nombre del modelo a relacionar, debido a esto,
             se asume que la llave foránea de los modelos <em>Documento y Tema</em> son <em>usuario_id</em>. Si deseamos
             omitir esta convención, podemos hacerlo de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
+          <pre><code><span class="php">&lt;?php</span>
 
 <span class="palabra-clave">public</span> <span class="variable">$perteneceAUno</span> <span class="signo">=</span> <span class="signo">[</span>
     Usuario::<span class="palabra-clave">class</span> <span class="signo">=></span> <span class="signo">[</span>
@@ -228,7 +231,7 @@
           <p>PIPE por defecto determina que el valor de la llave foránea en los modelos <em>Documento y Tema</em>
             coincida con el valor de la llave primaria en el modelo <em>Usuario</em>, sin embargo, podemos definir una
             llave personalizada en el modelo <em>Usuario</em> de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
+          <pre><code><span class="php">&lt;?php</span>
 
 <span class="palabra-clave">public</span> <span class="variable">$perteneceAUno</span> <span class="signo">=</span> <span class="signo">[</span>
     Usuario::<span class="palabra-clave">class</span> <span class="signo">=></span> <span class="signo">[</span>
@@ -242,7 +245,7 @@
             utilizar la tabla usuarios, roles y role_usuario.</p>
           <p>Vamos a relacionar el modelo <em>Usuario</em> con el modelo <em>Role</em> en una relación de <em>Muchos a
               Muchos</em>, asumiendo que un usuario tiene muchos roles y un rol pertenece a muchos usuarios.</p>
-<pre><code><span class="php">&lt;?php</span>
+          <pre><code><span class="php">&lt;?php</span>
 
 <span class="palabra-clave">namespace</span> Modelos<span class="signo">;</span>
 
@@ -255,7 +258,7 @@
 <span class="signo">}</span>
 </code></pre>
           <p>Para obtener los datos de esta relación <em>Muchos a Muchos</em> lo hacemos de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
+          <pre><code><span class="php">&lt;?php</span>
 
 <span class="variable">$roles</span> <span class="signo">=</span> Usuario::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relacionar<span class="signo">(<span class="cadena">'role_usuario'</span>)</span>->role_usuario<span class="signo">;</span>
 </code></pre>
@@ -265,7 +268,7 @@
             nombres en orden alfabético de los modelos relacionados, debido a esto, se asume que el nombre de la tercera
             tabla sea <em>role_usuario</em>. Si deseamos omitir esta convención, podemos hacerlo de la siguiente manera.
           </p>
-<pre><code><span class="php">&lt;?php</span>
+          <pre><code><span class="php">&lt;?php</span>
 
 <span class="palabra-clave">public</span> <span class="variable">$perteneceAMuchos</span> <span class="signo">=</span> <span class="signo">[</span>
     Role::<span class="palabra-clave">class</span> <span class="signo">=></span> <span class="signo">[</span>
@@ -277,7 +280,7 @@
           <p>PIPE por defecto determina que los nombres de las llaves foráneas en la tabla <em>role_usuario</em> (tabla
             de unión) sean <em>role_id y usuario_id</em>. Si deseamos omitir esta convención, podemos hacerlo de la
             siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
+          <pre><code><span class="php">&lt;?php</span>
 
 <span class="palabra-clave">public</span> <span class="variable">$perteneceAMuchos</span> <span class="signo">=</span> <span class="signo">[</span>
     Role::<span class="palabra-clave">class</span> <span class="signo">=></span> <span class="signo">[</span>
@@ -289,7 +292,7 @@
 </code></pre>
           <p>De la misma manera, podemos omitir estas convenciones para la relación inversa de <em>Muchos a Muchos</em>
             en el modelo <em>Role</em>.</p>
-<pre><code><span class="php">&lt;?php</span>
+          <pre><code><span class="php">&lt;?php</span>
 
 <span class="palabra-clave">public</span> <span class="variable">$perteneceAMuchos</span> <span class="signo">=</span> <span class="signo">[</span>
     Usuario::<span class="palabra-clave">class</span> <span class="signo">=></span> <span class="signo">[</span>
@@ -513,7 +516,7 @@
               </tr>
             </tbody>
           </table>
-          <p>La clase <em>PIPE</em> proporciona constantes que permiten obtener información del ORM PIPE.</p>
+          <p>La clase <em>PIPE</em>, proporciona constantes que permiten obtener información del ORM PIPE.</p>
           <p>A continuación, se muestra un listado de las 7 constantes disponibles en la clase <em>PIPE</em>.</p>
           <table class="tabla" border="1">
             <thead>
