@@ -68,6 +68,44 @@
     <span class="palabra-clave">public</span> <span class="variable">$ocultos</span> <span class="signo">=</span> <span class="signo">[</span><span class="cadena">'contrasena'</span><span class="signo">];</span> <span class="comentario">// Este campo no se mostrará en la consulta SQL.</span>
 <span class="signo">}</span>
 </code></pre>
+          <p>El Modelo permite modificar los datos antes de su creación y actualización, o después de su obtención, esto es posible por medio de <em>Mutadores</em>.</p>
+          <p>El nombre de los métodos mutadores deben ser creados con la siguiente convención: como prefijo, se debe iniciar con la palabra <em>mutar</em>, seguido del nombre del campo a modificar, ejemplo: <em>nombres</em>. Finalmente, se debe especificar la acción a realizar, asignar u obtener. Para este ejemplo, el nombre del método quedaría de la siguiente manera: <em>mutarNombresAsignar</em> o <em>mutarNombresObtener</em>.</p>
+          <p>Vamos a modificar el nombre del usuario antes de su creación en la base de datos.</p>
+<pre><code><span class="php">&lt;?php</span>
+
+<span class="palabra-clave">namespace</span> Modelos<span class="signo">;</span>
+
+<span class="palabra-clave">use</span> PIPE\Clases\Modelo<span class="signo">;</span>
+
+<span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> Modelo 
+<span class="signo">{</span>
+    <span class="palabra-clave">public</span> <span class="palabra-clave">function</span> mutarNombresAsignar<span class="signo">(</span><span class="variable">$nombres</span><span class="signo">)</span>
+    <span class="signo">{</span>
+        <span class="palabra-clave">return</span> ucfirst<span class="signo">(</span><span class="variable">$nombres</span><span class="signo">);</span>
+    <span class="signo">}</span>
+<span class="signo">}</span>
+</code></pre>
+          <p>Vamos a modificar los campos del registro del tiempo por una instancia de la clase <em>DateTime</em>, después de su obtención en la base de datos.</p>
+<pre><code><span class="php">&lt;?php</span>
+
+<span class="palabra-clave">namespace</span> Modelos<span class="signo">;</span>
+
+<span class="palabra-clave">use</span> DateTime<span class="signo">;</span>
+<span class="palabra-clave">use</span> PIPE\Clases\Modelo<span class="signo">;</span>
+
+<span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> Modelo 
+<span class="signo">{</span>
+    <span class="palabra-clave">public</span> <span class="palabra-clave">function</span> mutarCreadoEnObtener<span class="signo">(</span><span class="variable">$creadoEn</span><span class="signo">)</span>
+    <span class="signo">{</span>
+        <span class="palabra-clave">return</span> <span class="palabra-clave">new</span> DateTime<span class="signo">(</span><span class="variable">$creadoEn</span><span class="signo">);</span>
+    <span class="signo">}</span>
+
+    <span class="palabra-clave">public</span> <span class="palabra-clave">function</span> mutarActualizadoEnObtener<span class="signo">(</span><span class="variable">$actualizadoEn</span><span class="signo">)</span>
+    <span class="signo">{</span>
+        <span class="palabra-clave">return</span> <span class="palabra-clave">new</span> DateTime<span class="signo">(</span><span class="variable">$actualizadoEn</span><span class="signo">);</span>
+    <span class="signo">}</span>
+<span class="signo">}</span>
+</code></pre>
           <p>PIPE soporta 3 tipos de relaciones. <em>Uno a Uno, Uno a Muchos y Muchos a Muchos</em>.</p>
           <p>#1 Relación <em>Uno a Uno</em>.</p>
           <p>Vamos a relacionar el modelo <em>Usuario</em> con el modelo <em>Documento</em>, asumiendo que un usuario
@@ -317,15 +355,15 @@
             <tbody>
               <tr>
                 <td><em>crear()</em></td>
-                <td>Crea un nuevo registro en la base de datos.</td>
+                <td>Crea uno o múltiples registros en la base de datos y retorna las instancias de los registros insertados.</td>
               </tr>
               <tr>
                 <td><em>destruir()</em></td>
-                <td>Destruye un registro en la base de datos.</td>
+                <td>Destruye uno y múltiples registros en la base de datos y retorna las instancias de los registros destruidos.</td>
               </tr>
               <tr>
                 <td><em>editar()</em></td>
-                <td>Edita un registro en la base de datos.</td>
+                <td>Edita uno múltiples registros en la base de datos y retorna las instancias de los registros editados.</td>
               </tr>
               <tr>
                 <td><em>relaciones()</em></td>
