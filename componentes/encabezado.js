@@ -37,7 +37,7 @@ Vue.component('encabezado', {
       btn.style.borderBottom = '5px solid #5BC800';
     }
   },
-  template:`
+  template: `
     <header>
       <div class="logo">
         <a :href="host"><img :src="host+'imagenes/pipe-eslogan-transparente.png'" alt="ESLOGAN PIPE" style="width:auto; height:50px; margin-top:10px;"/></a>
@@ -46,7 +46,7 @@ Vue.component('encabezado', {
       </div>
       <div class="rutas">
         <a :href="host"><button id="inicio"><i class="fas fa-home"></i> Inicio</button></a>
-        <a :href="host+'documentacion/5.x'"><button id="documentacion"><i class="fas fa-book"></i> Documentación</button></a>
+        <a :href="host+'documentacion/6.x'"><button id="documentacion"><i class="fas fa-book"></i> Documentación</button></a>
         <a :href="host+'descargar'"><button id="descargar"><i class="fas fa-download"></i> Descargar</button></a>
         <a :href="autorWeb" target="_blank"><button id="desarrollador"><i class="far fa-user"></i> Desarrollador</button></a>
       </div>
@@ -55,17 +55,17 @@ Vue.component('encabezado', {
 });
 
 function abrirModal(modalId) {
-	modal = document.getElementById(modalId);
-	modal.style.display = 'block';
+  modal = document.getElementById(modalId);
+  modal.style.display = 'block';
 
-	window.onclick = (event) => {
-		if (event.target == modal) {
-			modal.style.display = 'none';
-		}
-	}
+  window.onclick = (event) => {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  }
 }
 
 function cerrarModal(modalId) {
-	modal = document.getElementById(modalId);
-	modal.style.display = 'none';
+  modal = document.getElementById(modalId);
+  modal.style.display = 'none';
 }
