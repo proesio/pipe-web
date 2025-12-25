@@ -43,7 +43,7 @@
       ORM PIPE
     </div>
     <div class="info">
-      <p>PIPE es un ORM - Mapeador Objeto Relacional desarrollado en PHP que permite interactuar con el modelo de las tablas en la base de datos accediendo a métodos escritos en español.</p>	
+      <p>PIPE es un ORM - Mapeador Objeto Relacional desarrollado en PHP, que permite interactuar con el modelo de las tablas en la base de datos accediendo a métodos escritos en español.</p>	
     </div>
   </div>
   <div class="con-info">
@@ -52,25 +52,30 @@
     </div>
     <div class="info">
     <p>PIPE es muy sencillo de instalar.</p>
-    <p># Instalación vía composer.</p>
-    <p>PIPE requiere una versión de PHP >= 7.3.0 para poder ser instalado.</p>
-    <p>Para instalar PIPE abrimos nuestra terminal, nos ubicamos en el directorio de nuestro proyecto y ejecutamos el siguiente comando.</p>
-<pre><code>$ composer require proesio/pipe</code></pre>
-    <p>También podemos instalar PIPE por medio del archivo composer.json de la siguiente manera.</p>
-    <p>1. Nos ubicamos en el directorio de nuestro proyecto.</p>
-    <p>2. Creamos un archivo con el nombre de composer.json y lo editamos de la siguiente manera.</p>
+          <p># Instalación vía composer.</p>
+          <p>PIPE requiere una versión de PHP >= 8.2.0 para poder ser instalado.</p>
+          <p>Para instalar PIPE abrimos nuestra terminal, nos ubicamos en el directorio de nuestro proyecto y ejecutamos
+            el siguiente comando.</p>
+          <pre><code>$ composer require proesio/pipe</code></pre>
+          <p>También podemos instalar PIPE por medio del archivo composer.json de la siguiente manera.</p>
+          <p>1. Nos ubicamos en el directorio de nuestro proyecto.</p>
+          <p>2. Creamos un archivo con el nombre de composer.json y lo editamos de la siguiente manera.</p>
 <pre><code><span class="signo">{</span>
-  <span class="cadena">"require"</span>: <span class="signo">{</span>
-    <span class="cadena">"proesio/pipe"</span>: <span class="cadena">"^5"</span>
+    <span class="cadena">"require"</span>: <span class="signo">{</span>
+        <span class="cadena">"proesio/pipe"</span>: <span class="cadena">"^7"</span>
     <span class="signo">}</span>
 <span class="signo">}</span></code></pre>
-    <p>3. Abrimos nuestra terminal dentro del directorio de nuestro proyecto y escribimos el siguiente comando.</p>
+          <p>3. Abrimos nuestra terminal dentro del directorio de nuestro proyecto y escribimos el siguiente comando.
+          </p>
 <pre><code>$ composer install</code></pre>
-    <p>Una vez terminado el proceso, composer creará un directorio llamado vendor en la raíz de nuestro proyecto donde quedará instalado el <em>ORM PIPE</em>.</p>
-    <p># Instalación manual.</p>
-    <p>Para instalar PIPE de forma manual, descargamos la <a href="descargar" class="vinculo" target="_blank">última versión estable</a> desde el repositorio de GitHub.</p>
-    <p>Una vez descargado tienes toda la libertad de pegar el código fuente del <em>ORM PIPE</em> en cualquier parte de tu proyecto.</p>
-    <p>Serás tú el que decide el flujo y la estructura de tu aplicación web.</p>	
+          <p>Una vez terminado el proceso, composer creará un directorio llamado vendor en la raíz de nuestro proyecto
+            donde quedará instalado el <em>ORM PIPE</em>.</p>
+          <p># Instalación manual.</p>
+          <p>Para instalar PIPE de forma manual, descargamos la <a href="../../../descargar" class="vinculo"
+              target="_blank">última versión estable</a> desde el repositorio de GitHub.</p>
+          <p>Una vez descargado, tienes toda la libertad de pegar el código fuente del <em>ORM PIPE</em> en cualquier
+            parte de tu proyecto.</p>
+          <p>Serás tú, el que decide el flujo y la estructura de tu aplicación web.</p>	
     </div>
   </div>
   <div class="con-info">
@@ -79,15 +84,17 @@
     </div>
     <div class="info">
       <p>PIPE es muy sencillo de configurar.</p>
-      <p>Si hemos instalado PIPE por medio de composer, debemos incluir el archivo <em>vendor/autoload.php</em> en nuestro código de programación para poder utilizar el <em>ORM PIPE</em>.</p>
-      <p>Si por el contrario, hemos instalado PIPE manualmente, debemos incluir el archivo <em>src/PIPE/inicializador.php</em> que se encuentra en la raíz del código fuente descargado.</p>
-      <p>Para configurar el <em>ORM PIPE</em>, inicializamos la configuración de la siguiente manera.</p>		
+          <p>Si hemos instalado PIPE por medio de composer, debemos incluir el archivo <em>vendor/autoload.php</em> en
+            nuestro código de programación para poder utilizar el <em>ORM PIPE</em>.</p>
+          <p>Si por el contrario, hemos instalado PIPE manualmente, debemos incluir el archivo
+            <em>src/inicializador.php</em> que se encuentra en la raíz del código fuente descargado.</p>
+          <p>Para configurar el <em>ORM PIPE</em>, inicializamos la configuración de la siguiente manera.</p>
 <pre><code><span class="php">&lt;?php</span>
-  
+
 <span class="palabra-clave">require_once</span> <span class="palabra-clave">__DIR__</span><span class="signo">.</span><span class="cadena">'/vendor/autoload.php'</span><span class="signo">;</span>
 
-<span class="palabra-clave">use</span> PIPE\Clases\PIPE<span class="signo">;</span>
-<span class="palabra-clave">use</span> PIPE\Clases\Configuracion<span class="signo">;</span>
+<span class="palabra-clave">use</span> PIPE\PIPE<span class="signo">;</span>
+<span class="palabra-clave">use</span> PIPE\Configuracion<span class="signo">;</span>
 
 Configuracion::inicializar<span class="signo">(</span>
     <span class="signo">[</span>
@@ -97,6 +104,7 @@ Configuracion::inicializar<span class="signo">(</span>
         <span class="cadena">'BD_USUARIO'</span> <span class="signo">=></span> <span class="cadena">'root'</span><span class="signo">,</span>
         <span class="cadena">'BD_CONTRASENA'</span> <span class="signo">=></span> <span class="cadena">'contrasena'</span><span class="signo">,</span>
         <span class="cadena">'BD_BASEDATOS'</span> <span class="signo">=></span> <span class="cadena">'pipe'</span><span class="signo">,</span>
+        <span class="cadena">'BD_DATOS_DSN'</span> <span class="signo">=></span> <span class="cadena">''</span><span class="signo">,</span>
         <span class="cadena">'IDIOMA'</span> <span class="signo">=></span> <span class="cadena">'es'</span><span class="signo">,</span>
         <span class="cadena">'RUTA_MODELOS'</span> <span class="signo">=></span> <span class="cadena">'ruta/completa/a/mis/modelos'</span><span class="signo">,</span>
         <span class="cadena">'ZONA_HORARIA'</span> <span class="signo">=></span> <span class="cadena">'America/Bogota'</span><span class="signo">,</span>
@@ -113,13 +121,13 @@ Configuracion::inicializar<span class="signo">(</span>
 </span>
 <span class="palabra-clave">echo</span> PIPE::VERSION<span class="palabra-clave">;</span>
 </code></pre>
-      <p>PIPE permite configurar múltiples conexiones de la siguiente manera.</p>
+          <p>PIPE permite configurar múltiples conexiones de la siguiente manera.</p>
 <pre><code><span class="php">&lt;?php</span>
-  
+
 <span class="palabra-clave">require_once</span> <span class="palabra-clave">__DIR__</span><span class="signo">.</span><span class="cadena">'/vendor/autoload.php'</span><span class="signo">;</span>
 
-<span class="palabra-clave">use</span> PIPE\Clases\PIPE<span class="signo">;</span>
-<span class="palabra-clave">use</span> PIPE\Clases\Configuracion<span class="signo">;</span>
+<span class="palabra-clave">use</span> PIPE\PIPE<span class="signo">;</span>
+<span class="palabra-clave">use</span> PIPE\Configuracion<span class="signo">;</span>
 
 <span class="variable">$conexiones</span> <span class="signo">= [</span>
     <span class="cadena">'mysql'</span> <span class="signo">=> [</span> 
@@ -129,6 +137,7 @@ Configuracion::inicializar<span class="signo">(</span>
         <span class="cadena">'BD_USUARIO'</span> <span class="signo">=></span> <span class="cadena">'root'</span><span class="signo">,</span>
         <span class="cadena">'BD_CONTRASENA'</span> <span class="signo">=></span> <span class="cadena">'contrasena'</span><span class="signo">,</span>
         <span class="cadena">'BD_BASEDATOS'</span> <span class="signo">=></span> <span class="cadena">'pipe'</span><span class="signo">,</span>
+        <span class="cadena">'BD_DATOS_DSN'</span> <span class="signo">=></span> <span class="cadena">''</span><span class="signo">,</span>
         <span class="cadena">'IDIOMA'</span> <span class="signo">=></span> <span class="cadena">'es'</span><span class="signo">,</span>
         <span class="cadena">'RUTA_MODELOS'</span> <span class="signo">=></span> <span class="cadena">'ruta/completa/a/mis/modelos'</span><span class="signo">,</span>
         <span class="cadena">'ZONA_HORARIA'</span> <span class="signo">=></span> <span class="cadena">'America/Bogota'</span><span class="signo">,</span>
@@ -136,13 +145,14 @@ Configuracion::inicializar<span class="signo">(</span>
         <span class="cadena">'TIPO_RETORNO'</span> <span class="signo">=></span> Configuracion::CLASE<span class="signo">,</span>
         <span class="cadena">'OPCIONES'</span> <span class="signo">=></span> <span class="signo">[</span>PDO::MYSQL_ATTR_LOCAL_INFILE <span class="signo">=></span> <span class="numero">1</span><span class="signo">]</span>
     <span class="signo">],</span>
-    <span class="cadena">'pgsql'</span> <span class="signo">=> [</span> 
-        <span class="cadena">'BD_CONTROLADOR'</span> <span class="signo">=></span> <span class="cadena">'pgsql'</span><span class="signo">,</span>
+    <span class="cadena">'sqlsrv'</span> <span class="signo">=> [</span> 
+        <span class="cadena">'BD_CONTROLADOR'</span> <span class="signo">=></span> <span class="cadena">'sqlsrv'</span><span class="signo">,</span>
         <span class="cadena">'BD_HOST'</span> <span class="signo">=></span> <span class="cadena">'localhost'</span><span class="signo">,</span>
-        <span class="cadena">'BD_PUERTO'</span> <span class="signo">=></span> <span class="cadena">'5432'</span><span class="signo">,</span>
-        <span class="cadena">'BD_USUARIO'</span> <span class="signo">=></span> <span class="cadena">'root'</span><span class="signo">,</span>
+        <span class="cadena">'BD_PUERTO'</span> <span class="signo">=></span> <span class="cadena">'1433'</span><span class="signo">,</span>
+        <span class="cadena">'BD_USUARIO'</span> <span class="signo">=></span> <span class="cadena">'sa'</span><span class="signo">,</span>
         <span class="cadena">'BD_CONTRASENA'</span> <span class="signo">=></span> <span class="cadena">'contrasena'</span><span class="signo">,</span>
         <span class="cadena">'BD_BASEDATOS'</span> <span class="signo">=></span> <span class="cadena">'pipe'</span><span class="signo">,</span>
+        <span class="cadena">'BD_DATOS_DSN'</span> <span class="signo">=></span> <span class="cadena">'Encrypt=YES;TrustServerCertificate=YES;'</span><span class="signo">,</span>
         <span class="cadena">'IDIOMA'</span> <span class="signo">=></span> <span class="cadena">'es'</span><span class="signo">,</span>
         <span class="cadena">'RUTA_MODELOS'</span> <span class="signo">=></span> <span class="cadena">'ruta/completa/a/mis/modelos'</span><span class="signo">,</span>
         <span class="cadena">'ZONA_HORARIA'</span> <span class="signo">=></span> <span class="cadena">'America/Bogota'</span><span class="signo">,</span>
@@ -168,13 +178,13 @@ Configuracion::inicializar<span class="signo">(</span><span class="variable">$co
     </div>
     <div class="info">
       <p>Creación de un Modelo.</p>
-      <p>PIPE automáticamente importa los modelos que han sido ubicados en la ruta especificada por medio de la constante <em>RUTA_MODELOS</em> al inicializar la <a href="documentacion/5.x/configuracion" class="vinculo" target="_blank">configuración</a>.</p>
+      <p>PIPE automáticamente importa los modelos que han sido ubicados en la ruta especificada por medio de la constante <em>RUTA_MODELOS</em> al inicializar la <a href="documentacion/7.x/configuracion" class="vinculo" target="_blank">configuración</a>.</p>
       <p>Creamos el archivo Usuario.php y lo guardamos en la ruta que hemos especificado en la constante <em>RUTA_MODELOS</em>.</p>
 <pre><code><span class="php">&lt;?php</span>
   
 <span class="palabra-clave">namespace</span> Modelos<span class="signo">;</span>
 
-<span class="palabra-clave">use</span> PIPE\Clases\Modelo<span class="signo">;</span>
+<span class="palabra-clave">use</span> PIPE\Modelo<span class="signo">;</span>
 
 <span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> Modelo 
 <span class="signo">{</span>

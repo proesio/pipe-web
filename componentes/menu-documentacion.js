@@ -13,6 +13,7 @@ Vue.component('menu-documentacion', {
       menu: [],
       menuVersion: {},
       versiones: [
+        'v7.x',
         'v6.x',
         'v5.x',
         'v4.x',
@@ -23,8 +24,8 @@ Vue.component('menu-documentacion', {
     }
   },
   mounted() {
-    this.asignarMenu('v6.x');
-    this.asignarMenuVersion('v6.x');
+    this.asignarMenu('v7.x');
+    this.asignarMenuVersion('v7.x');
   },
   methods: {
     asignarMenu(version) {
@@ -38,7 +39,8 @@ Vue.component('menu-documentacion', {
         { href: `${this.host}documentacion/_version_/actualizar/`, texto: 'Actualizar' },
         { href: `${this.host}documentacion/_version_/eliminar/`, texto: 'Eliminar' },
         { href: `${this.host}documentacion/_version_/vaciar-tabla/`, texto: 'Vaciar Tabla' },
-        { href: `${this.host}documentacion/_version_/autenticar-usuarios/`, texto: 'Autenticar Usuarios' }
+        { href: `${this.host}documentacion/_version_/autenticar-usuarios/`, texto: 'Autenticar Usuarios' },
+        { href: `${this.host}documentacion/_version_/migracion/`, texto: 'Migración' }
       ];
 
       version = this.obtenerVersionURL(version).substring(1, 4);
@@ -49,6 +51,10 @@ Vue.component('menu-documentacion', {
 
       if (version.substring(0, 1) >= 4) {
         this.eliminarItemMenu('autenticar-usuarios');
+      }
+
+      if (version.substring(0, 1) < 7) {
+        this.eliminarItemMenu('migracion');
       }
     },
     asignarMenuVersion(version) {

@@ -46,7 +46,7 @@ Vue.component('encabezado', {
       </div>
       <div class="rutas">
         <a :href="host"><button id="inicio"><i class="fas fa-home"></i> Inicio</button></a>
-        <a :href="host+'documentacion/6.x'"><button id="documentacion"><i class="fas fa-book"></i> Documentación</button></a>
+        <a :href="host+'documentacion/7.x'"><button id="documentacion"><i class="fas fa-book"></i> Documentación</button></a>
         <a :href="host+'descargar'"><button id="descargar"><i class="fas fa-download"></i> Descargar</button></a>
         <a :href="autorWeb" target="_blank"><button id="desarrollador"><i class="far fa-user"></i> Desarrollador</button></a>
       </div>
