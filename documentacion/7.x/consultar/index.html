@@ -86,8 +86,16 @@
 <span class="comentario">// Por medio del constructor de consultas PIPE.</span>
 <span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->seleccionar<span class="signo">(</span><span class="cadena">'id'</span><span class="signo">,</span> <span class="cadena">'codigo'</span><span class="signo">,</span> <span class="cadena">'nombre'</span><span class="signo">)</span>->extraer<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">);</span>
 </code></pre>
-          <p>El constructor de consultas PIPE nos permite realizar sentencias por medio del método <em>sentencia()</em>
-            y <em>sentenciaNativa()</em>.</p>
+          <p>El método <em>valor()</em> permite obtener el valor de un campo seleccionado, es ideal para consultas donde se tenga la certeza que devolverá un registro.</p>
+<pre><code><span class="php">&lt;?php</span>
+
+<span class="comentario">// Por medio del modelo.</span>
+<span class="variable">$paises</span> <span class="signo">=</span> Pais::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->valor<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">);</span>
+
+<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
+<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->valor<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">);</span>
+</code></pre>
+          <p>El constructor de consultas PIPE nos permite realizar sentencias por medio del método <em>sentencia()</em> y <em>sentenciaNativa()</em>.</p>
 <pre><code><span class="php">&lt;?php</span>
 
 <span class="comentario">// Sentencia en español.</span>
@@ -96,7 +104,7 @@
 <span class="comentario">// Sentencia nativa.</span>
 <span class="variable">$sentenciaNativa</span> <span class="signo">=</span> PIPE::sentenciaNativa<span class="signo">(</span><span class="cadena">'set foreign_key_checks = 0'</span><span class="signo">);</span>
 </code></pre>
-          <p>A continuación, se muestra un listado de las 36 palabras reservadas del ORM PIPE y su equivalente en el
+          <p>A continuación, se muestra un listado de las 41 palabras reservadas del ORM PIPE y su equivalente en el
             lenguaje SQL de la base de datos para realizar consultas en español con el método <em>consulta()</em>.</p>
           <div class="con-palabras-reservadas">
             <table class="tabla" style="margin:10px;" border="1">
@@ -124,6 +132,10 @@
                   <td><em>set</em></td>
                 </tr>
                 <tr>
+                  <td><em>caso</em></td>
+                  <td><em>case</em></td>
+                </tr>
+                <tr>
                   <td><em>como</em></td>
                   <td><em>like</em></td>
                 </tr>
@@ -134,6 +146,10 @@
                 <tr>
                   <td><em>contar()</em></td>
                   <td><em>count()</em></td>
+                </tr>
+                <tr>
+                  <td><em>cuando</em></td>
+                  <td><em>when</em></td>
                 </tr>
                 <tr>
                   <td><em>de</em></td>
@@ -164,6 +180,10 @@
                   <td><em>on</em></td>
                 </tr>
                 <tr>
+                  <td><em>entonces</em></td>
+                  <td><em>then</em></td>
+                </tr>
+                <tr>
                   <td><em>entre</em></td>
                   <td><em>between</em></td>
                 </tr>
@@ -174,6 +194,10 @@
                 <tr>
                   <td><em>existe</em></td>
                   <td><em>exists</em></td>
+                </tr>
+                <tr>
+                  <td><em>fin</em></td>
+                  <td><em>end</em></td>
                 </tr>
                 <tr>
                   <td><em>insertar</em></td>
@@ -232,6 +256,10 @@
                 <tr>
                   <td><em>seleccionar</em></td>
                   <td><em>select</em></td>
+                </tr>
+                <tr>
+                  <td><em>sino</em></td>
+                  <td><em>else</em></td>
                 </tr>
                 <tr>
                   <td><em>suma()</em></td>
