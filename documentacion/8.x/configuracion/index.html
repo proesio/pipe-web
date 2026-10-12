@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Juan Felipe Valencia Murillo">
+  <meta name="copyright" content="Juan Felipe Valencia Murillo">
+  <meta name="description" content="Documentación - PIPE - ORM en Español">
+  <meta name="keywords" content="configuracion,configurar,orm,pipe">
+  <meta name="robots" content="Index,Follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configuración - PIPE - ORM en Español</title>
+  <link rel="icon" type="image/svg+xml" href="../../../assets/images/pipe-isotipo.svg">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="stylesheet" href="../../../assets/css/docs.css">
+  <link rel="stylesheet" href="../../../assets/css/php-code.css">
+</head>
+
+<body>
+
+  <div class="bg-glow"></div>
+
+  <!-- INICIO ENCABEZADO -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="/" class="brand">
+        <img style="width: 95px;" src="../../../assets/images/pipe-isologo-eslogan.svg">
+      </a>
+
+      <ul class="nav-links nav-center" id="navCenter">
+        <li><a href="/" class="nav-link">Inicio</a></li>
+        <li><a href="../../../documentacion/8.x" class="nav-link active">Documentación</a></li>
+        <li><a href="https://github.com/proesio/pipe/archive/v8.0.0.zip" class="nav-link">Descargar</a></li>
+        <li><a href="https://proes.io" class="nav-link" target="_blank">PROES</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir Menú" title="Menú">
+          <svg class="icon-menu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <button class="theme-toggle" id="themeToggle">
+          <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+        </button>
+
+        <a href="https://github.com/proesio/pipe" target="_blank" rel="noopener noreferrer" class="btn-personal"
+          title="Ver repositorio en GitHub.">
+          <span>Repositorio</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+            </path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+  <!-- FIN ENCABEZADO -->
+
+  <!-- INICIO CONTENIDO PRINCIPAL -->
+  <div class="doc-layout">
+    <!-- INICIO SIDEBAR DE NAVEGACIÓN -->
+    <aside class="sidebar">
+      <div class="version-selector">
+        <ul>
+          <li>
+            <a>
+              v8.x
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </a>
+            <ul>
+              <li><a href="../../../documentacion/7.x">v7.x</a></li>
+              <li><a href="../../../documentacion/6.x">v6.x</a></li>
+              <li><a href="../../../documentacion/5.x">v5.x</a></li>
+              <li><a href="../../../documentacion/4.x">v4.x</a></li>
+              <li><a href="../../../documentacion/3.x">v3.x</a></li>
+              <li><a href="../../../documentacion/2.x">v2.x</a></li>
+              <li><a href="../../../documentacion/1.x">v1.x</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <nav>
+        <ul class="sidebar-nav">
+          <li><a href="../../../documentacion/8.x/instalacion" class="sidebar-link">Instalación</a></li>
+          <li><a href="../../../documentacion/8.x/configuracion" class="sidebar-link active">Configuración</a></li>
+          <li><a href="../../../documentacion/8.x/convenciones" class="sidebar-link">Convenciones</a></li>
+          <li><a href="../../../documentacion/8.x/modelos-y-constructor-de-consultas" class="sidebar-link">Modelos y
+              Constructor de Consultas</a></li>
+          <li><a href="../../../documentacion/8.x/insertar" class="sidebar-link">Insertar</a></li>
+          <li><a href="../../../documentacion/8.x/consultar" class="sidebar-link">Consultar</a></li>
+          <li><a href="../../../documentacion/8.x/actualizar" class="sidebar-link">Actualizar</a></li>
+          <li><a href="../../../documentacion/8.x/eliminar" class="sidebar-link">Eliminar</a></li>
+          <li><a href="../../../documentacion/8.x/migracion" class="sidebar-link">Migración</a></li>
+          <li><a href="../../../documentacion/8.x/transaccion" class="sidebar-link">Transacción</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <!-- FIN SIDEBAR DE NAVEGACIÓN -->
+
+    <!-- INICIO DOCUMENTACIÓN -->
+    <main class="documentacion">
+      <h1 class="doc-title-main">Configuración</h1>
+
+      <div class="hr"></div>
+
+      <p>A continuación, se muestra un listado de las 13 constantes disponibles en el método <em>inicializar</em> de la clase <em>PIPE\Configuracion</em> para inicializar la configuración del ORM PIPE.</p>
+
+      <div class="con-palabras-reservadas">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Constante</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><em>BD_CONTROLADOR</em></td>
+              <td>Establece el controlador de la conexión. Soporta mysql, pgsql, sqlite y sqlsrv.</td>
+            </tr>
+            <tr>
+              <td><em>BD_HOST</em></td>
+              <td>Establece la IP o DNS del servidor de bases de datos.</td>
+            </tr>
+            <tr>
+              <td><em>BD_PUERTO</em></td>
+              <td>Establece el puerto donde se ejecuta el servicio.</td>
+            </tr>
+            <tr>
+              <td><em>BD_USUARIO</em></td>
+              <td>Establece el usuario de la base de datos.</td>
+            </tr>
+            <tr>
+              <td><em>BD_CONTRASENA</em></td>
+              <td>Establece la contraseña de la base de datos.</td>
+            </tr>
+            <tr>
+              <td><em>BD_BASEDATOS</em></td>
+              <td>Establece el nombre de la base de datos que será utilizada.</td>
+            </tr>
+            <tr>
+              <td><em>BD_DATOS_DSN</em></td>
+              <td>Establece detalles adicionales para la conexión de la base de datos.</td>
+            </tr>
+            <tr>
+              <td><em>IDIOMA</em></td>
+              <td>Establece el idioma para mostrar errores SQL y mensajes del <em>ORM PIPE.</em> Soporta es, en.</td>
+            </tr>
+            <tr>
+              <td><em>RUTA_MODELOS</em></td>
+              <td>Establece la ruta donde se encuentran los modelos. Ejemplo:
+                <em>C:\xampp\htdocs\mi-proyecto\modelos</em>.</td>
+            </tr>
+            <tr>
+              <td><em>ZONA_HORARIA</em></td>
+              <td>Establece la zona horaria para registrar la marca de tiempo. Ejemplo: <em>America/Bogota</em>. El
+                valor por defecto es <em>UTC</em>.</td>
+            </tr>
+            <tr>
+              <td><em>COMANDO_INICIAL</em></td>
+              <td>Establece la sentencia SQL que será ejecutada una vez se establezca la conexión.</td>
+            </tr>
+            <tr>
+              <td><em>TIPO_RETORNO</em></td>
+              <td>Establece el tipo de retorno de datos por defecto. Se pueden utilizar las constantes <em>CLASE</em>,
+                <em>OBJETO</em>, <em>ARREGLO</em>, <em>JSON</em> y <em>SQL</em> de la clase <em>Configuracion</em>.
+              </td>
+            </tr>
+            <tr>
+              <td><em>OPCIONES</em></td>
+              <td>Establece opciones de conexión específicas del controlador por medio de un arreglo, según las
+                especificaciones de <em>PDO</em>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <p>PIPE es muy sencillo de configurar.</p>
+      <p>Si hemos instalado PIPE por medio de composer, debemos incluir el archivo <em>vendor/autoload.php</em> en nuestro código de programación para poder utilizar el ORM PIPE.</p>
+      <p>Si por el contrario, hemos instalado PIPE manualmente, debemos incluir el archivo <em>src/inicializador.php</em> que se encuentra en la raíz del código fuente descargado.</p>
+      <p>Para configurar el ORM PIPE, inicializamos la configuración de la siguiente manera.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+use PIPE\PIPE;
+use PIPE\Configuracion;
+
+Configuracion::inicializar(
+    [
+        'BD_CONTROLADOR' => 'mysql',
+        'BD_HOST' => 'localhost',
+        'BD_PUERTO' => '3306',
+        'BD_USUARIO' => 'root',
+        'BD_CONTRASENA' => 'contrasena',
+        'BD_BASEDATOS' => 'pipe',
+        'BD_DATOS_DSN' => '',
+        'IDIOMA' => 'es',
+        'RUTA_MODELOS' => 'ruta/completa/a/mis/modelos',
+        'ZONA_HORARIA' => 'America/Bogota',
+        'COMANDO_INICIAL' => 'set names utf8mb4 collate utf8mb4_unicode_ci',
+        'TIPO_RETORNO' => Configuracion::CLASE,
+        'OPCIONES' => [PDO::MYSQL_ATTR_LOCAL_INFILE => 1]
+    ]
+);
+
+/**
+ * Finalmente, verificamos que hemos inicializado la configuración correctamente
+ * imprimiendo la versión del ORM PIPE.
+ */
+
+echo PIPE::VERSION;
+        </script>
+      </div>
+
+      <p>PIPE permite configurar múltiples conexiones de la siguiente manera.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+use PIPE\PIPE;
+use PIPE\Configuracion;
+
+$conexiones = [
+    'mysql' => [ 
+        'BD_CONTROLADOR' => 'mysql',
+        'BD_HOST' => 'localhost',
+        'BD_PUERTO' => '3306',
+        'BD_USUARIO' => 'root',
+        'BD_CONTRASENA' => 'contrasena',
+        'BD_BASEDATOS' => 'pipe',
+        'BD_DATOS_DSN' => '',
+        'IDIOMA' => 'es',
+        'RUTA_MODELOS' => 'ruta/completa/a/mis/modelos',
+        'ZONA_HORARIA' => 'America/Bogota',
+        'COMANDO_INICIAL' => 'set names utf8mb4 collate utf8mb4_unicode_ci',
+        'TIPO_RETORNO' => Configuracion::CLASE,
+        'OPCIONES' => [PDO::MYSQL_ATTR_LOCAL_INFILE => 1]
+    ],
+    'sqlsrv' => [ 
+        'BD_CONTROLADOR' => 'sqlsrv',
+        'BD_HOST' => 'localhost',
+        'BD_PUERTO' => '1433',
+        'BD_USUARIO' => 'sa',
+        'BD_CONTRASENA' => 'contrasena',
+        'BD_BASEDATOS' => 'pipe',
+        'BD_DATOS_DSN' => 'Encrypt=YES;TrustServerCertificate=YES;',
+        'IDIOMA' => 'es',
+        'RUTA_MODELOS' => 'ruta/completa/a/mis/modelos',
+        'ZONA_HORARIA' => 'America/Bogota',
+        'TIPO_RETORNO' => Configuracion::CLASE
+    ]
+];
+
+// El segundo parámetro indica la conexión por defecto que será utilizada.
+Configuracion::inicializar($conexiones, 'mysql');
+
+/**
+ * Por detecto, PIPE guarda una instancia de la conexión establecida,
+ * lo que permite reutilizarla sin importar las veces que se llame el
+ * método Configuracion::inicializar, si deseamos reiniciar la conexión
+ * cada vez que se llame Configuracion::inicializar, enviamos un tercer parámetro.
+ */
+
+Configuracion::inicializar($conexiones, 'mysql', true);
+
+/**
+ * Finalmente, verificamos que hemos inicializado la configuración correctamente
+ * imprimiendo la versión del ORM PIPE.
+ */
+
+echo PIPE::VERSION;
+        </script>
+      </div>
+
+      <p>PIPE permite establecer la conexión predeterminada en el modelo.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+namespace Modelos;
+
+use PIPE\Modelo;
+
+class Usuario extends Modelo
+{
+    public $conexion = 'mysql';
+}
+        </script>
+      </div>
+
+      <p>PIPE permite cambiar de conexión en tiempo de ejecución.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+// Por medio del constructor de consultas PIPE.
+
+$usuarios = PIPE::conexion('mysql')->tabla('usuarios')->todo();
+
+// Por medio del modelo.
+
+$usuarios = Usuario::conexion('sqlsrv')->todo();
+        </script>
+      </div>
+    </main>
+    <!-- FIN DOCUMENTACIÓN -->
+  </div>
+  <!-- FIN CONTENIDO PRINCIPAL -->
+
+  <!-- INICIO FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-info">
+          <a href="https://proes.io" class="brand" target="_blank">
+            <img style="width: 130px;" src="../../../assets/images/proes-isologo-eslogan.svg">
+          </a>
+          <p class="footer-desc">
+            Herramientas de desarrollo web accesibles y de código abierto para la comunidad hispanohablante.
+          </p>
+        </div>
+
+        <div class="footer-socials">
+          <a href="https://facebook.com/proesio" target="_blank" rel="noopener noreferrer" class="social-link"
+            aria-label="Siguenos en Facebook" title="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/channel/UCk5pHq8tVsn0RdGoGB56QQg" target="_blank" rel="noopener noreferrer"
+            class="social-link" aria-label="Suscripciones en YouTube" title="YouTube">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+              </path>
+              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>Copyright &copy; 2018 - <span id="copyrightYear"></span> <a href="https://jfvalenciam.proes.io"
+            target="_blank" rel="noopener noreferrer" class="footer-link">Juan Felipe Valencia Murillo</a></p>
+      </div>
+    </div>
+  </footer>
+  <!-- FIN FOOTER -->
+
+  <!-- INICIO BOTÓN "VOLVER A ARRIBA" -->
+  <button id="scrollToTopBtn" aria-label="Volver arriba" title="Volver arriba">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m18 15-6-6-6 6" />
+    </svg>
+  </button>
+  <!-- FIN BOTÓN "VOLVER A ARRIBA" -->
+
+  <script src="../../../assets/js/main.js"></script>
+  <script src="../../../assets/js/php-code.js"></script>
+</body>
+
+</html>

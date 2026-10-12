@@ -1,448 +1,972 @@
-<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
+
 <head>
-	<meta charset="UTF-8"/>
-	<meta name="author" content="Juan Felipe Valencia Murillo">
-	<meta name="copyright" content="Juan Felipe Valencia Murillo">
-	<meta name="description" content="PIPE - ORM en Español">
-	<meta name="keywords" content="modelo,constructor,consultas,orm,pipe">
-	<meta name="robots" content="Index,Follow">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-	<title>Modelos y Constructor de Consultas - PIPE - ORM en Español</title>
-	<link rel="icon" type="image/png" href="../../../imagenes/pipe-logo-transparente.png"/>
-	<link rel="stylesheet" href="../../../css/fontawesome-5.4.1.min.css"/>
-	<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
-	<link rel="stylesheet" href="../../../css/principal.css"/>
-	<script type="text/javascript" src="../../../js/config.js"></script>
+  <meta charset="UTF-8">
+  <meta name="author" content="Juan Felipe Valencia Murillo">
+  <meta name="copyright" content="Juan Felipe Valencia Murillo">
+  <meta name="description" content="Documentación - PIPE - ORM en Español">
+  <meta name="keywords" content="modelo,constructor,consultas,instalar,orm,pipe">
+  <meta name="robots" content="Index,Follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modelos y Constructor de Consultas - PIPE - ORM en Español</title>
+  <link rel="icon" type="image/svg+xml" href="../../../assets/images/pipe-isotipo.svg">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="stylesheet" href="../../../assets/css/docs.css">
+  <link rel="stylesheet" href="../../../assets/css/php-code.css">
 </head>
+
 <body>
-<div id="pipe">
-<encabezado></encabezado>
-<menu-documentacion></menu-documentacion>
-<div class="contenido">
-<div class="regilla-contenedora">
-	<div class="documentacion">
-		<div style="font-size:300%;">Modelos y Constructor de Consultas</div>
-		<div class="hr"></div>
-		<p>Para interactuar con los datos de la base de datos, PIPE proporciona dos métodos para acceder a ellos, el primero es por medio de Modelos referenciados a las tablas de la base de datos, y el segundo es por medio del Constructor de Consultas PIPE.</p>
-		<p>Veamos algunos ejemplos.</p>
-		<p>Creación de un Modelo.</p>
-		<p>PIPE automáticamente importa los modelos que han sido almacenados en la ruta especificada por medio de la constante <em>RUTA_MODELOS</em> al inicializar la <a href="../configuracion" class="vinculo">configuración</a>.</p>
-		<p>Creamos el archivo Usuario.php y lo guardamos en la ruta que hemos especificado en la constante <em>RUTA_MODELOS</em>.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">use</span> PIPE\Clases\Modelo<span class="signo">;</span>
-	<span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> Modelo <span class="signo">{</span>
-		<span class="comentario">// Todo tu código aquí.</span>
-	<span class="signo">}</span>
-</code></pre>
-		<p>En el Modelo podemos definir los campos que podrán ser <em>insertables, actualizables, visibles y ocultos</em> de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">use</span> PIPE\Clases\Modelo<span class="signo">;</span>
-	<span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> Modelo <span class="signo">{</span>
-		<span class="palabra-clave">protected</span> <span class="variable">$insertables</span> <span class="signo">=</span> <span class="signo">[</span><span class="cadena">'nombres'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">,</span><span class="cadena">'contrasena'</span><span class="signo">];</span>
-		<span class="palabra-clave">protected</span> <span class="variable">$actualizables</span> <span class="signo">=</span> <span class="signo">[</span><span class="cadena">'nombres'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">,</span><span class="cadena">'contrasena'</span><span class="signo">];</span>
-		<span class="palabra-clave">protected</span> <span class="variable">$visibles</span> <span class="signo">=</span> <span class="signo">[</span><span class="cadena">'nombres'</span><span class="signo">,</span><span class="cadena">'apellidos'</span><span class="signo">];</span> <span class="comentario">// Estos campos se mostrarán en la consulta SQL.</span>
-		<span class="palabra-clave">protected</span> <span class="variable">$ocultos</span> <span class="signo">=</span> <span class="signo">[</span><span class="cadena">'contrasena'</span><span class="signo">];</span> <span class="comentario">// Este campo no se mostrará en la consulta SQL.</span>
-	<span class="signo">}</span>
-</code></pre>		
-		<p>PIPE soporta 3 tipos de relaciones. <em>Uno a Uno, Uno a Muchos y Muchos a Muchos</em>.</p>
-		<p>#1 Relación <em>Uno a Uno</em>.</p>
-		<p>Vamos a relacionar el modelo <em>Usuario</em> con el modelo <em>Documento</em> asumiendo que un usuario tiene un documento.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">use</span> PIPE\Clases\Modelo<span class="signo">;</span>
-	<span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> Modelo <span class="signo">{</span>
-		<span class="palabra-clave">protected</span> <span class="variable">$tieneUno</span> <span class="signo">=</span> <span class="cadena">'Documento'</span><span class="signo">;</span>
-	<span class="signo">}</span>
-</code></pre>
-		<p>Para obtener los datos de esta relación <em>Uno a Uno</em> lo hacemos de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="variable">$documeto</span> <span class="signo">=</span> Usuario::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relaciones<span class="signo">()</span>->documentos<span class="signo">;</span>
-</code></pre>
-		<p>PIPE por defecto determina la llave foránea en función del nombre del modelo a relacionar, debido a esto, se asume que la llave foránea del modelo <em>Documento</em> es <em>usuario_id</em>. Si deseamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">protected</span> <span class="variable">$tieneUno</span> <span class="signo">=</span> <span class="signo">[</span>
-		<span class="cadena">'Documento'</span> <span class="signo">=></span> <span class="signo">[</span>
-			<span class="cadena">'llaveForanea'</span> <span class="signo">=></span> <span class="cadena">'id_usuario'</span>
-		<span class="signo">]</span>
-		...
-	<span class="signo">];</span>
-</code></pre>
-		<p>PIPE por defecto determina que el valor de la llave foránea en el modelo <em>Documento</em> coincida con el valor de la llave primaria en el modelo <em>Usuario</em>, sin embargo, podemos definir una llave personalizada en el modelo <em>Usuario</em> de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">protected</span> <span class="variable">$tieneUno</span> <span class="signo">=</span> <span class="signo">[</span>
-		<span class="cadena">'Documento'</span> <span class="signo">=></span> <span class="signo">[</span>
-			<span class="cadena">'llavePrincipal'</span> <span class="signo">=></span> <span class="cadena">'idusuario'</span>
-		<span class="signo">]</span>
-		...
-	<span class="signo">];</span>
-</code></pre>
-		<p>#2 Relación <em>Uno a Muchos</em>.</p>
-		<p>Vamos a relacionar el modelo <em>Usuario</em> con el modelo <em>Tema</em> asumiendo que un usuario tiene muchos temas.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">use</span> PIPE\Clases\Modelo<span class="signo">;</span>
-	<span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> Modelo <span class="signo">{</span>
-		<span class="palabra-clave">protected</span> <span class="variable">$tieneMuchos</span> <span class="signo">=</span> <span class="cadena">'Tema'</span><span class="signo">;</span>
-	<span class="signo">}</span>
-</code></pre>
-		<p>Para obtener los datos de esta relación <em>Uno a Muchos</em> lo hacemos de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="variable">$temas</span> <span class="signo">=</span> Usuario::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relaciones<span class="signo">()</span>->temas<span class="signo">;</span>
-</code></pre>
-		<p>Como vimos anteriormente, PIPE por defecto determina la llave foránea en función del nombre del modelo a relacionar, debido a esto, se asume que la llave foránea del modelo <em>Tema</em> es <em>usuario_id</em>. Si deseamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">protected</span> <span class="variable">$tieneMuchos</span> <span class="signo">=</span> <span class="signo">[</span>
-		<span class="cadena">'Tema'</span> <span class="signo">=></span> <span class="signo">[</span>
-			<span class="cadena">'llaveForanea'</span> <span class="signo">=></span> <span class="cadena">'id_usuario'</span>
-		<span class="signo">]</span>
-		...
-	<span class="signo">];</span>
-</code></pre>
-		<p>Como vimos anteriormente, PIPE por defecto determina que el valor de la llave foránea en el modelo <em>Tema</em> coincida con el valor de la llave primaria en el modelo <em>Usuario</em>, sin embargo, podemos definir una llave personalizada en el modelo <em>Usuario</em> de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">protected</span> <span class="variable">$tieneMuchos</span> <span class="signo">=</span> <span class="signo">[</span>
-		<span class="cadena">'Tema'</span> <span class="signo">=></span> <span class="signo">[</span>
-			<span class="cadena">'llavePrincipal'</span> <span class="signo">=></span> <span class="cadena">'idusuario'</span>
-		<span class="signo">]</span>
-		...
-	<span class="signo">];</span>
-</code></pre>
-		<p>Relación inversa de <em>Uno a Uno y Uno a Muchos</em>.</p>
-		<p>Podemos acceder a los datos relacionados en los modelos <em>Documento y Tema</em> usando el atributo <em>perteneceAUno</em>.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">protected</span> <span class="variable">$perteneceAUno</span> <span class="signo">=</span> <span class="cadena">'Usuario'</span><span class="signo">;</span>
-</code></pre>
-		<p>Para obtener los datos de esta relación inversa de <em>Uno a Uno y Uno a Muchos</em> lo hacemos de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="variable">$usuario</span> <span class="signo">=</span> Documento::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relaciones<span class="signo">()</span>->usuarios<span class="signo">;</span>
-	<span class="variable">$usuario</span> <span class="signo">=</span> Tema::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relaciones<span class="signo">()</span>->usuarios<span class="signo">;</span>
-</code></pre>
-		<p>PIPE por defecto determina la llave foránea en función del nombre del modelo a relacionar, debido a esto, se asume que la llave foránea de los modelos <em>Documento y Tema</em> son <em>usuario_id</em>. Si deseamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">protected</span> <span class="variable">$perteneceAUno</span> <span class="signo">=</span> <span class="signo">[</span>
-		<span class="cadena">'Usuario'</span> <span class="signo">=></span> <span class="signo">[</span>
-			<span class="cadena">'llaveForanea'</span> <span class="signo">=></span> <span class="cadena">'id_usuario'</span>
-		<span class="signo">]</span>
-		...
-	<span class="signo">];</span>
-</code></pre>		
-		<p>PIPE por defecto determina que el valor de la llave foránea en los modelos <em>Documento y Tema</em> coincida con el valor de la llave primaria en el modelo <em>Usuario</em>, sin embargo, podemos definir una llave personalizada en el modelo <em>Usuario</em> de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">protected</span> <span class="variable">$perteneceAUno</span> <span class="signo">=</span> <span class="signo">[</span>
-		<span class="cadena">'Usuario'</span> <span class="signo">=></span> <span class="signo">[</span>
-			<span class="cadena">'llavePrincipal'</span> <span class="signo">=></span> <span class="cadena">'idusuario'</span>
-		<span class="signo">]</span>
-		...
-	<span class="signo">];</span>
-</code></pre>
-		<p>#3 Relación <em>Muchos a Muchos</em>.</p>
-		<p>Para definir la relación de <em>Muchos a Muchos</em> se necesitan tres tablas. Para nuestro ejemplo vamos a utilizar la tabla usuarios, roles y role_usuario.</p>
-		<p>Vamos a relacionar el modelo <em>Usuario</em> con el modelo <em>Role</em> en una relación de <em>Muchos a Muchos</em> asumiendo que un usuario tiene muchos roles y un rol pertenece a muchos usuarios.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">use</span> PIPE\Clases\Modelo<span class="signo">;</span>
-	<span class="palabra-clave">class</span> Usuario <span class="palabra-clave">extends</span> Modelo <span class="signo">{</span>
-		<span class="palabra-clave">protected</span> <span class="variable">$perteneceAMuchos</span> <span class="signo">=</span> <span class="cadena">'Role'</span><span class="signo">;</span>
-	<span class="signo">}</span>
-</code></pre>
-		<p>Para obtener los datos de esta relación <em>Muchos a Muchos</em> lo hacemos de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="variable">$roles</span> <span class="signo">=</span> Usuario::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relaciones<span class="signo">()</span>->roles<span class="signo">;</span>
-</code></pre>
-		<p>También podemos obtener los datos de la relación en la tabla <em>role_usuario</em> de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="variable">$roles</span> <span class="signo">=</span> Usuario::encontrar<span class="signo">(</span><span class="numero">1</span><span class="signo">)</span>->relaciones<span class="signo">()</span>->roles<span class="signo">;</span>
-	<span class="palabra-clave">foreach</span> <span class="signo">(</span><span class="variable">$roles</span> <span class="palabra-clave">as</span> <span class="variable">$rol</span><span class="signo">)</span> <span class="signo">{</span>
-		<span class="palabra-clave">echo</span> <span class="variable">$rol</span>->role_usuario->creado_en<span class="signo">;</span>
-	<span class="signo">}</span>
-</code></pre>
-		<p>PIPE por defecto determina que el nombre de la tercera tabla (tabla de unión) este compuesto por los nombres en orden alfabético de los modelos relacionados, debido a esto, se asume que el nombre de la tercera tabla sea <em>role_usuario</em>. Si deseamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">protected</span> <span class="variable">$perteneceAMuchos</span> <span class="signo">=</span> <span class="signo">[</span>
-		<span class="cadena">'Role'</span> <span class="signo">=></span> <span class="signo">[</span>
-			<span class="cadena">'tablaUnion'</span> <span class="signo">=></span> <span class="cadena">'rolesusuarios'</span>
-		<span class="signo">]</span>
-		...
-	<span class="signo">];</span>
-</code></pre>
-		<p>PIPE por defecto determina que los nombres de las llaves foráneas en la tabla <em>role_usuario</em> (tabla de unión) sean <em>role_id y usuario_id</em>. Si deseamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">protected</span> <span class="variable">$perteneceAMuchos</span> <span class="signo">=</span> <span class="signo">[</span>
-		<span class="cadena">'Role'</span> <span class="signo">=></span> <span class="signo">[</span>
-			<span class="cadena">'llaveForaneaLocal'</span> <span class="signo">=></span> <span class="cadena">'id_usuario'</span><span class="signo">,</span>
-			<span class="cadena">'llaveForaneaUnion'</span> <span class="signo">=></span> <span class="cadena">'id_role'</span>
-		<span class="signo">]</span>
-		...
-	<span class="signo">];</span>
-</code></pre>
-		<p>De la misma manera podemos omitir estas convenciones para la relación inversa de <em>Muchos a Muchos</em> en el modelo <em>Role</em>.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">protected</span> <span class="variable">$perteneceAMuchos</span> <span class="signo">=</span> <span class="signo">[</span>
-		<span class="cadena">'Usuario'</span> <span class="signo">=></span> <span class="signo">[</span>
-			<span class="cadena">'tablaUnion'</span> <span class="signo">=></span> <span class="cadena">'rolesusuarios'</span><span class="signo">,</span>
-			<span class="cadena">'llaveForaneaLocal'</span> <span class="signo">=></span> <span class="cadena">'id_role'</span><span class="signo">,</span>
-			<span class="cadena">'llaveForaneaUnion'</span> <span class="signo">=></span> <span class="cadena">'id_usuario'</span>
-		<span class="signo">]</span>
-		...
-	<span class="signo">];</span>
-</code></pre>
-		<p>El Modelo y el Constructor de Consultas PIPE nos permiten estructurar sentencias SQL por medio de métodos.</p>
-		<p>A continuación, se muestra un listado de los 3 métodos disponibles únicamente en el Modelo para estructurar sentencias SQL.</p>
-		<table class="tabla" border="1">
-			<thead>
-				<tr>
-					<th>Método</th>
-					<th>Descripción</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><em>crear()</em></td>
-					<td>Crea un nuevo registro en la base de datos.</td>
-				</tr>
-				<tr>
-					<td><em>destruir()</em></td>
-					<td>Destruye un registro en la base de datos.</td>
-				</tr>
-				<tr>
-					<td><em>editar()</em></td>
-					<td>Edita un registro en la base de datos.</td>
-				</tr>
-			</tbody>
-		</table>
-		<p>A continuación, se muestra un listado de los 5 métodos disponibles únicamente en el Constructor de Consultas PIPE para estructurar sentencias SQL.</p>
-		<table class="tabla" border="1">
-			<thead>
-				<tr>
-					<th>Método</th>
-					<th>Descripción</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><em>consulta()</em></td>
-					<td>Realiza una consulta SQL en español.</td>
-				</tr>
-				<tr>
-					<td><em>consultaNativa()</em></td>
-					<td>Realiza una consulta SQL nativa.</td>
-				</tr>
-				<tr>
-					<td><em>obtenerPDO()</em></td>
-					<td>Obtiene la instancia de PDO.</td>
-				</tr>
-				<tr>
-					<td><em>sentencia()</em></td>
-					<td>Realiza una sentencia SQL.</td>
-				</tr>
-				<tr>
-					<td><em>tabla()</em></td>
-					<td>Establece el nombre de la tabla en el Constructor de Consultas.</td>
-				</tr>
-			</tbody>
-		</table>
-		<p>A continuación, se muestra un listado de los 32 métodos disponibles en el Modelo y el Constructor de Consultas PIPE para estructurar sentencias SQL.</p>
-		<table class="tabla" border="1">
-			<thead>
-				<tr>
-					<th>Método</th>
-					<th>Descripción</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><em>actualizar()</em></td>
-					<td>Actualiza un registro en la base de datos.</td>
-				</tr>
-				<tr>
-					<td><em>actualizarOInsertar()</em></td>
-					<td>Actualiza o inserta un nuevo registro en la base de datos.</td>
-				</tr>
-				<tr>
-					<td><em>agruparPor()</em></td>
-					<td>Agrupa registros que tienen los mismos valores.</td>
-				</tr>
-				<tr>
-					<td><em>alias()</em></td>
-					<td>Establece un alias al nombre de la tabla.</td>
-				</tr>
-				<tr>
-					<td><em>contar()</em></td>
-					<td>Obtiene la cantidad general o especifica de registros retornados.</td>
-				</tr>
-				<tr>
-					<td><em>decrementar()</em></td>
-					<td>Decrementa el valor del campo especificado.</td>
-				</tr>
-				<tr>
-					<td><em>distinto()</em></td>
-					<td>Elimina duplicados del conjunto de resultados.</td>
-				</tr>
-				<tr>
-					<td><em>donde()</em></td>
-					<td>Establece una condición en la consulta SQL.</td>
-				</tr>
-				<tr>
-					<td><em>eliminar()</em></td>
-					<td>Elimina un registro en la base de datos.</td>
-				</tr>
-				<tr>
-					<td><em>encontrar()</em></td>
-					<td>Obtiene una instancia del Constructor de Consultas con los datos asociados a la llave primaria.</td>
-				</tr>
-				<tr>
-					<td><em>existe()</em></td>
-					<td>Verifica que la consulta SQL ha retornado un resultado.</td>
-				</tr>
-				<tr>
-					<td><em>incrementar()</em></td>
-					<td>Incrementa el valor del campo especificado.</td>
-				</tr>
-				<tr>
-					<td><em>insertar()</em></td>
-					<td>Inserta un nuevo registro en la base de datos.</td>
-				</tr>
-				<tr>
-					<td><em>insertarObtenerId()</em></td>
-					<td>Inserta un nuevo registro en la base de datos y obtiene el último id generado.</td>
-				</tr>
-				<tr>
-					<td><em>limite()</em></td>
-					<td>Limita el número de registros retornados en la consulta SQL.</td>
-				</tr>
-				<tr>
-					<td><em>maximo()</em></td>
-					<td>Obtiene el valor máximo del campo especificado.</td>
-				</tr>
-				<tr>
-					<td><em>minimo()</em></td>
-					<td>Obtiene el valor mínino del campo especificado.</td>
-				</tr>
-				<tr>
-					<td><em>noExiste()</em></td>
-					<td>Verifica que la consulta SQL no ha retornado un resultado.</td>
-				</tr>
-				<tr>
-					<td><em>obtener()</em></td>
-					<td>Obtiene el resultado de una consulta SQL.</td>
-				</tr>
-				<tr>
-					<td><em>ordenarPor()</em></td>
-					<td>Ordena el resultado de la consulta SQL.</td>
-				</tr>
-				<tr>
-					<td><em>primero()</em></td>
-					<td>Obtiene los primeros registros retornados en la consulta SQL.</td>
-				</tr>
-				<tr>
-					<td><em>promedio()</em></td>
-					<td>Obtiene el valor promedio del campo especificado.</td>
-				</tr>
-				<tr>
-					<td><em>seleccionar()</em></td>
-					<td>Establece los campos que serán seleccionados.</td>
-				</tr>
-				<tr>
-					<td><em>suma()</em></td>
-					<td>Obtiene la suma del campo especificado.</td>
-				</tr>
-				<tr>
-					<td><em>teniendo()</em></td>
-					<td>Establece una condición a una función de agregación.</td>
-				</tr>
-				<tr>
-					<td><em>todo()</em></td>
-					<td>Obtiene todos los datos de la tabla seleccionada.</td>
-				</tr>
-				<tr>
-					<td><em>tomar()</em></td>
-					<td>Obtiene una cantidad específca de registros retornados.</td>
-				</tr>
-				<tr>
-					<td><em>ultimo()</em></td>
-					<td>Obtiene los últimos registros retornados en la consulta SQL.</td>
-				</tr>
-				<tr>
-					<td><em>unir()</em></td>
-					<td>Combina registros de una o más tablas relacionadas.</td>
-				</tr>
-				<tr>
-					<td><em>unirDerecha()</em></td>
-					<td>Combina registros de una o más tablas relacionadas obteniendo todos los registros de la tabla de la derecha.</td>
-				</tr>
-				<tr>
-					<td><em>unirIzquierda()</em></td>
-					<td>Combina registros de una o más tablas relacionadas obteniendo todos los registros de la tabla de la izquierda.</td>
-				</tr>
-				<tr>
-					<td><em>vaciar()</em></td>
-					<td>Elimina todos los registros en la tabla y reinicia el contador auto incrementable.</td>
-				</tr>
-			</tbody>
-		</table>
-		<p>La clase <em>PIPE</em> proporciona constantes que permiten obtener información del ORM PIPE.</p>
-		<p>A continuación, se muestra un listado de las 6 constantes disponibles en la clase <em>PIPE</em>.</p>
-		<table class="tabla" border="1">
-			<thead>
-				<tr>
-					<th>Constante</th>
-					<th>Descripción</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><em>PIPE::ARREGLO</em></td>
-					<td>Indica el retorno de resultados de una consulta SQL como un arreglo.</td>
-				</tr>
-				<tr>
-					<td><em>PIPE::AUTOR</em></td>
-					<td>Autor del ORM PIPE.</td>
-				</tr>
-				<tr>
-					<td><em>PIPE::JSON</em></td>
-					<td>Indica el retorno de resultados de una consulta SQL como una cadena de json.</td>
-				</tr>
-				<tr>
-					<td><em>PIPE::OBJETO</em></td>
-					<td>Indica el retorno de resultados de una consulta SQL como un objeto.</td>
-				</tr>
-				<tr>
-					<td><em>PIPE::SQL</em></td>
-					<td>Indica el retorno de la consulta SQL generada.</td>
-				</tr>
-				<tr>
-					<td><em>PIPE::VERSION</em></td>
-					<td>Versión actual del ORM PIPE.</td>
-				</tr>
-			</tbody>
-		</table>
-		<p>Si utilizas el Modelo para interactuar con los datos de la base de datos, tendrás la ventaja de poder omitir las <a href="../convenciones" class="vinculo">convenciones</a> que tiene el ORM PIPE y adaptarse a la estructura que tenga tu tabla en la base de datos, ya que el Constructor de Consultas se adapta por defecto a las <a href="../convenciones" class="vinculo">convenciones</a>.</p>
-	</div>
-</div>
-</div>
-<pie-pagina></pie-pagina>
-</div>
-<script type="text/javascript" src="../../../js/vue-2.5.16.min.js"></script>
-<script type="text/javascript" src="../../../componentes/encabezado.js"></script>
-<script type="text/javascript" src="../../../componentes/menu-documentacion.js"></script>
-<script type="text/javascript" src="../../../componentes/pie-pagina.js"></script>
 
-<script type="text/javascript">
-new Vue({
-	el:'#pipe'
-});
-</script>
+  <div class="bg-glow"></div>
 
-<style type="text/css">
-	@media screen and (max-width:930px){
-		.contenido{
-			margin-top:0px;
-		}
-	}
-	@media screen and (max-width:455px){
-		.con-palabras-reservadas{
-			display:block;
-		}
-	}
-</style>
+  <!-- INICIO ENCABEZADO -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="/" class="brand">
+        <img style="width: 95px;" src="../../../assets/images/pipe-isologo-eslogan.svg">
+      </a>
+
+      <ul class="nav-links nav-center" id="navCenter">
+        <li><a href="/" class="nav-link">Inicio</a></li>
+        <li><a href="../../../documentacion/8.x" class="nav-link active">Documentación</a></li>
+        <li><a href="https://github.com/proesio/pipe/archive/v8.0.0.zip" class="nav-link">Descargar</a></li>
+        <li><a href="https://proes.io" class="nav-link" target="_blank">PROES</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir Menú" title="Menú">
+          <svg class="icon-menu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <button class="theme-toggle" id="themeToggle">
+          <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+        </button>
+
+        <a href="https://github.com/proesio/pipe" target="_blank" rel="noopener noreferrer" class="btn-personal"
+          title="Ver repositorio en GitHub.">
+          <span>Repositorio</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+            </path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+  <!-- FIN ENCABEZADO -->
+
+  <!-- INICIO CONTENIDO PRINCIPAL -->
+  <div class="doc-layout">
+    <!-- INICIO SIDEBAR DE NAVEGACIÓN -->
+    <aside class="sidebar">
+      <div class="version-selector">
+        <ul>
+          <li>
+            <a>
+              v4.x
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </a>
+            <ul>
+              <li><a href="../../../documentacion/8.x">v8.x</a></li>
+              <li><a href="../../../documentacion/7.x">v7.x</a></li>
+              <li><a href="../../../documentacion/6.x">v6.x</a></li>
+              <li><a href="../../../documentacion/5.x">v5.x</a></li>
+              <li><a href="../../../documentacion/3.x">v3.x</a></li>
+              <li><a href="../../../documentacion/2.x">v2.x</a></li>
+              <li><a href="../../../documentacion/1.x">v1.x</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <nav>
+        <ul class="sidebar-nav">
+          <li><a href="../../../documentacion/4.x/instalacion" class="sidebar-link">Instalación</a></li>
+          <li><a href="../../../documentacion/4.x/configuracion" class="sidebar-link">Configuración</a></li>
+          <li><a href="../../../documentacion/4.x/convenciones" class="sidebar-link">Convenciones</a></li>
+          <li><a href="../../../documentacion/4.x/modelos-y-constructor-de-consultas" class="sidebar-link active">Modelos y
+              Constructor de Consultas</a></li>
+          <li><a href="../../../documentacion/4.x/insertar" class="sidebar-link">Insertar</a></li>
+          <li><a href="../../../documentacion/4.x/consultar" class="sidebar-link">Consultar</a></li>
+          <li><a href="../../../documentacion/4.x/actualizar" class="sidebar-link">Actualizar</a></li>
+          <li><a href="../../../documentacion/4.x/eliminar" class="sidebar-link">Eliminar</a></li>
+          <li><a href="../../../documentacion/4.x/vaciar-tabla" class="sidebar-link">Vaciar Tabla</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <!-- FIN SIDEBAR DE NAVEGACIÓN -->
+
+    <!-- INICIO DOCUMENTACIÓN -->
+    <main class="documentacion">
+      <h1 class="doc-title-main">Modelos y Constructor de Consultas</h1>
+
+      <div class="hr"></div>
+
+      <div class="warning-banner">
+        <div class="warning-icon">!</div>
+        <div class="warning-content">
+            <p><strong>Atención:</strong> Estás visualizando una versión desactualizada de la documentación. Te recomendamos utilizar la <a href="../../../documentacion/8.x">última versión (8.x)</a> para acceder a las últimas características y correcciones.</p>
+        </div>
+      </div>
+
+      <p>Para interactuar con los datos de la base de datos, PIPE proporciona dos métodos para acceder a ellos, el
+        primero es por medio de Modelos referenciados a las tablas de la base de datos, y el segundo es por medio
+        del Constructor de Consultas PIPE.</p>
+      <p>Veamos algunos ejemplos.</p>
+      <p>Creación de un Modelo.</p>
+      <p>PIPE automáticamente importa los modelos que han sido ubicados en la ruta especificada por medio de la
+        constante <em>RUTA_MODELOS</em> al inicializar la <a href="../configuracion"
+          class="link">configuración</a>.</p>
+      <p>Creamos el archivo Usuario.php y lo guardamos en la ruta que hemos especificado en la constante
+        <em>RUTA_MODELOS</em>.
+      </p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+namespace Modelos;
+
+use PIPE\Clases\Modelo;
+
+class Usuario extends Modelo 
+{
+    // Todo tu código aquí.
+}
+        </script>
+      </div>
+
+      <p>En el Modelo podemos definir los campos que podrán ser <em>insertables, actualizables, visibles y
+              ocultos</em> de la siguiente manera.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+namespace Modelos;
+
+use PIPE\Clases\Modelo;
+
+class Usuario extends Modelo 
+{
+    public $insertables = ['nombres', 'apellidos', 'contrasena'];
+
+    public $actualizables = ['nombres', 'apellidos', 'contrasena'];
+
+    public $visibles = ['nombres', 'apellidos']; // Estos campos se mostrarán en la consulta SQL.
+
+    public $ocultos = ['contrasena']; // Este campo no se mostrará en la consulta SQL.
+}
+        </script>
+      </div>
+
+      <p>PIPE soporta 3 tipos de relaciones. <em>Uno a Uno</em>, <em>Uno a Muchos</em> y <em>Muchos a Muchos</em>.</p>
+      <p>#1 Relación <em>Uno a Uno</em>.</p>
+      <p>Vamos a relacionar el modelo <em>Usuario</em> con el modelo <em>Documento</em>, asumiendo que un usuario
+        tiene un documento.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+namespace Modelos;
+
+use Modelos\Documento;
+use PIPE\Clases\Modelo;
+
+class Usuario extends Modelo 
+{
+    public $tieneUno = Documento::class;
+}
+        </script>
+      </div>
+
+      <p>Para obtener los datos de esta relación <em>Uno a Uno</em>, lo hacemos de la siguiente manera.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+$documeto = Usuario::encontrar(1)->relaciones()->documentos;
+        </script>
+      </div>
+
+    <p>PIPE por defecto determina la llave foránea en función del nombre del modelo a relacionar, debido a esto, se asume que la llave foránea del modelo <em>Documento</em> es <em>usuario_id</em>. Si deseamos omitir esta convención podemos hacerlo de la siguiente manera.<p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+public $tieneUno = [
+    Documento::class => [
+        'llaveForanea' => 'id_usuario'
+    ]
+    ...
+];
+        </script>
+      </div>
+
+      <p>PIPE por defecto determina que el valor de la llave foránea en el modelo <em>Documento</em> coincida con el
+            valor de la llave primaria en el modelo <em>Usuario</em>, sin embargo, podemos definir una llave
+            personalizada en el modelo <em>Usuario</em> de la siguiente manera.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+public $tieneUno = [
+    Documento::class => [
+        'llavePrincipal' => 'idusuario'
+    ]
+    ...
+];
+        </script>
+      </div>
+
+      <p>#2 Relación <em>Uno a Muchos</em>.</p>
+      <p>Vamos a relacionar el modelo <em>Usuario</em> con el modelo <em>Tema</em>, asumiendo que un usuario tiene
+        muchos temas.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+namespace Modelos;
+
+use Modelos\Tema;
+use PIPE\Clases\Modelo;
+
+class Usuario extends Modelo 
+{
+    public $tieneMuchos = Tema::class;
+}
+        </script>
+      </div>
+
+      <p>Para obtener los datos de esta relación <em>Uno a Muchos</em>, lo hacemos de la siguiente manera.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+$temas = Usuario::encontrar(1)->relaciones()->temas;
+        </script>
+      </div>
+
+      <p>Como vimos anteriormente, PIPE por defecto determina la llave foránea en función del nombre del modelo a relacionar, debido a esto, se asume que la llave foránea del modelo <em>Tema</em> es <em>usuario_id</em>. Si deseamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+public $tieneMuchos = [
+    Tema::class => [
+        'llaveForanea' => 'id_usuario'
+    ]
+    ...
+];
+        </script>
+      </div>
+
+      <p>Como vimos anteriormente, PIPE por defecto determina que el valor de la llave foránea en el modelo
+            <em>Tema</em> coincida con el valor de la llave primaria en el modelo <em>Usuario</em>, sin embargo, podemos
+            definir una llave personalizada en el modelo <em>Usuario</em> de la siguiente manera.
+          </p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+public $tieneMuchos = [
+    Tema::class => [
+        'llavePrincipal' => 'idusuario'
+    ]
+    ...
+];
+        </script>
+      </div>
+
+      <p>Relación inversa de <em>Uno a Uno y Uno a Muchos</em>.</p>
+      <p>Podemos acceder a los datos relacionados en los modelos <em>Documento</em> y <em>Tema</em> usando el atributo
+        <em>perteneceAUno</em>.
+      </p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+public $perteneceAUno = Usuario::class;
+        </script>
+      </div>
+
+      <p>Para obtener los datos de esta relación inversa de <em>Uno a Uno y Uno a Muchos</em> lo hacemos de la
+            siguiente manera.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+$usuario = Documento::encontrar(1)->relaciones()->usuarios;
+$usuario = Tema::encontrar(1)->relaciones()->usuarios;
+        </script>
+      </div>
+
+      <p>PIPE por defecto determina la llave foránea en función del nombre del modelo a relacionar, debido a esto, se asume que la llave foránea de los modelos <em>Documento</em> y <em>Tema</em> son <em>usuario_id</em>. Si deseamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+public $perteneceAUno = [
+    Usuario::class => [
+        'llaveForanea' => 'id_usuario'
+    ]
+    ...
+];
+        </script>
+      </div>
+
+      <p>PIPE por defecto determina que el valor de la llave foránea en los modelos <em>Documento y Tema</em>
+            coincida con el valor de la llave primaria en el modelo <em>Usuario</em>, sin embargo, podemos definir una
+            llave personalizada en el modelo <em>Usuario</em> de la siguiente manera.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+public $perteneceAUno = [
+    Usuario::class => [
+        'llavePrincipal' => 'idusuario'
+    ]
+    ...
+];
+        </script>
+      </div>
+
+      <p>#3 Relación <em>Muchos a Muchos</em>.</p>
+      <p>Para definir la relación de <em>Muchos a Muchos</em> se necesitan tres tablas. Para nuestro ejemplo vamos a
+        utilizar la tabla usuarios, roles y role_usuario.</p>
+      <p>Vamos a relacionar el modelo <em>Usuario</em> con el modelo <em>Role</em> en una relación de <em>Muchos a
+          Muchos</em>, asumiendo que un usuario tiene muchos roles y un rol pertenece a muchos usuarios.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+namespace Modelos;
+
+use Modelos\Role;
+use PIPE\Clases\Modelo;
+
+class Usuario extends Modelo 
+{
+    public $perteneceAMuchos = Role::class;
+}
+        </script>
+      </div>
+
+      <p>Para obtener los datos de esta relación <em>Muchos a Muchos</em> lo hacemos de la siguiente manera.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+$roles = Usuario::encontrar(1)->relaciones()->roles;
+        </script>
+      </div>
+
+      <p>También podemos obtener los datos de la relación en la tabla role_usuario de la siguiente manera.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+$roles = Usuario::encontrar(1)->relaciones()->roles;
+
+foreach ($roles as $rol) {
+    echo $rol->role_usuario->creado_en;
+}
+        </script>
+      </div>
+
+      <p>PIPE por defecto determina que el nombre de la tercera tabla (tabla de unión) este compuesto por los nombres en orden alfabético de los modelos relacionados, debido a esto, se asume que el nombre de la tercera tabla sea <em>role_usuario</em>. Si deseamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+public $perteneceAMuchos = [
+    Role::class => [
+        'tablaUnion' => 'rolesusuarios'
+    ]
+    ...
+];
+        </script>
+      </div>
+
+      <<p>PIPE por defecto determina que los nombres de las llaves foráneas en la tabla <em>role_usuario</em> (tabla de unión) sean <em>role_id y usuario_id</em>. Si deseamos omitir esta convención podemos hacerlo de la siguiente manera.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+public $perteneceAMuchos = [
+    Role::class => [
+        'llaveForaneaLocal' => 'id_usuario',
+        'llaveForaneaUnion' => 'id_role'
+    ]
+    ...
+];
+        </script>
+      </div>
+      
+      <p>De la misma manera, podemos omitir estas convenciones para la relación inversa de <em>Muchos a Muchos</em>
+            en el modelo <em>Role</em>.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+public $perteneceAMuchos = [
+    Usuario::class => [
+        'tablaUnion' => 'usuarios_roles',
+        'llaveForaneaLocal' => 'id_role',
+        'llaveForaneaUnion' => 'id_usuario'
+    ]
+    ...
+];
+        </script>
+      </div>
+
+      <p>El Modelo y el Constructor de Consultas PIPE nos permiten estructurar sentencias SQL por medio de métodos.
+      </p>
+      <p>A continuación, se muestra un listado de los 3 métodos disponibles únicamente en el Modelo para estructurar
+        sentencias SQL.</p>
+
+      <div class="con-palabras-reservadas">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Método</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><em>crear</em></td>
+              <td>Crea uno o múltiples registros en la base de datos y retorna las instancias de los registros insertados.</td>
+            </tr>
+            <tr>
+              <td><em>destruir</em></td>
+              <td>Destruye uno y múltiples registros en la base de datos y retorna las instancias de los registros destruidos.</td>
+            </tr>
+            <tr>
+              <td><em>editar</em></td>
+              <td>Edita uno múltiples registros en la base de datos y retorna las instancias de los registros editados.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>A continuación, se muestra un listado de los 5 métodos disponibles únicamente en el Constructor de
+            Consultas PIPE para estructurar sentencias SQL.</p>
+
+      <div class="con-palabras-reservadas">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Método</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><em>consulta</em></td>
+              <td>Realiza una consulta SQL en español.</td>
+            </tr>
+            <tr>
+              <td><em>consultaNativa</em></td>
+              <td>Realiza una consulta SQL nativa.</td>
+            </tr>
+            <tr>
+              <td><em>obtenerPDO</em></td>
+              <td>Obtiene la instancia de PDO.</td>
+            </tr>
+            <tr>
+              <td><em>sentencia</em></td>
+              <td>Realiza una sentencia SQL en español.</td>
+            </tr>
+            <tr>
+              <td><em>tabla</em></td>
+              <td>Establece el nombre de la tabla en el Constructor de Consultas.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>A continuación, se muestra un listado de los 32 métodos disponibles en el Modelo y el Constructor de
+            Consultas PIPE para estructurar sentencias SQL.</p>
+
+      <div class="con-palabras-reservadas">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Método</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><em>actualizar</em></td>
+              <td>Actualiza un registro en la base de datos.</td>
+            </tr>
+            <tr>
+              <td><em>actualizarOInsertar</em></td>
+              <td>Actualiza o inserta un nuevo registro en la base de datos.</td>
+            </tr>
+            <tr>
+              <td><em>agruparPor</em></td>
+              <td>Agrupa registros que tienen los mismos valores.</td>
+            </tr>
+            <tr>
+              <td><em>alias</em></td>
+              <td>Establece un alias al nombre de la tabla.</td>
+            </tr>
+            <tr>
+              <td><em>contar</em></td>
+              <td>Obtiene la cantidad general o especifica de registros retornados.</td>
+            </tr>
+            <tr>
+              <td><em>decrementar</em></td>
+              <td>Decrementa el valor del campo especificado.</td>
+            </tr>
+            <tr>
+              <td><em>distinto</em></td>
+              <td>Elimina duplicados del conjunto de resultados.</td>
+            </tr>
+            <tr>
+              <td><em>donde</em></td>
+              <td>Establece una condición en la consulta SQL.</td>
+            </tr>
+            <tr>
+              <td><em>eliminar</em></td>
+              <td>Elimina un registro en la base de datos.</td>
+            </tr>
+            <tr>
+              <td><em>encontrar</em></td>
+              <td>Obtiene una instancia del Constructor de Consultas con los datos asociados a la llave primaria.</td>
+            </tr>
+            <tr>
+              <td><em>existe</em></td>
+              <td>Verifica que la consulta SQL ha retornado un resultado.</td>
+            </tr>
+            <tr>
+              <td><em>incrementar</em></td>
+              <td>Incrementa el valor del campo especificado.</td>
+            </tr>
+            <tr>
+              <td><em>insertar</em></td>
+              <td>Inserta un nuevo registro en la base de datos.</td>
+            </tr>
+            <tr>
+              <td><em>insertarObtenerId</em></td>
+              <td>Inserta un nuevo registro en la base de datos y obtiene el último id generado.</td>
+            </tr>
+            <tr>
+              <td><em>limite</em></td>
+              <td>Limita el número de registros retornados en la consulta SQL.</td>
+            </tr>
+            <tr>
+              <td><em>maximo</em></td>
+              <td>Obtiene el valor máximo del campo especificado.</td>
+            </tr>
+            <tr>
+              <td><em>minimo</em></td>
+              <td>Obtiene el valor mínino del campo especificado.</td>
+            </tr>
+            <tr>
+              <td><em>noExiste</em></td>
+              <td>Verifica que la consulta SQL no ha retornado un resultado.</td>
+            </tr>
+            <tr>
+              <td><em>obtener</em></td>
+              <td>Obtiene el resultado de una consulta SQL.</td>
+            </tr>
+            <tr>
+              <td><em>ordenarPor</em></td>
+              <td>Ordena el resultado de la consulta SQL.</td>
+            </tr>
+            <tr>
+              <td><em>primero</em></td>
+              <td>Obtiene los primeros registros retornados en la consulta SQL.</td>
+            </tr>
+            <tr>
+              <td><em>promedio</em></td>
+              <td>Obtiene el valor promedio del campo especificado.</td>
+            </tr>
+            <tr>
+              <td><em>relacionar</em></td>
+              <td>Establece los datos relacionados a un modelo.</td>
+            </tr>
+            <tr>
+              <td><em>seleccionar</em></td>
+              <td>Establece los campos que serán seleccionados.</td>
+            </tr>
+            <tr>
+              <td><em>suma</em></td>
+              <td>Obtiene la suma del campo especificado.</td>
+            </tr>
+            <tr>
+              <td><em>teniendo</em></td>
+              <td>Establece una condición a una función de agregación.</td>
+            </tr>
+            <tr>
+              <td><em>todo</em></td>
+              <td>Obtiene todos los datos de la tabla seleccionada.</td>
+            </tr>
+            <tr>
+              <td><em>ultimo</em></td>
+              <td>Obtiene los últimos registros retornados en la consulta SQL.</td>
+            </tr>
+            <tr>
+              <td><em>unir</em></td>
+              <td>Combina registros de una o más tablas relacionadas.</td>
+            </tr>
+            <tr>
+              <td><em>unirDerecha</em></td>
+              <td>Combina registros de una o más tablas relacionadas obteniendo todos los registros de la tabla de la
+                derecha.</td>
+            </tr>
+            <tr>
+              <td><em>unirIzquierda</em></td>
+              <td>Combina registros de una o más tablas relacionadas obteniendo todos los registros de la tabla de la
+                izquierda.</td>
+            </tr>
+            <tr>
+              <td><em>vaciar</em></td>
+              <td>Elimina todos los registros en la tabla y reinicia el contador auto incrementable.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>La clase <em>PIPE</em>, proporciona constantes que permiten obtener información del ORM PIPE.</p>
+      <p>A continuación, se muestra un listado de las 6 constantes disponibles en la clase <em>PIPE</em>.</p>
+
+      <div class="con-palabras-reservadas">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Constante</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><em>PIPE::ARREGLO</em></td>
+              <td>Indica el retorno de resultados de una consulta SQL como un arreglo.</td>
+            </tr>
+            <tr>
+              <td><em>PIPE::AUTOR</em></td>
+              <td>Indica el autor del ORM PIPE.</td>
+            </tr>
+            <tr>
+              <td><em>PIPE::JSON</em></td>
+              <td>Indica el retorno de resultados de una consulta SQL como una cadena de json.</td>
+            </tr>
+            <tr>
+              <td><em>PIPE::OBJETO</em></td>
+              <td>Indica el retorno de resultados de una consulta SQL como un objeto.</td>
+            </tr>
+            <tr>
+              <td><em>PIPE::SQL</em></td>
+              <td>Indica el retorno de la consulta SQL generada.</td>
+            </tr>
+            <tr>
+              <td><em>PIPE::VERSION</em></td>
+              <td>Indica la versión actual del ORM PIPE.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Si utilizas el Modelo para interactuar con los datos de la base de datos, tendrás la ventaja de poder
+            omitir las <a href="../convenciones" class="link">convenciones</a> que tiene el ORM PIPE y adaptarse a la
+            estructura que tenga tu tabla en la base de datos, ya que el Constructor de Consultas se adapta por defecto
+            a las <a href="../convenciones" class="link">convenciones</a>.</p>
+    </main>
+    <!-- FIN DOCUMENTACIÓN -->
+  </div>
+  <!-- FIN CONTENIDO PRINCIPAL -->
+
+  <!-- INICIO FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-info">
+          <a href="https://proes.io" class="brand" target="_blank">
+            <img style="width: 130px;" src="../../../assets/images/proes-isologo-eslogan.svg">
+          </a>
+          <p class="footer-desc">
+            Herramientas de desarrollo web accesibles y de código abierto para la comunidad hispanohablante.
+          </p>
+        </div>
+
+        <div class="footer-socials">
+          <a href="https://facebook.com/proesio" target="_blank" rel="noopener noreferrer" class="social-link"
+            aria-label="Siguenos en Facebook" title="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/channel/UCk5pHq8tVsn0RdGoGB56QQg" target="_blank" rel="noopener noreferrer"
+            class="social-link" aria-label="Suscripciones en YouTube" title="YouTube">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+              </path>
+              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>Copyright &copy; 2018 - <span id="copyrightYear"></span> <a href="https://jfvalenciam.proes.io"
+            target="_blank" rel="noopener noreferrer" class="footer-link">Juan Felipe Valencia Murillo</a></p>
+      </div>
+    </div>
+  </footer>
+  <!-- FIN FOOTER -->
+
+  <!-- INICIO BOTÓN "VOLVER A ARRIBA" -->
+  <button id="scrollToTopBtn" aria-label="Volver arriba" title="Volver arriba">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m18 15-6-6-6 6" />
+    </svg>
+  </button>
+  <!-- FIN BOTÓN "VOLVER A ARRIBA" -->
+
+  <script src="../../../assets/js/main.js"></script>
+  <script src="../../../assets/js/php-code.js"></script>
 </body>
+
 </html>

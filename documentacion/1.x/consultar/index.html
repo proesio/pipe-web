@@ -1,643 +1,1443 @@
-<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
+
 <head>
-	<meta charset="UTF-8"/>
-	<meta name="author" content="Juan Felipe Valencia Murillo">
-	<meta name="copyright" content="Juan Felipe Valencia Murillo">
-	<meta name="description" content="PIPE - ORM en Español">
-	<meta name="keywords" content="consultar,orm,pipe">
-	<meta name="robots" content="Index,Follow">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-	<title>Consultar - PIPE - ORM en Español</title>
-	<link rel="icon" type="image/png" href="../../../imagenes/pipe-logo-transparente.png"/>
-	<link rel="stylesheet" href="../../../css/fontawesome-5.4.1.min.css"/>
-	<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
-	<link rel="stylesheet" href="../../../css/principal.css"/>
-	<script type="text/javascript" src="../../../js/config.js"></script>
+  <meta charset="UTF-8">
+  <meta name="author" content="Juan Felipe Valencia Murillo">
+  <meta name="copyright" content="Juan Felipe Valencia Murillo">
+  <meta name="description" content="Documentación - PIPE - ORM en Español">
+  <meta name="keywords" content="consultar,consulta,orm,pipe">
+  <meta name="robots" content="Index,Follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consultar - PIPE - ORM en Español</title>
+  <link rel="icon" type="image/svg+xml" href="../../../assets/images/pipe-isotipo.svg">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="stylesheet" href="../../../assets/css/docs.css">
+  <link rel="stylesheet" href="../../../assets/css/php-code.css">
 </head>
+
 <body>
-<div id="pipe">
-<encabezado></encabezado>
-<menu-documentacion></menu-documentacion>
-<div class="contenido">
-<div class="regilla-contenedora">
-	<div class="documentacion">
-		<div style="font-size:300%;">Consultar</div>
-		<div class="hr"></div>
-		<p>PIPE proporciona métodos en español para acceder a los datos de las tablas interpretando los comandos y palabras reservadas de la base de datos.</p>
-		<p>PIPE tiene tres formas de retornar los datos en las consultas, como un <em>objeto</em>, como un <em>arreglo</em> y como un <em>json</em> por medio de las constantes <em>PIPE::OBJETO</em>, <em>PIPE::ARREGLO</em> y <em>PIPE::JSON</em>. La forma por defecto del retorno de datos es como un <em>objeto</em>.</p>
-		<p>A continuación, se muestra un listado de las palabras reservadas del ORM PIPE y su equivalente en el lenguaje SQL de la base de datos para realizar consultas en español con el método <em>consulta()</em>.</p>
-		<div class="con-palabras-reservadas">
-		<table class="tabla" style="margin:10px;" border="1">
-			<thead>
-				<tr>
-					<th>Palabra Reservada en el ORM PIPE</th>
-					<th>Equivalente en el Lenguaje SQL</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><em>seleccionar</em></td>
-					<td><em>select</em></td>
-				</tr>
-				<tr>
-					<td><em>distinto</em></td>
-					<td><em>distinct</em></td>
-				</tr>
-				<tr>
-					<td><em>todo</em></td>
-					<td><em>*</em></td>
-				</tr>
-				<tr>
-					<td><em>alias</em></td>
-					<td><em>as</em></td>
-				</tr>
-				<tr>
-					<td><em>de</em></td>
-					<td><em>from</em></td>
-				</tr>
-				<tr>
-					<td><em>unir</em></td>
-					<td><em>join</em></td>
-				</tr>
-				<tr>
-					<td><em>derecha</em></td>
-					<td><em>right</em></td>
-				</tr>
-				<tr>
-					<td><em>izquierda</em></td>
-					<td><em>left</em></td>
-				</tr>
-				<tr>
-					<td><em>en</em></td>
-					<td><em>on</em></td>
-				</tr>
-				<tr>
-					<td><em>donde</em></td>
-					<td><em>where</em></td>
-				</tr>
-				<tr>
-					<td><em>agrupar</em></td>
-					<td><em>group</em></td>
-				</tr>
-				<tr>
-					<td><em>por</em></td>
-					<td><em>by</em></td>
-				</tr>
-				<tr>
-					<td><em>teniendo</em></td>
-					<td><em>having</em></td>
-				</tr>
-				<tr>
-					<td><em>ordenar</em></td>
-					<td><em>order</em></td>
-				</tr>
-				<tr>
-					<td><em>limite</em></td>
-					<td><em>limit</em></td>
-				</tr>
-				<tr>
-					<td><em>es</em></td>
-					<td><em>is</em></td>
-				</tr>
-			</tbody>
-		</table>
-		<table class="tabla" style="margin:10px;" border="1">
-			<thead>
-				<tr>
-					<th>Palabra Reservada en el ORM PIPE</th>
-					<th>Equivalente en el Lenguaje SQL</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><em>nulo</em></td>
-					<td><em>null</em></td>
-				</tr>
-				<tr>
-					<td><em>existe</em></td>
-					<td><em>exists</em></td>
-				</tr>
-				<tr>
-					<td><em>entre</em></td>
-					<td><em>between</em></td>
-				</tr>
-				<tr>
-					<td><em>como</em></td>
-					<td><em>like</em></td>
-				</tr>
-				<tr>
-					<td><em>no</em></td>
-					<td><em>not</em></td>
-				</tr>
-				<tr>
-					<td><em>y</em></td>
-					<td><em>and</em></td>
-				</tr>
-				<tr>
-					<td><em>o</em></td>
-					<td><em>or</em></td>
-				</tr>
-				<tr>
-					<td><em>xo</em></td>
-					<td><em>xor</em></td>
-				</tr>
-				<tr>
-					<td><em>contar()</em></td>
-					<td><em>count()</em></td>
-				</tr>
-				<tr>
-					<td><em>concatenar()</em></td>
-					<td><em>concat()</em></td>
-				</tr>
-				<tr>
-					<td><em>insertar</em></td>
-					<td><em>insert</em></td>
-				</tr>
-				<tr>
-					<td><em>dentro</em></td>
-					<td><em>into</em></td>
-				</tr>
-				<tr>
-					<td><em>valores</em></td>
-					<td><em>values</em></td>
-				</tr>
-				<tr>
-					<td><em>actualizar</em></td>
-					<td><em>update</em></td>
-				</tr>
-				<tr>
-					<td><em>asignar</em></td>
-					<td><em>set</em></td>
-				</tr>
-				<tr>
-					<td><em>eliminar</em></td>
-					<td><em>delete</em></td>
-				</tr>
-				</tbody>
-			</table>
-		</div>
-		<p>Veamos algunos ejemplos utilizando la base de datos <em>mundo</em>.</p>
-		<p>#1 Obtener todos los datos - <em>*</em>.</p>
-		<p>Obtener todos los datos de la tabla <em>paises</em> por medio del modelo.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">include</span> <span class="cadena">"Pais.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Pais.php</em> que contiene la clase <em>Pais</em>.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::todo<span class="signo">()</span><span class="signo">;</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::todo<span class="signo">(</span>PIPE::ARREGLO<span class="signo">);</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::todo<span class="signo">(</span>PIPE::JSON<span class="signo">);</span>
-		<span class="comentario">// El método <em>todo()</em> permite enviar un arreglo como parámetro indicando los campos que deseamos obtener.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::todo<span class="signo">([</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="cadena">'nombre'</span><span class="signo">]);</span>
-		<span class="comentario">// También podemos incluir un tipo de retorno.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::todo<span class="signo">([</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="cadena">'nombre'</span><span class="signo">],</span>PIPE::ARREGLO<span class="signo">);</span>
-</code></pre>
-		<p>Obtener todos los datos de la tabla <em>paises</em> por medio del constructor de consultas PIPE.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->todo<span class="signo">()</span><span class="signo">;</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->todo<span class="signo">(</span>PIPE::ARREGLO<span class="signo">);</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->todo<span class="signo">(</span>PIPE::JSON<span class="signo">);</span>
-		<span class="comentario">// El método <em>todo()</em> permite enviar un arreglo como parámetro indicando los campos que deseamos obtener.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->todo<span class="signo">([</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="cadena">'nombre'</span><span class="signo">]);</span>
-		<span class="comentario">// También podemos incluir un tipo de retorno.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->todo<span class="signo">([</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="cadena">'nombre'</span><span class="signo">],</span>PIPE::ARREGLO<span class="signo">);</span>
-</code></pre>
-		<p>Obtener todos los datos de la tabla <em>paises</em> por medio de consulta en español.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar todo de paises'</span><span class="signo">);</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar todo de paises'</span><span class="signo">,</span>PIPE::ARREGLO<span class="signo">);</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar todo de paises'</span><span class="signo">,</span>PIPE::JSON<span class="signo">);</span>
-</code></pre>
-		<p>Obtener todos los datos de la tabla <em>paises</em> por medio de consulta nativa.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consultaNativa<span class="signo">(</span><span class="cadena">'select * from paises'</span><span class="signo">)</span><span class="signo">;</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consultaNativa<span class="signo">(</span><span class="cadena">'select * from paises'</span><span class="signo">,</span>PIPE::ARREGLO<span class="signo">);</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consultaNativa<span class="signo">(</span><span class="cadena">'select * from paises'</span><span class="signo">,</span>PIPE::JSON<span class="signo">);</span>
-</code></pre>
-		<p>Mostrar los datos retornados como un <em>objeto</em>.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">foreach</span> <span class="signo">(</span><span class="variable">$paises</span> <span class="palabra-clave">as</span> <span class="variable">$pais</span><span class="signo">)</span> <span class="signo">{</span>
-		<span class="palabra-clave">echo</span> <span class="variable">$pais</span>->codigo<span class="signo">;</span>
-		<span class="palabra-clave">echo</span> <span class="variable">$pais</span>->nombre<span class="signo">;</span>
-		<span class="palabra-clave">echo</span> <span class="variable">$pais</span>->continente<span class="signo">;</span>
-		<span class="palabra-clave">echo</span> <span class="variable">$pais</span>->region<span class="signo">;</span>
-		<span class="palabra-clave">echo</span> <span class="cadena">"&lt;br&gt;"</span><span class="signo">;</span>
-	<span class="signo">}</span>
-</code></pre>
-		<p>Mostrar los datos retornados como un <em>arreglo</em>.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">foreach</span> <span class="signo">(</span><span class="variable">$paises</span> <span class="palabra-clave">as</span> <span class="variable">$pais</span><span class="signo">)</span> <span class="signo">{</span>
-		<span class="palabra-clave">echo</span> <span class="variable">$pais</span><span class="signo">[</span><span class="cadena">'codigo'</span><span class="signo">]</span><span class="signo">;</span>
-		<span class="palabra-clave">echo</span> <span class="variable">$pais</span><span class="signo">[</span><span class="cadena">'nombre'</span><span class="signo">]</span><span class="signo">;</span>
-		<span class="palabra-clave">echo</span> <span class="variable">$pais</span><span class="signo">[</span><span class="cadena">'continente'</span><span class="signo">]</span><span class="signo">;</span>
-		<span class="palabra-clave">echo</span> <span class="variable">$pais</span><span class="signo">[</span><span class="cadena">'region'</span><span class="signo">]</span><span class="signo">;</span>
-		<span class="palabra-clave">echo</span> <span class="cadena">"&lt;br&gt;"</span><span class="signo">;</span>
-	<span class="signo">}</span>
-</code></pre>
-		<p>Mostrar los datos retornados como un <em>json</em>.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">foreach</span> <span class="signo">(</span><span class="variable">$paises</span> <span class="palabra-clave">as</span> <span class="variable">$pais</span><span class="signo">)</span> <span class="signo">{</span>
-		<span class="palabra-clave">echo</span> <span class="variable">$pais</span><span class="signo">;</span> <span class="comentario">// Esta variable contiene una cadena de tipo <em>json</em> con los datos de la consulta SQL.</span>
-		<span class="palabra-clave">echo</span> <span class="cadena">"&lt;br&gt;"</span><span class="signo">;</span>
-	<span class="signo">}</span>
-</code></pre>
-		<p>#2 Seleccionar campos - <em>select</em>.</p>
-		<p>Obtener codigo y nombre de la tabla <em>paises</em> por medio del modelo.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">include</span> <span class="cadena">"Pais.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Pais.php</em> que contiene la clase <em>Pais</em>.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::seleccionar<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="cadena">'nombre'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::seleccionar<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="cadena">'nombre'</span><span class="signo">)</span>->obtener<span class="signo">(</span>PIPE::ARREGLO<span class="signo">);</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::seleccionar<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="cadena">'nombre'</span><span class="signo">)</span>->obtener<span class="signo">(</span>PIPE::JSON<span class="signo">);</span>
-</code></pre>
-		<p>Obtener codigo y nombre de la tabla <em>paises</em> por medio del constructor de consultas PIPE.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->seleccionar<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="cadena">'nombre'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->seleccionar<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="cadena">'nombre'</span><span class="signo">)</span>->obtener<span class="signo">(</span>PIPE::ARREGLO<span class="signo">);</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->seleccionar<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="cadena">'nombre'</span><span class="signo">)</span>->obtener<span class="signo">(</span>PIPE::JSON<span class="signo">);</span>
-</code></pre>
-		<p>Obtener codigo y nombre de la tabla <em>paises</em> por medio de consulta en español.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar codigo,nombre de paises'</span><span class="signo">)</span><span class="signo">;</span>
-</code></pre>
-		<p>Obtener codigo y nombre de la tabla <em>paises</em> por medio de consulta nativa.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consultaNativa<span class="signo">(</span><span class="cadena">'select codigo,nombre from paises'</span><span class="signo">)</span><span class="signo">;</span>
-</code></pre>
-		<p>#3 Condicionales - <em>where</em>.</p>
-		<p>PIPE permite dos formas de realizar condicionales con el método <em>donde()</em>, de forma tradicional y de forma segura. PIPE también permite escribir los comandos en español dentro de las condicionales.</p>
-		<p>Obtener todos los datos de la tabla <em>paises</em> donde la cantidad de población este entre 50.000.000 y 100.000.000 por medio del modelo.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">include</span> <span class="cadena">"Pais.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Pais.php</em> que contiene la clase <em>Pais</em>.</span>
-		<span class="comentario">// Forma segura.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::donde<span class="signo">(</span><span class="cadena">'poblacion entre ? y ?'</span><span class="signo">,</span><span class="signo">[</span><span class="numero">50000000</span><span class="signo">,</span><span class="numero">100000000</span><span class="signo">]</span><span class="signo">)</span>->obtener<span class="signo">();</span>
-		<span class="comentario">// Forma tradicional.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::donde<span class="signo">(</span><span class="cadena">'poblacion entre 50000000 y 100000000'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
-</code></pre>
-		<p>Obtener todos los datos de la tabla <em>paises</em> donde la cantidad de población este entre 50.000.000 y 100.000.000 por medio del constructor de consultas PIPE.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-		<span class="comentario">// Forma segura.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->donde<span class="signo">(</span><span class="cadena">'poblacion entre ? y ?'</span><span class="signo">,</span><span class="signo">[</span><span class="numero">50000000</span><span class="signo">,</span><span class="numero">100000000</span><span class="signo">]</span><span class="signo">)</span>->obtener<span class="signo">();</span>
-		<span class="comentario">// Forma tradicional.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->donde<span class="signo">(</span><span class="cadena">'poblacion entre 50000000 y 100000000'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
-</code></pre>
-		<p>Obtener todos los datos de la tabla <em>paises</em> donde la cantidad de población este entre 50.000.000 y 100.000.000 por medio de consulta en español.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar todo de paises donde poblacion entre 50000000 y 100000000'</span><span class="signo">);</span>
-		<span class="comentario">// Los métodos <em>consulta()</em> y <em>consultaNativa()</em> también permiten enviar los datos de forma segura.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar todo de paises donde poblacion entre ? y ?'</span><span class="signo">,</span><span class="signo">[</span><span class="numero">50000000</span><span class="signo">,</span><span class="numero">100000000</span><span class="signo">]</span><span class="signo">);</span>
-		<span class="comentario">// También podemos incluir un tipo de retorno.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar todo de paises donde poblacion entre ? y ?'</span><span class="signo">,</span><span class="signo">[</span><span class="numero">50000000</span><span class="signo">,</span><span class="numero">100000000</span><span class="signo">]</span><span class="signo">,</span>PIPE::ARREGLO<span class="signo">);</span>
-</code></pre>
-		<p>#4 Uniones - <em>inner join</em>, <em>right join</em>, <em>left join</em>.</p>
-		<p><em>inner join</em></p>
-		<p>Cuando el método <em>unir()</em> no detecta el operador de comparación este incluye por defecto el operador <em>=</em>.</p>
-		<p>Obtener nombre e idioma de la tabla <em>paises</em>.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-	<span class="palabra-clave">include</span> <span class="cadena">"Pais.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Pais.php</em> que contiene la clase <em>Pais</em>.</span>	
-		<span class="comentario">// Por medio del modelo.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::seleccionar<span class="signo">(</span><span class="cadena">'paises.nombre'</span><span class="signo">,</span><span class="cadena">'paises_idiomas.idioma'</span><span class="signo">)</span>
-			->unir<span class="signo">(</span><span class="cadena">'paises_idiomas'</span><span class="signo">,</span><span class="cadena">'paises.codigo'</span><span class="signo">,</span><span class="cadena">'paises_idiomas.pais_codigo'</span><span class="signo">)</span>
-			->obtener<span class="signo">();</span>
-		<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>
-			->seleccionar<span class="signo">(</span><span class="cadena">'paises.nombre'</span><span class="signo">,</span><span class="cadena">'paises_idiomas.idioma'</span><span class="signo">)</span>
-			->unir<span class="signo">(</span><span class="cadena">'paises_idiomas'</span><span class="signo">,</span><span class="cadena">'paises.codigo'</span><span class="signo">,</span><span class="cadena">'paises_idiomas.pais_codigo'</span><span class="signo">)</span>
-			->obtener<span class="signo">();</span>
-		<span class="comentario">// Por medio de consulta en español.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span>
-							<span class="cadena">'seleccionar paises.nombre,paises_idiomas.idioma de paises</span>
-							<span class="cadena">unir paises_idiomas en paises.codigo=paises_idiomas.pais_codigo'</span>
-						<span class="signo">);</span>
-</code></pre>
-		<p><em>right join</em></p>
-		<p>Cuando el método <em>unirDerecha()</em> no detecta el operador de comparación este incluye por defecto el operador <em>=</em>.</p>
-		<p>Obtener todos los datos de la tabla <em>paises</em> que no tengan idiomas asociados.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-	<span class="palabra-clave">include</span> <span class="cadena">"PaisesIdioma.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>PaisesIdioma.php</em> que contiene la clase <em>PaisesIdioma</em>.</span>	
-		<span class="comentario">// Por medio del modelo.</span>
-		<span class="variable">$paisesIdiomas</span> <span class="signo">=</span> PaisesIdioma::unirDerecha<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">,</span><span class="cadena">'paises_idiomas.pais_codigo'</span><span class="signo">,</span><span class="cadena">'paises.codigo'</span><span class="signo">)</span>
-			->donde<span class="signo">(</span><span class="cadena">'paises_idiomas.idioma es nulo'</span><span class="signo">)</span>
-			->obtener<span class="signo">();</span>
-		<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
-		<span class="variable">$paisesIdiomas</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises_idiomas'</span><span class="signo">)</span>
-			->unirDerecha<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">,</span><span class="cadena">'paises_idiomas.pais_codigo'</span><span class="signo">,</span><span class="cadena">'paises.codigo'</span><span class="signo">)</span>
-			->donde<span class="signo">(</span><span class="cadena">'paises_idiomas.idioma es nulo'</span></span><span class="signo">)</span>
-			->obtener<span class="signo">();</span>
-		<span class="comentario">// Por medio de consulta en español.</span>
-		<span class="variable">$paisesIdiomas</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span>
-								<span class="cadena">'seleccionar todo de paises_idiomas</span>
-								<span class="cadena">derecha unir paises en paises_idiomas.pais_codigo=paises.codigo</span>
-								<span class="cadena">donde paises_idiomas.idioma es nulo'</span>
-							<span class="signo">);</span>
-</code></pre>
-		<p><em>left join</em></p>
-		<p>Cuando el método <em>unirIzquierda()</em> no detecta el operador de comparación este incluye por defecto el operador <em>=</em>.</p>
-		<p>Obtener todos los datos de la tabla <em>paises</em> que no tengan idiomas asociados.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-	<span class="palabra-clave">include</span> <span class="cadena">"Pais.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Pais.php</em> que contiene la clase <em>Pais</em>.</span>	
-		<span class="comentario">// Por medio del modelo.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::unirIzquierda<span class="signo">(</span><span class="cadena">'paises_idiomas'</span><span class="signo">,</span><span class="cadena">'paises.codigo'</span><span class="signo">,</span><span class="cadena">'paises_idiomas.pais_codigo'</span><span class="signo">)</span>
-			->donde<span class="signo">(</span><span class="cadena">'paises_idiomas.idioma es nulo'</span><span class="signo">)</span>
-			->obtener<span class="signo">();</span>
-		<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>
-			->unirIzquierda<span class="signo">(</span><span class="cadena">'paises_idiomas'</span><span class="signo">,</span><span class="cadena">'paises.codigo'</span><span class="signo">,</span><span class="cadena">'paises_idiomas.pais_codigo'</span><span class="signo">)</span>
-			->donde<span class="signo">(</span><span class="cadena">'paises_idiomas.idioma es nulo'</span></span><span class="signo">)</span>
-			->obtener<span class="signo">();</span>
-		<span class="comentario">// Por medio de consulta en español.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span>
-							<span class="cadena">'seleccionar todo de paises</span>
-							<span class="cadena">izquierda unir paises_idiomas en paises.codigo=paises_idiomas.pais_codigo</span>
-							<span class="cadena">donde paises_idiomas.idioma es nulo'</span>
-						<span class="signo">);</span>
-</code></pre>
-		<p>#5 Agrupaciones - <em>group by</em>.</p>
-		<p>Obtener la cantidad de paises de cada continente.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-	<span class="palabra-clave">include</span> <span class="cadena">"Pais.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Pais.php</em> que contiene la clase <em>Pais</em>.</span>	
-		<span class="comentario">// Por medio del modelo.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::seleccionar<span class="signo">(</span><span class="cadena">'continente'</span><span class="signo">,</span><span class="cadena">'contar(*) alias cantidad_paises'</span><span class="signo">)</span>->agruparPor<span class="signo">(</span><span class="cadena">'continente'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
-		<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->seleccionar<span class="signo">(</span><span class="cadena">'continente'</span><span class="signo">,</span><span class="cadena">'contar(*) alias cantidad_paises'</span><span class="signo">)</span>->agruparPor<span class="signo">(</span><span class="cadena">'continente'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
-		<span class="comentario">// Por medio de consulta en español.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar continente,contar(*) alias cantidad_paises de paises agrupar por continente'</span><span class="signo">)</span><span class="signo">;</span>
-</code></pre>
-		<p>#6 Condicionales - <em>having</em>.</p>
-		<p>Obtener los continentes que tengan más de 40 paises.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-	<span class="palabra-clave">include</span> <span class="cadena">"Pais.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Pais.php</em> que contiene la clase <em>Pais</em>.</span>	
-		<span class="comentario">// Por medio del modelo.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::seleccionar<span class="signo">(</span><span class="cadena">'continente'</span><span class="signo">,</span><span class="cadena">'contar(*) alias cantidad_paises'</span><span class="signo">)</span>
-			->agruparPor<span class="signo">(</span><span class="cadena">'continente'</span><span class="signo">)</span>
-			->teniendo<span class="signo">(</span><span class="cadena">'cantidad_paises > 40'</span><span class="signo">)</span>
-			->obtener<span class="signo">();</span>
-		<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>
-			->seleccionar<span class="signo">(</span><span class="cadena">'continente'</span><span class="signo">,</span><span class="cadena">'contar(*) alias cantidad_paises'</span><span class="signo">)</span>
-			->agruparPor<span class="signo">(</span><span class="cadena">'continente'</span><span class="signo">)</span>
-			->teniendo<span class="signo">(</span><span class="cadena">'cantidad_paises > 40'</span><span class="signo">)</span>
-			->obtener<span class="signo">();</span>
-		<span class="comentario">// Por medio de consulta en español.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span>
-							<span class="cadena">'seleccionar continente,contar(*) alias cantidad_paises de paises</span>
-							<span class="cadena">agrupar por continente teniendo cantidad_paises > 40'</span>
-						<span class="signo">);</span>
-</code></pre>
-		<p>#7 Ordenar - <em>order by</em>.</p>
-		<p>Cuando el método <em>ordenarPor()</em> no detecta el tipo de orden este incluye por defecto el tipo <em>asc</em>.</p>
-		<p>Obtener todos los datos de la tabla <em>paises</em> ordenados por nombre ascendentemente.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-	<span class="palabra-clave">include</span> <span class="cadena">"Pais.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Pais.php</em> que contiene la clase <em>Pais</em>.</span>	
-		<span class="comentario">// Por medio del modelo.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::ordenarPor<span class="signo">(</span><span class="cadena">'nombre'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
-		<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->ordenarPor<span class="signo">(</span><span class="cadena">'nombre'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
-		<span class="comentario">// Por medio de consulta en español.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar todo de paises ordenar por nombre'</span><span class="signo">)</span><span class="signo">;</span>
-</code></pre>
-		<p>Obtener todos los datos de la tabla <em>paises</em> ordenados por nombre descendentemente.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-	<span class="palabra-clave">include</span> <span class="cadena">"Pais.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Pais.php</em> que contiene la clase <em>Pais</em>.</span>	
-		<span class="comentario">// Por medio del modelo.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::ordenarPor<span class="signo">(</span><span class="cadena">'nombre'</span><span class="signo">,</span><span class="cadena">'desc'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
-		<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->ordenarPor<span class="signo">(</span><span class="cadena">'nombre'</span><span class="signo">,</span><span class="cadena">'desc'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
-		<span class="comentario">// Por medio de consulta en español.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar todo de paises ordenar por nombre desc'</span><span class="signo">)</span><span class="signo">;</span>
-</code></pre>
-		<p>#8 Límite - <em>limit</em>.</p>
-		<p>Cuando el método <em>limite()</em> no detecta el segundo parámetro este incluye por defecto un límite simple.</p>
-		<p>Obtener los dos primeros registros de la tabla <em>paises</em>.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-	<span class="palabra-clave">include</span> <span class="cadena">"Pais.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Pais.php</em> que contiene la clase <em>Pais</em>.</span>	
-		<span class="comentario">// Por medio del modelo.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::limite<span class="signo">(</span><span class="numero">2</span><span class="signo">)</span>->obtener<span class="signo">();</span>
-		<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->limite<span class="signo">(</span><span class="numero">2</span><span class="signo">)</span>->obtener<span class="signo">();</span>
-		<span class="comentario">// Por medio de consulta en español.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar todo de paises limite 2'</span><span class="signo">)</span><span class="signo">;</span>
-</code></pre>
-		<p>Obtener todos los datos de la tabla <em>paises</em> desde la posición 5 hasta la posición 10.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-	<span class="palabra-clave">include</span> <span class="cadena">"Pais.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Pais.php</em> que contiene la clase <em>Pais</em>.</span>	
-		<span class="comentario">// Por medio del modelo.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::limite<span class="signo">(</span><span class="numero">5</span><span class="signo">,</span><span class="numero">10</span><span class="signo">)</span>->obtener<span class="signo">();</span>
-		<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->limite<span class="signo">(</span><span class="numero">5</span><span class="signo">,</span><span class="numero">10</span><span class="signo">)</span>->obtener<span class="signo">();</span>
-		<span class="comentario">// Por medio de consulta en español.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar todo de paises limite 5,10'</span><span class="signo">)</span><span class="signo">;</span>
-</code></pre>
-		<p>#9 Distinto - <em>distinct.</em></p>
-		<p>Obtener todos los continentes de la tabla <em>paises</em>.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-	<span class="palabra-clave">include</span> <span class="cadena">"Pais.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Pais.php</em> que contiene la clase <em>Pais</em>.</span>	
-		<span class="comentario">// Por medio del modelo.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::distinto<span class="signo">()</span>->seleccionar<span class="signo">(</span><span class="cadena">'continente'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
-		<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->distinto<span class="signo">()</span>->seleccionar<span class="signo">(</span><span class="cadena">'continente'</span><span class="signo">)</span>->obtener<span class="signo">();</span>
-		<span class="comentario">// Por medio de consulta en español.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span><span class="cadena">'seleccionar distinto continente de paises'</span><span class="signo">)</span><span class="signo">;</span>
-</code></pre>
-		<p>#10 Alias - <em>as.</em></p>
-		<p>Obtener todos los paises que tengan menos de 5 ciudades por medio de subconsulta.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-	<span class="palabra-clave">include</span> <span class="cadena">"Pais.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Pais.php</em> que contiene la clase <em>Pais</em>.</span>	
-		<span class="comentario">// Por medio del modelo.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::alias<span class="signo">(</span><span class="cadena">'p'</span><span class="signo">)</span>
-			->seleccionar<span class="signo">(</span><span class="cadena">'p.nombre'</span><span class="signo">)</span>
-			->donde<span class="signo">(</span><span class="cadena">'(seleccionar contar(*) de ciudades donde pais_codigo=p.codigo teniendo contar(*)<5)'</span><span class="signo">)</span>
-			->obtener<span class="signo">();</span>
-		<span class="comentario">// Por medio del constructor de consultas PIPE.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>
-			->alias<span class="signo">(</span><span class="cadena">'p'</span><span class="signo">)</span>
-			->seleccionar<span class="signo">(</span><span class="cadena">'p.nombre'</span><span class="signo">)</span>
-			->donde<span class="signo">(</span><span class="cadena">'(seleccionar contar(*) de ciudades donde pais_codigo=p.codigo teniendo contar(*)<5)'</span><span class="signo">)</span>
-			->obtener<span class="signo">();</span>
-		<span class="comentario">// Por medio de consulta en español.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::consulta<span class="signo">(</span>
-							<span class="cadena">'seleccionar p.nombre de paises alias p</span> 
-							<span class="cadena">donde (seleccionar contar(*) de ciudades donde pais_codigo=p.codigo teniendo contar(*)<5)'</span>
-			<span class="signo">);</span>
-</code></pre>
-		<p>#11 Contar resultados de consulta SQL - <em>contar().</em></p>
-		<p>Contar la cantidad de paises por medio del modelo.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">include</span> <span class="cadena">"Pais.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Pais.php</em> que contiene la clase <em>Pais</em>.</span>	
-		<span class="variable">$cantidadPaises</span> <span class="signo">=</span> Pais::contar<span class="signo">();</span>
-</code></pre>
-		<p>Contar la cantidad de paises por medio del constructor de consultas PIPE.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-		<span class="variable">$cantidadPaises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->contar<span class="signo">();</span>
-</code></pre>
-		<p>#12 Obtener el primer registro - <em>primero().</em></p>
-		<p>Obtener el primer registro de la tabla <em>paises</em> por medio del modelo.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">include</span> <span class="cadena">"Pais.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Pais.php</em> que contiene la clase <em>Pais</em>.</span>	
-		<span class="variable">$pais</span> <span class="signo">=</span> Pais::primero<span class="signo">();</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
-		<span class="variable">$pais</span> <span class="signo">=</span> Pais::primero<span class="signo">(</span>PIPE::ARREGLO<span class="signo">);</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
-		<span class="variable">$pais</span> <span class="signo">=</span> Pais::primero<span class="signo">(</span>PIPE::JSON<span class="signo">);</span>
-</code></pre>
-		<p>Obtener el primer registro de la tabla <em>paises</em> por medio del constructor de consultas PIPE.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>	
-		<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->primero<span class="signo">();</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
-		<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->primero<span class="signo">(</span>PIPE::ARREGLO<span class="signo">);</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
-		<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->primero<span class="signo">(</span>PIPE::JSON<span class="signo">);</span>
-</code></pre>
-		<p>Obtener los diez primeros registros de la tabla <em>paises</em> por medio del modelo.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">include</span> <span class="cadena">"Pais.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Pais.php</em> que contiene la clase <em>Pais</em>.</span>	
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::primero<span class="signo">(</span><span class="numero">10</span><span class="signo">);</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::primero<span class="signo">(</span><span class="numero">10</span><span class="signo">,</span>PIPE::ARREGLO<span class="signo">);</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> Pais::primero<span class="signo">(</span><span class="numero">10</span><span class="signo">,</span>PIPE::JSON<span class="signo">);</span>
-</code></pre>
-		<p>Obtener los diez primeros registros de la tabla <em>paises</em> por medio del constructor de consultas PIPE.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>	
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->primero<span class="signo">(</span><span class="numero">10</span><span class="signo">);</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->primero<span class="signo">(</span><span class="numero">10</span><span class="signo">,</span>PIPE::ARREGLO<span class="signo">);</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
-		<span class="variable">$paises</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->primero<span class="signo">(</span><span class="numero">10</span><span class="signo">,</span>PIPE::JSON<span class="signo">);</span>
-</code></pre>
-		<p>#13 Obtener el último registro - <em>ultimo().</em></p>
-		<p>Debido a que en el constructor de consultas PIPE no disponemos de un modelo que nos permita omitir las convenciones debemos indicarle al método <em>ultimo()</em> cual es la lleve primaria.</p>
-		<p>Obtener el último registro de la tabla <em>paises</em> por medio del modelo.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">include</span> <span class="cadena">"Pais.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Pais.php</em> que contiene la clase <em>Pais</em>.</span>	
-		<span class="variable">$pais</span> <span class="signo">=</span> Pais::ultimo<span class="signo">();</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
-		<span class="variable">$pais</span> <span class="signo">=</span> Pais::ultimo<span class="signo">(</span>PIPE::ARREGLO<span class="signo">);</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
-		<span class="variable">$pais</span> <span class="signo">=</span> Pais::ultimo<span class="signo">(</span>PIPE::JSON<span class="signo">);</span>
-</code></pre>
-		<p>Obtener el último registro de la tabla <em>paises</em> por medio del constructor de consultas PIPE.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-		<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->ultimo<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">);</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
-		<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->ultimo<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span>PIPE::ARREGLO<span class="signo">);</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
-		<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->ultimo<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span>PIPE::JSON<span class="signo">);</span>
-</code></pre>
-		<p>Obtener los diez últimos registros de la tabla <em>paises</em> por medio del modelo.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">include</span> <span class="cadena">"Pais.php"</span><span class="signo">;</span> <span class="comentario">// Incluimos el archivo <em>Pais.php</em> que contiene la clase <em>Pais</em>.</span>	
-		<span class="variable">$pais</span> <span class="signo">=</span> Pais::ultimo<span class="signo">(</span><span class="numero">10</span><span class="signo">);</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
-		<span class="variable">$pais</span> <span class="signo">=</span> Pais::ultimo<span class="signo">(</span><span class="numero">10</span><span class="signo">,</span>PIPE::ARREGLO<span class="signo">);</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
-		<span class="variable">$pais</span> <span class="signo">=</span> Pais::ultimo<span class="signo">(</span><span class="numero">10</span><span class="signo">,</span>PIPE::JSON<span class="signo">);</span>
-</code></pre>
-		<p>Obtener los diez últimos registros de la tabla <em>paises</em> por medio del constructor de consultas PIPE.</p>
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require_once</span> <span class="cadena">"PROES/PIPE_CONEXION_BD.php"</span><span class="signo">;</span>
-	<span class="palabra-clave">use</span> PROES\PIPE<span class="signo">;</span>
-		<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->ultimo<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="numero">10</span><span class="signo">);</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.</span>
-		<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->ultimo<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="numero">10</span><span class="signo">,</span>PIPE::ARREGLO<span class="signo">);</span>
-		<span class="comentario">// Si deseamos obtener los datos en forma de json lo hacemos de la siguiente manera.</span>
-		<span class="variable">$pais</span> <span class="signo">=</span> PIPE::tabla<span class="signo">(</span><span class="cadena">'paises'</span><span class="signo">)</span>->ultimo<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">,</span><span class="numero">10</span><span class="signo">,</span>PIPE::JSON<span class="signo">);</span>
-</code></pre>
-		<p>Si utilizas el Modelo para interactuar con los datos de la base de datos, tendrás la ventaja de poder omitir las <a href="../convenciones" class="vinculo">convenciones</a> que tiene el ORM PIPE y adaptarse a la estructura que tenga tu tabla en la base de datos, ya que el Constructor de Consultas se adapta por defecto a las <a href="../convenciones" class="vinculo">convenciones</a>.</p>
-	</div>
-</div>
-</div>
-<pie-pagina></pie-pagina>
-</div>
-<script type="text/javascript" src="../../../js/vue-2.5.16.min.js"></script>
-<script type="text/javascript" src="../../../componentes/encabezado.js"></script>
-<script type="text/javascript" src="../../../componentes/menu-documentacion.js"></script>
-<script type="text/javascript" src="../../../componentes/pie-pagina.js"></script>
 
-<script type="text/javascript">
-new Vue({
-	el:'#pipe'
-});
-</script>
+  <div class="bg-glow"></div>
 
-<style type="text/css">
-	.con-palabras-reservadas{
-		display: flex;
-	}
-	@media screen and (max-width:930px){
-		.contenido{
-			margin-top:0px;
-		}
-	}
-	@media screen and (max-width:455px){
-		.con-palabras-reservadas{
-			display:block;
-		}
-	}
-</style>
+  <!-- INICIO ENCABEZADO -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="/" class="brand">
+        <img style="width: 95px;" src="../../../assets/images/pipe-isologo-eslogan.svg">
+      </a>
+
+      <ul class="nav-links nav-center" id="navCenter">
+        <li><a href="/" class="nav-link">Inicio</a></li>
+        <li><a href="../../../documentacion/8.x" class="nav-link active">Documentación</a></li>
+        <li><a href="https://github.com/proesio/pipe/archive/v8.0.0.zip" class="nav-link">Descargar</a></li>
+        <li><a href="https://proes.io" class="nav-link" target="_blank">PROES</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir Menú" title="Menú">
+          <svg class="icon-menu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <button class="theme-toggle" id="themeToggle">
+          <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+        </button>
+
+        <a href="https://github.com/proesio/pipe" target="_blank" rel="noopener noreferrer" class="btn-personal"
+          title="Ver repositorio en GitHub.">
+          <span>Repositorio</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+            </path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+  <!-- FIN ENCABEZADO -->
+
+  <!-- INICIO CONTENIDO PRINCIPAL -->
+  <div class="doc-layout">
+    <!-- INICIO SIDEBAR DE NAVEGACIÓN -->
+    <aside class="sidebar">
+      <div class="version-selector">
+        <ul>
+          <li>
+            <a>
+              v1.x
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </a>
+            <ul>
+              <li><a href="../../../documentacion/8.x">v8.x</a></li>
+              <li><a href="../../../documentacion/7.x">v7.x</a></li>
+              <li><a href="../../../documentacion/6.x">v6.x</a></li>
+              <li><a href="../../../documentacion/5.x">v5.x</a></li>
+              <li><a href="../../../documentacion/4.x">v4.x</a></li>
+              <li><a href="../../../documentacion/3.x">v3.x</a></li>
+              <li><a href="../../../documentacion/2.x">v2.x</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <nav>
+        <ul class="sidebar-nav">
+          <li><a href="../../../documentacion/1.x/instalacion" class="sidebar-link">Instalación</a></li>
+          <li><a href="../../../documentacion/1.x/configuracion" class="sidebar-link">Configuración</a></li>
+          <li><a href="../../../documentacion/1.x/convenciones" class="sidebar-link">Convenciones</a></li>
+          <li><a href="../../../documentacion/1.x/modelos-y-constructor-de-consultas" class="sidebar-link">Modelos y
+              Constructor de Consultas</a></li>
+          <li><a href="../../../documentacion/1.x/insertar" class="sidebar-link">Insertar</a></li>
+          <li><a href="../../../documentacion/1.x/consultar" class="sidebar-link active">Consultar</a></li>
+          <li><a href="../../../documentacion/1.x/actualizar" class="sidebar-link">Actualizar</a></li>
+          <li><a href="../../../documentacion/1.x/eliminar" class="sidebar-link">Eliminar</a></li>
+          <li><a href="../../../documentacion/1.x/vaciar-tabla" class="sidebar-link">Vaciar Tabla</a></li>
+          <li><a href="../../../documentacion/1.x/autenticar-usuarios" class="sidebar-link">Autenticar Usuarios</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <!-- FIN SIDEBAR DE NAVEGACIÓN -->
+
+    <!-- INICIO DOCUMENTACIÓN -->
+    <main class="documentacion">
+      <h1 class="doc-title-main">Consultar</h1>
+
+      <div class="hr"></div>
+
+      <div class="warning-banner">
+        <div class="warning-icon">!</div>
+        <div class="warning-content">
+            <p><strong>Atención:</strong> Estás visualizando una versión desactualizada de la documentación. Te recomendamos utilizar la <a href="../../../documentacion/8.x">última versión (8.x)</a> para acceder a las últimas características y correcciones.</p>
+        </div>
+      </div>
+
+      <p>PIPE proporciona métodos en español para acceder a los datos de las tablas interpretando las cláusulas y
+        palabras reservadas del gestor de base de datos.</p>
+      <p>PIPE tiene tres formas de retornar los datos en las consultas, como un
+        <em>objeto</em>, como un <em>arreglo</em> y como un <em>json</em>, por medio de las constantes
+        <em>PIPE::OBJETO</em>, <em>PIPE::ARREGLO</em> y <em>PIPE::JSON</em>. La forma por
+        defecto del retorno de datos es como un <em>objeto</em>.
+      </p>
+
+      <p>A continuación, se muestra un listado de las 32 palabras reservadas del ORM PIPE y su equivalente en el
+        lenguaje SQL de la base de datos para realizar consultas en español con el método <em>consulta</em>.</p>
+      <div class="con-palabras-reservadas">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Palabra Reservada en el ORM PIPE</th>
+              <th>Equivalente en el Lenguaje SQL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><em>actualizar</em></td>
+              <td><em>update</em></td>
+            </tr>
+            <tr>
+              <td><em>agrupar</em></td>
+              <td><em>group</em></td>
+            </tr>
+            <tr>
+              <td><em>alias</em></td>
+              <td><em>as</em></td>
+            </tr>
+            <tr>
+              <td><em>asignar</em></td>
+              <td><em>set</em></td>
+            </tr>
+            <tr>
+              <td><em>como</em></td>
+              <td><em>like</em></td>
+            </tr>
+            <tr>
+              <td><em>concatenar</em></td>
+              <td><em>concat</em></td>
+            </tr>
+            <tr>
+              <td><em>contar</em></td>
+              <td><em>count</em></td>
+            </tr>
+            <tr>
+              <td><em>de</em></td>
+              <td><em>from</em></td>
+            </tr>
+            <tr>
+              <td><em>dentro</em></td>
+              <td><em>into</em></td>
+            </tr>
+            <tr>
+              <td><em>derecha</em></td>
+              <td><em>right</em></td>
+            </tr>
+            <tr>
+              <td><em>distinto</em></td>
+              <td><em>distinct</em></td>
+            </tr>
+            <tr>
+              <td><em>donde</em></td>
+              <td><em>where</em></td>
+            </tr>
+            <tr>
+              <td><em>eliminar</em></td>
+              <td><em>delete</em></td>
+            </tr>
+            <tr>
+              <td><em>en</em></td>
+              <td><em>on</em></td>
+            </tr>
+            <tr>
+              <td><em>entre</em></td>
+              <td><em>between</em></td>
+            </tr>
+            <tr>
+              <td><em>es</em></td>
+              <td><em>is</em></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="con-palabras-reservadas">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Palabra Reservada en el ORM PIPE</th>
+              <th>Equivalente en el Lenguaje SQL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><em>existe</em></td>
+              <td><em>exists</em></td>
+            </tr>
+            <tr>
+              <td><em>insertar</em></td>
+              <td><em>insert</em></td>
+            </tr>
+            <tr>
+              <td><em>izquierda</em></td>
+              <td><em>left</em></td>
+            </tr>
+            <tr>
+              <td><em>limite</em></td>
+              <td><em>limit</em></td>
+            </tr>
+            <tr>
+              <td><em>no</em></td>
+              <td><em>not</em></td>
+            </tr>
+            <tr>
+              <td><em>nulo</em></td>
+              <td><em>null</em></td>
+            </tr>
+            <tr>
+              <td><em>o</em></td>
+              <td><em>or</em></td>
+            </tr>
+            <tr>
+              <td><em>ordenar</em></td>
+              <td><em>order</em></td>
+            </tr>
+            <tr>
+              <td><em>por</em></td>
+              <td><em>by</em></td>
+            </tr>
+            <tr>
+              <td><em>seleccionar</em></td>
+              <td><em>select</em></td>
+            </tr>
+            <tr>
+              <td><em>teniendo</em></td>
+              <td><em>having</em></td>
+            </tr>
+            <tr>
+              <td><em>todo</em></td>
+              <td><em>*</em></td>
+            </tr>
+            <tr>
+              <td><em>unir</em></td>
+              <td><em>join</em></td>
+            </tr>
+            <tr>
+              <td><em>valores</em></td>
+              <td><em>values</em></td>
+            </tr>
+            <tr>
+              <td><em>xo</em></td>
+              <td><em>xor</em></td>
+            </tr>
+            <tr>
+              <td><em>y</em></td>
+              <td><em>and</em></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Veamos algunos ejemplos utilizando la base de datos <em>mundo</em>.</p>
+
+      <p>#1 Obtener todos los datos - <em>*</em>.</p>
+      <p>Obtener todos los datos de la tabla <em>paises</em> por medio del modelo.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+require_once __DIR__ . '/Pais.php'; // Incluimos el archivo Pais.php que contiene la clase Pais.
+
+$paises = Pais::todo();
+
+// Si deseamos obtener los datos con un tipo de retorno específico lo hacemos de la siguiente manera.
+$paises = Pais::todo(PIPE::ARREGLO);
+
+// El método todo() permite enviar un arreglo como parámetro indicando los campos que deseamos obtener.
+$paises = Pais::todo(['codigo', 'nombre']);
+
+// También podemos incluir un tipo de retorno.
+$paises = Pais::todo(['codigo', 'nombre'], PIPE::ARREGLO);
+        </script>
+      </div>
+
+      <p>Obtener todos los datos de la tabla <em>paises</em> por medio del constructor de consultas PIPE.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+use PROES\PIPE;
+
+$paises = PIPE::tabla('paises')->todo();
+
+// Si deseamos obtener los datos en forma de arreglo lo hacemos de la siguiente manera.
+$paises = PIPE::tabla('paises')->todo(PIPE::ARREGLO);
+
+// El método todo() permite enviar un arreglo como parámetro indicando los campos que deseamos obtener.
+$paises = PIPE::tabla('paises')->todo(['codigo', 'nombre']);
+
+// También podemos incluir un tipo de retorno.
+$paises = PIPE::tabla('paises')->todo(['codigo', 'nombre'], PIPE::ARREGLO);
+        </script>
+      </div>
+
+      <p>Obtener todos los datos de la tabla <em>paises</em> por medio de consulta en español.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+use PROES\PIPE;
+
+$paises = PIPE::consulta('seleccionar todo de paises');
+
+// Si deseamos obtener los datos con un tipo de retorno específico lo hacemos de la siguiente manera.
+$paises = PIPE::consulta('seleccionar todo de paises', PIPE::ARREGLO);
+        </script>
+      </div>
+
+      <p>Obtener todos los datos de la tabla <em>paises</em> por medio de consulta nativa.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+use PROES\PIPE;
+
+$paises = PIPE::consultaNativa('select * from paises');
+
+// Si deseamos obtener los datos con un tipo de retorno específico lo hacemos de la siguiente manera.
+$paises = PIPE::consultaNativa('select * from paises', PIPE::ARREGLO);
+        </script>
+      </div>
+
+      <p>#2 Seleccionar campos - <em>select</em>.</p>
+      <p>Obtener codigo y nombre de la tabla <em>paises</em> por medio del modelo.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+require_once __DIR__ . '/Pais.php';
+
+$paises = Pais::seleccionar('codigo', 'nombre')->obtener();
+
+// Si deseamos obtener los datos con un tipo de retorno específico lo hacemos de la siguiente manera.
+$paises = Pais::seleccionar('codigo', 'nombre')->obtener(PIPE::ARREGLO);
+        </script>
+      </div>
+
+      <p>Obtener codigo y nombre de la tabla <em>paises</em> por medio del constructor de consultas PIPE.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+use PROES\PIPE;
+
+$paises = PIPE::tabla('paises')->seleccionar('codigo', 'nombre')->obtener();
+
+// Si deseamos obtener los datos con un tipo de retorno específico lo hacemos de la siguiente manera.
+$paises = PIPE::tabla('paises')->seleccionar('codigo', 'nombre')->obtener(PIPE::ARREGLO);
+        </script>
+      </div>
+
+      <p>Obtener codigo y nombre de la tabla <em>paises</em> por medio de consulta en español.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+use PROES\PIPE;
+
+$paises = PIPE::consulta('seleccionar codigo, nombre de paises');
+        </script>
+      </div>
+
+      <p>Obtener codigo y nombre de la tabla <em>paises</em> por medio de consulta nativa.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+use PROES\PIPE;
+
+$paises = PIPE::consultaNativa('select codigo, nombre from paises');
+        </script>
+      </div>
+
+      <p>#3 Condicionales - <em>where</em>.</p>
+      <p>PIPE permite dos formas de realizar condicionales con el método <em>donde</em>, de forma tradicional y de
+        forma segura. PIPE también permite escribir los comandos en español dentro de las condicionales.</p>
+      <p>Obtener todos los datos de la tabla <em>paises</em> donde la cantidad de población esté entre 50.000.000 y
+        100.000.000 por medio del modelo.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+require_once __DIR__ . '/Pais.php';
+
+// Forma segura.
+$paises = Pais::donde('poblacion entre ? y ?', [50000000, 100000000])->obtener();
+
+// Forma tradicional.
+$paises = Pais::donde('poblacion entre 50000000 y 100000000')->obtener();
+        </script>
+      </div>
+
+      <p>Obtener todos los datos de la tabla <em>paises</em> donde la cantidad de población esté entre 50.000.000 y
+        100.000.000 por medio del constructor de consultas PIPE.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+use PROES\PIPE;
+
+// Forma segura.
+$paises = PIPE::tabla('paises')
+    ->donde('poblacion entre ? y ?', [50000000, 100000000])
+    ->obtener();
+
+// Forma tradicional.
+$paises = PIPE::tabla('paises')
+    ->donde('poblacion entre 50000000 y 100000000')
+    ->obtener();
+        </script>
+      </div>
+
+      <p>Obtener todos los datos de la tabla <em>paises</em> donde la cantidad de población esté entre 50.000.000 y
+        100.000.000 por medio de consulta en español.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+use PROES\PIPE;
+
+$paises = PIPE::consulta(
+    'seleccionar todo de paises donde poblacion entre 50000000 y 100000000'
+);
+
+// Los métodos consulta() y consultaNativa() también permiten enviar los datos de forma segura.
+$paises = PIPE::consulta(
+    'seleccionar todo de paises donde poblacion entre ? y ?', [50000000, 100000000]
+);
+
+// También podemos incluir un tipo de retorno.
+$paises = PIPE::consulta(
+    'seleccionar todo de paises donde poblacion entre ? y ?', [50000000, 100000000], PIPE::ARREGLO
+);
+        </script>
+      </div>
+
+      <p>#4 Uniones - <em>inner join</em>, <em>right join</em>, <em>left join</em>.</p>
+      <p><em>inner join</em></p>
+      <p>Cuando el método <em>unir</em> no detecta el operador de comparación este incluye por defecto el operador
+        <em>=</em>.
+      </p>
+      <p>Obtener nombre e idioma de la tabla <em>paises</em>.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+require_once __DIR__ . '/Pais.php';
+
+use PROES\PIPE;
+
+// Por medio del modelo.
+$paises = Pais::seleccionar('paises.nombre', 'paises_idiomas.idioma')
+    ->unir('paises_idiomas', 'paises.codigo', 'paises_idiomas.pais_codigo')
+    ->obtener();
+
+// Por medio del constructor de consultas PIPE.
+$paises = PIPE::tabla('paises')
+    ->seleccionar('paises.nombre', 'paises_idiomas.idioma')
+    ->unir('paises_idiomas', 'paises.codigo', 'paises_idiomas.pais_codigo')
+    ->obtener();
+
+// Por medio de consulta en español.
+$paises = PIPE::consulta(
+    'seleccionar paises.nombre, paises_idiomas.idioma de paises'
+    . ' unir paises_idiomas en paises.codigo = paises_idiomas.pais_codigo'
+);
+        </script>
+      </div>
+
+      <p><em>right join</em></p>
+      <p>Cuando el método <em>unirDerecha</em> no detecta el operador de comparación este incluye por defecto el
+        operador <em>=</em>.</p>
+      <p>Obtener todos los datos de la tabla <em>paises</em> que no tengan idiomas asociados.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+require_once __DIR__ . '/PaisesIdioma.php'; // Incluimos el archivo PaisesIdioma.php que contiene la clase PaisesIdioma.
+
+use PROES\PIPE;
+
+// Por medio del modelo.
+$paisesIdiomas = PaisesIdioma::unirDerecha('paises', 'paises_idiomas.pais_codigo', 'paises.codigo')
+    ->donde('paises_idiomas.idioma es nulo')
+    ->obtener();
+
+// Por medio del constructor de consultas PIPE.
+$paisesIdiomas = PIPE::tabla('paises_idiomas')
+    ->unirDerecha('paises', 'paises_idiomas.pais_codigo', 'paises.codigo')
+    ->donde('paises_idiomas.idioma es nulo')
+    ->obtener();
+
+// Por medio de consulta en español.
+$paisesIdiomas = PIPE::consulta(
+    'seleccionar todo de paises_idiomas'
+    . ' derecha unir paises en paises_idiomas.pais_codigo = paises.codigo'
+    . ' donde paises_idiomas.idioma es nulo'
+);
+        </script>
+      </div>
+
+      <p><em>left join</em></p>
+      <p>Cuando el método <em>unirIzquierda</em> no detecta el operador de comparación este incluye por defecto el
+        operador <em>=</em>.</p>
+      <p>Obtener todos los datos de la tabla <em>paises</em> que no tengan idiomas asociados.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+require_once __DIR__ . '/Pais.php';
+
+use PROES\PIPE;
+
+// Por medio del modelo.
+$paises = Pais::unirIzquierda('paises_idiomas', 'paises.codigo', 'paises_idiomas.pais_codigo')
+    ->donde('paises_idiomas.idioma es nulo')
+    ->obtener();
+
+// Por medio del constructor de consultas PIPE.
+$paises = PIPE::tabla('paises')
+    ->unirIzquierda('paises_idiomas', 'paises.codigo', 'paises_idiomas.pais_codigo')
+    ->donde('paises_idiomas.idioma es nulo')
+    ->obtener();
+
+// Por medio de consulta en español.
+$paises = PIPE::consulta(
+    'seleccionar todo de paises'
+    . ' izquierda unir paises_idiomas en paises.codigo = paises_idiomas.pais_codigo'
+    . ' donde paises_idiomas.idioma es nulo'
+);
+        </script>
+      </div>
+
+      <p>#5 Agrupaciones - <em>group by</em>.</p>
+      <p>Obtener la cantidad de paises de cada continente.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+require_once __DIR__ . '/Pais.php';
+
+use PROES\PIPE;
+
+// Por medio del modelo.
+$paises = Pais::seleccionar('continente', 'contar(*) alias cantidad_paises')
+    ->agruparPor('continente')
+    ->obtener();
+
+// Por medio del constructor de consultas PIPE.
+$paises = PIPE::tabla('paises')
+    ->seleccionar('continente', 'contar(*) alias cantidad_paises')
+    ->agruparPor('continente')
+    ->obtener();
+
+// Por medio de consulta en español.
+$paises = PIPE::consulta(
+    'seleccionar continente, contar(*) alias cantidad_paises de paises agrupar por continente'
+);
+        </script>
+      </div>
+
+      <p>El método <em>agruparPor</em> también permite enviar un arreglo definiendo varias agrupaciones.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+require_once __DIR__ . '/Pais.php';
+
+use PROES\PIPE;
+
+// Por medio del modelo.
+$paises = Pais::seleccionar('continente', 'region', 'contar(*) alias cantidad_paises')
+    ->agruparPor(['continente', 'region'])
+    ->obtener();
+
+// Por medio del constructor de consultas PIPE.
+$paises = PIPE::tabla('paises')->seleccionar('continente', 'region', 'contar(*) alias cantidad_paises')
+    ->agruparPor(['continente', 'region'])
+    ->obtener();
+        </script>
+      </div>
+
+      <p>#6 Condicionales - <em>having</em>.</p>
+      <p>Obtener los continentes que tengan más de 40 paises.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+require_once __DIR__ . '/Pais.php';
+
+use PROES\PIPE;
+
+// Por medio del modelo.
+$paises = Pais::seleccionar('continente', 'contar(*) alias cantidad_paises')
+    ->agruparPor('continente')
+    ->teniendo('cantidad_paises > 40')
+    ->obtener();
+
+// Por medio del constructor de consultas PIPE.
+$paises = PIPE::tabla('paises')
+    ->seleccionar('continente', 'contar(*) alias cantidad_paises')
+    ->agruparPor('continente')
+    ->teniendo('cantidad_paises > 40')
+    ->obtener();
+
+// Por medio de consulta en español.
+$paises = PIPE::consulta(
+  'seleccionar continente, contar(*) alias cantidad_paises de paises'
+  . ' agrupar por continente teniendo cantidad_paises > 40'
+);
+        </script>
+      </div>
+
+      <p>#7 Ordenar - <em>order by</em>.</p>
+      <p>Cuando el método <em>ordenarPor</em> no detecta el tipo de orden este incluye por defecto el tipo
+        <em>asc</em>.
+      </p>
+      <p>Obtener todos los datos de la tabla <em>paises</em> ordenados por nombre ascendentemente.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+require_once __DIR__ . '/Pais.php';
+
+use PROES\PIPE;
+
+// Por medio del modelo.
+$paises = Pais::ordenarPor('nombre')->obtener();
+
+// Por medio del constructor de consultas PIPE.
+$paises = PIPE::tabla('paises')->ordenarPor('nombre')->obtener();
+
+// Por medio de consulta en español.
+$paises = PIPE::consulta('seleccionar todo de paises ordenar por nombre');
+        </script>
+      </div>
+
+      <p>Obtener todos los datos de la tabla <em>paises</em> ordenados por nombre descendentemente.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+require_once __DIR__ . '/Pais.php';
+
+use PROES\PIPE;
+
+// Por medio del modelo.
+$paises = Pais::ordenarPor('nombre', 'desc')->obtener();
+
+// Por medio del constructor de consultas PIPE.
+$paises = PIPE::tabla('paises')->ordenarPor('nombre', 'desc')->obtener();
+
+// Por medio de consulta en español.
+$paises = PIPE::consulta('seleccionar todo de paises ordenar por nombre desc');
+        </script>
+      </div>
+
+      <p>El método <em>ordenarPor</em> también permite enviar un arreglo definiendo varias ordenaciones.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+require_once __DIR__ . '/Pais.php';
+
+use PROES\PIPE;
+
+// Por medio del modelo.
+$paises = Pais::ordenarPor(['nombre', 'continente'])->obtener();
+
+// Por medio del constructor de consultas PIPE.
+$paises = PIPE::tabla('paises')->ordenarPor(['nombre', 'continente'])->obtener();
+
+// Por medio de consulta en español.
+$paises = PIPE::consulta('seleccionar todo de paises ordenar por nombre, continente');
+        </script>
+      </div>
+
+      <p>#8 Límite - <em>limit</em>.</p>
+      <p>Cuando el método <em>limite</em> no detecta el segundo parámetro este incluye por defecto un límite
+        simple.</p>
+      <p>Obtener los dos primeros registros de la tabla <em>paises</em>.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+require_once __DIR__ . '/Pais.php';
+
+use PROES\PIPE;
+
+// Por medio del modelo.
+$paises = Pais::limite(2)->obtener();
+
+// Por medio del constructor de consultas PIPE.
+$paises = PIPE::tabla('paises')->limite(2)->obtener();
+
+// Por medio de consulta en español.
+$paises = PIPE::consulta('seleccionar todo de paises limite 2');
+        </script>
+      </div>
+
+      <p>Obtener todos los datos de la tabla <em>paises</em> desde la posición 5 hasta la posición 10.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+require_once __DIR__ . '/Pais.php';
+
+use PROES\PIPE;
+
+// Por medio del modelo.
+$paises = Pais::limite(5, 10)->obtener();
+
+// Por medio del constructor de consultas PIPE.
+$paises = PIPE::tabla('paises')->limite(5, 10)->obtener();
+
+// Por medio de consulta en español.
+$paises = PIPE::consulta('seleccionar todo de paises limite 5, 10');
+        </script>
+      </div>
+
+      <p>#9 Distinto - <em>distinct.</em></p>
+      <p>Obtener todos los continentes de la tabla <em>paises</em>.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+require_once __DIR__ . '/Pais.php';
+
+use PROES\PIPE;
+
+// Por medio del modelo.
+$paises = Pais::distinto()->seleccionar('continente')->obtener();
+
+// Por medio del constructor de consultas PIPE.
+$paises = PIPE::tabla('paises')->distinto()->seleccionar('continente')->obtener();
+
+// Por medio de consulta en español.
+$paises = PIPE::consulta('seleccionar distinto continente de paises');
+        </script>
+      </div>
+
+      <p>#10 Alias - <em>as.</em></p>
+      <p>Obtener todos los países que tengan menos de 5 ciudades por medio de subconsulta.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+require_once __DIR__ . '/Pais.php';
+
+use PROES\PIPE;
+
+// Por medio del modelo.
+$paises = Pais::alias('p')
+    ->seleccionar('p.nombre')
+    ->donde('(seleccionar contar(*) de ciudades donde pais_codigo = p.codigo teniendo contar(*) < 5)')
+    ->obtener();
+
+// Por medio del constructor de consultas PIPE.
+$paises = PIPE::tabla('paises')
+    ->alias('p')
+    ->seleccionar('p.nombre')
+    ->donde('(seleccionar contar(*) de ciudades donde pais_codigo = p.codigo teniendo contar(*) < 5)')
+    ->obtener();
+
+// Por medio de consulta en español.
+$paises = PIPE::consulta(
+    'seleccionar p.nombre de paises alias p'
+    . ' donde (seleccionar contar(*) de ciudades donde pais_codigo = p.codigo teniendo contar(*) < 5)'
+);
+        </script>
+      </div>
+
+      <p>#11 Contar resultados de consulta SQL - <em>contar</em>.</p>
+      <p>Contar la cantidad de registros en la tabla paises.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+require_once __DIR__ . '/Pais.php';
+
+use PROES\PIPE;
+
+// Por medio del modelo.
+$cantidadPaises = Pais::contar();
+
+// Por medio del constructor de consultas PIPE.
+$cantidadPaises = PIPE::tabla('paises')->contar();
+        </script>
+      </div>
+
+      <p>Consultas básicas por medio de métodos.</p>
+      <p>#12 Obtener el primer registro - <em>primero</em>.</p>
+      <p>Obtener el primer registro de la tabla <em>paises</em> por medio del modelo.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+require_once __DIR__ . '/Pais.php';
+
+$pais = Pais::primero();
+
+// Si deseamos obtener los datos con un tipo de retorno específico lo hacemos de la siguiente manera.
+$pais = Pais::primero(PIPE::ARREGLO);
+        </script>
+      </div>
+
+      <p>Obtener el primer registro de la tabla <em>paises</em> por medio del constructor de consultas PIPE.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+use PROES\PIPE;
+
+$pais = PIPE::tabla('paises')->primero();
+
+// Si deseamos obtener los datos con un tipo de retorno específico lo hacemos de la siguiente manera.
+$pais = PIPE::tabla('paises')->primero(PIPE::ARREGLO);
+        </script>
+      </div>
+
+      <p>Obtener los diez primeros registros de la tabla <em>paises</em> por medio del modelo.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+require_once __DIR__ . '/Pais.php';
+
+$paises = Pais::primero(10);
+
+// Si deseamos obtener los datos con un tipo de retorno específico lo hacemos de la siguiente manera.
+$paises = Pais::primero(10, PIPE::ARREGLO);
+        </script>
+      </div>
+
+      <p>Obtener los diez primeros registros de la tabla <em>paises</em> por medio del constructor de consultas
+        PIPE.</p>
+      
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+use PROES\PIPE;
+
+$paises = PIPE::tabla('paises')->primero(10);
+
+// Si deseamos obtener los datos con un tipo de retorno específico lo hacemos de la siguiente manera.
+$paises = PIPE::tabla('paises')->primero(10, PIPE::ARREGLO);
+        </script>
+      </div>
+
+      <p>#13 Obtener el último registro - <em>ultimo</em>.</p>
+      <p>Debido a que en el constructor de consultas PIPE no disponemos de un modelo que nos permita omitir las
+        convenciones, debemos indicarle al método <em>ultimo</em> cual es la lleve primaria.</p>
+      <p>Obtener el último registro de la tabla <em>paises</em> por medio del modelo.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+require_once __DIR__ . '/Pais.php';
+
+$pais = Pais::ultimo();
+
+// Si deseamos obtener los datos con un tipo de retorno específico lo hacemos de la siguiente manera.
+$pais = Pais::ultimo(PIPE::ARREGLO);
+        </script>
+      </div>
+
+      <p>Obtener el último registro de la tabla <em>paises</em> por medio del constructor de consultas PIPE.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+use PROES\PIPE;
+
+$pais = PIPE::tabla('paises')->ultimo('codigo');
+
+// Si deseamos obtener los datos con un tipo de retorno específico lo hacemos de la siguiente manera.
+$pais = PIPE::tabla('paises')->ultimo('codigo', PIPE::ARREGLO);
+        </script>
+      </div>
+
+      <p>Obtener los diez últimos registros de la tabla <em>paises</em> por medio del modelo.</p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+require_once __DIR__ . '/Pais.php';
+
+$pais = Pais::ultimo(10);
+
+// Si deseamos obtener los datos con un tipo de retorno específico lo hacemos de la siguiente manera.
+$pais = Pais::ultimo(10, PIPE::ARREGLO);
+        </script>
+      </div>
+
+      <p>Obtener los diez últimos registros de la tabla <em>paises</em> por medio del constructor de consultas PIPE.
+      </p>
+
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/PROES/PIPE_CONEXION_BD.php';
+
+use PROES\PIPE;
+
+// Podemos especificar una llave primaria personalizada.
+$pais = PIPE::tabla('paises')->ultimo('codigo', 10);
+
+// Si deseamos obtener los datos con un tipo de retorno específico lo hacemos de la siguiente manera.
+$pais = PIPE::tabla('paises')->ultimo('codigo', 10, PIPE::ARREGLO);
+        </script>
+      </div>
+
+      <p>Si utilizas el Modelo para interactuar con los datos de la base de datos, tendrás la ventaja de poder
+        omitir las <a href="../convenciones" class="link">convenciones</a> que tiene el ORM PIPE y adaptarse a la
+        estructura que tenga tu tabla en la base de datos, ya que el Constructor de Consultas se adapta por defecto
+        a las <a href="../convenciones" class="link">convenciones</a>.</p>
+    </main>
+    <!-- FIN DOCUMENTACIÓN -->
+  </div>
+  <!-- FIN CONTENIDO PRINCIPAL -->
+
+  <!-- INICIO FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-info">
+          <a href="https://proes.io" class="brand" target="_blank">
+            <img style="width: 130px;" src="../../../assets/images/proes-isologo-eslogan.svg">
+          </a>
+          <p class="footer-desc">
+            Herramientas de desarrollo web accesibles y de código abierto para la comunidad hispanohablante.
+          </p>
+        </div>
+
+        <div class="footer-socials">
+          <a href="https://facebook.com/proesio" target="_blank" rel="noopener noreferrer" class="social-link"
+            aria-label="Siguenos en Facebook" title="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/channel/UCk5pHq8tVsn0RdGoGB56QQg" target="_blank" rel="noopener noreferrer"
+            class="social-link" aria-label="Suscripciones en YouTube" title="YouTube">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+              </path>
+              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Copyright &copy; 2018 - <span id="copyrightYear"></span> <a href="https://jfvalenciam.proes.io"
+            target="_blank" rel="noopener noreferrer" class="footer-link">Juan Felipe Valencia Murillo</a></p>
+      </div>
+    </div>
+  </footer>
+  <!-- FIN FOOTER -->
+
+  <!-- INICIO BOTÓN "VOLVER A ARRIBA" -->
+  <button id="scrollToTopBtn" aria-label="Volver arriba" title="Volver arriba">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m18 15-6-6-6 6" />
+    </svg>
+  </button>
+  <!-- FIN BOTÓN "VOLVER A ARRIBA" -->
+
+  <script src="../../../assets/js/main.js"></script>
+  <script src="../../../assets/js/php-code.js"></script>
 </body>
+
 </html>
